@@ -1,3 +1,4 @@
+<!-- Рекрутер -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="pl">
@@ -6,41 +7,45 @@
     <title>Рекрутер | KIRIS M.O.R.</title>
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
 </head>
 <body>
     <header>
-        <button class="menu-toggle">Menu</button>
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/logo.png' %}" alt="KIRIS M.O.R." />
-            </a>
+        <div class="sidebar">
+            <nav>
+                <button class="menu-toggle">Menu</button>
+                <div class="logo">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="KIRIS M.O.R." />
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="{% url 'home' %}">Strona główna</a></li>
+                    <li><a href="{% url 'accounts:recruiter_profile' request.user.pk %}">Edytuj Profil</a></li>
+                    <li><a href="#">Zadania</a></li>
+                    <li><a href="#">Zarządzaj Ofertami</a></li>
+                    <li><a href="#">Wiadomości</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Strona główna</a></li>
-                <!-- Остальные ссылки убраны, так как они теперь в боковой панели -->
-            </ul>
-        </nav>
     </header>
-    <div class="sidebar">
-        <ul>
-            <li><a href="{% url 'home' %}">Strona główna</a></li>
-            <li><a href="{% url 'recruiter_profile' %}">Edytuj Profil</a></li>
-            <li><a href="#">Zadania</a></li>
-            <li><a href="#">Zarządzaj Ofertami</a></li>
-            <li><a href="#">Wiadomości</a></li>
-        </ul>
-    </div>
     <main>
         {% block content %}
-        <h1>Panel Rekrutera</h1>
-        <p>Добро пожаловать в ваш личный кабинет рекрутера!</p>
+        <div class="container">
+            <h1>Panel Rekrutera</h1>
+            <p>Добро пожаловать в ваш личный кабинет рекрутера!</p>
+        </div>
         {% endblock content %}
     </main>
-    <footer>
-        <p>© 2024 Agencji Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone.</p>
+    <footer class="footer mt-auto py-3 bg-dark text-white text-center">
+        <div class="container">
+            <p>© 2024 Agencji Pracy KIRIS M.O.R. Wszelkie prawa заstrzeżone.</p>
+        </div>
     </footer>
-      <script src="{% static 'accounts/js/accounts.js' %}"></script>
+    <script src="{% static 'accounts/js/accounts.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

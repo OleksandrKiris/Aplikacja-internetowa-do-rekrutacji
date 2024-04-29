@@ -1,0 +1,15 @@
+<!-- Шаблон редактирования профиля клиента -->
+{% extends 'dashboard/client_dashboard.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="profile-edit">
+        <h1>Edit Company Profile</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
