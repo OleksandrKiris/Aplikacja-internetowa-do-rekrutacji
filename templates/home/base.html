@@ -19,7 +19,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Strona główna</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Kontakt</a></li>
@@ -44,7 +43,7 @@
             </div>
         </nav>
     </header>
-    {% block content %}
+      {% block content %}
     <div class="container mt-3">
         <main>
             <section class="main-content">
@@ -52,50 +51,61 @@
                 <p>Opis stanowiska: Osoba na tym stanowisku będzie odpowiedzialna za bezpośredni kontakt z klientami firmy, rozwiązywanie problemów oraz udzielanie informacji o produktach i usługach.</p>
                 <p>Wymagania: Doskonałe umiejętności komunikacyjne, doświadczenie w obsłudze klienta, biegłość w obsłudze komputera.</p>
             </section>
-           <section class="how-we-work">
-            <div class="work-step">
-                <img src="{% static 'images/Icon_1.png' %}" alt="Kontakt" class="icon-small">
-                <h2>Skontaktuj się z nami</h2>
-                <p>Jeśli masz pytania lub sugestie, prosimy, nie wahaj się z nami skontaktować. Skontaktuj się z nami,
-                    aby omówić swoje potrzeby i możliwości. Nasz zespół specjalistów jest gotowy, aby odpowiedzieć na
-                    wszystkie pytania i pomóc znaleźć najlepsze rozwiązanie dla Ciebie.</p>
-            </div>
-            <div class="work-step">
-                <img src="{% static 'images/Icon_2.png' %}" alt="Dokumenty" class="icon-small">
-                <h2>Przygotowanie dokumentów</h2>
-                <p>Przygotujemy wszystkie niezbędne dokumenty. Wspólnie przeanalizujemy wszystkie
-                    detale i odpowiemy na dodatkowe pytania.</p>
-            </div>
-            <div class="work-step">
-                <img src="{% static 'images/Icon_3.png' %}" alt="Przyjazd" class="icon-small">
-                <h2>Przyjazd i zakwaterowanie</h2>
-                <p>Po finalizacji wszystkich formalności ustalisz datę przyjazdu na projekt. Nasz koordynator będzie na
-                    Ciebie czekał po przyjeździe, zapewni Ci ciepłe powitanie i pomoże w zakwaterowaniu.</p>
-            </div>
-            <div class="work-step">
-                <img src="{% static 'images/Icon_4.png' %}" alt="Wsparcie" class="icon-small">
-                <h2>Wsparcie i kontakt</h2>
-                <p>Jesteśmy z Tobą na każdym kroku Twojej kariery. Nasz zespół jest zawsze dostępny, aby pomóc i
-                    odpowiedzieć на wszelkie pytania, zapewniając ciągłe wsparcie i komunikację.</p>
-            </div>
-            </section>
-            <section class="contact-section mt-4">
-                
-                <div class="contact-info card p-3">
-                    <h2>Informacje kontaktowe</h2>
-                    <p>Email: <a href="mailto:info@agencja.pracy.pl">info@agencja.pracy.pl</a></p>
-                    <p>Telefon: <a href="tel:+48123456789">+48 123 456 789</a></p>
-                    <p>Adres: ul. Staszica 12c, Wrocław, Polska</p>
+            <section class="how-we-work row">
+                <div class="col-md-6">
+                    <div class="work-step">
+                        <img src="{% static 'images/Icon_1.png' %}" alt="Kontakt" class="icon-small">
+                        <h2>Skontaktuj się z nami</h2>
+                        <p>Jeśli masz pytania lub sugestie, prosimy, nie wahaj się z nami skontaktować. Skontaktuj się z nami, aby omówić swoje potrzeby i możliwości. Nasz zespół specjalistów jest gotowy, aby odpowiedzieć na wszystkie pytania i pomóc znaleźć najlepsze rozwiązanie dla Ciebie.</p>
+                    </div>
                 </div>
-                <div class="social-media card p-3">
-                    <h2>Śledź nas</h2>
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
+                <div class="col-md-6">
+                    <div class="work-step">
+                        <img src="{% static 'images/Icon_2.png' %}" alt="Dokumenty" class="icon-small">
+                        <h2>Przygotowanie dokumentów</h2>
+                        <p>Przygotujemy wszystkie niezbędne dokumenty. Wspólnie przeanalizujemy wszystkie detale i odpowiemy na dodatkowe pytania.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="work-step">
+                        <img src="{% static 'images/Icon_3.png' %}" alt="Przyjazd" class="icon-small">
+                        <h2>Przyjazd i zakwaterowanie</h2>
+                        <p>Po finalizacji wszystkich formalności ustalisz datę przyjazdu na projekt. Nasz koordynator będzie na Ciebie czekał po przyjeździe, zapewni Ci ciepłe powitanie i pomoże w zakwaterowaniu.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="work-step">
+                        <img src="{% static 'images/Icon_4.png' %}" alt="Wsparcie" class="icon-small">
+                        <h2>Wsparcie i kontakt</h2>
+                        <p>Jesteśmy z Tobą na każdym kroku Twojej kariery. Nasz zespół jest zawsze dostępny, aby pomóc i odpowiedzieć na wszelkie pytania, zapewniając ciągłe wsparcie i komunikację.</p>
+                    </div>
                 </div>
             </section>
         </main>
     </div>
-    {% endblock %}
+   <section class="contact-section mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="contact-info card p-3">
+                        <h2>Informacje kontaktowe</h2>
+                        <p>Email: <a href="mailto:info@agencja.pracy.pl">info@agencja.pracy.pl</a></p>
+                        <p>Telefon: <a href="tel:+48123456789">+48 123 456 789</a></p>
+                        <p>Adres: ul. Staszica 12c, Wrocław, Polska</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="social-media card p-3">
+                        <h2>Śledź nas</h2>
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      {% endblock %}
     <footer class="bg-light text-dark text-center py-3">
         <div class="container">
             <p>© 2024 Agencji Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone.</p>

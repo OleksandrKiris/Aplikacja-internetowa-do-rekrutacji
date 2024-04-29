@@ -45,6 +45,10 @@ nav ul li a:hover, nav ul li a:focus {
     margin-bottom: 20px;
 }
 
+.contact-section .card {
+    height: 100%;
+}
+
 .how-we-work {
     border-top: 5px solid var(--primary-color);
 }
@@ -64,7 +68,7 @@ footer {
     padding: 10px 0;
 }
 
-.about-us-header, .contact-info {
+.contact-info, .social-media {
     background: var(--gradient-background);
     color: white;
     padding: 20px;
@@ -98,4 +102,13 @@ footer {
 
 .login-form button:hover, .register-form button:hover {
     background-color: var(--secondary-color);
+}
+
+.image-wrapper {
+    text-align: center;
+}
+
+.text {
+    margin-top: 5px;
+    text-align: center;
 }
