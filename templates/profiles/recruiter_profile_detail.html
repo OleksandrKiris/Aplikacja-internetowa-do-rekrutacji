@@ -1,0 +1,17 @@
+<!-- Шаблон деталей профиля рекрутера -->
+{% extends 'dashboard/recruiter_dashboard.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="profile-details">
+        <h1>Szczegóły Twojego Profilu Rekrutera</h1>
+        <p><strong>Email:</strong> {{ profile.user.email }}</p>
+        <p><strong>Imię:</strong> {{ profile.first_name }}</p>
+        <p><strong>Nazwisko:</strong> {{ profile.last_name }}</p>
+        <p><strong>Telefon:</strong> {{ profile.phone_number }}</p>
+        <p><strong>Lokalizacja:</strong> {{ profile.location }}</p>
+        <p><strong>Biografia:</strong> {{ profile.bio }}</p>
+        <a href="{% url 'accounts:recruiter_profile_edit' pk=profile.pk %}" class="btn btn-primary">Edytuj Profil</a>
+    </div>
+</div>
+{% endblock %}
