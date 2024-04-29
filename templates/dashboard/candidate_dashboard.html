@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Кандидат | KIRIS M.O.R.</title>
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
+</head>
+<body>
+    <header>
+        <div class="sidebar">
+            <nav>
+                <button class="menu-toggle">Menu</button>
+                <div class="logo">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="KIRIS M.O.R." />
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="{% url 'home' %}">Strona główna</a></li>
+                    <li><a href="#">Edytuj Profil</a></li>
+                    <li><a href="#">Aplikuj</a></li>
+                    <li><a href="#">Wiadomości</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    
+       
+    
+    <main>
+        {% block content %}
+        <h1>Panel Kandydata</h1>
+        <p>Добро пожаловать в ваш личный кабинет кандидата!</p>
+        {% endblock content %}
+    </main>
+    <footer>
+        <p>© 2024 Agencji Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+     <script src="{% static 'accounts/js/accounts.js' %}"></script>
+</body>
+</html>

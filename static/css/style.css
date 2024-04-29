@@ -1,0 +1,218 @@
+/* Стили для сброса */
+ul, p {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Определение переменных для улучшения управления цветами */
+:root {
+    --primary-color: #4a69bd;
+    --secondary-color: #82ccdd;
+    --dark-color: #2c3e50;
+    --light-color: #f9f9f9;
+    --text-color: #333;
+    --footer-background: #2c3e50;
+    --footer-text-color: #ccc;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    --gradient-background: linear-gradient(to right, var(--dark-color), var(--primary-color));
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--light-color);
+     /* Добавление фонового изображения */
+    background-image: url('/home/senior-pomidor/Desktop/KIRISmor/static/images/body.jpg'); /* Замените URL на адрес вашего изображения */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto; /* Добавляем прокрутку, если контент не помещается на экране */
+
+    /* Прозрачность контента */
+    background-color: rgba(255, 255, 255, 0.8); /* Пример прозрачного белого цвета */
+}
+
+
+header {
+    background: var(--gradient-background);
+    color: white;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center; /* Выравнивание элементов по центру по вертикали */
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    z-index: 1000;
+}
+
+nav ul li {
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #3a506b;
+}
+
+.main-content {
+    text-align: center;
+    padding: 30px;
+    flex-grow: 1;
+    box-shadow: var(--shadow);
+    border: 1px solid #ddd;
+    background: white;
+
+    /* Отображение заголовков и текста контента на фоновом изображении */
+    background-color: rgba(255, 255, 255, 0.9); /* Пример прозрачного белого цвета */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.how-we-work {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: var(--light-color);
+    border-top: 5px solid var(--primary-color);
+}
+
+.work-step {
+    width: 23%;
+}
+
+.work-step img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.work-step h3 {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.contact-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.contact, .contact-infoo, .social-media {
+    background: var(--gradient-background);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin: 20px;
+    border-radius: 8px;
+    flex: 1 1 calc(33.333% - 40px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .contact, .contact-infoo, .social-media {
+        flex-basis: 100%;
+        margin: 20px 0;
+    }
+}
+
+footer {
+    background: var(--footer-background);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 16px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.about-us-header, .contact-info {
+    background: var(--gradient-background);
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+.about-us-content, .contacts {
+    text-align: center;
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+  margin-right: 20px; /* Уменьшаем отступ между логотипом и меню */
+}
+
+.logo img {
+  max-width: 100%;
+  max-height: 50px;
+  border-radius: 50%;
+}
+
+.login-form, .register-form {
+    background-color: var(--light-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    max-width: 400px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.login-form input, .register-form input {
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form button, .register-form button {
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-form button:hover, .register-form button:hover {
+    background-color: var(--secondary-color);
+}
