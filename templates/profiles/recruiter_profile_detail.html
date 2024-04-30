@@ -11,7 +11,7 @@
         <p><strong>Telefon:</strong> {{ profile.phone_number }}</p>
         <p><strong>Lokalizacja:</strong> {{ profile.location }}</p>
         <p><strong>Biografia:</strong> {{ profile.bio }}</p>
-      <a href="{% url 'recruiter_profile_edit' %}" class="btn btn-primary">Edytuj Profil</a>
+      <a href="{% url 'accounts:recruiter_profile_edit' %}" class="btn btn-primary">Edytuj Profil</a>
     </div>
 </div>
 {% endblock %}

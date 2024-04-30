@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     #path('communications/', include('communications.urls')),
-    #path('jobs/', include('jobs.urls')),
+    path('jobs/', include('jobs.urls')),
     #path('requests/', include('requests.urls')),
     path('', HomeView.as_view(), name='home'),
     path('o-nas/', AboutView.as_view(), name='about'),

@@ -1,0 +1,14 @@
+{% extends 'dashboard/candidate_dashboard.html' %}
+{% block content %}
+<div class="container">
+    <h2>Aplikuj na ofertę pracy: {{ job.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="cover_letter">List motywacyjny:</label>
+            <textarea class="form-control" id="cover_letter" name="cover_letter" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Aplikuj</button>
+    </form>
+</div>
+{% endblock %}
