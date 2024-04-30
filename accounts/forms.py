@@ -9,14 +9,19 @@ User = get_user_model()
 
 class UserRegistrationForm(UserCreationForm):
     ROLE_CHOICES = [
-        ('candidate', ('Kandydat')),
-        ('employer', ('Klient'))
+        ('candidate', 'Kandydat'),
+        ('employer', 'Klient')
     ]
-    role = forms.ChoiceField(choices=ROLE_CHOICES, required=True)
+    role = forms.ChoiceField(choices=ROLE_CHOICES, required=True, widget=forms.Select(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
         fields = ['email', 'password1', 'password2', 'role']
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
+        }
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -35,18 +40,45 @@ class ApplicantProfileForm(forms.ModelForm):
     class Meta:
         model = ApplicantProfile
         fields = ['first_name', 'last_name', 'phone_number', 'photo', 'location', 'bio', 'date_of_birth', 'skills']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+            'date_of_birth': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'skills': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
 
 
 class EmployerProfileForm(forms.ModelForm):
     class Meta:
         model = EmployerProfile
         fields = ['phone_number', 'photo', 'location', 'bio', 'company_name', 'industry']
+        widgets = {
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+            'company_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'industry': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
 
 class RecruiterProfileForm(forms.ModelForm):
     class Meta:
         model = RecruiterProfile
         fields = ['first_name', 'last_name', 'phone_number', 'photo', 'location', 'bio']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+        }
 
 
 class UserLoginForm(AuthenticationForm):
@@ -65,4 +97,11 @@ class TaskForm(forms.ModelForm):
             'priority': 'Priorytet',
             'due_date': 'Termin wykonania',
             'status': 'Status',
+        }
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'priority': forms.Select(attrs={'class': 'form-control'}),
+            'due_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
         }

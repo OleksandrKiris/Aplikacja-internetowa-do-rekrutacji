@@ -6,9 +6,20 @@ class JobForm(forms.ModelForm):
     class Meta:
         model = Job
         fields = ['title', 'description', 'requirements', 'salary', 'status']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'requirements': forms.Textarea(attrs={'class': 'form-control'}),
+            'salary': forms.NumberInput(attrs={'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
         fields = ['job', 'cover_letter']
+        widgets = {
+            'job': forms.Select(attrs={'class': 'form-control'}),
+            'cover_letter': forms.Textarea(attrs={'class': 'form-control'}),
+        }
