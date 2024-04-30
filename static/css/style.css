@@ -1,114 +1,96 @@
-/* Определение переменных для улучшения управления цветами */
-:root {
-    --primary-color: #4a69bd;
-    --secondary-color: #82ccdd;
-    --dark-color: #2c3e50;
-    --light-color: #f9f9f9;
-    --text-color: #333;
-    --footer-background: #2c3e50;
-    --footer-text-color: #ccc;
-    --gradient-background: linear-gradient(to right, var(--dark-color), var(--primary-color));
+/* Базовые настройки */
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background: var(--light-color);
-}
-
-header {
-    background: var(--gradient-background);
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-nav ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 20px;
-}
-
-nav ul li a:hover, nav ul li a:focus {
-    background-color: #3a506b;
-}
-
-.main-content, .contact-section, .how-we-work {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    border-radius: .25rem;
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.contact-section .card {
-    height: 100%;
-}
-
-.how-we-work {
-    border-top: 5px solid var(--primary-color);
-}
-
-.work-step img {
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-footer {
-    background: var(--footer-background);
-    color: var(--footer-text-color);
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 0;
-}
-
-.contact-info, .social-media {
-    background: var(--gradient-background);
-    color: white;
-    padding: 20px;
-    border-radius: .25rem;
-}
-
-.login-form, .register-form {
-    background-color: var(--light-color);
-    padding: 20px;
-    border-radius: .25rem;
-    max-width: 400px;
-    margin: 40px auto;
     display: flex;
     flex-direction: column;
+}
+
+/* Стили для шапки */
+header {
+    background-color: #007bff; /* Синий цвет для шапки */
+    color: white;
+}
+
+.navbar {
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    display: flex;
     align-items: center;
 }
 
-.login-form input, .register-form input {
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: .25rem;
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.1);
 }
 
-.login-form button, .register-form button {
-    margin-top: 20px;
-    border-radius: .25rem;
-    background-color: var(--primary-color);
+.navbar-nav .nav-link {
     color: white;
-    cursor: pointer;
 }
 
-.login-form button:hover, .register-form button:hover {
-    background-color: var(--secondary-color);
+.navbar-nav .nav-link:hover {
+    color: #f8f9fa;
 }
 
-.image-wrapper {
+/* Стили для основного содержимого */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.main-content, .how-we-work {
+    margin-bottom: 20px;
+}
+
+.icon-small {
+    width: 50px;
+    height: auto;
+}
+
+.work-step {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Стили для контактной секции */
+.contact-section {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.card {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Стили для подвала */
+footer {
+    background-color: #f8f9fa;
     text-align: center;
+    padding: 10px 0;
 }
 
-.text {
-    margin-top: 5px;
-    text-align: center;
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card.flex-md-row {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .card.flex-md-row {
+        flex-direction: row;
+        align-items: stretch;
+    }
 }

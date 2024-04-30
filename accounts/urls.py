@@ -19,16 +19,21 @@ urlpatterns = [
     path('dashboard/recruiter/', RecruiterDashboardView.as_view(), name='recruiter_dashboard'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('dashboard/', dashboard_redirect, name='dashboard_redirect'),
+
     # Applicant Profile URLs
-    path('candidate/profile/<int:pk>/', ApplicantProfileDetailView.as_view(), name='candidate_profile'),
-    path('candidate/profile/<int:pk>/edit/', ApplicantProfileUpdateView.as_view(), name='candidate_profile_edit'),
+    # Заменил <int:pk> на использование сессии для получения профиля текущего пользователя
+    path('candidate/profile/', ApplicantProfileDetailView.as_view(), name='candidate_profile'),
+    path('candidate/profile/edit/', ApplicantProfileUpdateView.as_view(), name='candidate_profile_edit'),
 
     # Employer Profile URLs
-    path('client/profile/<int:pk>/', EmployerProfileDetailView.as_view(), name='client_profile'),
-    path('client/profile/<int:pk>/edit/', EmployerProfileUpdateView.as_view(), name='client_profile_edit'),
+    # Также использование сессии вместо явного указания pk
+    path('client/profile/', EmployerProfileDetailView.as_view(), name='client_profile'),
+    path('client/profile/edit/', EmployerProfileUpdateView.as_view(), name='client_profile_edit'),
 
     # Recruiter Profile URLs
-    path('recruiter/profile/<int:pk>/', RecruiterProfileDetailView.as_view(), name='recruiter_profile'),
-    path('recruiter/profile/<int:pk>/edit/', RecruiterProfileUpdateView.as_view(), name='recruiter_profile_edit'),
+    # Аналогичное изменение для унификации и безопасности
+    path('recruiter/profile/', RecruiterProfileDetailView.as_view(), name='recruiter_profile'),
+    path('recruiter/profile/edit/', RecruiterProfileUpdateView.as_view(), name='recruiter_profile_edit'),
 ]
+
 

@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils import timezone
 from django.db import models
@@ -39,14 +41,14 @@ class User(AbstractBaseUser):
 class ApplicantProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True,
                                 related_name='candidate_profile')
-    first_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Imię")
-    last_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Nazwisko")
-    phone_number = models.CharField(max_length=15, blank=True, null=True, verbose_name=_("Numer telefonu"))
+    first_name = models.CharField(max_length=100, default="", verbose_name="Imię")
+    last_name = models.CharField(max_length=100, default="", verbose_name="Nazwisko")
+    phone_number = models.CharField(max_length=15, default="", verbose_name=_("Numer telefonu"))
     photo = models.ImageField(upload_to='profiles/', blank=True, null=True, verbose_name=_("Zdjęcie"))
-    location = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("Lokalizacja"))
-    bio = models.TextField(blank=True, null=True, verbose_name=_("Biografia"))
-    date_of_birth = models.DateField(null=True, blank=True, verbose_name=_("Data urodzenia"))
-    skills = models.TextField(blank=True, null=True, verbose_name=_("Umiejętności"))
+    location = models.CharField(max_length=100, default="", verbose_name=_("Lokalizacja"))
+    bio = models.TextField(default="", verbose_name=_("Biografia"))
+    date_of_birth = models.DateField(blank=True, default=date.today, verbose_name=_("Data urodzenia"))
+    skills = models.TextField(default="", verbose_name=_("Umiejętności"))
 
     def age(self):
         return timezone.now().year - self.date_of_birth.year if self.date_of_birth else None
@@ -58,12 +60,12 @@ class ApplicantProfile(models.Model):
 class EmployerProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True,
                                 related_name='client_profile')
-    phone_number = models.CharField(max_length=15, blank=True, null=True, verbose_name="Numer telefonu")
+    phone_number = models.CharField(max_length=15, default="", verbose_name="Numer telefonu")
     photo = models.ImageField(upload_to='profiles/', blank=True, null=True, verbose_name="Zdjęcie")
-    location = models.CharField(max_length=100, blank=True, null=True, verbose_name="Lokalizacja")
-    bio = models.TextField(blank=True, null=True, verbose_name="Biografia")
+    location = models.CharField(max_length=100, default="", verbose_name="Lokalizacja")
+    bio = models.TextField(default="", verbose_name="Biografia")
     company_name = models.CharField(max_length=100, verbose_name="Nazwa firmy")
-    industry = models.CharField(max_length=50, blank=True, null=True, verbose_name="Branża")
+    industry = models.CharField(max_length=50, default="", verbose_name="Branża")
 
     def __str__(self):
         return f"Profil pracodawcy {self.company_name}"
@@ -72,12 +74,12 @@ class EmployerProfile(models.Model):
 class RecruiterProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True,
                                 related_name='recruiter_profile')
-    first_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Imię")
-    last_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Nazwisko")
-    phone_number = models.CharField(max_length=15, blank=True, null=True, verbose_name=_("Numer telefonu"))
+    first_name = models.CharField(max_length=100, default="", verbose_name="Imię")
+    last_name = models.CharField(max_length=100, default="", verbose_name="Nazwisko")
+    phone_number = models.CharField(max_length=15, default="", verbose_name=_("Numer telefonu"))
     photo = models.ImageField(upload_to='profiles/', blank=True, null=True, verbose_name=_("Zdjęcie"))
-    location = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("Lokalizacja"))
-    bio = models.TextField(blank=True, null=True, verbose_name=_("Biografia"))
+    location = models.CharField(max_length=100, default="", verbose_name=_("Lokalizacja"))
+    bio = models.TextField(default="", verbose_name=_("Biografia"))
 
     def __str__(self):
         return f"Profil rekrutera: {self.first_name} {self.last_name}"
@@ -92,7 +94,7 @@ class Task(models.Model):
     description = models.TextField(verbose_name='Opis')
     priority = models.CharField(max_length=50, choices=[('low', 'Niski'), ('medium', 'Średni'), ('high', 'Wysoki')],
                                 verbose_name='Priorytet')
-    due_date = models.DateField(null=True, blank=True, verbose_name='Termin wykonania')
+    due_date = models.DateField(blank=True, default=date.today, verbose_name='Termin wykonania')
     status = models.CharField(max_length=50, choices=[('open', 'Otwarte'), ('in_progress', 'W trakcie realizacji'),
                                                       ('completed', 'Zakończone')], verbose_name='Status')
 

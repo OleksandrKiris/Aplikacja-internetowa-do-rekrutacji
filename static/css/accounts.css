@@ -1,124 +1,88 @@
-/* Reset CSS */
-ul,
-p {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+/* Общие стили для документа */
+html, body {
+    height: 100%; /* Устанавливаем высоту всей страницы */
+    margin: 0; /* Убираем отступы */
 }
 
-/* Variables */
-:root {
-    --primary-color: #4a69bd;
-    --secondary-color: #82ccdd;
-    --dark-color: #2c3e50;
-    --light-color: #f9f9f9;
-    --text-color: #333;
-    --footer-background: #2c3e50;
-    --footer-text-color: #ccc;
-    --gradient-background: linear-gradient(to right, var(--dark-color), var(--primary-color));
-}
-
-/* Body Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: var(--light-color);
-    padding-left: 250px;
+    display: flex; /* Используем flexbox для всего тела документа */
+    flex-direction: column; /* Элементы в колонке */
 }
 
-/* Header Styles */
-header,
-footer {
-    left: 250px;
-    width: calc(100% - 250px);
-    position: fixed;
-}
-
+/* Стили для шапки */
 header {
-    top: 0;
-    background: var(--gradient-background);
-    color: white;
-    font-size: 18px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Footer Styles */
-footer {
-    bottom: 0;
-    background: var(--footer-background);
-    color: var(--footer-text-color);
-    text-align: center;
-    padding: 10px 0;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Navbar Styles */
-nav ul {
-    display: block;
-    padding: 20px 0;
-}
-
-nav ul li {
+    background-color: transparent; /* Делаем фон прозрачным */
     padding: 10px 20px;
 }
 
-nav ul li a {
+/* Стилизация кнопки меню */
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Стили для бокового меню (offcanvas) */
+.offcanvas-header {
+    background-color: #0056b3;
     color: white;
-    text-decoration: none;
-    display: block;
 }
 
-nav ul li a:hover {
-    background-color: var(--primary-color);
+.offcanvas-body {
+    background-color: #e9ecef;
 }
 
-.logo {
-    margin: 10px auto;
-    padding: 10px;
+.nav-link {
+    color: #007bff;
+    transition: color 0.3s ease;
 }
 
+.nav-link:hover {
+    color: #0056b3;
+}
+
+/* Адаптивность для малых экранов */
+@media (max-width: 576px) {
+    .sidebar {
+        min-width: 100%;
+        margin-bottom: 20px;
+    }
+    .footer {
+        position: relative;
+    }
+}
+
+/* Стили для логотипа */
 .logo img {
-    max-width: 100%;
-    max-height: 100px;
-    border-radius: 50%;
+    width: 100px;
+    height: auto;
 }
 
-/* Main Content Styles */
+/* Стили для основного содержимого */
 main {
-    padding-top: 100px;
-}
-
-.container {
     padding: 20px;
+    background-color: #f8f9fa; /* Светлый фон для контента */
+    flex: 1; /* Заставляет основное содержимое занимать все доступное пространство */
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: var(--dark-color);
+    color: #007bff;
 }
 
 p {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: var(--text-color);
+    color: #6c757d;
 }
 
-.btn {
-    display: inline-block;
-    background-color: var(--primary-color);
+/* Стили для футера */
+footer {
+    background-color: #343a40; /* Темный фон */
     color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    text-align: center;
+    padding: 20px 0; /* Подушка сверху и снизу */
 }
 
-.btn:hover {
-    background-color: var(--secondary-color);
+.container {
+    display: flex;
+    justify-content: center; /* Центрирование содержимого */
+    align-items: center;
+    height: 100%;
 }
