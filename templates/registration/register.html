@@ -10,6 +10,15 @@
                     <h2 class="mb-3 text-center">Rejestracja</h2>
                     <form method="post" class="register-form">
                         {% csrf_token %}
+                        {% if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                         {{ form.as_p }}
                         <button type="submit" class="btn btn-success w-100">Register</button>
                     </form>

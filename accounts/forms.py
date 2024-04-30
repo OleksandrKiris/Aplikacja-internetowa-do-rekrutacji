@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from accounts.models import User, ApplicantProfile, EmployerProfile, RecruiterProfile, Task
+from accounts.models import User, CandidateProfile, ClientProfile, RecruiterProfile, Task
 
 User = get_user_model()
 
@@ -10,7 +10,7 @@ User = get_user_model()
 class UserRegistrationForm(UserCreationForm):
     ROLE_CHOICES = [
         ('candidate', 'Kandydat'),
-        ('employer', 'Klient')
+        ('client', 'Klient')
     ]
     role = forms.ChoiceField(choices=ROLE_CHOICES, required=True, widget=forms.Select(attrs={'class': 'form-control'}))
 
@@ -30,15 +30,15 @@ class UserRegistrationForm(UserCreationForm):
         if commit:
             user.save()
             if user.role == 'candidate':
-                ApplicantProfile.objects.create(user=user)
-            elif user.role == 'employer':
-                EmployerProfile.objects.create(user=user)
+                CandidateProfile.objects.create(user=user)
+            elif user.role == 'client':
+                ClientProfile.objects.create(user=user)
         return user
 
 
-class ApplicantProfileForm(forms.ModelForm):
+class CandidateProfileForm(forms.ModelForm):
     class Meta:
-        model = ApplicantProfile
+        model = CandidateProfile
         fields = ['first_name', 'last_name', 'phone_number', 'photo', 'location', 'bio', 'date_of_birth', 'skills']
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -52,10 +52,9 @@ class ApplicantProfileForm(forms.ModelForm):
         }
 
 
-
-class EmployerProfileForm(forms.ModelForm):
+class ClientProfileForm(forms.ModelForm):
     class Meta:
-        model = EmployerProfile
+        model = ClientProfile
         fields = ['phone_number', 'photo', 'location', 'bio', 'company_name', 'industry']
         widgets = {
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),

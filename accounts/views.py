@@ -5,9 +5,9 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import redirect
 from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
-from accounts.forms import UserRegistrationForm, UserLoginForm, ApplicantProfileForm, EmployerProfileForm, \
-    RecruiterProfileForm, TaskForm
-from accounts.models import ApplicantProfile, EmployerProfile, RecruiterProfile, Task
+from accounts.forms import UserRegistrationForm, UserLoginForm, \
+    RecruiterProfileForm, TaskForm, ClientProfileForm, CandidateProfileForm
+from accounts.models import RecruiterProfile, Task, ClientProfile, CandidateProfile
 
 
 class HomeView(TemplateView):
@@ -25,7 +25,7 @@ class ContactView(TemplateView):
 class UserRegisterView(CreateView):
     template_name = 'registration/register.html'
     form_class = UserRegistrationForm
-    success_url = reverse_lazy('accounts:login')  # Перенаправление на страницу входа после регистрации
+    success_url = reverse_lazy('accounts:create_profile')  # Перенаправление на страницу входа после регистрации
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -35,9 +35,9 @@ class UserRegisterView(CreateView):
             user.save()
             try:
                 if user.role == 'candidate':
-                    ApplicantProfile.objects.create(user=user)
+                    CandidateProfile.objects.create(user=user)
                 elif user.role == 'employer':
-                    EmployerProfile.objects.create(user=user)
+                    ClientProfile.objects.create(user=user)
             except Exception as e:
                 print(f"Error creating profile: {e}")  # Логгирование ошибки
         return user
@@ -49,26 +49,24 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
         user = self.request.user
-        if hasattr(user, 'candidate_profile'):
+        if user.role == 'candidate' and hasattr(user, 'candidate_profile'):
             return reverse_lazy('accounts:candidate_dashboard')
-        elif hasattr(user, 'client_profile'):
+        elif user.role == 'client' and hasattr(user, 'client_profile'):
             return reverse_lazy('accounts:client_dashboard')
-        elif hasattr(user, 'recruiter_profile'):
+        elif user.role == 'recruiter' and hasattr(user, 'recruiter_profile'):
             return reverse_lazy('accounts:recruiter_dashboard')
-        return super().get_success_url()
+        else:
+            return reverse_lazy('home')
 
 
 @login_required
 def dashboard_redirect(request):
-    if request.user.role == 'candidate':
-        return redirect('accounts:candidate_dashboard')
-    elif request.user.role == 'employer':
-        return redirect('accounts:client_dashboard')
-    elif request.user.role == 'recruiter':
-        return redirect('accounts:recruiter_dashboard')
-    else:
-        # Обработка для пользователей без роли или других ситуаций
-        return redirect('home')
+    role_redirects = {
+        'candidate': 'accounts:candidate_dashboard',
+        'client': 'accounts:client_dashboard',
+        'recruiter': 'accounts:recruiter_dashboard'
+    }
+    return redirect(role_redirects.get(request.user.role, 'home'))
 
 
 class CustomLogoutView(LogoutView):
@@ -90,9 +88,9 @@ class RecruiterDashboardView(LoginRequiredMixin, TemplateView):
 
 class ApplicantProfileDetailView(LoginRequiredMixin, DetailView):
     """Детальный просмотр профиля кандидата."""
-    model = ApplicantProfile
+    model = CandidateProfile
     template_name = 'profiles/candidate_profile_detail.html'
-    context_object_name = 'profile'
+    context_object_name = 'candidate_profile'
 
     def get_object(self, queryset=None):
         """Переопределяем метод для извлечения объекта по текущему пользователю."""
@@ -103,13 +101,13 @@ class ApplicantProfileDetailView(LoginRequiredMixin, DetailView):
             raise Http404("No ApplicantProfile found for the current user.")
 
     def get_queryset(self):
-        return ApplicantProfile.objects.filter(user=self.request.user)
+        return CandidateProfile.objects.filter(user=self.request.user)
 
 
 class ApplicantProfileUpdateView(LoginRequiredMixin, UpdateView):
     """Обновление профиля кандидата."""
-    model = ApplicantProfile
-    form_class = ApplicantProfileForm
+    model = CandidateProfile
+    form_class = CandidateProfileForm
     template_name = 'profiles/candidate_profile_edit.html'
     success_url = reverse_lazy('accounts:candidate_dashboard')
 
@@ -122,14 +120,14 @@ class ApplicantProfileUpdateView(LoginRequiredMixin, UpdateView):
             raise Http404("No ApplicantProfile found for the current user.")
 
     def get_queryset(self):
-        return ApplicantProfile.objects.filter(user=self.request.user)
+        return CandidateProfile.objects.filter(user=self.request.user)
 
 
-class EmployerProfileDetailView(LoginRequiredMixin, DetailView):
+class ClientProfileDetailView(LoginRequiredMixin, DetailView):
     """Детальный просмотр профиля работодателя."""
-    model = EmployerProfile
+    model = ClientProfile
     template_name = 'profiles/client_profile_detail.html'
-    context_object_name = 'profile'
+    context_object_name = 'client_profile'
 
     def get_object(self, queryset=None):
         queryset = self.get_queryset() if queryset is None else queryset
@@ -139,13 +137,13 @@ class EmployerProfileDetailView(LoginRequiredMixin, DetailView):
             raise Http404("No EmployerProfile found for the current user.")
 
     def get_queryset(self):
-        return EmployerProfile.objects.filter(user=self.request.user)
+        return ClientProfile.objects.filter(user=self.request.user)
 
 
-class EmployerProfileUpdateView(LoginRequiredMixin, UpdateView):
+class ClientProfileUpdateView(LoginRequiredMixin, UpdateView):
     """Обновление профиля работодателя."""
-    model = EmployerProfile
-    form_class = EmployerProfileForm
+    model = ClientProfile
+    form_class = ClientProfileForm
     template_name = 'profiles/client_profile_edit.html'
     success_url = reverse_lazy('accounts:client_dashboard')
 
@@ -157,14 +155,14 @@ class EmployerProfileUpdateView(LoginRequiredMixin, UpdateView):
             raise Http404("No EmployerProfile found for the current user.")
 
     def get_queryset(self):
-        return EmployerProfile.objects.filter(user=self.request.user)
+        return ClientProfile.objects.filter(user=self.request.user)
 
 
 class RecruiterProfileDetailView(LoginRequiredMixin, DetailView):
     """Детальный просмотр профиля рекрутера."""
     model = RecruiterProfile
     template_name = 'profiles/recruiter_profile_detail.html'
-    context_object_name = 'profile'
+    context_object_name = 'recrutier_profile'
 
     def get_object(self, queryset=None):
         queryset = self.get_queryset() if queryset is None else queryset
@@ -236,3 +234,42 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_queryset(self):
         return super().get_queryset().filter(created_by=self.request.user)
+
+
+class CreateProfileView(LoginRequiredMixin, CreateView):
+    template_name = 'registration/create_profile.html'
+    success_url = reverse_lazy('accounts:dashboard_redirect')  # Перенаправление на дашборд после создания профиля
+
+    def get_form_class(self):
+        user = self.request.user
+        if user.role == 'candidate':
+            return CandidateProfileForm
+        elif user.role == 'client':
+            return ClientProfileForm
+        else:
+            # Обработка неподдерживаемой роли
+            return None
+
+    def form_valid(self, form):
+        profile = form.save(commit=False)
+        profile.user = self.request.user
+        profile.save()
+
+        # Проверяем, существует ли уже профиль для текущего пользователя
+        if hasattr(self.request.user, 'candidate_profile'):
+            candidate_profile = self.request.user.candidate_profile
+            if candidate_profile.field1 and candidate_profile.field2:
+                # Если у кандидата заполнены оба поля, перенаправляем на дашборд
+                return redirect('accounts:dashboard_redirect')
+            else:
+                print("Поля кандидата не заполнены:", candidate_profile.field1, candidate_profile.field2)
+        elif hasattr(self.request.user, 'client_profile'):
+            client_profile = self.request.user.client_profile
+            if client_profile.field3 and client_profile.field4:
+                # Если у клиента заполнены оба поля, перенаправляем на дашборд
+                return redirect('accounts:dashboard_redirect')
+            else:
+                print("Поля клиента не заполнены:", client_profile.field3, client_profile.field4)
+
+        # Если профиль создан, но нужные поля не заполнены, оставляем пользователя на текущей странице
+        return super(CreateProfileView, self).form_valid(form)
