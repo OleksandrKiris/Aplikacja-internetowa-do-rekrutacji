@@ -21,6 +21,11 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
+                <div class="logo mb-3">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="KIRIS M.O.R."  class="rounded-circle "/>
+                    </a>
+                </div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
                             <form action="{% url 'accounts:logout' %}" method="post">
@@ -29,7 +34,7 @@
                             </form>
                     </li>
                     <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Главная</a></li>
-                    <li class="nav-item"><a href="{% url 'candidate_profile' %}" class="nav-link">Мой профиль</a></li>
+                    <li class="nav-item"><a href="{% url 'accounts:candidate_profile' %}" class="nav-link">Мой профиль</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Мои заявки</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Новости</a></li>
                 </ul>
