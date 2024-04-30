@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import View
@@ -28,15 +29,20 @@ class UserRegisterView(CreateView):
     form_class = UserRegistrationForm
     success_url = reverse_lazy('accounts:login')  # Перенаправление на страницу входа после регистрации
 
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        # Получение выбранной роли и перенаправление на соответствующий дашборд
-        role = form.cleaned_data['role']
-        if role == 'candidate':
-            self.success_url = reverse_lazy('candidate_dashboard')
-        elif role == 'client':
-            self.success_url = reverse_lazy('client_dashboard')
-        return response
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_active = True
+        user.role = self.cleaned_data['role']
+        if commit:
+            user.save()
+            try:
+                if user.role == 'candidate':
+                    ApplicantProfile.objects.create(user=user)
+                elif user.role == 'employer':
+                    EmployerProfile.objects.create(user=user)
+            except Exception as e:
+                print(f"Error creating profile: {e}")  # Логгирование ошибки
+        return user
 
 
 class CustomLoginView(LoginView):
@@ -71,6 +77,7 @@ class CustomLogoutView(LogoutView):
     def get_next_page(self):
         return reverse_lazy('accounts:home')
 
+
 class CandidateDashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'dashboard/candidate_dashboard.html'
 
@@ -84,57 +91,107 @@ class RecruiterDashboardView(LoginRequiredMixin, TemplateView):
 
 
 class ApplicantProfileDetailView(LoginRequiredMixin, DetailView):
+    """Детальный просмотр профиля кандидата."""
     model = ApplicantProfile
     template_name = 'profiles/candidate_profile_detail.html'
     context_object_name = 'profile'
+
+    def get_object(self, queryset=None):
+        """Переопределяем метод для извлечения объекта по текущему пользователю."""
+        queryset = self.get_queryset() if queryset is None else queryset
+        try:
+            return queryset.get(user=self.request.user)
+        except queryset.model.DoesNotExist:
+            raise Http404("No ApplicantProfile found for the current user.")
 
     def get_queryset(self):
         return ApplicantProfile.objects.filter(user=self.request.user)
 
 
 class ApplicantProfileUpdateView(LoginRequiredMixin, UpdateView):
+    """Обновление профиля кандидата."""
     model = ApplicantProfile
     form_class = ApplicantProfileForm
     template_name = 'profiles/candidate_profile_edit.html'
     success_url = reverse_lazy('accounts:candidate_dashboard')
+
+    def get_object(self, queryset=None):
+        """Переопределяем метод для извлечения объекта по текущему пользователю."""
+        queryset = self.get_queryset() if queryset is None else queryset
+        try:
+            return queryset.get(user=self.request.user)
+        except queryset.model.DoesNotExist:
+            raise Http404("No ApplicantProfile found for the current user.")
 
     def get_queryset(self):
         return ApplicantProfile.objects.filter(user=self.request.user)
 
 
 class EmployerProfileDetailView(LoginRequiredMixin, DetailView):
+    """Детальный просмотр профиля работодателя."""
     model = EmployerProfile
     template_name = 'profiles/client_profile_detail.html'
     context_object_name = 'profile'
+
+    def get_object(self, queryset=None):
+        queryset = self.get_queryset() if queryset is None else queryset
+        try:
+            return queryset.get(user=self.request.user)
+        except queryset.model.DoesNotExist:
+            raise Http404("No EmployerProfile found for the current user.")
 
     def get_queryset(self):
         return EmployerProfile.objects.filter(user=self.request.user)
 
 
 class EmployerProfileUpdateView(LoginRequiredMixin, UpdateView):
+    """Обновление профиля работодателя."""
     model = EmployerProfile
     form_class = EmployerProfileForm
     template_name = 'profiles/client_profile_edit.html'
     success_url = reverse_lazy('accounts:client_dashboard')
+
+    def get_object(self, queryset=None):
+        queryset = self.get_queryset() if queryset is None else queryset
+        try:
+            return queryset.get(user=self.request.user)
+        except queryset.model.DoesNotExist:
+            raise Http404("No EmployerProfile found for the current user.")
 
     def get_queryset(self):
         return EmployerProfile.objects.filter(user=self.request.user)
 
 
 class RecruiterProfileDetailView(LoginRequiredMixin, DetailView):
+    """Детальный просмотр профиля рекрутера."""
     model = RecruiterProfile
     template_name = 'profiles/recruiter_profile_detail.html'
     context_object_name = 'profile'
+
+    def get_object(self, queryset=None):
+        queryset = self.get_queryset() if queryset is None else queryset
+        try:
+            return queryset.get(user=self.request.user)
+        except queryset.model.DoesNotExist:
+            raise Http404("No RecruiterProfile found for the current user.")
 
     def get_queryset(self):
         return RecruiterProfile.objects.filter(user=self.request.user)
 
 
 class RecruiterProfileUpdateView(LoginRequiredMixin, UpdateView):
+    """Обновление профиля рекрутера."""
     model = RecruiterProfile
     form_class = RecruiterProfileForm
     template_name = 'profiles/recruiter_profile_edit.html'
     success_url = reverse_lazy('accounts:recruiter_dashboard')
+
+    def get_object(self, queryset=None):
+        queryset = self.get_queryset() if queryset is None else queryset
+        try:
+            return queryset.get(user=self.request.user)
+        except queryset.model.DoesNotExist:
+            raise Http404("No RecruiterProfile found for the current user.")
 
     def get_queryset(self):
         return RecruiterProfile.objects.filter(user=self.request.user)

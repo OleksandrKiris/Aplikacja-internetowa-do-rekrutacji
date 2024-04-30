@@ -14,7 +14,7 @@
         <p><strong>Biografia:</strong> {{ profile.bio }}</p>
         <p><strong>Data urodzenia:</strong> {{ profile.date_of_birth }}</p>
         <p><strong>Umiejętności:</strong> {{ profile.skills }}</p>
-        <a href="{% url 'accounts:candidate_profile_edit' pk=profile.pk %}" class="btn btn-primary">Edytuj Profil</a>
+      <a href="{% url 'candidate_profile_edit' %}" class="btn btn-primary">Edytuj Profil</a>
     </div>
 </div>
 {% endblock %}
