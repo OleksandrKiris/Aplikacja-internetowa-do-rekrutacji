@@ -1,3 +1,5 @@
+@import url('colors.css');
+
 /* Общие стили для документа */
 html, body {
     height: 100%; /* Устанавливаем высоту всей страницы */
@@ -11,33 +13,33 @@ body {
 
 /* Стили для шапки */
 header {
-    background-color: transparent; /* Делаем фон прозрачным */
+    background-color: var(--header-bg-color); /* Используем переменную для цвета фона */
     padding: 10px 20px;
 }
 
 /* Стилизация кнопки меню */
 .btn-primary {
-    background-color: #0056b3;
+    background-color: var(--primary-color); /* Используем переменную для основного цвета */
     border-color: #004085;
 }
 
 /* Стили для бокового меню (offcanvas) */
 .offcanvas-header {
-    background-color: #0056b3;
+    background-color: var(--primary-color); /* Используем переменную для основного цвета */
     color: white;
 }
 
 .offcanvas-body {
-    background-color: #e9ecef;
+    background-color: var(--background-color); /* Используем переменную для цвета фона */
 }
 
 .nav-link {
-    color: #007bff;
+    color: var(--text-color); /* Используем переменную для цвета текста */
     transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #0056b3;
+    color: var(--primary-color); /* Используем переменную для основного цвета при наведении */
 }
 
 /* Адаптивность для малых экранов */
@@ -60,21 +62,21 @@ header {
 /* Стили для основного содержимого */
 main {
     padding: 20px;
-    background-color: #f8f9fa; /* Светлый фон для контента */
+    background-color: var(--background-color); /* Используем переменную для цвета фона */
     flex: 1; /* Заставляет основное содержимое занимать все доступное пространство */
 }
 
 h1 {
-    color: #007bff;
+    color: var(--primary-color); /* Используем переменную для основного цвета заголовков */
 }
 
 p {
-    color: #6c757d;
+    color: var(--text-color); /* Используем переменную для цвета текста */
 }
 
 /* Стили для футера */
 footer {
-    background-color: #343a40; /* Темный фон */
+    background-color: var(--footer-bg-color); /* Используем переменную для цвета фона */
     color: white;
     text-align: center;
     padding: 20px 0; /* Подушка сверху и снизу */
