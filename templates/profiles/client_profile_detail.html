@@ -1,17 +1,22 @@
-<!-- Шаблон деталей профиля клиента -->
 {% extends 'dashboard/client_dashboard.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="profile-details">
-        <h1>Szczegóły Profilu Firmy</h1>
-        <p><strong>Email:</strong> {{ profile.user.email }}</p>
-        <p><strong>Telefon:</strong> {{ profile.phone_number }}</p>
-        <p><strong>Lokalizacja:</strong> {{ profile.location }}</p>
-        <p><strong>Biografia:</strong> {{ profile.bio }}</p>
-        <p><strong>Nazwa firmy:</strong> {{ profile.company_name }}</p>
-        <p><strong>Branża:</strong> {{ profile.industry }}</p>
-      <a href="{% url 'accounts:client_profile_edit' %}" class="btn btn-primary">Edytuj Profil</a>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h1>Szczegóły Profilu Firmy</h1>
+        </div>
+        <div class="card-body">
+            <p><strong>Email:</strong> {{ profile.user.email }}</p>
+            <p><strong>Telefon:</strong> {{ profile.phone_number }}</p>
+            <p><strong>Lokalizacja:</strong> {{ profile.location }}</p>
+            <p><strong>Biografia:</strong> {{ profile.bio }}</p>
+            <p><strong>Nazwa firmy:</strong> {{ profile.company_name }}</p>
+            <p><strong>Branża:</strong> {{ profile.industry }}</p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'accounts:client_profile_edit' %}" class="btn btn-primary">Edytuj Profil</a>
+        </div>
     </div>
 </div>
 {% endblock %}

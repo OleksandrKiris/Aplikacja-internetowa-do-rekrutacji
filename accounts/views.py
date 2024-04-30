@@ -174,7 +174,7 @@ class RecruiterProfileDetailView(LoginRequiredMixin, DetailView):
             raise Http404("No RecruiterProfile found for the current user.")
 
     def get_queryset(self):
-        return RecruiterProfile.objects.filter(created_by=self.request.user)
+        return RecruiterProfile.objects.filter(user=self.request.user)
 
 
 class RecruiterProfileUpdateView(LoginRequiredMixin, UpdateView):
@@ -192,7 +192,7 @@ class RecruiterProfileUpdateView(LoginRequiredMixin, UpdateView):
             raise Http404("No RecruiterProfile found for the current user.")
 
     def get_queryset(self):
-        return RecruiterProfile.objects.filter(created_by=self.request.user)
+        return RecruiterProfile.objects.filter(user=self.request.user)
 
 
 class TaskListView(LoginRequiredMixin, ListView):
