@@ -1,0 +1,18 @@
+{% extends 'dashboard/recruiter_dashboard.html' %}
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ job.title }}</h5>
+            <p class="card-text">{{ job.description }}</p>
+            <p class="card-text"><strong>Wymagania:</strong> {{ job.requirements }}</p>
+            <p class="card-text"><strong>Wynagrodzenie:</strong> {{ job.salary }}</p>
+            {% if job.is_open %}
+                <p class="card-text"><strong>Status:</strong> Otwarta</p>
+            {% else %}
+                <p class="card-text"><strong>Status:</strong> Zamknięta</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

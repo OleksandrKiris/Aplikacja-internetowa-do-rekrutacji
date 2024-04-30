@@ -12,6 +12,15 @@ class MyUserManager(BaseUserManager):
     def get_by_natural_key(self, username):
         return self.get(**{self.model.USERNAME_FIELD: username})
 
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
 
 class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='adres email', max_length=255, unique=True)
@@ -88,8 +97,6 @@ class RecruiterProfile(models.Model):
 class Task(models.Model):
     assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='assigned_tasks', on_delete=models.CASCADE,
                                     verbose_name='Przypisane do')
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='created_tasks', on_delete=models.CASCADE,
-                                   verbose_name='Utworzony przez')
     title = models.CharField(max_length=200, verbose_name='Tytuł')
     description = models.TextField(verbose_name='Opis')
     priority = models.CharField(max_length=50, choices=[('low', 'Niski'), ('medium', 'Średni'), ('high', 'Wysoki')],
