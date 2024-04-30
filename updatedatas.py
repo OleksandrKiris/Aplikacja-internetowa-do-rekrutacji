@@ -42,17 +42,6 @@ RecruiterProfile.objects.create(
     bio='Recruiter with 10 years experience'
 )
 
-# Создание задач
-task = Task.objects.create(
-    assigned_to=user1,
-    created_by=user3,
-    title='Complete the project',
-    description='Need to finish the project by end of this week.',
-    priority='high',
-    due_date=date.today(),
-    status='open'
-)
-
 # Создание вакансий и заявлений
 job = Job.objects.create(
     title='Senior Django Developer',

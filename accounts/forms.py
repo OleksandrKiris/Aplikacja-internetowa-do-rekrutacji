@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import User, ApplicantProfile, EmployerProfile, RecruiterProfile
+from accounts.models import User, ApplicantProfile, EmployerProfile, RecruiterProfile, Task
 
 User = get_user_model()
 
@@ -37,7 +37,6 @@ class ApplicantProfileForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'phone_number', 'photo', 'location', 'bio', 'date_of_birth', 'skills']
 
 
-
 class EmployerProfileForm(forms.ModelForm):
     class Meta:
         model = EmployerProfile
@@ -55,3 +54,15 @@ class UserLoginForm(AuthenticationForm):
                                 widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': 254}))
     password = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['title', 'description', 'priority', 'due_date', 'status']
+        labels = {
+            'title': 'Tytuł',
+            'description': 'Opis',
+            'priority': 'Priorytet',
+            'due_date': 'Termin wykonania',
+            'status': 'Status',
+        }

@@ -95,15 +95,22 @@ class RecruiterProfile(models.Model):
 
 
 class Task(models.Model):
-    assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='assigned_tasks', on_delete=models.CASCADE,
-                                    verbose_name='Przypisane do')
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='created_tasks', on_delete=models.CASCADE, verbose_name='Создано')
     title = models.CharField(max_length=200, verbose_name='Tytuł')
     description = models.TextField(verbose_name='Opis')
-    priority = models.CharField(max_length=50, choices=[('low', 'Niski'), ('medium', 'Średni'), ('high', 'Wysoki')],
-                                verbose_name='Priorytet')
-    due_date = models.DateField(blank=True, default=date.today, verbose_name='Termin wykonania')
-    status = models.CharField(max_length=50, choices=[('open', 'Otwarte'), ('in_progress', 'W trakcie realizacji'),
-                                                      ('completed', 'Zakończone')], verbose_name='Status')
+    PRIORITY_CHOICES = [
+        ('low', 'Niski'),
+        ('medium', 'Średni'),
+        ('high', 'Wysoki'),
+    ]
+    priority = models.CharField(max_length=50, choices=PRIORITY_CHOICES, verbose_name='Priorytet')
+    due_date = models.DateField(default=timezone.now, verbose_name='Termin wykonania')
+    STATUS_CHOICES = [
+        ('open', 'Otwarte'),
+        ('in_progress', 'W trakcie realizacji'),
+        ('completed', 'Zakończone'),
+    ]
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, verbose_name='Status')
 
     def change_status(self, new_status):
         self.status = new_status
@@ -111,3 +118,4 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
+
