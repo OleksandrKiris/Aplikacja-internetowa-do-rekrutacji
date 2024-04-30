@@ -1,0 +1,9 @@
+{% extends 'dashboard/recruiter_dashboard.html' %}
+{% block content %}
+<h2>{% if object %}Edytuj zadanie{% else %}Dodaj zadanie{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Zapisz</button>
+</form>
+{% endblock %}

@@ -1,15 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
-from django.http import Http404
-from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse_lazy
-from django.views import View
-from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView
+from django.http import Http404, HttpResponse
+from django.shortcuts import redirect
+from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from accounts.forms import UserRegistrationForm, UserLoginForm, ApplicantProfileForm, EmployerProfileForm, \
-    RecruiterProfileForm
-from accounts.models import ApplicantProfile, EmployerProfile, RecruiterProfile
+    RecruiterProfileForm, TaskForm
+from accounts.models import ApplicantProfile, EmployerProfile, RecruiterProfile, Task
 
 
 class HomeView(TemplateView):
@@ -176,7 +174,7 @@ class RecruiterProfileDetailView(LoginRequiredMixin, DetailView):
             raise Http404("No RecruiterProfile found for the current user.")
 
     def get_queryset(self):
-        return RecruiterProfile.objects.filter(user=self.request.user)
+        return RecruiterProfile.objects.filter(created_by=self.request.user)
 
 
 class RecruiterProfileUpdateView(LoginRequiredMixin, UpdateView):
@@ -194,4 +192,47 @@ class RecruiterProfileUpdateView(LoginRequiredMixin, UpdateView):
             raise Http404("No RecruiterProfile found for the current user.")
 
     def get_queryset(self):
-        return RecruiterProfile.objects.filter(user=self.request.user)
+        return RecruiterProfile.objects.filter(created_by=self.request.user)
+
+
+class TaskListView(LoginRequiredMixin, ListView):
+    model = Task
+    context_object_name = 'tasks'
+    template_name = 'tasks/task_list.html'
+
+    def get_queryset(self):
+        return super().get_queryset().filter(created_by=self.request.user)
+
+
+class TaskCreateView(LoginRequiredMixin, CreateView):
+    model = Task
+    form_class = TaskForm
+    template_name = 'tasks/task_form.html'
+    success_url = reverse_lazy('accounts:task_list')
+
+    def form_valid(self, form):
+        # Установка пользователя как создателя задачи
+        form.instance.created_by = self.request.user
+        if not self.request.user.is_authenticated:
+            # В случае если пользователь не аутентифицирован, можно добавить обработку ошибки
+            return HttpResponse("User is not authenticated", status=401)
+        return super().form_valid(form)
+
+
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
+    model = Task
+    form_class = TaskForm
+    template_name = 'tasks/task_form.html'
+    success_url = reverse_lazy('accounts:task_list')
+
+    def get_queryset(self):
+        return super().get_queryset().filter(created_by=self.request.user)
+
+
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
+    model = Task
+    template_name = 'tasks/task_confirm_delete.html'
+    success_url = reverse_lazy('accounts:task_list')
+
+    def get_queryset(self):
+        return super().get_queryset().filter(created_by=self.request.user)

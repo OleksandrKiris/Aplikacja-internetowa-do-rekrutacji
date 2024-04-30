@@ -1,0 +1,9 @@
+{% extends 'dashboard/recruiter_dashboard.html' %}
+{% block content %}
+<h2>Czy na pewno chcesz usunąć to zadanie?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Usuń</button>
+</form>
+<a href="{% url 'accounts:task_list' %}">Anuluj</a>
+{% endblock %}

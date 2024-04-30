@@ -1,0 +1,10 @@
+{% extends 'dashboard/recruiter_dashboard.html' %}
+{% block content %}
+<h2>Lista zadań</h2>
+<ul>
+    {% for task in tasks %}
+    <li>{{ task.title }} - <a href="{% url 'accounts:task_update' task.pk %}">Edytuj</a> | <a href="{% url 'accounts:task_delete' task.pk %}">Usuń</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'accounts:task_create' %}">Dodaj nowe zadanie</a>
+{% endblock %}
