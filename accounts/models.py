@@ -31,7 +31,7 @@ class User(AbstractBaseUser):
     # Ograniczone opcje dla pola roli
     ROLE_CHOICES = (
         ('candidate', _('Kandydat')),
-        ('employer', _('Klient')),
+        ('client', _('Klient')),
         ('recruiter', _('Recruiter')),
     )
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, verbose_name=_("Rola"), blank=True, null=True)
@@ -47,7 +47,7 @@ class User(AbstractBaseUser):
         verbose_name_plural = _('użytkownicy')
 
 
-class ApplicantProfile(models.Model):
+class CandidateProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True,
                                 related_name='candidate_profile')
     first_name = models.CharField(max_length=100, default="", verbose_name="Imię")
@@ -66,7 +66,7 @@ class ApplicantProfile(models.Model):
         return f"Profil kandydata: {self.first_name} {self.last_name}"
 
 
-class EmployerProfile(models.Model):
+class ClientProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True,
                                 related_name='client_profile')
     phone_number = models.CharField(max_length=15, default="", verbose_name="Numer telefonu")

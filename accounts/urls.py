@@ -4,12 +4,12 @@ from django.urls import path
 
 from accounts.views import UserRegisterView, CustomLoginView, ClientDashboardView, \
     CandidateDashboardView, RecruiterDashboardView, ApplicantProfileDetailView, ApplicantProfileUpdateView, \
-    EmployerProfileDetailView, EmployerProfileUpdateView, RecruiterProfileDetailView, RecruiterProfileUpdateView, \
-    dashboard_redirect, CustomLogoutView, TaskListView, TaskCreateView, TaskUpdateView, TaskDeleteView
+    RecruiterProfileDetailView, RecruiterProfileUpdateView, \
+    dashboard_redirect, CustomLogoutView, TaskListView, TaskCreateView, TaskUpdateView, TaskDeleteView, \
+    CreateProfileView, ClientProfileUpdateView, ClientProfileDetailView
 
 # Добавьте пространство имён для приложения accounts
 app_name = 'accounts'
-
 
 urlpatterns = [
     path('register/', UserRegisterView.as_view(), name='register'),
@@ -27,8 +27,8 @@ urlpatterns = [
 
     # Employer Profile URLs
     # Также использование сессии вместо явного указания pk
-    path('client/profile/', EmployerProfileDetailView.as_view(), name='client_profile'),
-    path('client/profile/edit/', EmployerProfileUpdateView.as_view(), name='client_profile_edit'),
+    path('client/profile/', ClientProfileDetailView.as_view(), name='client_profile'),
+    path('client/profile/edit/', ClientProfileUpdateView.as_view(), name='client_profile_edit'),
 
     # Recruiter Profile URLs
     # Аналогичное изменение для унификации и безопасности
@@ -39,6 +39,6 @@ urlpatterns = [
     path('tasks/create/', TaskCreateView.as_view(), name='task_create'),
     path('tasks/update/<int:pk>/', TaskUpdateView.as_view(), name='task_update'),
     path('tasks/delete/<int:pk>/', TaskDeleteView.as_view(), name='task_delete'),
+
+    path('create_profile/', CreateProfileView.as_view(), name='create_profile'),
 ]
-
-
