@@ -24,7 +24,8 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Kontakt</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">O nas</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Oferty pracy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Nasi klienci</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'client_list' %}">Nasi klienci</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'recruiters' %}">Nasi rekruterzy</a></li> 
                 </ul>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}

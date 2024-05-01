@@ -1,19 +1,58 @@
 {% extends 'dashboard/candidate_dashboard.html' %}
+
+{% block title %}{% endblock %}
 {% block content %}
-<div class="container">
-    <h2>Lista ofert pracy</h2>
-    <div class="row">
-        {% for job in jobs %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ job.title }}</h5>
-                    <p class="card-text">{{ job.description }}</p>
-                    <a href="{% url 'jobs:candidate_job_detail' job_id=job.pk %}" class="btn btn-primary">Szczegóły</a>
-                </div>
-            </div>
-        </div>
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+    
+    <div class="row border-bottom border-3 p-1 m-1">
+        <div class="col noPadding"><h3 class="color-header text-uppercase">Список вакансий</h3></div>
+    </div>
+    
+    <table class="table border-bottom schedules-content">
+        <thead>
+            <tr class="d-flex text-color-darker">
+                <th scope="col" class="col-4">Название</th>
+                <th scope="col" class="col-6">Описание</th>
+                <th scope="col" class="col-2 center">Действия</th>
+            </tr>
+        </thead>
+        <tbody class="text-color-lighter">
+            {% for job in jobs %}
+            <tr class="d-flex">
+                <td class="col-4">{{ job.title }}</td>
+                <td class="col-6">{{ job.description }}</td>
+                <td class="col-2 d-flex align-items-center justify-content-center flex-wrap">
+                    <a href="{% url 'jobs:candidate_job_detail' job_id=job.pk %}" class="btn btn-primary rounded-0 text-light m-1">Подробнее</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Нет доступных вакансий.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+        {% if has_previous %}
+            <a href="?page={{ previous_page }}">&lt; Предыдущая | </a>
+        {% else %}
+            &lt; Предыдущая | 
+        {% endif %}
+        
+        {% for num in pages %}
+            {% if num == current_page %}
+                <strong> {{ num }} |</strong>
+            {% else %}
+                <a href="?page={{ num }}"> {{ num }}|</a>
+            {% endif %}
         {% endfor %}
+        
+        {% if has_next %}
+            <a href="?page={{ next_page }}"> Следующая &gt;</a>
+        {% else %}
+            Следующая &gt;
+        {% endif %}
     </div>
 </div>
 {% endblock %}
