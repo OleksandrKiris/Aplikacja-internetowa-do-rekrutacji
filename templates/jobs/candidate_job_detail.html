@@ -12,7 +12,7 @@
             {% else %}
                 <p class="card-text"><strong>Status:</strong> Zamknięta</p>
             {% endif %}
-            <a href="{% url 'apply_job' job_id=job.pk %}" class="btn btn-primary">Aplikuj</a>
+            <a href="{% url 'jobs:candidate_create_application' job_id=job.pk %}" class="btn btn-primary">Aplikuj</a>
         </div>
     </div>
 </div>

@@ -1,8 +1,7 @@
 from django.urls import path
 from .views import RecruiterJobListView, RecruiterJobDetailView, RecruiterCreateJobView, \
-                   CandidateJobListView, CandidateJobDetailView, CandidateCreateApplicationView, \
-                   ClientJobListView, ClientJobDetailView
-
+    CandidateJobListView, CandidateJobDetailView, CandidateCreateApplicationView, \
+    ClientJobListView, ClientJobDetailView, CandidateApplicationListView
 
 app_name = 'jobs'
 
@@ -16,6 +15,7 @@ urlpatterns = [
     path('candidate/jobs/', CandidateJobListView.as_view(), name='candidate_job_list'),
     path('candidate/jobs/<int:job_id>/', CandidateJobDetailView.as_view(), name='candidate_job_detail'),
     path('candidate/jobs/<int:job_id>/apply/', CandidateCreateApplicationView.as_view(), name='candidate_create_application'),
+    path('candidate/applications/', CandidateApplicationListView.as_view(), name='candidate_application_list'),
 
     # URL-адреса для клиента
     path('client/jobs/', ClientJobListView.as_view(), name='client_job_list'),

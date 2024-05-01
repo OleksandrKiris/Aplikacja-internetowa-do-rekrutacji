@@ -24,7 +24,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     #path('communications/', include('communications.urls')),
     path('jobs/', include('jobs.urls')),
-    #path('requests/', include('requests.urls')),
+    path('requests/', include('requests.urls')),
     path('', HomeView.as_view(), name='home'),
     path('o-nas/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),

@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ job.title }}</h5>
                     <p class="card-text">{{ job.description }}</p>
-                    <a href="{% url 'job_detail' job_id=job.pk %}" class="btn btn-primary">Szczegóły</a>
+                    <a href="{% url 'jobs:candidate_job_detail' job_id=job.pk %}" class="btn btn-primary">Szczegóły</a>
                 </div>
             </div>
         </div>
