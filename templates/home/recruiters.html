@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>Nasi rekruterzy</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-group">
+                {% for recruiter in recruiters %}
+                <li class="list-group-item d-flex align-items-center">
+                    {% if recruiter.photo %}
+                    <img src="{{ recruiter.photo.url }}" class="rounded-circle mr-3" alt="{{ recruiter.user.username }}" style="max-width: 100px; max-height: 100px;">
+                    {% else %}
+                    <img src="{% static 'images/Icon_4.png' %}" class="rounded-circle mr-3" alt="Default Profile" style="max-width: 100px; max-height: 100px;">
+                    {% endif %}
+                    <div>
+                        <h5>{{ recruiter.user.get_full_name }}</h5>
+                        <p>{{ recruiter.bio }}</p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

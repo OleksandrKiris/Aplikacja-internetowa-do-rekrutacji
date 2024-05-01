@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>Nasi klienci</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-group">
+                {% for client in clients %}
+                <li class="list-group-item d-flex align-items-center">
+                    {% if client.photo %}
+                    <img src="{{ client.photo.url }}" class="rounded-circle mr-3" alt="{{ client.user.username }}" style="max-width: 100px; max-height: 100px;">
+                    {% else %}
+                    <img src="{% static 'images/Icon_2.png' %}" class="rounded-circle mr-3" alt="Default Client Profile" style="max-width: 100px; max-height: 100px;">
+                    {% endif %}
+                    <div>
+                        <h5>{{ client.user.get_full_name }}</h5>
+                        <p>{{ client.company_name }}</p>
+                        <p>{{ client.bio }}</p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

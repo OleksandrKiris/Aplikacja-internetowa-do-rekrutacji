@@ -98,3 +98,7 @@ footer {
         align-items: stretch;
     }
 }
+
+.list-group-item img {
+    object-fit: cover;
+}

@@ -2,18 +2,47 @@
 {% block content %}
 <div class="container">
     <h2>Lista ofert pracy</h2>
-    <div class="row">
-        {% for job in jobs %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ job.title }}</h5>
-                    <p class="card-text">{{ job.description }}</p>
-                    <a href="{% url 'jobs:client_job_detail' job_id=job.pk %}" class="btn btn-primary">Szczegóły</a>
-                </div>
-            </div>
-        </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tytuł</th>
+                    <th scope="col">Opis</th>
+                    <th scope="col">Szczegóły</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.description }}</td>
+                    <td><a href="{% url 'jobs:client_job_detail' job_id=job.pk %}" class="btn btn-primary">Szczegóły</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="pagination">
+        {% if has_previous %}
+            <a href="?page={{ previous_page }}">&lt; Poprzednia | </a>
+        {% else %}
+            &lt; Poprzednia | 
+        {% endif %}
+        
+        {% for num in pages %}
+            {% if num == current_page %}
+                <strong> {{ num }} |</strong>
+            {% else %}
+                <a href="?page={{ num }}"> {{ num }}|</a>
+            {% endif %}
         {% endfor %}
+        
+        {% if has_next %}
+            <a href="?page={{ next_page }}"> Następna &gt;</a>
+        {% else %}
+            Następna &gt;
+        {% endif %}
     </div>
 </div>
 {% endblock %}

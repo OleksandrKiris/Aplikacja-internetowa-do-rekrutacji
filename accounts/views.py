@@ -273,3 +273,12 @@ class CreateProfileView(LoginRequiredMixin, CreateView):
 
         # Если профиль создан, но нужные поля не заполнены, оставляем пользователя на текущей странице
         return super(CreateProfileView, self).form_valid(form)
+
+class RecruiterListView(ListView):
+    model = RecruiterProfile
+    template_name = 'home/recruiters.html'  # Путь к вашему шаблону с рекрутерами
+    context_object_name = 'recruiters'
+class ClientListView(ListView):
+    model = ClientProfile
+    template_name = 'home/client_list.html'
+    context_object_name = 'clients'
