@@ -38,10 +38,10 @@
                             </form>
                     </li>
                     <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Strona główna</a></li>
-                   <li class="nav-item"><a href="{% url 'accounts:client_profile' %}" class="nav-link">Profil</a></li>
-                      <li class="nav-item"><a href="{% url 'jobs:client_job_list' %}" class="btn btn-primary">Lista ofert pracy</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Moje Zapytania</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Nowe Oferty</a></li>
+                    <li class="nav-item"><a href="{% url 'accounts:client_profile' %}" class="nav-link">Profil</a></li>
+                    <li class="nav-item"><a href="{% url 'jobs:client_job_list' %}" class="nav-link">Lista ofert pracy</a></li>
+                    <li class="nav-item"><a href="{% url 'requests:client_job_request_create' %}" class="nav-link">Utwórz nowe zapytanie</a><li>
+                    <li class="nav-item"><a href="{% url 'requests:client_job_request_list' %}" class="nav-link">Moje Zapytania</a><li>
                     <li class="nav-item"><a href="#" class="nav-link">Wiadomości</a></li>
                 </ul>
             </div>

@@ -1,0 +1,14 @@
+{% extends 'dashboard/client_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Подтвердите удаление запроса</h2>
+    <p>Вы уверены, что хотите удалить запрос "{{ object.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a href="{% url 'requests:client_job_request_list' %}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+{% endblock %}

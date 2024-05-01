@@ -18,8 +18,7 @@ class JobForm(forms.ModelForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields = ['job', 'cover_letter']
+        fields = ['cover_letter']  # Убираем 'job'
         widgets = {
-            'job': forms.Select(attrs={'class': 'form-control'}),
             'cover_letter': forms.Textarea(attrs={'class': 'form-control'}),
         }

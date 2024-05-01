@@ -1,0 +1,26 @@
+{% extends 'dashboard/candidate_dashboard.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Мои заявки</h2>
+        </div>
+        <div class="card-body">
+            {% if object_list %}
+                <ul class="list-group">
+                    {% for application in object_list %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ application.job.title }}</span>
+                            <span class="badge bg-primary">{{ application.status }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    У вас пока нет заявок.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

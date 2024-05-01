@@ -3,6 +3,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Job, Application
 from .forms import JobForm, ApplicationForm
+from django.views.generic import ListView
 
 
 class RecruiterJobListView(LoginRequiredMixin, View):
@@ -58,8 +59,16 @@ class CandidateCreateApplicationView(LoginRequiredMixin, View):
             application.job = job
             application.applicant = request.user
             application.save()
-            return redirect('candidate_job_detail', job_id=job.pk)
+            return redirect('jobs:candidate_application_list')
         return render(request, 'jobs/candidate_create_application.html', {'form': form, 'job': job})
+
+
+class CandidateApplicationListView(LoginRequiredMixin, ListView):
+    model = Application
+    template_name = 'jobs/candidate_application_list.html'
+
+    def get_queryset(self):
+        return Application.objects.filter(applicant=self.request.user)
 
 
 class ClientJobListView(LoginRequiredMixin, View):

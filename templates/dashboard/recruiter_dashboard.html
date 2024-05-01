@@ -35,11 +35,11 @@
                             </form>
                     </li>
                     <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-                   <li class="nav-item"><a href="{% url 'accounts:recruiter_profile' %}" class="nav-link">Moj profil</a></li>
-                    <li class="nav-item"> <a href="{% url 'jobs:recruiter_job_list' %}" class="nav-link">Lista ofert pracy</a></li>
-                    <li class="nav-item">  <a href="{% url 'jobs:recruiter_create_job' %}" class="nav-link">Dodaj ofertę pracy</a></li>
+                    <li class="nav-item"><a href="{% url 'accounts:recruiter_profile' %}" class="nav-link">Moj profil</a></li>
+                    <li class="nav-item"><a href="{% url 'jobs:recruiter_job_list' %}" class="nav-link">Lista ofert pracy</a></li>
+                    <li class="nav-item"><a href="{% url 'jobs:recruiter_create_job' %}" class="nav-link">Dodaj ofertę pracy</a></li>
                     <li class="nav-item"><a href="{% url 'accounts:task_list' %}" class="nav-link">Zarządzanie zadaniami</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Управление предложениями</a></li>
+                    <li class="nav-item"><a href="{% url 'recruiter_job_request_list' %}" class="nav-link">Przeglądaj Zapytania</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Сообщения</a></li>
                 </ul>
             </div>
