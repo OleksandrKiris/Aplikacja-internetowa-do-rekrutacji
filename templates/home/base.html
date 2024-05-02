@@ -54,26 +54,32 @@
                     <div class="carousel-inner">
                         {% for job in jobs %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <div class="container w-75 d-flex">
-                                <div class="carousel-caption d-block">
-                                    <h1>Tytuł stanowiska: {{ job.title }}</h1>
-                                    <p>Opis stanowiska: {{ job.description }}</p>
-                                    <p>Wymagania: {{ job.requirements }}</p>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 mx-auto text-center">
+                                        <h1 class="display-4 mb-3">Tytuł stanowiska: {{ job.title }}</h1>
+                                        <p class="lead">Opis stanowiska: {{ job.description }}</p>
+                                        <p class="lead">Wymagania: {{ job.requirements }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         {% endfor %}
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
+                    <button class="carousel-control-prev btn btn-light" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <span class="visually-hidden">Poprzedni</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#jobCarousel" data-bs-slide="next">
+                    <button class="carousel-control-next btn btn-light" type="button" data-bs-target="#jobCarousel" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                        <span class="visually-hidden">Następny</span>
                     </button>
                 </div>
             </section>
+
+
+
+
 
             <section class="how-we-work row">
                 <div class="col-md-6">

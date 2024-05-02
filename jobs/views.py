@@ -111,7 +111,6 @@ class PublicJobListView(View):
         return render(request, 'home/public_job_list.html', {'jobs': jobs})
 
 
-
 class PublicJobDetailView(View):
     def get(self, request, job_id):
         job = get_object_or_404(Job, pk=job_id)
