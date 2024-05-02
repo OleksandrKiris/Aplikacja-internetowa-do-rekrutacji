@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Job, Application
-from .forms import JobForm, ApplicationForm
+from .forms import JobForm, ApplicationForm, GuestFeedbackForm
 from django.views.generic import ListView
+from django.views.generic import TemplateView
 
 
 class RecruiterJobListView(LoginRequiredMixin, View):
@@ -81,3 +82,41 @@ class ClientJobDetailView(LoginRequiredMixin, View):
     def get(self, request, job_id):
         job = Job.objects.get(pk=job_id)
         return render(request, 'jobs/client_job_detail.html', {'job': job})
+
+
+class GuestFeedbackView(View):
+    def get(self, request, job_id):
+        job = get_object_or_404(Job, pk=job_id)
+        form = GuestFeedbackForm()
+        return render(request, 'home/guest_feedback.html', {'form': form, 'job': job})
+
+    def post(self, request, job_id):
+        job = get_object_or_404(Job, pk=job_id)
+        form = GuestFeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            feedback.job = job
+            feedback.save()
+            return redirect('guest_feedback_thanks', job_id=job_id)
+        return render(request, 'home/guest_feedback.html', {'form': form, 'job': job})
+
+
+class PublicJobListView(View):
+    def get(self, request):
+        query = request.GET.get('q')
+        if query:
+            jobs = Job.objects.filter(title__icontains=query, status=Job.JobStatus.OPEN)
+        else:
+            jobs = Job.objects.filter(status=Job.JobStatus.OPEN)
+        return render(request, 'home/public_job_list.html', {'jobs': jobs})
+
+
+
+class PublicJobDetailView(View):
+    def get(self, request, job_id):
+        job = get_object_or_404(Job, pk=job_id)
+        return render(request, 'home/public_job_detail.html', {'job': job})
+
+
+class GuestFeedbackThanksView(TemplateView):
+    template_name = 'home/guest_feedback_thanks.html'

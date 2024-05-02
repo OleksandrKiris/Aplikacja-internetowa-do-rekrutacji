@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.shortcuts import render
+from django.views import View
 
 
 class Job(models.Model):
@@ -57,3 +59,14 @@ class Application(models.Model):
 
     def full_details(self):
         return f'Application for {self.job.title} by {self.applicant.username} - Status: {self.status}'
+
+
+class GuestFeedback(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='guest_feedbacks')
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    phone_number = models.CharField(max_length=15, blank=True)
+
+    def __str__(self):
+        return f'Feedback from {self.email} for {self.job.title}'

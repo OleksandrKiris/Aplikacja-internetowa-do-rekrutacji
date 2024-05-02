@@ -1,17 +1,26 @@
+import random
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import Http404, HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
+from django.views import View
 from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from accounts.forms import UserRegistrationForm, UserLoginForm, \
     RecruiterProfileForm, TaskForm, ClientProfileForm, CandidateProfileForm
 from accounts.models import RecruiterProfile, Task, ClientProfile, CandidateProfile
+from jobs.models import Job
+from django.views.generic import FormView, CreateView
 
-
+#---------------------------------------STRONA GOWNA-------------------------------------------------------------------#
 class HomeView(TemplateView):
     template_name = 'home/base.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['jobs'] = Job.objects.filter(status=Job.JobStatus.OPEN)
+        return context
 
 
 class AboutView(TemplateView):
@@ -22,25 +31,49 @@ class ContactView(TemplateView):
     template_name = 'home/contact.html'
 
 
-class UserRegisterView(CreateView):
-    template_name = 'registration/register.html'
-    form_class = UserRegistrationForm
-    success_url = reverse_lazy('accounts:create_profile')  # Перенаправление на страницу входа после регистрации
+class RecruiterListView(ListView):
+    model = RecruiterProfile
+    template_name = 'home/recruiters.html'  # Путь к вашему шаблону с рекрутерами
+    context_object_name = 'recruiters'
 
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.is_active = True
-        user.role = self.cleaned_data['role']
-        if commit:
-            user.save()
-            try:
-                if user.role == 'candidate':
-                    CandidateProfile.objects.create(user=user)
-                elif user.role == 'employer':
-                    ClientProfile.objects.create(user=user)
-            except Exception as e:
-                print(f"Error creating profile: {e}")  # Логгирование ошибки
-        return user
+
+class ClientListView(ListView):
+    model = ClientProfile
+    template_name = 'home/client_list.html'
+    context_object_name = 'clients'
+
+
+#---------------------------------------STRONA GOWNA - REJESTRACJA I LOGOWANIE, WYLOGOWANIE----------------------------#
+
+
+def register_user(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect('accounts:create_profile')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'registration/register.html', {'form': form})
+
+@login_required
+def create_profile(request):
+    if request.method == 'POST':
+        if request.user.role == 'candidate':
+            form = CandidateProfileForm(request.POST)
+        elif request.user.role == 'client':
+            form = ClientProfileForm(request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect('accounts:dashboard_redirect')
+    else:
+        if request.user.role == 'candidate':
+            form = CandidateProfileForm()
+        elif request.user.role == 'client':
+            form = ClientProfileForm()
+    return render(request, 'registration/create_profile.html', {'form': form})
 
 
 class CustomLoginView(LoginView):
@@ -58,22 +91,23 @@ class CustomLoginView(LoginView):
         else:
             return reverse_lazy('home')
 
-
-@login_required
 def dashboard_redirect(request):
+    user = request.user
     role_redirects = {
         'candidate': 'accounts:candidate_dashboard',
         'client': 'accounts:client_dashboard',
         'recruiter': 'accounts:recruiter_dashboard'
     }
-    return redirect(role_redirects.get(request.user.role, 'home'))
-
+    if user.role in role_redirects:
+        return redirect(role_redirects[user.role])
+    return redirect('home')
 
 class CustomLogoutView(LogoutView):
     def get_next_page(self):
         return reverse_lazy('accounts:home')
 
 
+#-------------------------------------DASZBOARDY I AKAUNTY-------------------------------------------------------------#
 class CandidateDashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'dashboard/candidate_dashboard.html'
 
@@ -193,6 +227,9 @@ class RecruiterProfileUpdateView(LoginRequiredMixin, UpdateView):
         return RecruiterProfile.objects.filter(user=self.request.user)
 
 
+#------------------------------------TASKI-----------------------------------------------------------------------------#
+
+
 class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'tasks'
@@ -234,51 +271,3 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_queryset(self):
         return super().get_queryset().filter(created_by=self.request.user)
-
-
-class CreateProfileView(LoginRequiredMixin, CreateView):
-    template_name = 'registration/create_profile.html'
-    success_url = reverse_lazy('accounts:dashboard_redirect')  # Перенаправление на дашборд после создания профиля
-
-    def get_form_class(self):
-        user = self.request.user
-        if user.role == 'candidate':
-            return CandidateProfileForm
-        elif user.role == 'client':
-            return ClientProfileForm
-        else:
-            # Обработка неподдерживаемой роли
-            return None
-
-    def form_valid(self, form):
-        profile = form.save(commit=False)
-        profile.user = self.request.user
-        profile.save()
-
-        # Проверяем, существует ли уже профиль для текущего пользователя
-        if hasattr(self.request.user, 'candidate_profile'):
-            candidate_profile = self.request.user.candidate_profile
-            if candidate_profile.field1 and candidate_profile.field2:
-                # Если у кандидата заполнены оба поля, перенаправляем на дашборд
-                return redirect('accounts:dashboard_redirect')
-            else:
-                print("Поля кандидата не заполнены:", candidate_profile.field1, candidate_profile.field2)
-        elif hasattr(self.request.user, 'client_profile'):
-            client_profile = self.request.user.client_profile
-            if client_profile.field3 and client_profile.field4:
-                # Если у клиента заполнены оба поля, перенаправляем на дашборд
-                return redirect('accounts:dashboard_redirect')
-            else:
-                print("Поля клиента не заполнены:", client_profile.field3, client_profile.field4)
-
-        # Если профиль создан, но нужные поля не заполнены, оставляем пользователя на текущей странице
-        return super(CreateProfileView, self).form_valid(form)
-
-class RecruiterListView(ListView):
-    model = RecruiterProfile
-    template_name = 'home/recruiters.html'  # Путь к вашему шаблону с рекрутерами
-    context_object_name = 'recruiters'
-class ClientListView(ListView):
-    model = ClientProfile
-    template_name = 'home/client_list.html'
-    context_object_name = 'clients'

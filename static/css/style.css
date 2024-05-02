@@ -1,104 +1,24 @@
-@import url('colors.css');
-
-/* Базовые настройки */
-html, body {
-    height: 100%;
-    margin: 0;
-    background-color: var(--background-color);
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Стили для шапки */
-header {
-    background-color: var(--primary-color); /* Использование переменной для цвета шапки */
-    color: white;
-}
-
-.navbar {
-    padding: 0.5rem 1rem;
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-toggler {
-    border-color: var(--primary-color);
-}
-
-.navbar-nav .nav-link {
-    color: white;
-}
-
-.navbar-nav .nav-link:hover {
-    color: var(--secondary-color); /* Использование вторичного цвета */
-}
-
-/* Стили для основного содержимого */
-main {
-    flex: 1;
-    padding: 20px;
-}
-
-.main-content, .how-we-work {
-    margin-bottom: 20px;
-}
-
-.icon-small {
-    width: 50px;
-    height: 50px; /* Установка одинаковой высоты, чтобы иконка была круглой */
-    border-radius: 80%; /* Задание радиуса закругления в 50% (чтобы сделать иконку круглой) */
-}
-
-
-.work-step {
-    background-color: var(--background-color); /* Цвет фона для блоков */
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-/* Стили для контактной секции */
 .contact-section {
-    background-color: var(--footer-bg-color); /* Единообразие фона секций и подвала */
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.card {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Стили для подвала */
-footer {
-    background-color: var(--footer-bg-color);
-    text-align: center;
-    padding: 10px 0;
-}
-
-.card-body {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.card.flex-md-row {
+.contact-section .card {
+    flex: 1;
+    min-height: 100%;
+}
+
+.o_nas-row {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-@media (min-width: 768px) {
-    .card.flex-md-row {
-        flex-direction: row;
-        align-items: stretch;
-    }
+.o_nas-row .card {
+    flex: 1;
+    min-height: 100%;
+
 }
 
-.list-group-item img {
-    object-fit: cover;
-}
+
+
+

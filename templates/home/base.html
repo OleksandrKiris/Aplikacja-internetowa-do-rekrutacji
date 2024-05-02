@@ -6,24 +6,25 @@
     <title>KIRIS M.O.R.</title>
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header class="bg-dark text-white">
         <nav class="navbar navbar-expand-lg navbar-dark container">
             <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static 'images/logo.png' %}" alt="KIRIS M.O.R." style="height: 50px;" class="rounded-circle ">
+                <img src="{% static 'images/logo.png' %}" alt="KIRIS M.O.R." style="height: 50px;" class="rounded-circle">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Strona główna</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Kontakt</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">O nas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Oferty pracy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'public_job_list' %}">Oferty pracy</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'client_list' %}">Nasi klienci</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'recruiters' %}">Nasi rekruterzy</a></li> 
                 </ul>
@@ -44,14 +45,36 @@
             </div>
         </nav>
     </header>
-      {% block content %}
+
     <div class="container mt-3">
+        {% block content %}
         <main>
             <section class="main-content">
-                <h1>Tytuł stanowiska: Specjalista ds. Obsługi Klienta</h1>
-                <p>Opis stanowiska: Osoba na tym stanowisku będzie odpowiedzialna za bezpośredni kontakt z klientami firmy, rozwiązywanie problemów oraz udzielanie informacji o produktach i usługach.</p>
-                <p>Wymagania: Doskonałe umiejętności komunikacyjne, doświadczenie w obsłudze klienta, biegłość w obsłudze komputera.</p>
+                <div id="jobCarousel" class="carousel slide main-slider" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for job in jobs %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="container w-75 d-flex">
+                                <div class="carousel-caption d-block">
+                                    <h1>Tytuł stanowiska: {{ job.title }}</h1>
+                                    <p>Opis stanowiska: {{ job.description }}</p>
+                                    <p>Wymagania: {{ job.requirements }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#jobCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </section>
+
             <section class="how-we-work row">
                 <div class="col-md-6">
                     <div class="work-step">
@@ -82,9 +105,11 @@
                     </div>
                 </div>
             </section>
-        </main>
+        {% endblock %}
+        </main>       
     </div>
-   <section class="contact-section mt-4">
+
+    <section class="contact-section mt-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-12">
@@ -106,14 +131,12 @@
         </div>
     </section>
 
-      {% endblock %}
     <footer class="bg-light text-dark text-center py-3">
         <div class="container">
-            <p>© 2024 Agencji Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone.</p>
+            <p>© 2024 Agencja Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone.</p>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

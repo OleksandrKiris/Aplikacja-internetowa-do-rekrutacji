@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from accounts.views import HomeView, AboutView, ContactView, CustomLogoutView, RecruiterListView, ClientListView
+from jobs.views import GuestFeedbackView, PublicJobDetailView, PublicJobListView, GuestFeedbackThanksView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +32,11 @@ urlpatterns = [
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('recruiters/', RecruiterListView.as_view(), name='recruiters'),
     path('clients/', ClientListView.as_view(), name='client_list'),
+    path('public/jobs/', PublicJobListView.as_view(), name='public_job_list'),
+    path('public/job/<int:job_id>/', PublicJobDetailView.as_view(), name='public_job_detail'),
+    path('guest-feedback/<int:job_id>/', GuestFeedbackView.as_view(), name='guest_feedback'),
+    path('guest-feedback-thanks/<int:job_id>/', GuestFeedbackThanksView.as_view(), name='guest_feedback_thanks'),
+
+
 
 ]

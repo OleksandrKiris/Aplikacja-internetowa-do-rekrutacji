@@ -1,0 +1,33 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h1 class="card-title mb-4 text-center">{{ job.title }}</h1>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5><strong>Opis stanowiska:</strong></h5>
+                    <p>{{ job.description }}</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5><strong>Wymagania:</strong></h5>
+                    <p>{{ job.requirements }}</p>
+                    <h5><strong>Lokalizacja:</strong></h5>
+                    <p>{{ job.location }}</p>
+                    <h5><strong>Wynagrodzenie:</strong></h5>
+                    <p>{{ job.salary }}</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <a href="{% url 'guest_feedback' job.id %}" class="btn btn-primary btn-block w-100">Zostaw opinię</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="{% url 'public_job_list' %}" class="btn btn-secondary btn-block w-100">Powrót</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Dostępne Oferty Pracy</h1>
+    <form method="GET" action="{% url 'public_job_list' %}" class="d-flex justify-content-center mb-4">
+        <div class="input-group w-50">
+            <label>
+                <input type="text" name="q" class="form-control" placeholder="Szukaj...">
+            </label>
+            <button class="btn btn-primary" type="submit">Szukaj</button>
+        </div>
+    </form>
+    <ul class="list-group">
+        {% for job in jobs %}
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3 mb-3 shadow-sm">
+                <div>
+                    <h5 class="fw-bold">{{ job.title }}</h5>
+                    <p class="mb-0">{{ job.description|truncatewords:20 }}</p>
+                </div>
+                <a href="{% url 'public_job_detail' job.id %}" class="btn btn-secondary">Zobacz szczegóły</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
