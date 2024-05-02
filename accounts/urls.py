@@ -2,17 +2,17 @@
 
 from django.urls import path
 
-from accounts.views import UserRegisterView, CustomLoginView, ClientDashboardView, \
+from accounts.views import  CustomLoginView, ClientDashboardView, \
     CandidateDashboardView, RecruiterDashboardView, ApplicantProfileDetailView, ApplicantProfileUpdateView, \
     RecruiterProfileDetailView, RecruiterProfileUpdateView, \
     dashboard_redirect, CustomLogoutView, TaskListView, TaskCreateView, TaskUpdateView, TaskDeleteView, \
-    CreateProfileView, ClientProfileUpdateView, ClientProfileDetailView
+    ClientProfileUpdateView, ClientProfileDetailView, create_profile, register_user
 
 # Добавьте пространство имён для приложения accounts
 app_name = 'accounts'
 
 urlpatterns = [
-    path('register/', UserRegisterView.as_view(), name='register'),
+    path('register/', register_user, name='register'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('dashboard/candidate/', CandidateDashboardView.as_view(), name='candidate_dashboard'),
     path('dashboard/client/', ClientDashboardView.as_view(), name='client_dashboard'),
@@ -40,7 +40,7 @@ urlpatterns = [
     path('tasks/update/<int:pk>/', TaskUpdateView.as_view(), name='task_update'),
     path('tasks/delete/<int:pk>/', TaskDeleteView.as_view(), name='task_delete'),
 
-    path('create_profile/', CreateProfileView.as_view(), name='create_profile'),
+    path('create_profile/',create_profile, name='create_profile'),
 
 
 ]

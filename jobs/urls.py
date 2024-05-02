@@ -20,4 +20,5 @@ urlpatterns = [
     # URL-адреса для клиента
     path('client/jobs/', ClientJobListView.as_view(), name='client_job_list'),
     path('client/jobs/<int:job_id>/', ClientJobDetailView.as_view(), name='client_job_detail'),
+
 ]

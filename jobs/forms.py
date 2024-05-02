@@ -1,5 +1,5 @@
 from django import forms
-from .models import Job, Application
+from .models import Job, Application, GuestFeedback
 
 
 class JobForm(forms.ModelForm):
@@ -21,4 +21,20 @@ class ApplicationForm(forms.ModelForm):
         fields = ['cover_letter']  # Убираем 'job'
         widgets = {
             'cover_letter': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+
+class GuestFeedbackForm(forms.ModelForm):
+    class Meta:
+        model = GuestFeedback
+        fields = ['email', 'message', 'phone_number']
+        labels = {
+            'email': 'Email',
+            'message': 'Message',
+            'phone_number': 'Phone Number (optional)'
+        }
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Enter your feedback'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your phone number'}),
         }

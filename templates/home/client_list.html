@@ -1,22 +1,22 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
-    <h2>Nasi klienci</h2>
-    <div class="row">
-        <div class="col-md-12">
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Nasi klienci</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <ul class="list-group">
                 {% for client in clients %}
-                <li class="list-group-item d-flex align-items-center">
+                <li class="list-group-item d-flex align-items-center p-3 mb-3 shadow-sm">
                     {% if client.photo %}
-                    <img src="{{ client.photo.url }}" class="rounded-circle mr-3" alt="{{ client.user.username }}" style="max-width: 100px; max-height: 100px;">
+                    <img src="{{ client.photo.url }}" class="rounded-circle me-3" alt="{{ client.user.username }}" style="width: 75px; height: 75px; object-fit: cover;">
                     {% else %}
-                    <img src="{% static 'images/Icon_2.png' %}" class="rounded-circle mr-3" alt="Default Client Profile" style="max-width: 100px; max-height: 100px;">
+                    <img src="{% static 'images/Icon_2.png' %}" class="rounded-circle me-3" alt="Default Client Profile" style="width: 75px; height: 75px; object-fit: cover;">
                     {% endif %}
                     <div>
-                        <h5>{{ client.user.get_full_name }}</h5>
-                        <p>{{ client.company_name }}</p>
-                        <p>{{ client.bio }}</p>
+                        <h5 class="fw-bold mb-1">{{ client.user.get_full_name }}</h5>
+                        <p class="mb-1"><strong>{{ client.company_name }}</strong></p>
+                        <p class="text-muted mb-0">{{ client.bio }}</p>
                     </div>
                 </li>
                 {% endfor %}

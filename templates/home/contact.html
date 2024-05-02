@@ -1,45 +1,63 @@
 {% extends "accounts/../home/base.html" %}
-
 {% load static %}
 
 {% block content %}
- <div class="container mt-4">
-    <div class="about-us-header">
-        <h1> KIRIS M.O.R.</h1>
+<div class="container mt-5">
+    <div class="jumbotron text-white rounded bg-dark text-center shadow">
+        <h1 class="display-4 font-weight-bold">KIRIS M.O.R.</h1>
     </div>
-    <!-- Секция контактной информации -->
-    <section class="contact-info">
-        <h2>Zachęcamy do kontaktu z nami!</h2>
-        <p>Nasz zespół jest gotowy odpowiedzieć na wszystkie pytania.</p>
 
-        <!-- Контакты -->
-        <div class="contactsі">
-            <div class="contact-item">
-                <h3>Ivan Ivanov (Rekruter dla rynku ukraińskiego):</h3>
-                <p>Telefon: +48 112 223 344</p>
+    <!-- Contact Information Section -->
+    <section class="mb-5">
+        <h2 class="text-center mb-4 font-weight-bold">Zachęcamy do kontaktu z nami!</h2>
+
+        <!-- Contacts -->
+        <div class="row text-center mb-5">
+            <div class="col-md-6 mb-4 d-flex align-items-stretch">
+                <div class="card shadow flex-fill">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Ivan Ivanov</h3>
+                        <h5 class="card-subtitle text-muted mb-3">Rekruter dla rynku ukraińskiego</h5>
+                        <p>Telefon: +48 112 223 344</p>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item">
-                <h3>Nino Ninavasil (Rekruter dla rynku gruzińskiego):</h3>
-                <p>Telefon: +48 112 225 678</p>
+            <div class="col-md-6 mb-4 d-flex align-items-stretch">
+                <div class="card shadow flex-fill">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Nino Ninavasil</h3>
+                        <h5 class="card-subtitle text-muted mb-3">Rekruter dla rynku gruzińskiego</h5>
+                        <p>Telefon: +48 112 225 678</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Социальные сети и email -->
-        <div class="social-mediaa">
-            <p>Instagram: @KIRIS_MOR</p>
-            <p>Facebook: KIRIS M.O.R.</p>
-            <p>LinkedIn: Agencja Pracy KIRIS M.O.R.</p>
-            <p>TikTok: @KIRISMOR</p>
-            <p>Email: info@kiris-mor.pl</p>
-        </div>
-
-        <!-- Адрес и часы работы -->
-        <div class="location">
-            <h3>Adres:</h3>
-            <p>ul. Nowowiejska 15, 00-665 Warszawa, Polska</p>
-            <h3>Godziny Otwarcia:</h3>
-            <p>Poniedziałek - Piątek: 8:00 - 16:00</p>
-            <p>Sobota - Niedziela: Zamknięte</p>
+        <!-- Social Media and Address Information -->
+        <div class="row text-center mb-4">
+            <div class="col-md-6 mb-4 d-flex align-items-stretch">
+                <div class="card shadow flex-fill">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Social Media</h3>
+                        <p>Instagram: <a href="https://instagram.com/KIRIS_MOR">@KIRIS_MOR</a></p>
+                        <p>Facebook: <a href="https://facebook.com/KIRIS_MOR">KIRIS M.O.R.</a></p>
+                        <p>LinkedIn: <a href="https://linkedin.com/KIRIS_MOR">Agencja Pracy KIRIS M.O.R.</a></p>
+                        <p>TikTok: <a href="https://tiktok.com/KIRISMOR">@KIRISMOR</a></p>
+                        <p>Email: <a href="mailto:info@kiris-mor.pl">info@kiris-mor.pl</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4 d-flex align-items-stretch">
+                <div class="card shadow flex-fill">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Adres:</h3>
+                        <p>ul. Nowowiejska 15, 00-665 Warszawa, Polska</p>
+                        <h3 class="card-title mt-4 font-weight-bold">Godziny Otwarcia:</h3>
+                        <p>Poniedziałek - Piątek: 8:00 - 16:00</p>
+                        <p>Sobota - Niedziela: Zamknięte</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>

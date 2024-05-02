@@ -51,6 +51,12 @@ class CandidateProfileForm(forms.ModelForm):
             'skills': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
+    def clean_date_of_birth(self):
+        date_of_birth = self.cleaned_data.get('date_of_birth')
+        # Проверка, что поле не пустое
+        if not date_of_birth:
+            raise forms.ValidationError("Дата рождения обязательна для заполнения.")
+        return date_of_birth
 
 class ClientProfileForm(forms.ModelForm):
     class Meta:
