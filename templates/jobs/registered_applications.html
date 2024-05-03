@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<section class="container mt-5">
+    <h1 class="h5">Zarejestrowane aplikacje</h1>
+    {% for application in applications %}
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 class="h6 mb-0">Informacje o kandydacie</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>Imię:</strong> {{ application.candidate_profile.first_name }} {{ application.candidate_profile.last_name }}</p>
+            <p><strong>Email:</strong> {{ application.candidate_profile.user.email }}</p>
+            <p><strong>Numer telefonu:</strong> {{ application.candidate_profile.phone_number }}</p>
+            <p><strong>Lokalizacja:</strong> {{ application.candidate_profile.location }}</p>
+            <p><strong>Biografia:</strong> {{ application.candidate_profile.bio }}</p>
+            <p><strong>Umiejętności:</strong> {{ application.candidate_profile.skills }}</p>
+        </div>
+        <div class="card-footer">
+            <h3 class="h6 mb-0">List motywacyjny aplikacji</h3>
+            <p>{{ application.cover_letter }}</p>
+            <a href="#" class="btn btn-primary btn-sm">Wyślij wiadomość</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No registered applications found.</p>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,10 +1,57 @@
-{% extends 'dashboard/recruiter_dashboard.html' %}
+{% extends 'dashboard/dashboard.html' %}
 {% block content %}
-<h2>Lista zadań</h2>
-<ul>
-    {% for task in tasks %}
-    <li>{{ task.title }} - <a href="{% url 'accounts:task_update' task.pk %}">Edytuj</a> | <a href="{% url 'accounts:task_delete' task.pk %}">Usuń</a></li>
-    {% endfor %}
-</ul>
-<a href="{% url 'accounts:task_create' %}">Dodaj nowe zadanie</a>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h5">Lista zadań</h2>
+        <a href="{% url 'accounts:task_create' %}" class="btn btn-primary">Dodaj nowe zadanie</a>
+    </div>
+<div class="container mt-5">
+    
+    <div class="card">
+        <div class="card-body">
+            <ul class="list-group">
+                {% for task in tasks %}
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">{{ task.title }}</h5>
+                            <small><strong>Priorytet:</strong> {{ task.priority }}</small><br>
+                            <small><strong>Status:</strong> {{ task.status }}</small>
+                        </div>
+                        <div>
+                            <a href="{% url 'accounts:task_update' task.pk %}" class="btn btn-sm btn-warning">Edytuj</a>
+                            <a href="{% url 'accounts:task_delete' task.pk %}" class="btn btn-sm btn-danger ms-1">Usuń</a>
+                        </div>
+                    </div>
+                </li>
+                {% empty %}
+                <li class="list-group-item text-center">Brak zadań do wyświetlenia</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+        <div class="card-body">
+            <ul class="list-group">
+                {% for task in tasks %}
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">{{ task.title }}</h5>
+                            <small><strong>Priorytet:</strong> {{ task.priority }}</small><br>
+                            <small><strong>Status:</strong> {{ task.status }}</small>
+                        </div>
+                        <div>
+                            <a href="{% url 'accounts:task_update' task.pk %}" class="btn btn-sm btn-warning">Edytuj</a>
+                            <a href="{% url 'accounts:task_delete' task.pk %}" class="btn btn-sm btn-danger ms-1">Usuń</a>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
 {% endblock %}

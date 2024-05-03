@@ -1,56 +1,82 @@
-@import url('colors.css');
-
-/* Общие стили для документа */
 html, body {
-    height: 100%; /* Устанавливаем высоту всей страницы */
-    margin: 0; /* Убираем отступы */
+    height: 100%;
+    margin: 0;
 }
 
 body {
-    display: flex; /* Используем flexbox для всего тела документа */
-    flex-direction: column; /* Элементы в колонке */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Стили для шапки */
-header {
-    background-color: var(--header-bg-color); /* Используем переменную для цвета фона */
+/* Navbar style */
+header.navbar {
+    background-color: var(--header-bg-color);
     padding: 10px 20px;
 }
 
-
-.nav-link {
-    color: var(--text-color); /* Используем переменную для цвета текста */
+.navbar .nav-link {
+    color: var(--text-color);
     transition: color 0.3s ease;
 }
 
-.nav-link:hover {
-    color: var(--primary-color); /* Используем переменную для основного цвета при наведении */
+.navbar .nav-link:hover {
+    color: var(--primary-color);
 }
 
-/* Адаптивность для малых экранов */
-@media (max-width: 576px) {
-    .sidebar {
-        min-width: 100%;
-        margin-bottom: 20px;
-    }
-    .footer {
-        position: relative;
-    }
-}
-
-/* Стили для логотипа */
+/* Logo styling */
 .logo img {
     width: 100px;
     height: auto;
 }
 
-
-
-/* Стили для футера */
+/* Footer styling */
 footer {
-    background-color: var(--footer-bg-color); /* Используем переменную для цвета фона */
+    background-color: var(--footer-bg-color);
     color: white;
     text-align: center;
-    padding: 20px 0; /* Подушка сверху и снизу */
+    padding: 20px 0;
 }
 
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    width: 250px;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    transform: translateX(-100%);
+    z-index: 1030;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+/* Content area styling */
+.main-content {
+    margin-left: 270px;
+    padding-top: 20px;
+}
+
+/* Instant transition utility */
+.instant {
+    transition: none !important;
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+    .sidebar {
+        min-width: 100%;
+        margin-bottom: 20px;
+    }
+    .main-content {
+        margin-left: 0;
+        padding-top: 20px;
+    }
+    footer {
+        position: relative;
+    }
+}

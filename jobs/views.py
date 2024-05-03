@@ -1,121 +1,119 @@
+from datetime import date
+
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from .models import Job, Application
 from .forms import JobForm, ApplicationForm, GuestFeedbackForm
-from django.views.generic import ListView
-from django.views.generic import TemplateView
 
 
-class RecruiterJobListView(LoginRequiredMixin, View):
-    def get(self, request):
-        jobs = request.user.jobs_managed.all()
-        return render(request, 'jobs/recruiter_job_list.html', {'jobs': jobs})
+@login_required
+def common_job_list_view(request):
+    current_date = date.today()
+    user_role = request.user.role
+    search_query = request.GET.get('q', '')
+    view_mode = request.GET.get('view', 'all')  # Default to 'all'
+
+    if user_role == 'recruiter':
+        if view_mode == 'my':
+            # Show only managed jobs
+            jobs = request.user.jobs_managed.all()
+        else:
+            # Show all jobs
+            jobs = Job.objects.filter(status=Job.JobStatus.OPEN, created_at__lte=current_date)
+    else:
+        # Show only open jobs for non-recruiters
+        jobs = Job.objects.filter(status=Job.JobStatus.OPEN, created_at__lte=current_date)
+
+    if search_query:
+        jobs = jobs.filter(title__icontains=search_query)
+
+    paginator = Paginator(jobs, 10)  # Paginator: 10 jobs per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'jobs': page_obj,
+        'user_role': user_role,
+        'search_query': search_query,
+        'view_mode': view_mode,
+        'page_obj': page_obj
+    }
+    return render(request, 'jobs/job_list.html', context)
+
+@login_required
+def common_job_detail_view(request, job_id):
+    job = get_object_or_404(Job, pk=job_id)
+    return render(request, 'jobs/job_detail.html', {'job': job})
 
 
-class RecruiterJobDetailView(LoginRequiredMixin, View):
-    def get(self, request, job_id):
-        job = Job.objects.get(pk=job_id)
-        return render(request, 'jobs/recruiter_job_detail.html', {'job': job})
-
-
-class RecruiterCreateJobView(LoginRequiredMixin, View):
-    def get(self, request):
-        form = JobForm()
-        return render(request, 'jobs/recruiter_create_job.html', {'form': form})
-
-    def post(self, request):
+@login_required
+def common_create_job_view(request):
+    if request.method == 'POST':
         form = JobForm(request.POST)
         if form.is_valid():
             job = form.save(commit=False)
             job.recruiter = request.user
             job.save()
-            return redirect('jobs:recruiter_job_detail', job_id=job.pk)
-        return render(request, 'jobs/recruiter_create_job.html', {'form': form})
+            return redirect('jobs:job_detail', job_id=job.pk)
+    else:
+        form = JobForm()
+    return render(request, 'jobs/create_job.html', {'form': form})
 
 
-class CandidateJobListView(LoginRequiredMixin, View):
-    def get(self, request):
-        jobs = Job.objects.all()
-        return render(request, 'jobs/candidate_job_list.html', {'jobs': jobs})
+@login_required
+def application_list_view(request):
+    applications = Application.objects.filter(applicant=request.user).select_related('job')
+    context = {
+        'applications': applications,
+        'user_role': request.user.role
+    }
+    return render(request, 'jobs/application_list.html', context)
 
 
-class CandidateJobDetailView(LoginRequiredMixin, View):
-    def get(self, request, job_id):
-        job = Job.objects.get(pk=job_id)
-        return render(request, 'jobs/candidate_job_detail.html', {'job': job})
-
-
-class CandidateCreateApplicationView(LoginRequiredMixin, View):
-    def get(self, request, job_id):
-        job = Job.objects.get(pk=job_id)
-        form = ApplicationForm()
-        return render(request, 'jobs/candidate_create_application.html', {'form': form, 'job': job})
-
-    def post(self, request, job_id):
-        job = Job.objects.get(pk=job_id)
+@login_required
+def create_application_view(request, job_id):
+    job = get_object_or_404(Job, pk=job_id)
+    if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():
             application = form.save(commit=False)
             application.job = job
             application.applicant = request.user
             application.save()
-            return redirect('jobs:candidate_application_list')
-        return render(request, 'jobs/candidate_create_application.html', {'form': form, 'job': job})
+            return redirect('jobs:application_list')
+    else:
+        form = ApplicationForm()
+    return render(request, 'jobs/create_application.html', {'form': form, 'job': job})
 
 
-class CandidateApplicationListView(LoginRequiredMixin, ListView):
-    model = Application
-    template_name = 'jobs/candidate_application_list.html'
-
-    def get_queryset(self):
-        return Application.objects.filter(applicant=self.request.user)
-
-
-class ClientJobListView(LoginRequiredMixin, View):
-    def get(self, request):
-        jobs = Job.objects.all()
-        return render(request, 'jobs/client_job_list.html', {'jobs': jobs})
-
-
-class ClientJobDetailView(LoginRequiredMixin, View):
-    def get(self, request, job_id):
-        job = Job.objects.get(pk=job_id)
-        return render(request, 'jobs/client_job_detail.html', {'job': job})
-
-
-class GuestFeedbackView(View):
-    def get(self, request, job_id):
-        job = get_object_or_404(Job, pk=job_id)
-        form = GuestFeedbackForm()
-        return render(request, 'home/guest_feedback.html', {'form': form, 'job': job})
-
-    def post(self, request, job_id):
-        job = get_object_or_404(Job, pk=job_id)
+def guest_feedback_view(request, job_id):
+    job = get_object_or_404(Job, pk=job_id)
+    if request.method == 'POST':
         form = GuestFeedbackForm(request.POST)
         if form.is_valid():
             feedback = form.save(commit=False)
             feedback.job = job
             feedback.save()
             return redirect('guest_feedback_thanks', job_id=job_id)
-        return render(request, 'home/guest_feedback.html', {'form': form, 'job': job})
+    else:
+        form = GuestFeedbackForm()
+    return render(request, 'home/guest_feedback.html', {'form': form, 'job': job})
 
 
-class PublicJobListView(View):
-    def get(self, request):
-        query = request.GET.get('q')
-        if query:
-            jobs = Job.objects.filter(title__icontains=query, status=Job.JobStatus.OPEN)
-        else:
-            jobs = Job.objects.filter(status=Job.JobStatus.OPEN)
-        return render(request, 'home/public_job_list.html', {'jobs': jobs})
+def public_job_list_view(request):
+    query = request.GET.get('q')
+    if query:
+        jobs = Job.objects.filter(title__icontains=query, status=Job.JobStatus.OPEN)
+    else:
+        jobs = Job.objects.filter(status=Job.JobStatus.OPEN)
+    return render(request, 'home/public_job_list.html', {'jobs': jobs})
 
 
-class PublicJobDetailView(View):
-    def get(self, request, job_id):
-        job = get_object_or_404(Job, pk=job_id)
-        return render(request, 'home/public_job_detail.html', {'job': job})
+def public_job_detail_view(request, job_id):
+    job = get_object_or_404(Job, pk=job_id)
+    return render(request, 'home/public_job_detail.html', {'job': job})
 
 
-class GuestFeedbackThanksView(TemplateView):
-    template_name = 'home/guest_feedback_thanks.html'
+def guest_feedback_thanks_view(request):
+    return render(request, 'home/guest_feedback_thanks.html')

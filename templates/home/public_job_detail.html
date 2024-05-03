@@ -21,10 +21,10 @@
             </div>
             <div class="row mt-4">
                 <div class="col-md-6">
-                    <a href="{% url 'guest_feedback' job.id %}" class="btn btn-primary btn-block w-100">Zostaw opinię</a>
+                    <a href="{% url 'jobs:guest_feedback' job.id %}" class="btn btn-primary btn-block w-100">Zostaw opinię</a>
                 </div>
                 <div class="col-md-6">
-                    <a href="{% url 'public_job_list' %}" class="btn btn-secondary btn-block w-100">Powrót</a>
+                    <a href="{% url 'jobs:public_job_list' %}" class="btn btn-secondary btn-block w-100">Powrót</a>
                 </div>
             </div>
         </div>

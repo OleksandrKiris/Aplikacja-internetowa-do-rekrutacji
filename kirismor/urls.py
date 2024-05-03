@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.i18n import set_language
 
-from accounts.views import HomeView, AboutView, ContactView, CustomLogoutView, RecruiterListView, ClientListView
-from jobs.views import GuestFeedbackView, PublicJobDetailView, PublicJobListView, GuestFeedbackThanksView
+from accounts.views import HomeView, AboutView, ContactView, RecruiterListView, ClientListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,14 +29,6 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('o-nas/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),
-    path('logout/', CustomLogoutView.as_view(), name='logout'),
-    path('recruiters/', RecruiterListView.as_view(), name='recruiters'),
-    path('clients/', ClientListView.as_view(), name='client_list'),
-    path('public/jobs/', PublicJobListView.as_view(), name='public_job_list'),
-    path('public/job/<int:job_id>/', PublicJobDetailView.as_view(), name='public_job_detail'),
-    path('guest-feedback/<int:job_id>/', GuestFeedbackView.as_view(), name='guest_feedback'),
-    path('guest-feedback-thanks/<int:job_id>/', GuestFeedbackThanksView.as_view(), name='guest_feedback_thanks'),
-
-
+    path('set-language/', set_language, name='set_language'),
 
 ]

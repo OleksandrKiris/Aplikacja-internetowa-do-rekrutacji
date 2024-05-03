@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<section class="container mt-5">
+    <h1 class="h4">Guest Applications</h1>
+    <ul>
+        {% for application in applications %}
+        <li>{{ application.cover_letter }}</li>
+        {% empty %}
+        <p>No guest applications found.</p>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

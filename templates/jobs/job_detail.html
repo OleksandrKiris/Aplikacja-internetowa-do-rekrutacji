@@ -1,16 +1,21 @@
-{% extends 'dashboard/client_dashboard.html' %}
+{% extends 'home/base.html' %}
+
 {% block content %}
-<div class="container">
-    <h2>Szczegóły oferty pracy</h2>
-    <div class="card">
+<section class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="card-title mb-0">{{ job.title }}</h5>
+        </div>
         <div class="card-body">
-            <h5 class="card-title">{{ job.title }}</h5>
             <p class="card-text">{{ job.description }}</p>
             <p class="card-text"><strong>Wymagania:</strong> {{ job.requirements }}</p>
             <p class="card-text"><strong>Wynagrodzenie:</strong> {{ job.salary }}</p>
             <p class="card-text"><strong>Status:</strong> {{ job.status }}</p>
             <p class="card-text"><strong>Data utworzenia:</strong> {{ job.created_at }}</p>
         </div>
+        <div class="card-footer text-end">
+            <a href="{% url 'jobs:job_list' %}" class="btn btn-primary">Wroc do ofert pracy</a>
+        </div>
     </div>
-</div>
+</section>
 {% endblock %}

@@ -1,9 +1,18 @@
-{% extends 'dashboard/recruiter_dashboard.html' %}
+{% extends 'dashboard/dashboard.html' %}
+
 {% block content %}
-<h2>Czy na pewno chcesz usunąć to zadanie?</h2>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Usuń</button>
-</form>
-<a href="{% url 'accounts:task_list' %}">Anuluj</a>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="h5">Czy na pewno chcesz usunąć to zadanie?</h1>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Usuń</button>
+                <a href="{% url 'accounts:task_list' %}" class="btn btn-secondary ms-2">Anuluj</a>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

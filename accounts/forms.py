@@ -29,10 +29,6 @@ class UserRegistrationForm(UserCreationForm):
         user.role = self.cleaned_data['role']
         if commit:
             user.save()
-            if user.role == 'candidate':
-                CandidateProfile.objects.create(user=user)
-            elif user.role == 'client':
-                ClientProfile.objects.create(user=user)
         return user
 
 
@@ -51,12 +47,13 @@ class CandidateProfileForm(forms.ModelForm):
             'skills': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
-    def clean_date_of_birth(self):
-        date_of_birth = self.cleaned_data.get('date_of_birth')
-        # Проверка, что поле не пустое
-        if not date_of_birth:
-            raise forms.ValidationError("Дата рождения обязательна для заполнения.")
-        return date_of_birth
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        instance.photo = self.cleaned_data.get('photo')
+        if commit:
+            instance.save()
+        return instance
+
 
 class ClientProfileForm(forms.ModelForm):
     class Meta:
@@ -71,6 +68,13 @@ class ClientProfileForm(forms.ModelForm):
             'industry': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        instance.photo = self.cleaned_data.get('photo')
+        if commit:
+            instance.save()
+        return instance
+
 
 class RecruiterProfileForm(forms.ModelForm):
     class Meta:
@@ -84,6 +88,13 @@ class RecruiterProfileForm(forms.ModelForm):
             'location': forms.TextInput(attrs={'class': 'form-control'}),
             'bio': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+    def save(self,commit=True):
+        instance = super().save(commit=False)
+        instance.photo = self.cleaned_data.get('photo')
+        if commit:
+            instance.save()
+        return instance
 
 
 class UserLoginForm(AuthenticationForm):
@@ -105,8 +116,9 @@ class TaskForm(forms.ModelForm):
         }
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'priority': forms.Select(attrs={'class': 'form-control'}),
             'due_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
         }
+

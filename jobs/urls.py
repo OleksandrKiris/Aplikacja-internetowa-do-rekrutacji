@@ -1,24 +1,20 @@
 from django.urls import path
-from .views import RecruiterJobListView, RecruiterJobDetailView, RecruiterCreateJobView, \
-    CandidateJobListView, CandidateJobDetailView, CandidateCreateApplicationView, \
-    ClientJobListView, ClientJobDetailView, CandidateApplicationListView
+
+from jobs import views
 
 app_name = 'jobs'
 
 urlpatterns = [
-    # URL-адреса для рекрутера
-    path('recruiter/jobs/', RecruiterJobListView.as_view(), name='recruiter_job_list'),
-    path('recruiter/jobs/<int:job_id>/', RecruiterJobDetailView.as_view(), name='recruiter_job_detail'),
-    path('recruiter/jobs/create/', RecruiterCreateJobView.as_view(), name='recruiter_create_job'),
-
-    # URL-адреса для кандидата
-    path('candidate/jobs/', CandidateJobListView.as_view(), name='candidate_job_list'),
-    path('candidate/jobs/<int:job_id>/', CandidateJobDetailView.as_view(), name='candidate_job_detail'),
-    path('candidate/jobs/<int:job_id>/apply/', CandidateCreateApplicationView.as_view(), name='candidate_create_application'),
-    path('candidate/applications/', CandidateApplicationListView.as_view(), name='candidate_application_list'),
-
-    # URL-адреса для клиента
-    path('client/jobs/', ClientJobListView.as_view(), name='client_job_list'),
-    path('client/jobs/<int:job_id>/', ClientJobDetailView.as_view(), name='client_job_detail'),
-
+    path('jobs/', views.common_job_list_view, name='job_list'),
+    path('jobs/create/', views.common_create_job_view, name='create_job'),
+    path('jobs/<int:job_id>/', views.common_job_detail_view, name='job_detail'),
+    path('applications/', views.application_list_view, name='application_list'),
+    path('jobs/<int:job_id>/apply/', views.create_application_view, name='create_application'),
+    path('guest/feedback/<int:job_id>/', views.guest_feedback_view, name='guest_feedback'),
+    path('guest/feedback/thanks/', views.guest_feedback_thanks_view, name='guest_feedback_thanks'),
+    path('public/jobs/', views.public_job_list_view, name='public_job_list'),
+    path('public/jobs/<int:job_id>/', views.public_job_detail_view, name='public_job_detail'),
 ]
+
+
+

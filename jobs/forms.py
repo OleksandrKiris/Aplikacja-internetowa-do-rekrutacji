@@ -8,8 +8,8 @@ class JobForm(forms.ModelForm):
         fields = ['title', 'description', 'requirements', 'salary', 'status']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'requirements': forms.Textarea(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'requirements': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'salary': forms.NumberInput(attrs={'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
         }
@@ -18,9 +18,9 @@ class JobForm(forms.ModelForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields = ['cover_letter']  # Убираем 'job'
+        fields = ['cover_letter']
         widgets = {
-            'cover_letter': forms.Textarea(attrs={'class': 'form-control'}),
+            'cover_letter': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
 
 

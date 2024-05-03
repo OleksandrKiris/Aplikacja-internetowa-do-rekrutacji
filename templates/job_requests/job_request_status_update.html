@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+  <h1>Zmień status zapytania</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="id_new_status" class="form-label">Nowy status</label>
+      {{ form.new_status }}
+    </div>
+    <div class="mb-3">
+      <label for="id_message" class="form-label">Wiadomość</label>
+      {{ form.message }}
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+  </form>
+{% endblock %}

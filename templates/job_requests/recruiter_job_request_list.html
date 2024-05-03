@@ -1,16 +1,22 @@
-{% extends 'dashboard/recruiter_dashboard.html' %}
-
-{% load static %}
+{% extends 'home/base.html' %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>Zarządzanie Zapytaniami</h2>
+<div class="container mt-5">
+    <h1 class="h4">Zarządzanie Zapytaniami</h1>
     <div class="list-group">
         {% for job_request in job_requests %}
-        <a href="{% url 'recruiter_job_request_update' job_request.pk %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-            {{ job_request.title }}
-            <span class="badge bg-secondary rounded-pill">{{ job_request.get_status_display }}</span>
-        </a>
+        <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <div>
+                <h5 class="mb-1">{{ job_request.title }}</h5>
+                <p class="mb-1">Opis: {{ job_request.description }}</p>
+                <p class="mb-1">Wymagania: {{ job_request.requirements }}</p>
+                <p class="mb-1">Data utworzenia: {{ job_request.created_at }}</p>
+            </div>
+            <div>
+                <span class="badge bg-secondary rounded-pill">{{ job_request.get_status_display }}</span>
+            </div>
+        </div>
+        <a href="{% url 'requests:recruiter_job_request_update' job_request.pk %}" class="btn btn-primary">Zmień status</a>
         {% empty %}
         <div class="alert alert-info">Brak zapytań do obsługi.</div>
         {% endfor %}

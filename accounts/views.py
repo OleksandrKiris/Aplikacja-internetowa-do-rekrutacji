@@ -1,273 +1,238 @@
-import random
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView
-from django.http import Http404, HttpResponse
-from django.shortcuts import redirect, render
-from django.views import View
-from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView, DeleteView
-from django.urls import reverse_lazy
-from accounts.forms import UserRegistrationForm, UserLoginForm, \
-    RecruiterProfileForm, TaskForm, ClientProfileForm, CandidateProfileForm
+from django.contrib.auth import logout, login  # Authentication functions
+from django.contrib.auth.decorators import login_required  # For login required decorators
+from django.http import Http404  # For handling HTTP exceptions
+from django.shortcuts import redirect, render, get_object_or_404  # For rendering templates and redirects
+from django.urls import reverse_lazy, reverse  # For lazy URL reverse lookups
+from django.views.generic import TemplateView, ListView  # For generic views
+from accounts.forms import (RecruiterProfileForm, TaskForm, ClientProfileForm, CandidateProfileForm,
+                            UserLoginForm, UserRegistrationForm)
 from accounts.models import RecruiterProfile, Task, ClientProfile, CandidateProfile
-from jobs.models import Job
-from django.views.generic import FormView, CreateView
+from jobs.models import Job  # Importing Job model
 
-#---------------------------------------STRONA GOWNA-------------------------------------------------------------------#
+"---------------------------------------------------HOME PAGE----------------------------------------------------------"
+
+
+# Home View for rendering the home page
 class HomeView(TemplateView):
     template_name = 'home/base.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['jobs'] = Job.objects.filter(status=Job.JobStatus.OPEN)
+        context['jobs'] = Job.objects.filter(status=Job.JobStatus.OPEN)  # Filtering open jobs
         return context
 
 
+# About View for rendering the About Us page
 class AboutView(TemplateView):
     template_name = 'home/about_us.html'
 
 
+# Contact View for rendering the Contact page
 class ContactView(TemplateView):
     template_name = 'home/contact.html'
 
 
+"-------------------------------REJESTRACJA,LOGOWANIE, CREATE PROFILE, WYLOGOWANIE-------------------------------------"
+
+
+# Recruiter List View for displaying a list of recruiters
 class RecruiterListView(ListView):
     model = RecruiterProfile
-    template_name = 'home/recruiters.html'  # Путь к вашему шаблону с рекрутерами
+    template_name = 'home/recruiters.html'
     context_object_name = 'recruiters'
 
 
+# Client List View for displaying a list of clients
 class ClientListView(ListView):
     model = ClientProfile
     template_name = 'home/client_list.html'
     context_object_name = 'clients'
 
 
-#---------------------------------------STRONA GOWNA - REJESTRACJA I LOGOWANIE, WYLOGOWANIE----------------------------#
-
-
+# Function to handle user registration
 def register_user(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect('accounts:create_profile')
+            return redirect(reverse_lazy('accounts:create_profile'))
     else:
         form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+
+# Function to handle user login
+def login_view(request):
+    if request.method == 'POST':
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+
+            # Store the user's role in the session
+            request.session['role'] = user.role
+
+            # Redirect to the dashboard after a successful login
+            return redirect(reverse_lazy('accounts:dashboard'))
+        else:
+            # If the form is not valid, return an error message
+            return render(request, 'registration/login.html', {
+                'form': form,
+                'error': 'Invalid username or password'
+            })
+    else:
+        form = UserLoginForm()
+
+    # Render the login form
+    return render(request, 'registration/login.html', {'form': form})
+
+
+# Function to handle user logout
+def logout_view(request):
+    logout(request)
+    return redirect(reverse_lazy('home'))
+
+
+# Function to create a user profile, restricted to logged-in users
 @login_required
 def create_profile(request):
+    form_classes = {
+        'candidate': CandidateProfileForm,
+        'client': ClientProfileForm,
+    }
+    form_class = form_classes.get(request.user.role)
+    if not form_class:
+        raise Http404("Этот тип роли не разрешен для создания профиля.")
+
     if request.method == 'POST':
-        if request.user.role == 'candidate':
-            form = CandidateProfileForm(request.POST)
-        elif request.user.role == 'client':
-            form = ClientProfileForm(request.POST)
+        form = form_class(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
-            return redirect('accounts:dashboard_redirect')
+            return redirect('accounts:dashboard')
     else:
-        if request.user.role == 'candidate':
-            form = CandidateProfileForm()
-        elif request.user.role == 'client':
-            form = ClientProfileForm()
+        form = form_class()
+
     return render(request, 'registration/create_profile.html', {'form': form})
 
 
-class CustomLoginView(LoginView):
-    form_class = UserLoginForm
-    template_name = 'registration/login.html'
+@login_required
+def dashboard_view(request):
+    role = request.user.role
+    return render(request, 'dashboard/dashboard.html', {'role': role})
 
-    def get_success_url(self):
-        user = self.request.user
-        if user.role == 'candidate' and hasattr(user, 'candidate_profile'):
-            return reverse_lazy('accounts:candidate_dashboard')
-        elif user.role == 'client' and hasattr(user, 'client_profile'):
-            return reverse_lazy('accounts:client_dashboard')
-        elif user.role == 'recruiter' and hasattr(user, 'recruiter_profile'):
-            return reverse_lazy('accounts:recruiter_dashboard')
-        else:
-            return reverse_lazy('home')
 
-def dashboard_redirect(request):
+"------------------------------------------DETALI PROFILU,ZMIANA DANNYCH-----------------------------------------------"
+
+
+# Profile Detail View
+@login_required
+def profile_detail_view(request):
     user = request.user
-    role_redirects = {
-        'candidate': 'accounts:candidate_dashboard',
-        'client': 'accounts:client_dashboard',
-        'recruiter': 'accounts:recruiter_dashboard'
+    profile_model = {
+        'candidate': CandidateProfile,
+        'client': ClientProfile,
+        'recruiter': RecruiterProfile
+    }.get(user.role)
+
+    if not profile_model:
+        raise Http404("Профиль не найден для текущего пользователя.")
+
+    try:
+        profile = profile_model.objects.get(user=user)
+    except profile_model.DoesNotExist:
+        return redirect(reverse_lazy('accounts:create_profile'))
+
+    context = {
+        'profile': profile,
+        'profile_type': user.role
     }
-    if user.role in role_redirects:
-        return redirect(role_redirects[user.role])
-    return redirect('home')
-
-class CustomLogoutView(LogoutView):
-    def get_next_page(self):
-        return reverse_lazy('accounts:home')
+    return render(request, 'profiles/universal_profile_detail.html', context)
 
 
-#-------------------------------------DASZBOARDY I AKAUNTY-------------------------------------------------------------#
-class CandidateDashboardView(LoginRequiredMixin, TemplateView):
-    template_name = 'dashboard/candidate_dashboard.html'
+# Profile Edit View
+@login_required
+def profile_edit_view(request):
+    user = request.user
+    profile_model = {
+        'candidate': CandidateProfile,
+        'client': ClientProfile,
+        'recruiter': RecruiterProfile
+    }.get(user.role)
+
+    if not profile_model:
+        raise Http404("Профиль не найден для текущего пользователя.")
+
+    try:
+        profile = profile_model.objects.get(user=user)
+    except profile_model.DoesNotExist:
+        return redirect(reverse_lazy('accounts:create_profile'))
+
+    form_class = {
+        'candidate': CandidateProfileForm,
+        'client': ClientProfileForm,
+        'recruiter': RecruiterProfileForm
+    }.get(user.role)
+
+    if request.method == 'POST':
+        form = form_class(request.POST, request.FILES, instance=profile)  # передаем request.FILES для обработки файлов
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy('accounts:dashboard'))
+    else:
+        form = form_class(instance=profile)
+
+    return render(request, 'profiles/universal_profile_edit.html', {'form': form})
 
 
-class ClientDashboardView(LoginRequiredMixin, TemplateView):
-    template_name = 'dashboard/client_dashboard.html'
+"------------------------------------------TASKI REKRUTERA------------------------------------------------------------"
 
 
-class RecruiterDashboardView(LoginRequiredMixin, TemplateView):
-    template_name = 'dashboard/recruiter_dashboard.html'
+# Task List View
+@login_required
+def task_list_view(request):
+    tasks = Task.objects.filter(created_by=request.user)
+    return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
 
-class ApplicantProfileDetailView(LoginRequiredMixin, DetailView):
-    """Детальный просмотр профиля кандидата."""
-    model = CandidateProfile
-    template_name = 'profiles/candidate_profile_detail.html'
-    context_object_name = 'candidate_profile'
+# Task Create View
+@login_required
+def task_create_view(request):
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.created_by = request.user
+            task.save()
+            return redirect(reverse_lazy('accounts:task_list'))
+    else:
+        form = TaskForm()
 
-    def get_object(self, queryset=None):
-        """Переопределяем метод для извлечения объекта по текущему пользователю."""
-        queryset = self.get_queryset() if queryset is None else queryset
-        try:
-            return queryset.get(user=self.request.user)
-        except queryset.model.DoesNotExist:
-            raise Http404("No ApplicantProfile found for the current user.")
-
-    def get_queryset(self):
-        return CandidateProfile.objects.filter(user=self.request.user)
+    return render(request, 'tasks/task_form.html', {'form': form})
 
 
-class ApplicantProfileUpdateView(LoginRequiredMixin, UpdateView):
-    """Обновление профиля кандидата."""
-    model = CandidateProfile
-    form_class = CandidateProfileForm
-    template_name = 'profiles/candidate_profile_edit.html'
-    success_url = reverse_lazy('accounts:candidate_dashboard')
+# Task Update View
+@login_required
+def task_update_view(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, created_by=request.user)
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy('accounts:task_list'))
+    else:
+        form = TaskForm(instance=task)
 
-    def get_object(self, queryset=None):
-        """Переопределяем метод для извлечения объекта по текущему пользователю."""
-        queryset = self.get_queryset() if queryset is None else queryset
-        try:
-            return queryset.get(user=self.request.user)
-        except queryset.model.DoesNotExist:
-            raise Http404("No ApplicantProfile found for the current user.")
-
-    def get_queryset(self):
-        return CandidateProfile.objects.filter(user=self.request.user)
+    return render(request, 'tasks/task_form.html', {'form': form})
 
 
-class ClientProfileDetailView(LoginRequiredMixin, DetailView):
-    """Детальный просмотр профиля работодателя."""
-    model = ClientProfile
-    template_name = 'profiles/client_profile_detail.html'
-    context_object_name = 'client_profile'
+# Task Delete View
+@login_required
+def task_delete_view(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, created_by=request.user)
+    if request.method == 'POST':
+        task.delete()
+        return redirect(reverse_lazy('accounts:task_list'))
 
-    def get_object(self, queryset=None):
-        queryset = self.get_queryset() if queryset is None else queryset
-        try:
-            return queryset.get(user=self.request.user)
-        except queryset.model.DoesNotExist:
-            raise Http404("No EmployerProfile found for the current user.")
-
-    def get_queryset(self):
-        return ClientProfile.objects.filter(user=self.request.user)
-
-
-class ClientProfileUpdateView(LoginRequiredMixin, UpdateView):
-    """Обновление профиля работодателя."""
-    model = ClientProfile
-    form_class = ClientProfileForm
-    template_name = 'profiles/client_profile_edit.html'
-    success_url = reverse_lazy('accounts:client_dashboard')
-
-    def get_object(self, queryset=None):
-        queryset = self.get_queryset() if queryset is None else queryset
-        try:
-            return queryset.get(user=self.request.user)
-        except queryset.model.DoesNotExist:
-            raise Http404("No EmployerProfile found for the current user.")
-
-    def get_queryset(self):
-        return ClientProfile.objects.filter(user=self.request.user)
-
-
-class RecruiterProfileDetailView(LoginRequiredMixin, DetailView):
-    """Детальный просмотр профиля рекрутера."""
-    model = RecruiterProfile
-    template_name = 'profiles/recruiter_profile_detail.html'
-    context_object_name = 'recrutier_profile'
-
-    def get_object(self, queryset=None):
-        queryset = self.get_queryset() if queryset is None else queryset
-        try:
-            return queryset.get(user=self.request.user)
-        except queryset.model.DoesNotExist:
-            raise Http404("No RecruiterProfile found for the current user.")
-
-    def get_queryset(self):
-        return RecruiterProfile.objects.filter(user=self.request.user)
-
-
-class RecruiterProfileUpdateView(LoginRequiredMixin, UpdateView):
-    """Обновление профиля рекрутера."""
-    model = RecruiterProfile
-    form_class = RecruiterProfileForm
-    template_name = 'profiles/recruiter_profile_edit.html'
-    success_url = reverse_lazy('accounts:recruiter_dashboard')
-
-    def get_object(self, queryset=None):
-        queryset = self.get_queryset() if queryset is None else queryset
-        try:
-            return queryset.get(user=self.request.user)
-        except queryset.model.DoesNotExist:
-            raise Http404("No RecruiterProfile found for the current user.")
-
-    def get_queryset(self):
-        return RecruiterProfile.objects.filter(user=self.request.user)
-
-
-#------------------------------------TASKI-----------------------------------------------------------------------------#
-
-
-class TaskListView(LoginRequiredMixin, ListView):
-    model = Task
-    context_object_name = 'tasks'
-    template_name = 'tasks/task_list.html'
-
-    def get_queryset(self):
-        return super().get_queryset().filter(created_by=self.request.user)
-
-
-class TaskCreateView(LoginRequiredMixin, CreateView):
-    model = Task
-    form_class = TaskForm
-    template_name = 'tasks/task_form.html'
-    success_url = reverse_lazy('accounts:task_list')
-
-    def form_valid(self, form):
-        # Установка пользователя как создателя задачи
-        form.instance.created_by = self.request.user
-        if not self.request.user.is_authenticated:
-            # В случае если пользователь не аутентифицирован, можно добавить обработку ошибки
-            return HttpResponse("User is not authenticated", status=401)
-        return super().form_valid(form)
-
-
-class TaskUpdateView(LoginRequiredMixin, UpdateView):
-    model = Task
-    form_class = TaskForm
-    template_name = 'tasks/task_form.html'
-    success_url = reverse_lazy('accounts:task_list')
-
-    def get_queryset(self):
-        return super().get_queryset().filter(created_by=self.request.user)
-
-
-class TaskDeleteView(LoginRequiredMixin, DeleteView):
-    model = Task
-    template_name = 'tasks/task_confirm_delete.html'
-    success_url = reverse_lazy('accounts:task_list')
-
-    def get_queryset(self):
-        return super().get_queryset().filter(created_by=self.request.user)
+    return render(request, 'tasks/task_confirm_delete.html', {'task': task})

@@ -106,8 +106,6 @@ class CandidateProfile(models.Model):
     date_of_birth = models.DateField(verbose_name="Data urodzenia")
     skills = models.TextField(verbose_name="Umiejętności")
 
-    def age(self):
-        return timezone.now().year - self.date_of_birth.year if self.date_of_birth else None
 
     def __str__(self):
         return f"Profil kandydata: {self.first_name} {self.last_name}"
