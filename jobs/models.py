@@ -57,8 +57,14 @@ class Application(models.Model):
             return True
         return False
 
-    def full_details(self):
-        return f'Application for {self.job.title} by {self.applicant.username} - Status: {self.status}'
+    def get_applicant_full_name(self):
+        # Check which role the user has and retrieve the respective profile
+        if hasattr(self.applicant, 'candidate_profile'):
+            return f'{self.applicant.candidate_profile.first_name} {self.applicant.candidate_profile.last_name}'
+        elif hasattr(self.applicant, 'recruiter_profile'):
+            return f'{self.applicant.recruiter_profile.first_name} {self.applicant.recruiter_profile.last_name}'
+        else:
+            return self.applicant.email  # Fallback if no profile is found
 
 
 class GuestFeedback(models.Model):

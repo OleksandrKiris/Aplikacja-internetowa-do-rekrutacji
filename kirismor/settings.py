@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'jobs',
     'requests',
     'communications',
+    'news',
 ]
 
 MIDDLEWARE = [

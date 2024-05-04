@@ -1,0 +1,20 @@
+<!-- news/all_news_list.html -->
+
+{% extends 'home/base.html' %}
+
+{% block content %}
+    <main class="container mt-4">
+        <h1>All News</h1>
+        <ul>
+            {% for news in news_list %}
+                <li>
+                    <h3>{{ news.title }}</h3>
+                    <p>{{ news.content }}</p>
+                    <small>{{ news.date_posted }}</small>
+                </li>
+            {% empty %}
+                <li>No news to display.</li>
+            {% endfor %}
+        </ul>
+    </main>
+{% endblock %}

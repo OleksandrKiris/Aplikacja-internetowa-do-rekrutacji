@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<h2>Update Status for {{ application.applicant.username }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="status">Status:</label>
+    <select name="status" id="status">
+        {% for key, value in application.ApplicationStatus.choices %}
+            <option value="{{ key }}" {% if key == application.status %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Update</button>
+</form>
+<a href="{% url 'jobs:job_applications' job.id %}">Back to Applications</a>
+{% endblock %}

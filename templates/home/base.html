@@ -33,6 +33,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'jobs:public_job_list' %}">Oferty pracy</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:client_list' %}">Nasi klienci</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:recruiters' %}">Nasi rekruterzy</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="{% url 'news:all_news_view' %}">Nowosci</a></li> 
                     </ul>
                     <ul class="navbar-nav">
                         {% if user.is_authenticated %}
@@ -56,7 +57,8 @@
                                         <li><a class="dropdown-item" href="{% url 'jobs:job_list' %}">Oferty pracy</a></li>
                                         <li><a class="dropdown-item" href="{% url 'jobs:create_job' %}">Dodaj ofertę pracy</a></li>
                                         <li><a class="dropdown-item" href="{% url 'accounts:task_list' %}">Zarządzaj zadaniami</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'requests:recruiter_job_request_list' %}">Przeglądaj wnioski</a></li>
+                                         <li><a class="dropdown-item" href="{% url 'jobs:recruiter_applications' %}">Aplikacje</a></li>
+                                         <li><a class="dropdown-item" href="{% url 'requests:recruiter_job_request_list' %}">Zapytania pracodawcow</a></li>
                                     {% endif %}
                                 </ul>
                             </li>

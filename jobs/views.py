@@ -1,9 +1,10 @@
 from datetime import date
 
 from django.core.paginator import Paginator
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Job, Application
+from .models import Job, Application, GuestFeedback
 from .forms import JobForm, ApplicationForm, GuestFeedbackForm
 
 
@@ -14,16 +15,12 @@ def common_job_list_view(request):
     search_query = request.GET.get('q', '')
     view_mode = request.GET.get('view', 'all')  # Default to 'all'
 
-    if user_role == 'recruiter':
-        if view_mode == 'my':
-            # Show only managed jobs
-            jobs = request.user.jobs_managed.all()
-        else:
-            # Show all jobs
-            jobs = Job.objects.filter(status=Job.JobStatus.OPEN, created_at__lte=current_date)
+    if user_role == 'recruiter' and view_mode == 'my':
+        # Show only managed jobs
+        jobs = request.user.jobs_managed.all()
     else:
-        # Show only open jobs for non-recruiters
-        jobs = Job.objects.filter(status=Job.JobStatus.OPEN, created_at__lte=current_date)
+        # Show all open jobs (temporarily removed created_at filter for testing)
+        jobs = Job.objects.filter(status=Job.JobStatus.OPEN)
 
     if search_query:
         jobs = jobs.filter(title__icontains=search_query)
@@ -41,10 +38,19 @@ def common_job_list_view(request):
     }
     return render(request, 'jobs/job_list.html', context)
 
+
 @login_required
 def common_job_detail_view(request, job_id):
     job = get_object_or_404(Job, pk=job_id)
-    return render(request, 'jobs/job_detail.html', {'job': job})
+    user_role = request.user.role  # Ensure the user has a role attribute
+
+    # Debugging print statement
+    print(f"User Role: {user_role}")
+
+    return render(request, 'jobs/job_detail.html', {
+        'job': job,
+        'user_role': user_role,
+    })
 
 
 @login_required
@@ -117,3 +123,151 @@ def public_job_detail_view(request, job_id):
 
 def guest_feedback_thanks_view(request):
     return render(request, 'home/guest_feedback_thanks.html')
+
+
+@login_required
+def job_applications_view(request, job_id):
+    job = get_object_or_404(Job, id=job_id)
+    if request.user != job.recruiter:
+        return HttpResponseForbidden()
+
+    applications = job.applications.select_related('applicant')
+    context = {
+        'job': job,
+        'applications': applications
+    }
+    return render(request, 'jobs/job_applications.html', context)
+
+
+def update_application_status_view(request, application_id):
+    application = get_object_or_404(Application, id=application_id)
+    job = application.job
+
+    if request.user != job.recruiter:
+        return HttpResponseForbidden()
+
+    if request.method == 'POST':
+        new_status = request.POST.get('status')
+        if application.update_status(new_status):
+            return redirect('jobs:registered_applications_for_job', job_id=job.id)
+
+    return render(request, 'jobs/update_application_status.html', {
+        'application': application,
+        'job': job
+    })
+
+
+@login_required
+def registered_applications_view(request):
+    if request.user.role != 'recruiter':
+        return HttpResponseForbidden("Access Denied")
+
+    applications = Application.objects.filter(job__recruiter=request.user).select_related('job', 'applicant')
+
+    search_query = request.GET.get('q', '')
+    if search_query:
+        applications = applications.filter(job__title__icontains=search_query)
+
+    context = {
+        'applications': applications,
+        'search_query': search_query
+    }
+    return render(request, 'jobs/registered_applications.html', context)
+
+
+@login_required
+def guest_feedback_applications_view(request):
+    if request.user.role != 'recruiter':
+        return HttpResponseForbidden("Access Denied")
+
+    feedbacks = GuestFeedback.objects.filter(job__recruiter=request.user)
+
+    search_query = request.GET.get('q', '')
+    if search_query:
+        feedbacks = feedbacks.filter(job__title__icontains=search_query)
+
+    context = {
+        'feedbacks': feedbacks,
+        'search_query': search_query
+    }
+    return render(request, 'jobs/guest_feedback_applications.html', context)
+
+
+@login_required
+def recruiter_applications_view(request):
+    if request.user.role != 'recruiter':
+        return HttpResponseForbidden("Access Denied")
+
+    search_query = request.GET.get('q', '')
+
+    # Get applications for jobs managed by the logged-in recruiter
+    applications = Application.objects.filter(job__recruiter=request.user).select_related('job', 'applicant')
+
+    # Get guest feedback for jobs managed by the logged-in recruiter
+    feedbacks = GuestFeedback.objects.filter(job__recruiter=request.user)
+
+    # Filter applications and feedbacks based on the search query
+    if search_query:
+        applications = applications.filter(job__title__icontains=search_query)
+        feedbacks = feedbacks.filter(job__title__icontains=search_query)
+
+    context = {
+        'applications': applications,
+        'feedbacks': feedbacks,
+        'search_query': search_query
+    }
+    return render(request, 'jobs/recruiter_applications.html', context)
+
+
+@login_required
+def registered_applications_for_job_view(request, job_id):
+    job = get_object_or_404(Job, id=job_id, recruiter=request.user)
+    applications = job.applications.select_related('applicant')
+
+    context = {
+        'job': job,
+        'applications': applications,
+    }
+    return render(request, 'jobs/registered_applications_for_job.html', context)
+
+
+@login_required
+def guest_feedback_applications_for_job_view(request, job_id):
+    job = get_object_or_404(Job, id=job_id, recruiter=request.user)
+    feedbacks = job.guest_feedbacks.all()
+
+    context = {
+        'job': job,
+        'feedbacks': feedbacks
+    }
+    return render(request, 'jobs/guest_feedback_applications_for_job.html', context)
+
+
+@login_required
+def update_job_status(request, job_id):
+    job = get_object_or_404(Job, pk=job_id)
+
+    # Check if the logged-in user is the recruiter for this job
+    if request.user != job.recruiter:
+        return HttpResponseForbidden("You are not authorized to update this job.")
+
+    if request.method == 'POST':
+        form = JobForm(request.POST, instance=job)
+        if form.is_valid():
+            form.save()
+            return redirect('jobs:job_detail', job_id=job.pk)
+    else:
+        # Prepopulate the form with the current job data
+        form = JobForm(instance=job)
+
+    return render(request, 'jobs/application_detail.html', {'form': form, 'job': job})
+
+
+def application_detail_view(request, application_id):
+    application = get_object_or_404(Application, pk=application_id)
+    job = application.job  # Extract the job associated with the application
+
+    return render(request, 'jobs/application_detail.html', {
+        'application': application,
+        'job': job,  # Add job to the context
+    })

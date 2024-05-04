@@ -1,30 +1,178 @@
-.contact-section {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.contact-section .card {
-    flex: 1;
-    min-height: 100%;
-}
-
-.o_nas-row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.o_nas-row .card {
-    flex: 1;
-    min-height: 100%;
-
-}
-
-
-/* style.css */
-
+/* General styles */
 html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Main container styles */
+main.container {
+    background-color: #ffffff; /* White background for main content */
+    border-radius: 12px;
+    padding: 25px; /* Added padding */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
 
+/* Heading styles */
+h1, h2 {
+    color: #0056b3; /* Darker blue for a more professional look */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px; /* Adjusted margin */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h3, h5 {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Text styles */
+p, .text-muted {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Card styles */
+.card {
+    border-radius: 12px; /* Rounded corners */
+    padding: 25px; /* Increased padding for better spacing */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover transition */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.card-body {
+    padding: 25px;
+    flex-grow: 1; /* Allow card body to expand to fill available space */
+}
+
+.card-title {
+    font-size: 1.8rem; /* Slightly smaller font size for a cleaner look */
+    color: #0a0a0b; /* Matching color with headings */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+.btn-primary, .btn-secondary, .btn {
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: #28a745;
+}
+
+.btn-secondary:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+}
+
+/* List styles */
+ul.list-group {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.list-group-item {
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #ddd;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    padding: 20px;
+}
+
+.list-group-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile picture styles */
+.rounded-circle {
+    border: 2px solid #0056b3;
+    padding: 2px;
+    margin-right: 15px;
+}
+
+/* Section styles for cards */
+.contact-section, .o_nas-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-section .card, .o_nas-row .card {
+    flex: 1;
+    min-height: 100%;
+    margin-bottom: 15px; /* Add some spacing between cards */
+}
+
+/* Navbar styles */
+header {
+    background-color: #343a40; /* Dark background for header */
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar-toggler {
+    background-color: #0056b3; /* Matching color for toggler */
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+    padding: 10px 20px; /* Larger padding for better click area */
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #0056b3; /* Darker blue for hover */
+    transform: translateY(-3px);
+}
+
+/* Transparent cards */
+.card-container {
+    position: relative;
+}
+
+.card-transparent {
+    background: rgba(255, 255, 255, 0.6); /* Adjust the alpha for transparency */
+    z-index: 10; /* Adjust z-index to control overlapping */
+    position: relative; /* To enable z-index */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Optional: Add a border to differentiate */
+}

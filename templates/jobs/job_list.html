@@ -1,9 +1,10 @@
+<!-- jobs/job_list.html -->
 {% extends 'home/base.html' %}
 
 {% block content %}
 <section class="container my-5">
     <h2 class="mb-4">Lista ofert pracy</h2>
-    
+
     <form method="GET" action="">
         <div class="input-group mb-3">
             <input type="text" name="q" class="form-control" placeholder="Szukaj ofert pracy..." value="{{ search_query }}">
@@ -15,7 +16,7 @@
         <div class="btn-group mb-3">
             <a href="?view=all&q={{ search_query }}" class="btn btn-secondary {% if view_mode == 'all' %}active{% endif %}">Wszystkie oferty</a>
             <a href="?view=my&q={{ search_query }}" class="btn btn-secondary {% if view_mode == 'my' %}active{% endif %}">Moje oferty</a>
-            <a href="{% url 'jobs:create_job' %}" class="btn btn-secondary">Dodaj oferte</a>
+            <a href="{% url 'jobs:create_job' %}" class="btn btn-secondary">Dodaj ofertę</a>
         </div>
     {% endif %}
 
@@ -37,8 +38,9 @@
                     <td>{{ job.salary }} PLN</td>
                     <td>
                         <a href="{% url 'jobs:job_detail' job_id=job.pk %}" class="btn btn-info btn-sm">Szczegóły</a>
-                        {% if user_role == 'candidate' %}
-                            <a href="{% url 'jobs:create_application' job_id=job.pk %}" class="btn btn-success btn-sm mt-1">Aplikuj</a>
+                        {% if user_role == 'recruiter' and job.recruiter_id == request.user.id %}
+                            <a href="{% url 'jobs:registered_applications_for_job' job_id=job.id %}" class="btn btn-warning btn-sm mt-1">Zobacz zarejestrowanych</a>
+                            <a href="{% url 'jobs:guest_feedback_applications_for_job' job_id=job.id %}" class="btn btn-danger btn-sm mt-1">Zobacz niezarejestrowanych</a>
                         {% endif %}
                     </td>
                 </tr>

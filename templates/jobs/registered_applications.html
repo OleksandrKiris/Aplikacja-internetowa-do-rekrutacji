@@ -1,28 +1,44 @@
 {% extends 'home/base.html' %}
+
 {% block content %}
-<section class="container mt-5">
-    <h1 class="h5">Zarejestrowane aplikacje</h1>
+<section class="container my-5">
+    <h1 class="h5 text-center">Zarejestrowane aplikacje</h1>
     {% for application in applications %}
-    <div class="card mb-3">
-        <div class="card-header">
+    <div class="card mb-3 shadow">
+        <div class="card-header bg-primary text-white">
             <h2 class="h6 mb-0">Informacje o kandydacie</h2>
         </div>
         <div class="card-body">
-            <p><strong>Imię:</strong> {{ application.candidate_profile.first_name }} {{ application.candidate_profile.last_name }}</p>
-            <p><strong>Email:</strong> {{ application.candidate_profile.user.email }}</p>
-            <p><strong>Numer telefonu:</strong> {{ application.candidate_profile.phone_number }}</p>
-            <p><strong>Lokalizacja:</strong> {{ application.candidate_profile.location }}</p>
-            <p><strong>Biografia:</strong> {{ application.candidate_profile.bio }}</p>
-            <p><strong>Umiejętności:</strong> {{ application.candidate_profile.skills }}</p>
+            {% if application.applicant.candidate_profile %}
+                <p><strong>Imię:</strong> {{ application.applicant.candidate_profile.first_name }} {{ application.applicant.candidate_profile.last_name }}</p>
+                <p><strong>Email:</strong> {{ application.applicant.email }}</p>
+                <p><strong>Numer telefonu:</strong> {{ application.applicant.candidate_profile.phone_number }}</p>
+                <p><strong>Lokalizacja:</strong> {{ application.applicant.candidate_profile.location }}</p>
+                <p><strong>Biografia:</strong> {{ application.applicant.candidate_profile.bio }}</p>
+                <p><strong>Umiejętności:</strong> {{ application.applicant.candidate_profile.skills }}</p>
+            {% else %}
+                <p>No profile data available for this candidate.</p>
+            {% endif %}
         </div>
-        <div class="card-footer">
+        <div class="card-footer bg-light">
             <h3 class="h6 mb-0">List motywacyjny aplikacji</h3>
             <p>{{ application.cover_letter }}</p>
             <a href="#" class="btn btn-primary btn-sm">Wyślij wiadomość</a>
+            <form method="POST" action="{% url 'jobs:update_application_status' application.id %}" class="d-inline-block ms-2">
+                {% csrf_token %}
+                <select name="status" class="form-select form-select-sm d-inline-block w-auto">
+                    {% for value, name in application.ApplicationStatus.choices %}
+                        <option value="{{ value }}" {% if application.status == value %}selected{% endif %}>{{ name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-secondary btn-sm mt-1">Zmień status</button>
+            </form>
         </div>
     </div>
     {% empty %}
-    <p>No registered applications found.</p>
+    <div class="alert alert-info text-center" role="alert">
+        Brak zarejestrowanych aplikacji.
+    </div>
     {% endfor %}
 </section>
 {% endblock %}

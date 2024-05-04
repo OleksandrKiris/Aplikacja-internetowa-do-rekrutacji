@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.i18n import set_language
 
-from accounts.views import HomeView, AboutView, ContactView, RecruiterListView, ClientListView
+from accounts.views import HomeView, AboutView, ContactView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +30,6 @@ urlpatterns = [
     path('o-nas/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('set-language/', set_language, name='set_language'),
+    path('news/', include('news.urls')),
 
 ]

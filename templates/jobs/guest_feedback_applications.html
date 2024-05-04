@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<section class="container my-5">
+    <h2 class="mb-4 text-center">Opinie gości</h2>
+    {% if feedbacks %}
+        <ul class="list-group">
+            {% for feedback in feedbacks %}
+                <li class="list-group-item shadow-sm p-3 mb-3 rounded">
+                    <strong>Email:</strong> {{ feedback.email }}<br>
+                    <strong>Telefon:</strong> {{ feedback.phone_number }}<br>
+                    <strong>Wiadomość:</strong> {{ feedback.message }}<br>
+                    <strong>Praca:</strong> {{ feedback.job.title }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            Brak opinii gości.
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<h2>Applications for {{ job.title }}</h2>
+{% if applications %}
+    <ul>
+        {% for application in applications %}
+            <li>
+                {{ application.applicant.username }} - {{ application.get_status_display }}
+                <a href="{% url 'jobs:update_application_status' application.id %}">Update Status</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No applications found.</p>
+{% endif %}
+<a href="{% url 'jobs:job_list' %}">Back to Jobs</a>
+{% endblock %}

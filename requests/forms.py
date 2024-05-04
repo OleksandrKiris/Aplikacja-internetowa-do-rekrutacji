@@ -7,16 +7,31 @@ class JobRequestForm(forms.ModelForm):
         model = JobRequest
         fields = ['title', 'description', 'requirements', 'status', 'recruiter']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'requirements': forms.Textarea(attrs={'class': 'form-control'}),
-            'status': forms.Select(attrs={'class': 'form-control'}),
-            'recruiter': forms.Select(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź tytuł'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Podaj opis'}),
+            'requirements': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Podaj wymagania'}),
+            'status': forms.Select(attrs={'class': 'form-select'}),
+            'recruiter': forms.Select(attrs={'class': 'form-select'})
         }
 
 
 class JobRequestStatusUpdateForm(forms.ModelForm):
-    message = forms.CharField(widget=forms.Textarea, required=False)
+    new_status = forms.ChoiceField(
+        choices=JobRequest.RequestStatus.choices,
+        widget=forms.Select(attrs={
+            'class': 'form-select',
+            'id': 'id_new_status'
+        })
+    )
+    message = forms.CharField(
+        required=False,
+        widget=forms.Textarea(attrs={
+            'class': 'form-control',
+            'rows': 4,
+            'placeholder': 'Wprowadź swoją wiadomość...',
+            'id': 'id_message'
+        })
+    )
 
     class Meta:
         model = JobRequestStatusUpdate
