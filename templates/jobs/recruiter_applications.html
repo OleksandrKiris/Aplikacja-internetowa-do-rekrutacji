@@ -2,19 +2,19 @@
 
 {% block content %}
 <section class="container my-5">
-    <h2 class="mb-4">Lista aplikacji na Twoje oferty pracy</h2>
+    <h2 class="text-center mb-4">Lista aplikacji na Twoje oferty pracy</h2>
 
-    <form method="GET" action="">
-        <div class="input-group mb-3">
+    <form method="GET" action="" class="mb-4">
+        <div class="input-group">
             <input type="text" name="q" class="form-control" placeholder="Szukaj w aplikacjach..." value="{{ search_query }}">
             <button type="submit" class="btn btn-primary">Szukaj</button>
         </div>
     </form>
 
-    <!-- Buttons for different application views -->
-    <div class="mb-3">
-        <a href="{% url 'jobs:registered_applications' %}" class="btn btn-info">Aplikacje zarejestrowane</a>
-        <a href="{% url 'jobs:guest_feedback_applications' %}" class="btn btn-secondary">Aplikacje gości</a>
+    <div class="mb-4 text-center">
+        <a href="{% url 'jobs:guest_applications' %}" class="btn btn-secondary">Aplikacje gości</a>
+        <a href="{% url 'jobs:create_job' %}" class="btn btn-success">Dodaj ofertę</a>
+        <a href="{% url 'jobs:job_list' %}" class="btn btn-warning">Wszystkie oferty pracy</a>
     </div>
 
     <div class="table-responsive">

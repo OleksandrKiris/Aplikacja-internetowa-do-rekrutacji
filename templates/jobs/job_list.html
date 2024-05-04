@@ -1,22 +1,21 @@
-<!-- jobs/job_list.html -->
 {% extends 'home/base.html' %}
 
 {% block content %}
 <section class="container my-5">
-    <h2 class="mb-4">Lista ofert pracy</h2>
+    <h2 class="text-center mb-4">Lista ofert pracy</h2>
 
-    <form method="GET" action="">
-        <div class="input-group mb-3">
+    <form method="GET" action="" class="mb-4">
+        <div class="input-group">
             <input type="text" name="q" class="form-control" placeholder="Szukaj ofert pracy..." value="{{ search_query }}">
             <button type="submit" class="btn btn-primary">Szukaj</button>
         </div>
     </form>
 
     {% if user_role == 'recruiter' %}
-        <div class="btn-group mb-3">
-            <a href="?view=all&q={{ search_query }}" class="btn btn-secondary {% if view_mode == 'all' %}active{% endif %}">Wszystkie oferty</a>
-            <a href="?view=my&q={{ search_query }}" class="btn btn-secondary {% if view_mode == 'my' %}active{% endif %}">Moje oferty</a>
-            <a href="{% url 'jobs:create_job' %}" class="btn btn-secondary">Dodaj ofertę</a>
+        <div class="text-center mb-4">
+            <a href="{% url 'jobs:create_job' %}" class="btn btn-success">Dodaj ofertę</a>
+            <a href="{% url 'jobs:recruiter_job_list' %}" class="btn btn-primary">Moje Oferty Pracy</a>
+            <a href="{% url 'jobs:recruiter_applications' %}" class="btn btn-warning">Aplikacje</a>
         </div>
     {% endif %}
 
@@ -27,38 +26,32 @@
                     <th scope="col">Tytuł</th>
                     <th scope="col">Opis</th>
                     <th scope="col">Wynagrodzenie</th>
-                    <th scope="col">Akcje</th>
                 </tr>
             </thead>
             <tbody>
                 {% for job in page_obj %}
                 <tr>
-                    <td>{{ job.title }}</td>
+                    <td>
+                        <a href="{% url 'jobs:job_detail' job_id=job.pk %}">{{ job.title }}</a>
+                    </td>
                     <td>{{ job.description|truncatewords:15 }}</td>
                     <td>{{ job.salary }} PLN</td>
-                    <td>
-                        <a href="{% url 'jobs:job_detail' job_id=job.pk %}" class="btn btn-info btn-sm">Szczegóły</a>
-                        {% if user_role == 'recruiter' and job.recruiter_id == request.user.id %}
-                            <a href="{% url 'jobs:registered_applications_for_job' job_id=job.id %}" class="btn btn-warning btn-sm mt-1">Zobacz zarejestrowanych</a>
-                            <a href="{% url 'jobs:guest_feedback_applications_for_job' job_id=job.id %}" class="btn btn-danger btn-sm mt-1">Zobacz niezarejestrowanych</a>
-                        {% endif %}
-                    </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="4">Brak dostępnych ofert pracy.</td>
+                    <td colspan="3">Brak dostępnych ofert pracy.</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 
-    <div class="pagination d-flex justify-content-between mt-3">
+    <div class="d-flex justify-content-between mt-3">
         {% if page_obj.has_previous %}
-            <a class="btn btn-secondary" href="?page={{ page_obj.previous_page_number }}&q={{ search_query }}&view={{ view_mode }}">Poprzednia</a>
+            <a class="btn btn-secondary" href="?page={{ page_obj.previous_page_number }}&q={{ search_query }}">Poprzednia</a>
         {% endif %}
         {% if page_obj.has_next %}
-            <a class="btn btn-secondary ms-auto" href="?page={{ page_obj.next_page_number }}&q={{ search_query }}&view={{ view_mode }}">Następna</a>
+            <a class="btn btn-secondary ms-auto" href="?page={{ page_obj.next_page_number }}&q={{ search_query }}">Następna</a>
         {% endif %}
     </div>
 </section>

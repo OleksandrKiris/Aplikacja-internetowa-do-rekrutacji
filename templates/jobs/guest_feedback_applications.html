@@ -3,6 +3,12 @@
 {% block content %}
 <section class="container my-5">
     <h2 class="mb-4 text-center">Opinie gości</h2>
+    <div class="mb-4 text-center">
+        <a href="{% url 'jobs:recruiter_applications' %}" class="btn btn-secondary">Aplikacje zarejestrowane</a>
+        <a href="{% url 'jobs:guest_applications' %}" class="btn btn-secondary">Aplikacje gości</a>
+        <a href="{% url 'jobs:create_job' %}" class="btn btn-success">Dodaj ofertę</a>
+        <a href="{% url 'jobs:job_list' %}" class="btn btn-warning">Wszystkie oferty pracy</a>
+    </div>
     {% if feedbacks %}
         <ul class="list-group">
             {% for feedback in feedbacks %}
