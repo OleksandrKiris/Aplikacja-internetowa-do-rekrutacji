@@ -16,7 +16,7 @@
         <div class="card-footer text-end">
             <a href="{% url 'jobs:job_list' %}" class="btn btn-primary">Wroc do ofert pracy</a>
 
-            {% if user_role == 'recruiter' %}
+            {% if user_role == 'recruiter' and current_user == job.recruiter %}
                 <a href="{% url 'jobs:registered_applications' %}?job_id={{ job.id }}" class="btn btn-secondary">Obejrzyj aplikacje</a>
                 <a href="{% url 'jobs:update_job_status' job.id %}" class="btn btn-secondary">Zmień status</a>
             {% elif user_role == 'candidate' %}

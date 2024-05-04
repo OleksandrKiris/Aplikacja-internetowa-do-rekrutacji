@@ -42,15 +42,14 @@ def common_job_list_view(request):
 @login_required
 def common_job_detail_view(request, job_id):
     job = get_object_or_404(Job, pk=job_id)
-    user_role = request.user.role  # Ensure the user has a role attribute
-
-    # Debugging print statement
-    print(f"User Role: {user_role}")
+    user_role = request.user.role
 
     return render(request, 'jobs/job_detail.html', {
         'job': job,
         'user_role': user_role,
+        'current_user': request.user,  # Pass current user to the template
     })
+
 
 
 @login_required
