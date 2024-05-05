@@ -1,22 +1,21 @@
 import os
 import django
 import random
-from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.db import transaction
 from faker import Faker
+from django.core.exceptions import ValidationError
 
 # Setup Django environment
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kirismor.settings")
 django.setup()
 
 # Import models
-from accounts.models import CandidateProfile, ClientProfile, RecruiterProfile, Task
+from accounts.models import CandidateProfile, ClientProfile, RecruiterProfile, User
 from jobs.models import Job, Application, GuestFeedback
 from requests.models import JobRequest
 from news.models import News
 
-User = get_user_model()
 fake = Faker()
 
 # Constants
@@ -34,115 +33,116 @@ def generate_phone_number():
 
 
 def create_user(role):
-    email = fake.email()
-    password = fake.password(length=12)
-    user = User.objects.create_user(email=email, password=password, role=role)
-    print(f"{role.capitalize()} email: {email}, password: {password}")
-    return user
+    while True:
+        email = fake.unique.email()
+        password = fake.password(length=12)
+        try:
+            user = User.objects.create_user(email=email, password=password, role=role)
+            print(f"{role.capitalize()} - Email: {email}, Password: {password}")
+            return user
+        except ValidationError as e:
+            print(f"Error: {e}")
+            continue
 
 
 def create_candidate_profile():
     user = create_user('candidate')
-    CandidateProfile.objects.create(
+    profile = CandidateProfile.objects.create(
         user=user,
-        first_name=fake.first_name(),
-        last_name=fake.last_name(),
-        phone_number=generate_phone_number(),
-        location=fake.city(),
-        bio=fake.text(max_nb_chars=200),
+        first_name=fake.first_name()[:100],
+        last_name=fake.last_name()[:100],
+        phone_number=generate_phone_number()[:15],
+        location=fake.city()[:100],
+        bio=fake.text(max_nb_chars=500),
         date_of_birth=fake.date_of_birth(minimum_age=18, maximum_age=60),
-        skills=fake.text(max_nb_chars=200)
+        skills=fake.text(max_nb_chars=500)
     )
+    print(f"Candidate Profile: {profile}")
 
 
 def create_client_profile():
     user = create_user('client')
-    ClientProfile.objects.create(
+    profile = ClientProfile.objects.create(
         user=user,
-        phone_number=generate_phone_number(),
-        location=fake.city(),
-        bio=fake.text(max_nb_chars=200),
-        company_name=fake.company(),
-        industry=fake.job()
+        phone_number=generate_phone_number()[:15],
+        location=fake.city()[:100],
+        bio=fake.text(max_nb_chars=500),
+        company_name=fake.company()[:100],
+        industry=fake.job()[:50]
     )
+    print(f"Client Profile: {profile}")
 
 
 def create_recruiter_profile():
     user = create_user('recruiter')
-    RecruiterProfile.objects.create(
+    profile = RecruiterProfile.objects.create(
         user=user,
-        first_name=fake.first_name(),
-        last_name=fake.last_name(),
-        phone_number=generate_phone_number(),
-        location=fake.city(),
-        bio=fake.text(max_nb_chars=200)
+        first_name=fake.first_name()[:100],
+        last_name=fake.last_name()[:100],
+        phone_number=generate_phone_number()[:15],
+        location=fake.city()[:100],
+        bio=fake.text(max_nb_chars=500)
     )
-
-
-def create_task():
-    created_by = create_user(random.choice(ROLE_CHOICES))
-    Task.objects.create(
-        created_by=created_by,
-        title=fake.sentence(),
-        description=fake.text(max_nb_chars=200),
-        priority=random.choice(TASK_PRIORITY_CHOICES),
-        due_date=fake.date_between(start_date='today', end_date='+30d'),
-        status=random.choice(TASK_STATUS_CHOICES)
-    )
+    print(f"Recruiter Profile: {profile}")
 
 
 def create_job():
-    recruiter = create_user('recruiter')
-    Job.objects.create(
-        title=fake.job(),
+    recruiter = RecruiterProfile.objects.order_by('?').first().user
+    job = Job.objects.create(
+        title=fake.job()[:200],
         recruiter=recruiter,
-        description=fake.text(max_nb_chars=200),
-        requirements=fake.text(max_nb_chars=200),
+        description=fake.text(max_nb_chars=500),
+        requirements=fake.text(max_nb_chars=500),
         salary=round(random.uniform(50000, 150000), 2),
         status=random.choice(JOB_STATUS_CHOICES)
     )
+    print(f"Job: {job}")
 
 
 def create_application():
     job = Job.objects.order_by('?').first()
-    applicant = create_user('candidate')
-    Application.objects.create(
+    applicant = CandidateProfile.objects.order_by('?').first().user
+    application = Application.objects.create(
         job=job,
         applicant=applicant,
-        cover_letter=fake.text(max_nb_chars=200),
+        cover_letter=fake.text(max_nb_chars=500),
         status=random.choice(APPLICATION_STATUS_CHOICES)
     )
+    print(f"Application: {application}")
 
 
 def create_guest_feedback():
     job = Job.objects.order_by('?').first()
-    GuestFeedback.objects.create(
+    feedback = GuestFeedback.objects.create(
         job=job,
-        email=fake.email(),
-        message=fake.text(max_nb_chars=200),
-        phone_number=generate_phone_number()
+        email=fake.unique.email(),
+        message=fake.text(max_nb_chars=500),
+        phone_number=generate_phone_number()[:15]
     )
+    print(f"Guest Feedback: {feedback}")
 
 
 def create_job_request():
-    employer = create_user('client')
-    recruiter = User.objects.filter(role='recruiter').order_by('?').first()
-    JobRequest.objects.create(
+    employer = ClientProfile.objects.order_by('?').first().user
+    recruiter = RecruiterProfile.objects.order_by('?').first().user
+    job_request = JobRequest.objects.create(
         employer=employer,
-        title=fake.job(),
-        description=fake.text(max_nb_chars=200),
-        requirements=fake.text(max_nb_chars=200),
+        title=fake.job()[:200],
+        description=fake.text(max_nb_chars=500),
+        requirements=fake.text(max_nb_chars=500),
         status=random.choice(JOB_REQUEST_STATUS_CHOICES),
         recruiter=recruiter
     )
+    print(f"Job Request: {job_request}")
 
 
 def create_news():
-    News.objects.create(
-        title=fake.sentence(),
-        content=fake.text(max_nb_chars=200),
+    news = News.objects.create(
+        title=fake.sentence()[:200],
+        content=fake.text(max_nb_chars=500),
         role=random.choice(NEWS_ROLE_CHOICES)
     )
+    print(f"News: {news}")
 
 
 def populate_database():
@@ -151,13 +151,13 @@ def populate_database():
             create_candidate_profile()
             create_client_profile()
             create_recruiter_profile()
-            create_task()
+        for _ in range(1000):
             create_job()
             create_application()
             create_guest_feedback()
             create_job_request()
             create_news()
-    print("Database populated with 50 records for each table.")
+    print("Database populated with 50 users and 1000 records for each specified table.")
 
 
 if __name__ == '__main__':

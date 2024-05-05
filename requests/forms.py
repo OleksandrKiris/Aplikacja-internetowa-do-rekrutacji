@@ -28,6 +28,7 @@ class JobRequestForm(forms.ModelForm):
         return cleaned_data
 
 
+
 class JobRequestStatusUpdateForm(forms.ModelForm):
     new_status = forms.ChoiceField(
         choices=JobRequest.RequestStatus.choices,

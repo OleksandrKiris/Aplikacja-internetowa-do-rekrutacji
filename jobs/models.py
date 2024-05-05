@@ -66,6 +66,9 @@ class Application(models.Model):
         else:
             return self.applicant.email  # Fallback if no profile is found
 
+    def __str__(self):
+        return f'{self.job.title} - {self.applicant.email}'
+
 
 class GuestFeedback(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='guest_feedbacks')

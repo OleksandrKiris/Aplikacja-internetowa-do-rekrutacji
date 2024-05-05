@@ -136,10 +136,14 @@ def login_view(request):
     return render(request, 'registration/login.html', {'form': form})
 
 
-# Funkcja do obsługi wylogowywania użytkowników
+@login_required
 def logout_view(request):
-    logout(request)  # Wylogowuje użytkownika i usuwa sesję
-    return redirect(reverse_lazy('home'))  # Przekierowuje na stronę główną
+    if request.method == 'POST':
+        logout(request)
+        return redirect(reverse_lazy('home'))
+    return render(request, 'registration/logout_confirmation.html', {
+        'user': request.user
+    })
 
 
 # Funkcja do tworzenia profilu użytkownika, dostępna tylko dla zalogowanych użytkowników

@@ -75,6 +75,18 @@ class User(AbstractBaseUser):
     def get_module_permissions(self):
         return set()
 
+    def get_full_name(self):
+        if self.role == 'candidate':
+            profile = self.candidate_profile
+        elif self.role == 'client':
+            profile = self.client_profile
+        elif self.role == 'recruiter':
+            profile = self.recruiter_profile
+        else:
+            return self.email
+
+        return f"{profile.first_name} {profile.last_name}"
+
     class Meta:
         verbose_name = _('użytkownik')
         verbose_name_plural = _('użytkownicy')

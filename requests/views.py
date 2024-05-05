@@ -20,11 +20,14 @@ def client_job_request_list_view(request):
 
 @login_required
 def client_job_request_create_view(request):
-    selected_recruiter = None
-    # Check if a recruiter was selected
-    if 'recruiter_id' in request.GET:
-        recruiter_id = request.GET['recruiter_id']
-        selected_recruiter = RecruiterProfile.objects.get(pk=recruiter_id)
+    initial_data = {}
+    if 'recruiter' in request.GET:
+        recruiter_id = request.GET['recruiter']
+        try:
+            selected_recruiter = RecruiterProfile.objects.get(user_id=recruiter_id)
+            initial_data['recruiter'] = selected_recruiter.user.id
+        except RecruiterProfile.DoesNotExist:
+            selected_recruiter = None
 
     if request.method == 'POST':
         form = JobRequestForm(request.POST)
@@ -34,10 +37,11 @@ def client_job_request_create_view(request):
             job_request.save()
             return redirect(reverse_lazy('requests:client_job_request_list'))
     else:
-        # Pass the selected recruiter to the form when creating a job request
-        form = JobRequestForm(selected_recruiter=selected_recruiter)
+        form = JobRequestForm(initial=initial_data)
 
     return render(request, 'job_requests/job_request_form.html', {'form': form})
+
+
 
 @login_required
 def client_job_request_delete_view(request, pk):
