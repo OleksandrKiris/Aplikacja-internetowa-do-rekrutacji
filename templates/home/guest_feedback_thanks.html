@@ -1,10 +1,74 @@
-<!-- jobs/templates/jobs/guest_feedback_thanks.html -->
-
 {% extends 'home/base.html' %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1>Dziękujemy za opinię!</h1>
-    <p>Twoja opinia została pomyślnie wysłana.</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-16">
+            <div class="card bg-light text-dark">
+                <div class="card-body text-center">
+                    <h1 class="display-4 mb-4">Dziękujemy za opinię!</h1>
+                    <p class="lead mb-4">Twoja opinia została pomyślnie wysłana.</p>
+                    <p>Dołącz do naszej strony już dziś, aby uzyskać dostęp do większej liczby ofert pracy i możliwości. Jeśli masz problemy z rejestracją, nasi rekruterzy zawsze są gotowi pomóc.<a href="{% url 'accounts:register' %}">Zarejestruj się</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+<!-- Sekcja z informacjami kontaktowymi -->
+<section class="mb-6">
+    <div class="container mt-4">
+        <h2 class="text-center mb-8 font-weight-bold">Zachęcamy do kontaktu z nami!</h2>
+
+        <!-- Kontakty -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Ivan Ivanov</h3>
+                        <h5 class="card-subtitle text-muted mb-3">Rekruter dla rynku ukraińskiego</h5>
+                        <p class="card-text">Telefon: +48 112 223 344</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Nino Ninavasil</h3>
+                        <h5 class="card-subtitle text-muted mb-3">Rekruter dla rynku gruzińskiego</h5>
+                        <p class="card-text">Telefon: +48 112 225 678</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informacje o mediach społecznościowych i adresie -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Media społecznościowe</h3>
+                        <p class="card-text">Instagram: <a href="https://instagram.com/KIRIS_MOR">@KIRIS_MOR</a></p>
+                        <p class="card-text">Facebook: <a href="https://facebook.com/KIRIS_MOR">KIRIS M.O.R.</a></p>
+                        <p class="card-text">LinkedIn: <a href="https://linkedin.com/KIRIS_MOR">Agencja Pracy KIRIS M.O.R.</a></p>
+                        <p class="card-text">TikTok: <a href="https://tiktok.com/KIRISMOR">@KIRISMOR</a></p>
+                        <p class="card-text">Email: <a href="mailto:info@kiris-mor.pl">info@kiris-mor.pl</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Adres</h3>
+                        <p class="card-text">ul. Nowowiejska 15, 00-665 Warszawa, Polska</p>
+                        <h3 class="card-title mt-4 font-weight-bold">Godziny otwarcia</h3>
+                        <p class="card-text">Poniedziałek - Piątek: 8:00 - 16:00</p>
+                        <p class="card-text">Sobota - Niedziela: Zamknięte</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

@@ -1,9 +1,13 @@
 from django.contrib.auth import logout, login  # Funkcje Django do obsługi wylogowywania i logowania użytkowników
 from django.contrib.auth.decorators import \
     login_required  # Dekorator sprawdzający, czy użytkownik jest zalogowany, i wymagający zalogowania
-from django.http import Http404  # Wyjątek używany do zgłaszania błędów 404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.serializers import serialize
+from django.db.models import Q
+from django.http import Http404, JsonResponse  # Wyjątek używany do zgłaszania błędów 404
 from django.shortcuts import redirect, render, \
     get_object_or_404  # Funkcje Django do przekierowania, renderowania szablonów i pobierania obiektów
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse  # Funkcje do wygodnego tworzenia odwołań URL w Django
 from django.views.generic import TemplateView, ListView  # Generyczne widoki zdefiniowane przez Django
 from accounts.forms import (RecruiterProfileForm, TaskForm, ClientProfileForm, CandidateProfileForm,
@@ -13,6 +17,7 @@ from accounts.models import RecruiterProfile, Task, ClientProfile, \
     CandidateProfile  # Importowanie modeli danych aplikacji
 from jobs.models import Job  # Importowanie modelu Job, definiującego dane ofert pracy
 from news.models import News
+from django.core.paginator import Paginator
 
 "---------------------------------------------------STRONA GŁÓWNA------------------------------------------------------"
 
@@ -41,18 +46,55 @@ class ContactView(TemplateView):
 "-------------------------------REJESTRACJA, LOGOWANIE, TWORZENIE PROFILU, WYLOGOWANIE---------------------------------"
 
 
-# Klasa RecruiterListView rozszerza ListView i obsługuje widok listy rekruterów
-class RecruiterListView(ListView):
-    model = RecruiterProfile  # Określenie modelu danych reprezentującego rekruterów
-    template_name = 'home/recruiters.html'  # Ustawienie szablonu HTML
-    context_object_name = 'recruiters'  # Nazwa zmiennej w szablonie zawierającej dane rekruterów
+class PaginationMixin:
+    def generate_pagination_html(self, page_obj):
+        paginator = page_obj.paginator
+        pagination_html = ''
+        if page_obj.has_previous():
+            pagination_html += f'<a class="btn btn-secondary pagination-link" href="?page={page_obj.previous_page_number()}">Previous</a>'
+        for num in paginator.page_range:
+            pagination_html += f'<a class="pagination-link" href="?page={num}">{num}</a>'
+        if page_obj.has_next():
+            pagination_html += f'<a class="btn btn-secondary ms-auto pagination-link" href="?page={page_obj.next_page_number()}">Next</a>'
+        return pagination_html
 
 
-# Klasa ClientListView rozszerza ListView i obsługuje widok listy klientów
-class ClientListView(ListView):
-    model = ClientProfile  # Określenie modelu danych reprezentującego klientów
-    template_name = 'home/client_list.html'  # Ustawienie szablonu HTML
-    context_object_name = 'clients'  # Nazwa zmiennej w szablonie zawierającej dane klientów
+class RecruiterListView(PaginationMixin, ListView):
+    model = RecruiterProfile
+    template_name = 'home/recruiters.html'
+    context_object_name = 'recruiters'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return RecruiterProfile.objects.order_by('first_name', 'last_name')
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            page_obj = context['page_obj']
+            recruiters = serialize('json', page_obj.object_list)
+            pagination_html = self.generate_pagination_html(page_obj)
+
+            return JsonResponse({'recruiters': recruiters, 'pagination': pagination_html})
+        return super().render_to_response(context, **response_kwargs)
+
+
+class ClientListView(PaginationMixin, ListView):
+    model = ClientProfile
+    template_name = 'home/client_list.html'
+    context_object_name = 'clients'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return ClientProfile.objects.order_by('company_name')
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            page_obj = context['page_obj']
+            clients = serialize('json', page_obj.object_list)
+            pagination_html = self.generate_pagination_html(page_obj)
+
+            return JsonResponse({'clients': clients, 'pagination': pagination_html})
+        return super().render_to_response(context, **response_kwargs)
 
 
 # Funkcja do obsługi rejestracji użytkowników
@@ -210,57 +252,91 @@ def profile_edit_view(request):
 "------------------------------------------ZADANIA REKRUTERA------------------------------------------------------------"
 
 
-# Widok listy zadań, dostępny tylko dla zalogowanych użytkowników
-@login_required
-def task_list_view(request):
-    tasks = Task.objects.filter(created_by=request.user)  # Pobiera zadania utworzone przez bieżącego użytkownika
-    # Renderuje szablon z listą zadań i przekazuje zadania do wyświetlenia
-    return render(request, 'tasks/task_list.html', {'tasks': tasks})
+class TaskListView(LoginRequiredMixin, ListView):
+    model = Task
+    template_name = 'tasks/task_list.html'
+    context_object_name = 'tasks'
+    paginate_by = 5  # Adjust as needed
 
+    def get_queryset(self):
+        search_query = self.request.GET.get('q', '')
+        queryset = Task.objects.filter(created_by=self.request.user)
 
-# Widok tworzenia zadania, dostępny tylko dla zalogowanych użytkowników
+        if search_query:
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(description__icontains=search_query)
+            )
+        return queryset
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            tasks = [
+                {
+                    'id': task.id,
+                    'title': task.title,
+                    'description': task.description[:30],  # First 30 characters
+                    'priority': task.get_priority_display(),
+                    'status': task.get_status_display(),
+                    'due_date': task.due_date.strftime('%d %b %Y') if task.due_date else ''
+                }
+                for task in context['tasks']
+            ]
+
+            pagination_html = ''
+            page_obj = context['page_obj']
+            paginator = context['paginator']
+
+            if page_obj.has_previous():
+                pagination_html += f'<a class="btn btn-secondary pagination-link" href="?page={page_obj.previous_page_number()}">Previous</a>'
+            for num in paginator.page_range:
+                pagination_html += f'<a class="pagination-link" href="?page={num}">{num}</a>'
+            if page_obj.has_next():
+                pagination_html += f'<a class="btn btn-secondary ms-auto pagination-link" href="?page={page_obj.next_page_number()}">Next</a>'
+
+            return JsonResponse({'tasks': tasks, 'pagination': pagination_html})
+        return super().render_to_response(context, **response_kwargs)
+
 @login_required
 def task_create_view(request):
-    if request.method == 'POST':  # Jeśli żądanie to POST, przetwarzamy dane zadania
-        form = TaskForm(request.POST)  # Tworzy formularz tworzenia zadania z danymi POST
-        if form.is_valid():  # Sprawdza, czy formularz jest poprawny
-            # Tworzy obiekt zadania, ale nie zapisuje go jeszcze
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
             task = form.save(commit=False)
-            task.created_by = request.user  # Ustawia bieżącego użytkownika jako twórcę zadania
-            task.save()  # Zapisuje zadanie w bazie danych
-            return redirect(reverse_lazy('accounts:task_list'))  # Przekierowuje do listy zadań
-    else:  # Jeśli żądanie to GET, tworzy pusty formularz
+            task.created_by = request.user
+            task.save()
+            return redirect(reverse_lazy('accounts:task_list'))
+    else:
         form = TaskForm()
 
-    # Renderuje szablon tworzenia zadania z formularzem
     return render(request, 'tasks/task_form.html', {'form': form})
 
 
-# Widok edycji zadania, dostępny tylko dla zalogowanych użytkowników
 @login_required
 def task_update_view(request, task_id):
-    # Pobiera zadanie na podstawie ID i sprawdza, czy zostało utworzone przez bieżącego użytkownika
     task = get_object_or_404(Task, pk=task_id, created_by=request.user)
-    if request.method == 'POST':  # Jeśli żądanie to POST, przetwarzamy dane edycji zadania
-        form = TaskForm(request.POST, instance=task)  # Tworzy formularz edycji zadania z danymi POST
-        if form.is_valid():  # Sprawdza, czy formularz jest poprawny
-            form.save()  # Zapisuje zmiany w zadaniu w bazie danych
-            return redirect(reverse_lazy('accounts:task_list'))  # Przekierowuje do listy zadań
-    else:  # Jeśli żądanie to GET, tworzy formularz z istniejącymi danymi zadania
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy('accounts:task_list'))
+    else:
         form = TaskForm(instance=task)
 
-    # Renderuje szablon edycji zadania z formularzem
     return render(request, 'tasks/task_form.html', {'form': form})
 
 
-# Widok usuwania zadania, dostępny tylko dla zalogowanych użytkowników
 @login_required
 def task_delete_view(request, task_id):
-    # Pobiera zadanie na podstawie ID i sprawdza, czy zostało utworzone przez bieżącego użytkownika
     task = get_object_or_404(Task, pk=task_id, created_by=request.user)
-    if request.method == 'POST':  # Jeśli żądanie to POST, przetwarzamy żądanie usunięcia zadania
-        task.delete()  # Usuwa zadanie z bazy danych
-        return redirect(reverse_lazy('accounts:task_list'))  # Przekierowuje do listy zadań
+    if request.method == 'POST':
+        task.delete()
+        return redirect(reverse_lazy('accounts:task_list'))
 
-    # Renderuje szablon potwierdzenia usunięcia zadania
     return render(request, 'tasks/task_confirm_delete.html', {'task': task})
+
+
+@login_required
+def task_detail_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'tasks/task_detail.html', {'task': task})

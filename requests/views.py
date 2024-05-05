@@ -1,4 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.core.checks import messages
+from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
@@ -17,6 +20,12 @@ def client_job_request_list_view(request):
 
 @login_required
 def client_job_request_create_view(request):
+    selected_recruiter = None
+    # Check if a recruiter was selected
+    if 'recruiter_id' in request.GET:
+        recruiter_id = request.GET['recruiter_id']
+        selected_recruiter = RecruiterProfile.objects.get(pk=recruiter_id)
+
     if request.method == 'POST':
         form = JobRequestForm(request.POST)
         if form.is_valid():
@@ -25,9 +34,10 @@ def client_job_request_create_view(request):
             job_request.save()
             return redirect(reverse_lazy('requests:client_job_request_list'))
     else:
-        form = JobRequestForm()
-    return render(request, 'job_requests/job_request_form.html', {'form': form})
+        # Pass the selected recruiter to the form when creating a job request
+        form = JobRequestForm(selected_recruiter=selected_recruiter)
 
+    return render(request, 'job_requests/job_request_form.html', {'form': form})
 
 @login_required
 def client_job_request_delete_view(request, pk):
@@ -49,21 +59,38 @@ def recruiter_job_request_list_view(request):
 @login_required
 def recruiter_list_view(request):
     search_query = request.GET.get('q', '')
-    recruiters = RecruiterProfile.objects.all()
-
-    if search_query:
-        recruiters = recruiters.filter(user__first_name__icontains=search_query) | recruiters.filter(
-            user__last_name__icontains=search_query)
+    recruiters = RecruiterProfile.objects.filter(Q(first_name__icontains=search_query) | Q(last_name__icontains=search_query))
 
     paginator = Paginator(recruiters, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
+    if request.headers.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+        recruiters_data = []
+        for recruiter in page_obj:
+            recruiter_data = {
+                'id': recruiter.user.id,
+                'first_name': recruiter.first_name,
+                'last_name': recruiter.last_name,
+                'bio': recruiter.bio[:100],  # Truncate bio
+                # Add other fields as needed
+            }
+            recruiters_data.append(recruiter_data)
+
+        pagination_html = ''
+        if page_obj.has_previous():
+            pagination_html += f'<a class="btn btn-secondary pagination-link" href="?page={page_obj.previous_page_number()}&q={search_query}">Poprzednia</a>'
+        for num in page_obj.paginator.page_range:
+            pagination_html += f'<a class="pagination-link" href="?page={num}&q={search_query}">{num}</a>'
+        if page_obj.has_next():
+            pagination_html += f'<a class="btn btn-secondary ms-auto pagination-link" href="?page={page_obj.next_page_number()}&q={search_query}">Następna</a>'
+
+        return JsonResponse({'recruiters': recruiters_data, 'pagination': pagination_html})
+
     return render(request, 'job_requests/recruiter_list.html', {
         'page_obj': page_obj,
-        'search_query': search_query
+        'search_query': search_query,
     })
-
 
 @login_required
 def recruiter_job_request_update_view(request, pk):

@@ -1,4 +1,3 @@
-# forms.py
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -12,95 +11,105 @@ class UserRegistrationForm(UserCreationForm):
         ('candidate', 'Kandydat'),
         ('client', 'Klient')
     ]
-    role = forms.ChoiceField(choices=ROLE_CHOICES, required=True, widget=forms.Select(attrs={'class': 'form-control'}))
+    role = forms.ChoiceField(
+        choices=ROLE_CHOICES,
+        required=True,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
 
     class Meta:
         model = User
         fields = ['email', 'password1', 'password2', 'role']
-        widgets = {
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
-            'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
+        labels = {
+            'email': 'Email',
+            'password1': 'Hasło',
+            'password2': 'Potwierdź Hasło',
+            'role': 'Rola'
         }
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.is_active = True
-        user.role = self.cleaned_data['role']
-        if commit:
-            user.save()
-        return user
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź email'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź hasło'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Potwierdź hasło'})
+        }
 
 
 class CandidateProfileForm(forms.ModelForm):
     class Meta:
         model = CandidateProfile
         fields = ['first_name', 'last_name', 'phone_number', 'photo', 'location', 'bio', 'date_of_birth', 'skills']
-        widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
-            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
-            'location': forms.TextInput(attrs={'class': 'form-control'}),
-            'bio': forms.Textarea(attrs={'class': 'form-control'}),
-            'date_of_birth': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'skills': forms.Textarea(attrs={'class': 'form-control'}),
+        labels = {
+            'first_name': 'Imię',
+            'last_name': 'Nazwisko',
+            'phone_number': 'Numer Telefonu',
+            'photo': 'Zdjęcie',
+            'location': 'Lokalizacja',
+            'bio': 'Biografia',
+            'date_of_birth': 'Data Urodzenia',
+            'skills': 'Umiejętności'
         }
-
-    def save(self, commit=True):
-        instance = super().save(commit=False)
-        instance.photo = self.cleaned_data.get('photo')
-        if commit:
-            instance.save()
-        return instance
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź imię'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź nazwisko'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź numer telefonu'}),
+            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
+            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź lokalizację'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Wprowadź biografię'}),
+            'date_of_birth': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'skills': forms.Textarea(attrs={'class': 'form-control', 'rows': 2, 'placeholder': 'Wprowadź umiejętności'})
+        }
 
 
 class ClientProfileForm(forms.ModelForm):
     class Meta:
         model = ClientProfile
         fields = ['phone_number', 'photo', 'location', 'bio', 'company_name', 'industry']
-        widgets = {
-            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
-            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
-            'location': forms.TextInput(attrs={'class': 'form-control'}),
-            'bio': forms.Textarea(attrs={'class': 'form-control'}),
-            'company_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'industry': forms.TextInput(attrs={'class': 'form-control'}),
+        labels = {
+            'phone_number': 'Numer Telefonu',
+            'photo': 'Zdjęcie',
+            'location': 'Lokalizacja',
+            'bio': 'Biografia',
+            'company_name': 'Nazwa Firmy',
+            'industry': 'Branża'
         }
-
-    def save(self, commit=True):
-        instance = super().save(commit=False)
-        instance.photo = self.cleaned_data.get('photo')
-        if commit:
-            instance.save()
-        return instance
+        widgets = {
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź numer telefonu'}),
+            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
+            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź lokalizację'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Wprowadź biografię'}),
+            'company_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź nazwę firmy'}),
+            'industry': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź branżę'})
+        }
 
 
 class RecruiterProfileForm(forms.ModelForm):
     class Meta:
         model = RecruiterProfile
         fields = ['first_name', 'last_name', 'phone_number', 'photo', 'location', 'bio']
-        widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
-            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
-            'location': forms.TextInput(attrs={'class': 'form-control'}),
-            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+        labels = {
+            'first_name': 'Imię',
+            'last_name': 'Nazwisko',
+            'phone_number': 'Numer Telefonu',
+            'photo': 'Zdjęcie',
+            'location': 'Lokalizacja',
+            'bio': 'Biografia'
         }
-
-    def save(self,commit=True):
-        instance = super().save(commit=False)
-        instance.photo = self.cleaned_data.get('photo')
-        if commit:
-            instance.save()
-        return instance
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź imię'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź nazwisko'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź numer telefonu'}),
+            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
+            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź lokalizację'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Wprowadź biografię'})
+        }
 
 
 class UserLoginForm(AuthenticationForm):
     username = forms.EmailField(label="Email",
-                                widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': 254}))
-    password = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+                                widget=forms.TextInput(
+                                    attrs={'class': 'form-control', 'placeholder': 'Wprowadź email'}))
+    password = forms.CharField(label="Hasło",
+                               widget=forms.PasswordInput(
+                                   attrs={'class': 'form-control', 'placeholder': 'Wprowadź hasło'}))
 
 
 class TaskForm(forms.ModelForm):
@@ -112,13 +121,12 @@ class TaskForm(forms.ModelForm):
             'description': 'Opis',
             'priority': 'Priorytet',
             'due_date': 'Termin wykonania',
-            'status': 'Status',
+            'status': 'Status'
         }
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź tytuł'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Wprowadź opis'}),
             'priority': forms.Select(attrs={'class': 'form-control'}),
-            'due_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'status': forms.Select(attrs={'class': 'form-control'}),
+            'due_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'format': '%d-%m-%Y'}),
+            'status': forms.Select(attrs={'class': 'form-control'})
         }
-

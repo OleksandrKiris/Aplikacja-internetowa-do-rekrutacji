@@ -2,9 +2,9 @@
 
 {% block content %}
 <section class="container mt-5">
-    <div class="card">
-        <div class="card-header">
-            <h1>
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h2>
                 {% if profile_type == 'candidate' %}
                     Szczegóły profilu kandydata
                 {% elif profile_type == 'client' %}
@@ -12,7 +12,7 @@
                 {% elif profile_type == 'recruiter' %}
                     Szczegóły profilu rekrutera
                 {% endif %}
-            </h1>
+            </h2>
         </div>
         <div class="card-body">
             <p><strong>Email:</strong> {{ profile.user.email }}</p>
@@ -20,7 +20,7 @@
             <p><strong>Lokalizacja:</strong> {{ profile.location }}</p>
             <p><strong>Bio:</strong> {{ profile.bio }}</p>
 
-            {% if profile_type == 'candidate' or profile_type == 'recruiter' %}
+            {{% if profile_type == 'candidate' or profile_type == 'recruiter' %}
                 <p><strong>Imię:</strong> {{ profile.first_name }}</p>
                 <p><strong>Nazwisko:</strong> {{ profile.last_name }}</p>
             {% elif profile_type == 'client' %}
@@ -28,9 +28,10 @@
                 <p><strong>Branża:</strong> {{ profile.industry }}</p>
             {% endif %}
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-end">
             <a href="{% url 'accounts:profile_edit' %}" class="btn btn-primary">Edytuj profil</a>
         </div>
     </div>
 </section>
 {% endblock %}
+

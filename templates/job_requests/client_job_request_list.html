@@ -10,6 +10,13 @@
             {{ job_request.title }}
             <span class="badge bg-primary rounded-pill">{{ job_request.get_status_display }}</span>
             <div>
+                <!-- Отображаем имя и email рекрутера, если он выбран -->
+                {% if job_request.recruiter %}
+                    <p>{{ job_request.recruiter.recruiter_profile.first_name }} {{ job_request.recruiter.recruiter_profile.last_name }}</p>
+                    <p>{{ job_request.recruiter.email }}</p>
+                {% else %}
+                    <p>Rekruter nie jest wybrany</p>
+                {% endif %}
                 <a href="{% url 'requests:client_job_request_detail' job_request.pk %}" class="btn btn-primary btn-sm">Szczegóły</a>
                 <form method="post" action="{% url 'requests:client_job_request_delete' job_request.pk %}" style="display: inline;">
                     {% csrf_token %}

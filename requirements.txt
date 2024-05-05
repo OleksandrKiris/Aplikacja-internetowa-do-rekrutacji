@@ -2,3 +2,5 @@ Django==5.0.4
 psycopg2-binary==2.9.9
 
 
+
+Faker~=25.0.0

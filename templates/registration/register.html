@@ -1,33 +1,25 @@
-{% extends "accounts/../home/base.html" %}
-{% load static %}
+{% extends 'home/base.html' %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card shadow p-4">
-                <div class="card-body">
-                    <h2 class="mb-3 text-center">Rejestracja</h2>
-                    <form method="post" class="register-form">
+<section class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white text-center">
+                    <h1 class="display-5 fw-bold text-white">Rejestracja</h1> <!-- Ensuring white text -->
+                </div>
+                <div class="card-body bg-light">
+                    <form method="post">
                         {% csrf_token %}
-                        {% if form.errors %}
-                            <div class="alert alert-danger" role="alert">
-                                {% for field, errors in form.errors.items %}
-                                    {% for error in errors %}
-                                        {{ error }}
-                                    {% endfor %}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-success w-100">Register</button>
+                        <button type="submit" class="btn btn-success w-100 mt-3">Rejestracja</button>
                     </form>
-                    <div class="mt-3 text-center">
-                        <p>Jeśli już masz konto, <a href="{% url 'accounts:login' %}">Login</a></p>
-                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <p>Jeśli masz już konto, <a href="{% url 'accounts:login' %}">Zaloguj się</a></p>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

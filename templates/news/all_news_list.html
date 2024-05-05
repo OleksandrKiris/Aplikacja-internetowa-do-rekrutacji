@@ -1,20 +1,27 @@
-<!-- news/all_news_list.html -->
-
 {% extends 'home/base.html' %}
 
 {% block content %}
-    <main class="container mt-4">
-        <h1>All News</h1>
-        <ul>
+        <h1 class="display-4 text-center fw-bold mb-4 text-primary">Wszystkie Nowosci</h1>
+        <div class="row justify-content-center">
             {% for news in news_list %}
-                <li>
-                    <h3>{{ news.title }}</h3>
-                    <p>{{ news.content }}</p>
-                    <small>{{ news.date_posted }}</small>
-                </li>
+                <div class="col-lg-8 col-md-10 mb-4">
+                    <div class="card shadow-lg h-100">
+                        <div class="card-body">
+                            <h3 class="card-title text-primary">{{ news.title }}</h3>
+                            <p class="card-text">{{ news.content }}</p>
+                        </div>
+                        <div class="card-footer text-end">
+                            <small class="text-muted">{{ news.date_posted }}</small>
+                        </div>
+                    </div>
+                </div>
             {% empty %}
-                <li>No news to display.</li>
+                <div class="col-md-8 text-center">
+                    <div class="alert alert-info">
+                        Brak nowości do wyświetlenia.
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
-    </main>
+        </div>
+  
 {% endblock %}

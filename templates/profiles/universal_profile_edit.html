@@ -2,15 +2,17 @@
 
 {% block content %}
 <section class="container mt-5">
-    <div class="card">
-        <div class="card-header">
-            <h1>Edytuj profil</h1>
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h2>Edytuj profil</h2>
         </div>
         <div class="card-body">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" novalidate>
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success">Zapisz zmiany</button>
+                </div>
             </form>
         </div>
     </div>

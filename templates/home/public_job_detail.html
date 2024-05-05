@@ -2,29 +2,29 @@
 
 {% block content %}
 <div class="container mt-5">
-    <div class="card shadow-sm">
+    <div class="card shadow-lg border-0">
         <div class="card-body">
-            <h1 class="card-title mb-4 text-center">{{ job.title }}</h1>
+            <h1 class="card-title mb-5 text-center text-primary fw-bold">{{ job.title }}</h1>
             <div class="row">
-                <div class="col-md-6 mb-3">
-                    <h5><strong>Opis stanowiska:</strong></h5>
+                <div class="col-md-6 mb-4">
+                    <h4 class="fw-bold">Opis stanowiska:</h4>
                     <p>{{ job.description }}</p>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <h5><strong>Wymagania:</strong></h5>
+                <div class="col-md-6 mb-4">
+                    <h4 class="fw-bold">Wymagania:</h4>
                     <p>{{ job.requirements }}</p>
-                    <h5><strong>Lokalizacja:</strong></h5>
+                    <h4 class="fw-bold mt-4">Lokalizacja:</h4>
                     <p>{{ job.location }}</p>
-                    <h5><strong>Wynagrodzenie:</strong></h5>
+                    <h4 class="fw-bold mt-4">Wynagrodzenie:</h4>
                     <p>{{ job.salary }}</p>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <a href="{% url 'jobs:guest_feedback' job.id %}" class="btn btn-primary btn-block w-100">Zostaw opinię</a>
+            <div class="row mt-5">
+                <div class="col-md-6 mb-3">
+                    <a href="{% url 'jobs:guest_feedback' job.id %}" class="btn btn-primary w-100">Zostaw opinię</a>
                 </div>
-                <div class="col-md-6">
-                    <a href="{% url 'jobs:public_job_list' %}" class="btn btn-secondary btn-block w-100">Powrót</a>
+                <div class="col-md-6 mb-3">
+                    <a href="{% url 'jobs:public_job_list' %}" class="btn btn-secondary w-100">Powrót</a>
                 </div>
             </div>
         </div>

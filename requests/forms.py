@@ -9,10 +9,23 @@ class JobRequestForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź tytuł'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Podaj opis'}),
-            'requirements': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Podaj wymagania'}),
+            'requirements': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Podaj wymagania'}),
             'status': forms.Select(attrs={'class': 'form-select'}),
             'recruiter': forms.Select(attrs={'class': 'form-select'})
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance and self.instance.pk and self.instance.recruiter:
+            self.fields['recruiter'].widget.attrs['readonly'] = True
+
+    def clean(self):
+        cleaned_data = super().clean()
+        recruiter = cleaned_data.get('recruiter')
+        if self.instance and self.instance.pk and self.instance.recruiter and recruiter != self.instance.recruiter:
+            self.add_error('recruiter', 'Recruiter cannot be changed once assigned.')
+        return cleaned_data
 
 
 class JobRequestStatusUpdateForm(forms.ModelForm):

@@ -4,26 +4,25 @@
 {% block content %}
 <div class="container">
     <h2>Wybierz Rekrutera</h2>
-    <form method="GET" class="mb-3">
+    <form id="search-form" class="mb-3" method="GET">
         <div class="input-group">
-            <label>
-                <input type="text" name="q" value="{{ search_query }}" class="form-control" placeholder="Szukaj rekrutera...">
-            </label>
+            <input id="search-input" type="text" name="q" value="{{ search_query }}" class="form-control" placeholder="Szukaj...">
             <button type="submit" class="btn btn-primary">Szukaj</button>
         </div>
     </form>
-    <div class="row">
+    {% if page_obj %}
+    <div id="recruiter-list" class="row">
         {% for recruiter in page_obj %}
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body text-center">
                     {% if recruiter.photo %}
-                        <img src="{{ recruiter.photo.url }}" alt="Recruiter Image" class="rounded-circle img-thumbnail" style="max-width: 100px; max-height: 100px;">
+                        <img src="{{ recruiter.photo.url }}" alt="Zdjęcie rekrutera" class="rounded-circle img-thumbnail" style="max-width: 100px; max-height: 100px;">
                     {% else %}
-                        <img src="{% static 'images/Icon_4.png' %}" alt="Default Profile" class="rounded-circle img-thumbnail" style="max-width: 100px; max-height: 100px;">
+                        <img src="{% static 'images/Icon_4.png' %}" alt="Domyślny profil" class="rounded-circle img-thumbnail" style="max-width: 100px; max-height: 100px;">
                     {% endif %}
                     <h6 class="card-title mt-3">{{ recruiter.first_name }} {{ recruiter.last_name }}</h6>
-                    <p class="card-text">{{ recruiter.bio }}</p>
+                    <p class="card-text">{{ recruiter.bio|truncatechars:100 }}</p> <!-- Skrócenie biografii -->
                     <a href="{% url 'requests:client_job_request_create' %}?recruiter={{ recruiter.user.pk }}" class="btn btn-primary">Zrób Zapytanie</a>
                 </div>
             </div>
@@ -35,8 +34,18 @@
             <a class="btn btn-secondary" href="?page={{ page_obj.previous_page_number }}&q={{ search_query }}">Poprzednia</a>
         {% endif %}
         {% if page_obj.has_next %}
-            <a class="btn btn-secondary" href="?page={{ page_obj.next_page_number }}&q{{ search_query }}">Następna</a>
+            <a class="btn btn-secondary" href="?page={{ page_obj.next_page_number }}&q={{ search_query }}">Następna</a>
         {% endif %}
     </div>
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+        Nie znaleziono rekrutera o podanych kryteriach.
+    </div>
+    {% endif %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Import custom JavaScript for AJAX functionality -->
+<script src="{% static 'js/requests.js' %}"></script>
 {% endblock %}

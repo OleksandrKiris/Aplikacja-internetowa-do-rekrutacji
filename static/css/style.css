@@ -3,17 +3,17 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: #f5f7fa; /* Lighter background for improved contrast */
     color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Main container styles */
 main.container {
-    background-color: #ffffff; /* White background for main content */
+    background-color: #ffffff; /* Bright white background for main content */
     border-radius: 12px;
-    padding: 25px; /* Added padding */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    padding: 25px; /* Padding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* More prominent shadow */
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
@@ -22,31 +22,31 @@ main.container {
 
 /* Heading styles */
 h1, h2 {
-    color: #0056b3; /* Darker blue for a more professional look */
+    color: #004080; /* A cooler, darker blue for a more professional look */
     font-weight: bold;
     text-align: center;
-    margin-bottom: 25px; /* Adjusted margin */
+    margin-bottom: 30px; /* Increased margin for better spacing */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h3, h5 {
-    color: #333;
+    color: #2d2d2d; /* Slightly darker for better readability */
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Increased margin for better spacing */
 }
 
 /* Text styles */
 p, .text-muted {
     font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 15px;
+    color: #444; /* Darker gray for improved readability */
+    margin-bottom: 20px; /* Increased margin */
 }
 
 /* Card styles */
 .card {
-    border-radius: 12px; /* Rounded corners */
-    padding: 25px; /* Increased padding for better spacing */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 14px; /* More rounded corners for a softer look */
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow */
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -55,8 +55,8 @@ p, .text-muted {
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Even stronger shadow on hover */
 }
 
 .card-body {
@@ -65,10 +65,10 @@ p, .text-muted {
 }
 
 .card-title {
-    font-size: 1.8rem; /* Slightly smaller font size for a cleaner look */
-    color: #0a0a0b; /* Matching color with headings */
+    font-size: 2rem; /* Larger font size for emphasis */
+    color: #003366; /* Darker blue to match the heading style */
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* Increased margin */
 }
 
 /* Button styles */
@@ -76,7 +76,7 @@ p, .text-muted {
     color: #ffffff;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 6px; /* Slightly more rounded corners */
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -90,11 +90,11 @@ p, .text-muted {
 }
 
 .btn-secondary {
-    background-color: #28a745;
+    background-color: #17a2b8; /* Changed to a blue-green for contrast */
 }
 
 .btn-secondary:hover {
-    background-color: #218838;
+    background-color: #138496;
     transform: translateY(-3px);
 }
 
@@ -109,20 +109,20 @@ ul.list-group {
     border-radius: 12px;
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid #ddd;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+    margin-bottom: 20px; /* Increased margin */
     padding: 20px;
 }
 
 .list-group-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
 /* Profile picture styles */
 .rounded-circle {
     border: 2px solid #0056b3;
-    padding: 2px;
+    padding: 3px; /* Increased padding */
     margin-right: 15px;
 }
 
@@ -135,12 +135,12 @@ ul.list-group {
 .contact-section .card, .o_nas-row .card {
     flex: 1;
     min-height: 100%;
-    margin-bottom: 15px; /* Add some spacing between cards */
+    margin-bottom: 20px; /* Increased spacing between cards */
 }
 
 /* Navbar styles */
 header {
-    background-color: #343a40; /* Dark background for header */
+    background-color: #2c3e50; /* Dark blue-gray for header */
 }
 
 .navbar {
@@ -148,20 +148,20 @@ header {
 }
 
 .navbar-toggler {
-    background-color: #0056b3; /* Matching color for toggler */
+    background-color: #0056b3;
     color: #ffffff;
 }
 
 .navbar-nav .nav-link {
     color: #ffffff;
-    padding: 10px 20px; /* Larger padding for better click area */
+    padding: 12px 25px; /* Increased padding */
     font-weight: bold;
     transition: background-color 0.3s, transform 0.3s;
-    border-radius: 5px;
+    border-radius: 6px; /* Slightly more rounded corners */
 }
 
 .navbar-nav .nav-link:hover {
-    background-color: #0056b3; /* Darker blue for hover */
+    background-color: #004080; /* Darker blue for hover */
     transform: translateY(-3px);
 }
 
@@ -171,8 +171,37 @@ header {
 }
 
 .card-transparent {
-    background: rgba(255, 255, 255, 0.6); /* Adjust the alpha for transparency */
-    z-index: 10; /* Adjust z-index to control overlapping */
-    position: relative; /* To enable z-index */
+    background: rgba(255, 255, 255, 0.75); /* Lighter transparency */
+    z-index: 10;
+    position: relative;
     border: 1px solid rgba(0, 0, 0, 0.1); /* Optional: Add a border to differentiate */
+}
+
+/* Additional custom styles for buttons */
+.btn-custom-primary {
+    background-color: #0056b3; /* Matching color to other primary buttons */
+    border-color: #0056b3;
+    color: #fff;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-custom-primary:hover {
+    background-color: #003366;
+    border-color: #003366;
+}
+
+.btn-custom-secondary {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: #fff;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-custom-secondary:hover {
+    background-color: #138496;
+    border-color: #0d6c7b;
+}
+.pagination-link {
+    font-size: 1rem; /* Adjust font size */
+    padding: 0.5rem 1rem; /* Adjust padding */
 }
