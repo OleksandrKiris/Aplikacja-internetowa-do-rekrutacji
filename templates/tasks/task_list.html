@@ -1,24 +1,26 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block content %}
-<div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="h5">Task List</h2>
-        <form method="GET" class="d-flex" action="{% url 'accounts:task_list' %}">
-            <label>
-                <input type="text" name="q" value="{{ search_query }}" class="form-control me-2" placeholder="Search tasks...">
-            </label>
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-        <a href="{% url 'accounts:task_create' %}" class="btn btn-success ms-3">Add New Task</a>
-    </div>
-
+<section class="container my-5">
     <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 class="h5 fw-bold mb-0">Task List</h2>
+        </div>
         <div class="card-body">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                <form method="GET" class="d-flex flex-grow-1" action="{% url 'accounts:task_list' %}">
+                    <label class="flex-grow-1">
+                        <input type="text" name="q" value="{{ search_query }}" class="form-control form-control-sm me-2" placeholder="Search tasks...">
+                    </label>
+                    <button type="submit" class="btn btn-primary btn-sm ms-2">Search</button>
+                </form>
+                <a href="{% url 'accounts:task_create' %}" class="btn btn-success btn-sm ms-3">Add New Task</a>
+            </div>
+
             {% if tasks %}
             <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle">
-                    <thead class="bg-primary text-white">
+                <table class="table table-hover table-bordered align-middle">
+                    <thead class="table-primary">
                         <tr>
                             <th scope="col">Title</th>
                             <th scope="col">Description</th>
@@ -32,12 +34,12 @@
                         {% for task in tasks %}
                         <tr>
                             <td>
-                                <a href="{% url 'accounts:task_detail' task.pk %}" class="text-decoration-none"><strong>{{ task.title }}</strong></a>
+                                <a href="{% url 'accounts:task_detail' task.pk %}" class="text-decoration-none fw-bold">{{ task.title }}</a>
                             </td>
-                            <td>{{ task.description|truncatechars:30 }}</td>  <!-- First 30 characters of description -->
+                            <td>{{ task.description|truncatechars:30 }}</td>
                             <td>{{ task.get_priority_display }}</td>
                             <td>{{ task.get_status_display }}</td>
-                            <td>{{ task.due_date|date:"d M Y" }}</td>  <!-- Formatted date -->
+                            <td>{{ task.due_date|date:"d M Y" }}</td>
                             <td>
                                 <a href="{% url 'accounts:task_update' task.pk %}" class="btn btn-warning btn-sm me-1">Edit</a>
                                 <a href="{% url 'accounts:task_delete' task.pk %}" class="btn btn-danger btn-sm">Delete</a>
@@ -71,7 +73,7 @@
             {% endif %}
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
 {% block scripts %}
     <script src="{% static 'js/accounts.js' %}"></script>

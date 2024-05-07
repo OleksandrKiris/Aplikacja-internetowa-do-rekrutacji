@@ -1,0 +1,38 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<section class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 class="h4 fw-bold mb-0">Liked Jobs</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered align-middle">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody id="job-list">
+                        {% for job in jobs %}
+                        <tr>
+                            <td><a href="{% url 'jobs:job_detail' job.pk %}">{{ job.title }}</a></td>
+                            <td>{{ job.description|truncatewords:15 }}</td>
+                            <td>{{ job.salary }} PLN</td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="3" class="text-center fw-bold">No liked jobs available.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            <a href="{% url 'jobs:job_list' %}" class="btn btn-warning btn-sm">
+                <i class="bi bi-list-task"></i> Wszystkie oferty pracy
+            </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

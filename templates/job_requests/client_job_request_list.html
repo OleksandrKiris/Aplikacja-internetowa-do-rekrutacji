@@ -2,31 +2,38 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>Moje Zapytania</h2>
-    <div class="list-group">
-        {% for job_request in job_requests %}
-        <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-            {{ job_request.title }}
-            <span class="badge bg-primary rounded-pill">{{ job_request.get_status_display }}</span>
-            <div>
-                <!-- Отображаем имя и email рекрутера, если он выбран -->
-                {% if job_request.recruiter %}
-                    <p>{{ job_request.recruiter.recruiter_profile.first_name }} {{ job_request.recruiter.recruiter_profile.last_name }}</p>
-                    <p>{{ job_request.recruiter.email }}</p>
-                {% else %}
-                    <p>Rekruter nie jest wybrany</p>
-                {% endif %}
-                <a href="{% url 'requests:client_job_request_detail' job_request.pk %}" class="btn btn-primary btn-sm">Szczegóły</a>
-                <form method="post" action="{% url 'requests:client_job_request_delete' job_request.pk %}" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
-                </form>
+<div class="container mt-5">
+    <h2 class="mb-4">Moje Zapytania</h2>
+    <div class="card shadow-lg border-0">
+        <div class="card-body p-0">
+            {% for job_request in job_requests %}
+            <div class="list-group list-group-flush">
+                <div class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="col-md-6 d-flex flex-column">
+                        <h5 class="mb-2">{{ job_request.title }}</h5>
+                        {% if job_request.recruiter %}
+                            <p class="mb-0"><strong>Rekruter:</strong> {{ job_request.recruiter.recruiter_profile.first_name }} {{ job_request.recruiter.recruiter_profile.last_name }}</p>
+                            <p class="mb-2"><strong>Email:</strong> {{ job_request.recruiter.email }}</p>
+                        {% else %}
+                            <p class="text-muted mb-2">Rekruter nie jest wybrany</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-2 text-center my-2">
+                        <span class="badge bg-primary fs-6 p-2">{{ job_request.get_status_display }}</span>
+                    </div>
+                    <div class="col-md-4 text-end d-flex align-items-center justify-content-end gap-2 flex-wrap">
+                        <a href="{% url 'requests:client_job_request_detail' job_request.pk %}" class="btn btn-primary btn-sm">Szczegóły</a>
+                        <form method="post" action="{% url 'requests:client_job_request_delete' job_request.pk %}" class="m-0">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                        </form>
+                    </div>
+                </div>
             </div>
+            {% empty %}
+            <div class="alert alert-info m-3">Brak zapytań.</div>
+            {% endfor %}
         </div>
-        {% empty %}
-        <div class="alert alert-info">Brak zapytań.</div>
-        {% endfor %}
     </div>
     <a href="{% url 'requests:client_job_request_create' %}" class="btn btn-success mt-3">Utwórz nowe zapytanie</a>
 </div>

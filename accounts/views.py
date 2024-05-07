@@ -172,7 +172,7 @@ def create_profile(request):
     return render(request, 'registration/create_profile.html', {'form': form})
 
 
-#@login_required
+@login_required
 def dashboard_view(request):
     role = request.user.role
     news_list = News.objects.filter(role=role).order_by('-date_posted')
@@ -300,6 +300,7 @@ class TaskListView(LoginRequiredMixin, ListView):
 
             return JsonResponse({'tasks': tasks, 'pagination': pagination_html})
         return super().render_to_response(context, **response_kwargs)
+
 
 @login_required
 def task_create_view(request):

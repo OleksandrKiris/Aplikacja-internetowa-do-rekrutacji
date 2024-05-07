@@ -128,3 +128,13 @@ def client_job_request_detail_view(request, pk):
         'job_request': job_request,
         'status_updates': status_updates
     })
+
+
+@login_required
+def recruiter_job_request_detail_view(request, pk):
+    job_request = get_object_or_404(JobRequest, pk=pk, recruiter=request.user)
+    status_updates = job_request.status_updates.all()  # Получаем все обновления статуса для этого запроса
+    return render(request, 'job_requests/recruiter_job_request_detail.html', {
+        'job_request': job_request,
+        'status_updates': status_updates
+    })

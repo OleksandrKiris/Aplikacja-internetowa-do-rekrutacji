@@ -18,5 +18,6 @@ urlpatterns = [
     path('recruiter/requests/<int:pk>/update/', views.recruiter_job_request_update_view,
          name='recruiter_job_request_update'),
     path('client/job_requests/<int:pk>/', views.client_job_request_detail_view, name='client_job_request_detail'),
+    path('recruiter/<int:pk>/', views.recruiter_job_request_detail_view, name='recruiter_job_request_detail'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

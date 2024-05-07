@@ -1,9 +1,25 @@
-<!-- jobs/application_detail.html -->
 {% extends 'home/base.html' %}
 
 {% block content %}
 <section class="container my-5">
-    <h2 class="mb-4">Szczegóły aplikacji</h2>
+    <h2 class="text-center mb-4">Szczegóły aplikacji</h2>
+    <div class="d-flex flex-wrap justify-content-center gap-2 p-3 bg-light shadow-sm rounded mb-4">
+        <a href="{% url 'jobs:recruiter_job_list' %}" class="btn btn-primary btn-sm">
+            <i class="bi bi-briefcase"></i> Moje Oferty Pracy
+        </a>
+        <a href="{% url 'jobs:recruiter_applications' %}" class="btn btn-secondary btn-sm">
+            <i class="bi bi-list-ul"></i> Aplikacje zarejestrowane
+        </a>
+        <a href="{% url 'jobs:guest_applications' %}" class="btn btn-secondary btn-sm">
+            <i class="bi bi-people"></i> Aplikacje gości
+        </a>
+        <a href="{% url 'jobs:create_job' %}" class="btn btn-success btn-sm">
+            <i class="bi bi-plus-circle"></i> Dodaj ofertę
+        </a>
+        <a href="{% url 'jobs:job_list' %}" class="btn btn-warning btn-sm">
+            <i class="bi bi-list-task"></i> Wszystkie oferty pracy
+        </a>
+    </div>
     <div class="card">
         <div class="card-header">
             <h5>{{ application.job.title }}</h5>
@@ -15,7 +31,7 @@
             <p><strong>Data złożenia:</strong> {{ application.created_at }}</p>
         </div>
         <div class="card-footer">
-            <form method="post" action="{% url 'jobs:update_application_status' application.id %}">
+           <form method="post" action="{% url 'jobs:update_application_status' application.id %}">
                 {% csrf_token %}
                 <label for="status">Status:</label>
                 <select name="status" id="status">
@@ -23,7 +39,9 @@
                         <option value="{{ key }}" {% if key == application.status %}selected{% endif %}>{{ value }}</option>
                     {% endfor %}
                 </select>
-                <button type="submit">Zmień status</button>
+                <button type="submit" class="btn btn-primary mt-2">
+                    <i class="bi bi-pencil-square"></i> Zmień status
+                </button>
             </form>
         </div>
     </div>

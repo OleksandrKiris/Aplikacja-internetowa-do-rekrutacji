@@ -13,14 +13,24 @@
             <p class="card-text"><strong>Status:</strong> {{ job.get_status_display }}</p>
             <p class="card-text"><strong>Data utworzenia:</strong> {{ job.created_at|date:"d-m-Y" }}</p>
         </div>
-        <div class="card-footer text-end">
-            <a href="{% url 'jobs:job_list' %}" class="btn btn-secondary">Wróć do ofert pracy</a>
-
+        <div class="card-footer d-flex justify-content-end gap-2">
+            <a href="{% url 'jobs:job_list' %}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Wróć do ofert pracy
+            </a>
             {% if user_role == 'recruiter' and current_user == job.recruiter %}
-                <a href="{% url 'jobs:registered_applications_for_job' job.id %}" class="btn btn-secondary mt-1">Zarejestrowane aplikacje</a>
-                <a href="{% url 'jobs:update_job_status' job.id %}" class="btn btn-warning mt-1">Zmień status</a>
+                <a href="{% url 'jobs:registered_applications_for_job' job.id %}" class="btn btn-secondary mt-1">
+                    <i class="bi bi-list-ul"></i> Zarejestrowane aplikacje
+                </a>
+                <a href="{% url 'jobs:update_job_status' job.id %}" class="btn btn-warning mt-1">
+                    <i class="bi bi-pencil-square"></i> Zmień status
+                </a>
+                <a href="{% url 'jobs:recruiter_job_list' %}" class="btn btn-primary">
+                    <i class="bi bi-briefcase"></i> Moje Oferty
+                </a>
             {% elif user_role == 'candidate' %}
-                <a href="{% url 'jobs:create_application' job_id=job.pk %}" class="btn btn-success mt-1">Aplikuj</a>
+                <a href="{% url 'jobs:create_application' job_id=job.pk %}" class="btn btn-success mt-1">
+                    <i class="bi bi-file-earmark-person"></i> Aplikuj
+                </a>
             {% endif %}
         </div>
     </div>

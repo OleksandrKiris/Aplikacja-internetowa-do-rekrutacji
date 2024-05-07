@@ -20,12 +20,17 @@
             <p><strong>Lokalizacja:</strong> {{ profile.location }}</p>
             <p><strong>Bio:</strong> {{ profile.bio }}</p>
 
-            {{% if profile_type == 'candidate' or profile_type == 'recruiter' %}
+            {% if profile_type == 'candidate' %}
                 <p><strong>Imię:</strong> {{ profile.first_name }}</p>
                 <p><strong>Nazwisko:</strong> {{ profile.last_name }}</p>
+                <p><strong>Umiejętności:</strong> {{ profile.skills }}</p>
+                <p><strong>Data urodzenia:</strong> {{ profile.date_of_birth }}</p>
             {% elif profile_type == 'client' %}
                 <p><strong>Nazwa firmy:</strong> {{ profile.company_name }}</p>
                 <p><strong>Branża:</strong> {{ profile.industry }}</p>
+            {% elif profile_type == 'recruiter' %}
+                <p><strong>Imię:</strong> {{ profile.first_name }}</p>
+                <p><strong>Nazwisko:</strong> {{ profile.last_name }}</p>
             {% endif %}
         </div>
         <div class="card-footer text-end">
@@ -34,4 +39,3 @@
     </div>
 </section>
 {% endblock %}
-
