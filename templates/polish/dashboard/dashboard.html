@@ -1,0 +1,38 @@
+{% extends 'polish/home/base.html' %}
+
+{% block content %}
+    <main class="container mt-5 p-5 bg-white shadow-lg rounded-lg">
+        {% block inner_content %}
+            <div class="text-center mb-5">
+                {% if role == 'candidate' %}
+                    <h1 class="display-4 text-primary">Panel kandydata</h1>
+                    <p class="lead fw-bold text-muted">Witamy na twoim panelu kandydata!</p>
+                {% elif role == 'client' %}
+                    <h1 class="display-4 text-primary">Panel klienta</h1>
+                    <p class="lead fw-bold text-muted">Witamy na twoim panelu klienta!</p>
+                {% elif role == 'recruiter' %}
+                    <h1 class="display-4 text-primary">Panel rekrutera</h1>
+                    <p class="lead fw-bold text-muted">Witamy na twoim panelu rekrutera!</p>
+                {% else %}
+                    <h1 class="display-4 text-danger">Nieznany panel</h1>
+                    <p class="lead fw-bold text-muted">Nie rozpoznano roli!</p>
+                {% endif %}
+            </div>
+
+            <div class="mb-4">
+                <h2 class="text-secondary border-bottom pb-3">Najświeższe wiadomości:</h2>
+                <ul class="list-group list-group-flush">
+                    {% for news in news_list %}
+                        <li class="list-group-item">
+                            <h3 class="text-primary">{{ news.title }}</h3>
+                            <p>{{ news.content }}</p>
+                            <small class="text-muted">{{ news.date_posted }}</small>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item text-muted">Brak wiadomości do wyświetlenia.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endblock inner_content %}
+    </main>
+{% endblock content %}

@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const container = document.querySelector('#recruiters-container');
         container.innerHTML = JSON.parse(data.recruiters).map(item => `
             <li class="list-group-item d-flex align-items-center p-4 mb-4 shadow-lg rounded border-0">
-                <img src="${item.fields.photo || '/static/images/Icon_4.png'}" class="rounded-circle me-4 border border-primary" style="width: 85px; height: 85px; object-fit: cover;" alt="">
+                <img src="${item.fields.photo || '/static/images/recruiter.png'}" class="rounded-circle me-4 border border-primary" style="width: 85px; height: 85px; object-fit: cover;" alt="">
                 <div>
                     <h4 class="fw-bold text-primary mb-2">${item.fields.first_name} ${item.fields.last_name}</h4>
                     <p class="text-muted">${item.fields.bio}</p>

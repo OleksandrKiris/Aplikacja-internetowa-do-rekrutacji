@@ -1,9 +1,11 @@
 import pytest
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
+
 from accounts.models import CandidateProfile, ClientProfile, RecruiterProfile, Task
 
 User = get_user_model()
+
 
 @pytest.mark.django_db
 def test_create_user():
@@ -11,21 +13,25 @@ def test_create_user():
     assert user.email == "validemail@example.com"
     assert user.is_active
 
+
 @pytest.mark.django_db
 def test_create_user_invalid_email():
     with pytest.raises(ValueError):
         User.objects.create_user(email="", password="password123")
+
 
 @pytest.mark.django_db
 def test_create_user_invalid_email_format():
     with pytest.raises(ValueError):
         User.objects.create_user(email="invalidemail", password="password123")
 
+
 @pytest.mark.django_db
 def test_create_superuser():
     superuser = User.objects.create_superuser(email="superuser@example.com", password="password123")
     assert superuser.is_superuser
     assert superuser.is_staff
+
 
 @pytest.mark.django_db
 def test_candidate_profile():
@@ -42,6 +48,7 @@ def test_candidate_profile():
     assert str(candidate) == "Profil kandydata: John Doe"
     assert candidate.bio == "Sample bio"
 
+
 @pytest.mark.django_db
 def test_client_profile():
     user = User.objects.create_user(email="client@example.com", password="password", role='client')
@@ -56,6 +63,7 @@ def test_client_profile():
     )
     assert str(client) == "Profil pracodawcy Company Inc"
     assert client.industry == "Technology"
+
 
 @pytest.mark.django_db
 def test_recruiter_profile():
@@ -72,6 +80,7 @@ def test_recruiter_profile():
     assert str(recruiter) == "Profil rekrutera: Alice Smith"
     assert recruiter.location == "Chicago"
 
+
 def test_phone_number_validator():
     with pytest.raises(ValidationError):
         CandidateProfile(phone_number="incorrect").full_clean()
@@ -79,6 +88,7 @@ def test_phone_number_validator():
         ClientProfile(phone_number="incorrect").full_clean()
     with pytest.raises(ValidationError):
         RecruiterProfile(phone_number="incorrect").full_clean()
+
 
 @pytest.mark.django_db
 def test_task_creation_and_status_change_by_recruiter():
@@ -101,6 +111,7 @@ def test_task_creation_and_status_change_by_recruiter():
     task.refresh_from_db()
     assert task.status == "completed"
 
+
 @pytest.mark.django_db
 def test_task_creation_by_non_recruiter():
     user = User.objects.create_user(email="user@example.com", password="password", role='candidate')
@@ -112,3 +123,46 @@ def test_task_creation_by_non_recruiter():
             priority="low",
             due_date="2023-02-01"
         )
+
+
+@pytest.mark.django_db
+def test_update_recruiter_profile():
+    user = User.objects.create_user(email="recruiter@example.com", password="password", role='recruiter')
+    recruiter = RecruiterProfile.objects.create(user=user, first_name="Alice", last_name="Smith")
+    recruiter.first_name = "UpdatedName"
+    recruiter.save()
+    assert RecruiterProfile.objects.get(user=user).first_name == "UpdatedName"
+
+
+@pytest.mark.django_db
+def test_update_candidate_profile():
+    user = User.objects.create_user(email="candidate@example.com", password="password", role='candidate')
+    candidate = CandidateProfile.objects.create(user=user, first_name="John", last_name="Doe")
+    candidate.bio = "Updated bio"
+    candidate.save()
+    assert CandidateProfile.objects.get(user=user).bio == "Updated bio"
+
+
+@pytest.mark.django_db
+def test_user_login(client):
+    user = User.objects.create_user(email="user@example.com", password="testpassword", role='candidate')
+    response = client.post('/accounts/login/', {'email': 'user@example.com', 'password': 'testpassword'})
+    assert response.status_code == 200  # или другой код, который вы ожидаете при успешном входе
+
+
+@pytest.mark.django_db
+def test_invalid_user_role():
+    with pytest.raises(ValueError):
+        User.objects.create_user(email="test@example.com", password="password", role='invalidrole')
+
+
+@pytest.mark.django_db
+def test_task_creation_and_deletion_by_recruiter():
+    user = User.objects.create_user(email="recruiter@example.com", password="password", role='recruiter')
+    RecruiterProfile.objects.create(user=user)
+    task = Task.objects.create(created_by=user, title="Temporary Task", description="To be deleted", priority="low",
+                               due_date="2023-05-01")
+    task_id = task.id
+    task.delete()
+    with pytest.raises(Task.DoesNotExist):
+        Task.objects.get(id=task_id)

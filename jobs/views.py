@@ -1,3 +1,4 @@
+from django.conf.urls.static import static
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
@@ -14,7 +15,7 @@ from django.contrib import messages
 
 class JobListView(LoginRequiredMixin, ListView):
     model = Job
-    template_name = 'jobs/job_list.html'
+    template_name = 'polish/jobs/job_list.html'
     context_object_name = 'jobs'
     paginate_by = 10
 
@@ -76,7 +77,7 @@ class JobListView(LoginRequiredMixin, ListView):
 
 class PublicJobListView(ListView):
     model = Job
-    template_name = 'home/public_job_list.html'
+    template_name = 'polish/home/public_job_list.html'
     context_object_name = 'jobs'
     paginate_by = 7
 
@@ -147,7 +148,7 @@ def common_create_job_view(request):
             return redirect('jobs:job_detail', job_id=job.pk)
     else:
         form = JobForm()
-    return render(request, 'jobs/create_job.html', {'form': form})
+    return render(request, 'polish/jobs/create_job.html', {'form': form})
 
 
 @login_required
@@ -155,7 +156,7 @@ def common_job_detail_view(request, job_id):
     job = get_object_or_404(Job, pk=job_id)
     user_role = request.user.role
 
-    return render(request, 'jobs/job_detail.html', {
+    return render(request, 'polish/jobs/job_detail.html', {
         'job': job,
         'user_role': user_role,
         'current_user': request.user,  # Pass current user to the template
@@ -185,7 +186,7 @@ def application_list_view(request):
         'user_role': user_role,
         'search_query': search_query  # Pass search query to context
     }
-    return render(request, 'jobs/application_list.html', context)
+    return render(request, 'polish/jobs/application_list.html', context)
 
 
 @login_required
@@ -202,12 +203,12 @@ def create_application_view(request, job_id):
             return redirect('jobs:application_list')
     else:
         form = ApplicationForm()
-    return render(request, 'jobs/create_application.html', {'form': form, 'job': job})
+    return render(request, 'polish/jobs/create_application.html', {'form': form, 'job': job})
 
 
 def public_job_detail_view(request, job_id):
     job = get_object_or_404(Job, pk=job_id)
-    return render(request, 'home/public_job_detail.html', {'job': job})
+    return render(request, 'polish/home/public_job_detail.html', {'job': job})
 
 
 def guest_feedback_view(request, job_id):
@@ -222,7 +223,7 @@ def guest_feedback_view(request, job_id):
         elif user_role in ['client', 'recruiter']:
             # Redirect to the public job list with a warning message
             warning_message = "Zarejestrowani klienci i rekruterzy nie mogą zostawić opinii."
-            return render(request, 'home/guest_feedback.html', {'warning_message': warning_message, 'job': job})
+            return render(request, 'polish/home/guest_feedback.html', {'warning_message': warning_message, 'job': job})
 
     # For unauthenticated users, handle the feedback form
     if request.method == 'POST':
@@ -239,11 +240,11 @@ def guest_feedback_view(request, job_id):
     else:
         form = GuestFeedbackForm()
 
-    return render(request, 'home/guest_feedback.html', {'form': form, 'job': job})
+    return render(request, 'polish/home/guest_feedback.html', {'form': form, 'job': job})
 
 
 def guest_feedback_thanks_view(request):
-    return render(request, 'home/guest_feedback_thanks.html')
+    return render(request, 'polish/home/guest_feedback_thanks.html')
 
 
 @login_required
@@ -261,7 +262,7 @@ def guest_feedback_applications_view(request):
         'feedbacks': feedbacks,
         'search_query': search_query
     }
-    return render(request, 'jobs/guest_feedback_applications.html', context)
+    return render(request, 'polish/jobs/guest_feedback_applications.html', context)
 
 
 @login_required
@@ -336,7 +337,7 @@ def recruiter_applications_view(request):
         'page_obj': applications_page,
         'paginator': paginator,
     }
-    return render(request, 'jobs/recruiter_applications.html', context)
+    return render(request, 'polish/jobs/recruiter_applications.html', context)
 
 
 @login_required
@@ -348,13 +349,13 @@ def registered_applications_for_job_view(request, job_id):
         'job': job,
         'applications': applications,
     }
-    return render(request, 'jobs/registered_applications_for_job.html', context)
+    return render(request, 'polish/jobs/registered_applications_for_job.html', context)
 
 
 @login_required
 def guest_applications_view(request):
     applications = Application.objects.filter(job__recruiter=request.user, applicant__isnull=True)
-    return render(request, 'jobs/guest_applications.html', {'applications': applications})
+    return render(request, 'polish/jobs/guest_applications.html', {'applications': applications})
 
 
 @login_required
@@ -372,12 +373,22 @@ def update_job_status(request, job_id):
     else:
         form = JobForm(instance=job)
 
-    return render(request, 'jobs/edit_job.html', {'form': form, 'job': job})
+    return render(request, 'polish/jobs/edit_job.html', {'form': form, 'job': job})
 
 
 def application_detail_view(request, application_id):
     application = get_object_or_404(Application, pk=application_id)
-    return render(request, 'jobs/application_detail.html', {'application': application})
+    photo_url = None
+    if hasattr(application.applicant, 'candidate_profile') and application.applicant.candidate_profile.photo:
+        photo_url = application.applicant.candidate_profile.photo.url
+    else:
+        photo_url = static('images/Icon_1.png')
+
+    context = {
+        'application': application,
+        'photo_url': photo_url
+    }
+    return render(request, 'polish/jobs/application_detail.html', context)
 
 
 @login_required
@@ -398,7 +409,7 @@ def recruiter_job_list_view(request):
 
     jobs = jobs.order_by('title')
 
-    return render(request, 'jobs/recruiter_job_list.html', {'jobs': jobs, 'search_query': search_query})
+    return render(request, 'polish/jobs/recruiter_job_list.html', {'jobs': jobs, 'search_query': search_query})
 
 
 @login_required
@@ -410,7 +421,7 @@ def guest_feedback_applications_for_job_view(request, job_id):
         'job': job,
         'feedbacks': feedbacks,
     }
-    return render(request, 'jobs/guest_feedback_applications_for_job.html', context)
+    return render(request, 'polish/jobs/guest_feedback_applications_for_job.html', context)
 
 
 @login_required
@@ -429,7 +440,7 @@ def update_application_status(request, application_id):
             messages.error(request, 'Недопустимый статус заявки.')
             return redirect('jobs:application_detail', application_id=application_id)
 
-    return render(request, 'jobs/update_application_status.html', {'application': application})
+    return render(request, 'polish/jobs/update_application_status.html', {'application': application})
 
 
 @login_required
@@ -448,7 +459,7 @@ def favorite_job(request, job_id):
 
 class LikedJobsListView(LoginRequiredMixin, ListView):
     model = Job
-    template_name = 'jobs/liked_jobs_list.html'
+    template_name = 'polish/jobs/liked_jobs_list.html'
     context_object_name = 'jobs'
 
     def get_queryset(self):
@@ -458,7 +469,7 @@ class LikedJobsListView(LoginRequiredMixin, ListView):
 
 class FavoritedJobsListView(LoginRequiredMixin, ListView):
     model = Job
-    template_name = 'jobs/favorited_jobs_list.html'
+    template_name = 'polish/jobs/favorited_jobs_list.html'
     context_object_name = 'jobs'
 
     def get_queryset(self):

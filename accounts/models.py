@@ -12,29 +12,20 @@ class MyUserManager(BaseUserManager):
     """
 
     def create_user(self, email, password=None, **extra_fields):
-        """
-        Tworzy i zwraca użytkownika z podanym adresem email i opcjonalnym hasłem.
-
-        Parametry:
-            email (str): Adres email użytkownika.
-            password (str, optional): Hasło użytkownika.
-            **extra_fields: Dodatkowe pola przekazywane do modelu użytkownika.
-
-        Wyjątki:
-            ValueError: Jeśli adres email nie jest podany lub jest nieprawidłowy.
-
-        Zwraca:
-            User: Obiekt utworzonego użytkownika.
-        """
         if not email:
-            raise ValueError('Adres e-mail musi być podany')
+            raise ValueError('The given email must be set')
         try:
             validate_email(email)
         except ValidationError:
-            raise ValueError('Nieprawidłowy adres e-mail')
+            raise ValueError('Invalid email format')
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
+        role = extra_fields.get('role')
+        if role:  # Проверяем наличие роли только если она есть
+            valid_roles = [choice[0] for choice in self.model.ROLE_CHOICES]
+            if role not in valid_roles:
+                raise ValueError(f"Invalid role: {role}. Valid roles are {valid_roles}.")
         user.save(using=self._db)
         return user
 
@@ -133,7 +124,7 @@ class CandidateProfile(models.Model):
     photo = models.ImageField(upload_to='profiles/', blank=True, null=True, verbose_name="Zdjęcie")
     location = models.CharField(max_length=100, verbose_name="Lokalizacja")
     bio = models.TextField(verbose_name="Biografia")
-    date_of_birth = models.DateField(verbose_name="Data urodzenia")
+    date_of_birth = models.DateField(null=True, verbose_name="Data urodzenia")
     skills = models.TextField(verbose_name="Umiejętności")
 
     def __str__(self):
@@ -216,14 +207,19 @@ class Task(models.Model):
         ('in_progress', 'W trakcie realizacji'),
         ('completed', 'Zakończone'),
     ]
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='open',verbose_name='Status')
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='open', verbose_name='Status')
+
+    def save(self, *args, **kwargs):
+        if not hasattr(self.created_by, 'recruiter_profile'):
+            raise ValidationError(_("Only recruiters can create tasks."))
+        super().save(*args, **kwargs)
 
     def change_status(self, new_status):
         """
         Zmienia status zadania.
 
         Parametry:
-            new_status (str.): Nowy status zadania.
+            new_status (str): Nowy status zadania.
         """
         self.status = new_status
         self.save()

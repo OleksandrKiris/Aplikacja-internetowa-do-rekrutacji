@@ -29,7 +29,7 @@ class HomeView(TemplateView):
     Widok strony głównej serwisu. Wyświetla główną stronę aplikacji.
     Używa szablonu 'home/base.html' do renderowania strony.
     """
-    template_name = 'home/base.html'
+    template_name = 'polish/home/base.html'
 
     def get_context_data(self, **kwargs):
         """
@@ -46,7 +46,7 @@ class AboutView(TemplateView):
     Widok strony 'O nas'. Służy do przedstawienia informacji o firmie lub organizacji.
     Używa szablonu 'home/about_us.html' do renderowania strony.
     """
-    template_name = 'home/about_us.html'
+    template_name = 'polish/home/about_us.html'
 
 
 class ContactView(TemplateView):
@@ -54,7 +54,7 @@ class ContactView(TemplateView):
     Widok strony kontaktowej. Umożliwia użytkownikom znajdowanie sposobów kontaktu z firmą lub organizacją.
     Używa szablonu 'home/contact.html' do renderowania strony.
     """
-    template_name = 'home/contact.html'
+    template_name = 'polish/home/contact.html'
 
 
 #-----------------------------------------NASI KLIENCI  I NASI REKRUTERZY-----------------------------------------------
@@ -85,7 +85,7 @@ class RecruiterListView(PaginationMixin, ListView):
     Używa szablonu 'home/recruiters.html' i modelu RecruiterProfile.
     """
     model = RecruiterProfile
-    template_name = 'home/recruiters.html'
+    template_name = 'polish/home/recruiters.html'
     context_object_name = 'recruiters'
     paginate_by = 5
 
@@ -113,7 +113,7 @@ class ClientListView(PaginationMixin, ListView):
     Używa szablonu 'home/client_list.html' i modelu ClientProfile.
     """
     model = ClientProfile
-    template_name = 'home/client_list.html'
+    template_name = 'polish/home/client_list.html'
     context_object_name = 'clients'
     paginate_by = 5
 
@@ -146,7 +146,7 @@ def register_user(request):
             return redirect(reverse_lazy('accounts:create_profile'))
     else:
         form = UserRegistrationForm()
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'polish/registration/register.html', {'form': form})
 
 
 def login_view(request):
@@ -164,11 +164,11 @@ def login_view(request):
             request.session['role'] = user.role
             return redirect(reverse_lazy('accounts:dashboard'))
         else:
-            return render(request, 'registration/login.html',
+            return render(request, 'polish/registration/login.html',
                           {'form': form, 'error': 'Nieprawidłowa nazwa użytkownika lub hasło'})
     else:
         form = UserLoginForm()
-    return render(request, 'registration/login.html', {'form': form})
+    return render(request, 'polish/registration/login.html', {'form': form})
 
 
 @login_required
@@ -179,7 +179,7 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
         return redirect(reverse_lazy('home'))
-    return render(request, 'registration/logout_confirmation.html', {'user': request.user})
+    return render(request, 'polish/registration/logout_confirmation.html', {'user': request.user})
 
 
 @login_required
@@ -202,7 +202,7 @@ def create_profile(request):
             return redirect('accounts:login')
     else:
         form = form_class()
-    return render(request, 'registration/create_profile.html', {'form': form})
+    return render(request, 'polish/registration/create_profile.html', {'form': form})
 
 
 def dashboard_view(request):
@@ -212,7 +212,7 @@ def dashboard_view(request):
     """
     role = request.user.role
     news_list = News.objects.filter(role=role).order_by('-date_posted')
-    return render(request, 'dashboard/dashboard.html', {'role': role, 'news_list': news_list})
+    return render(request, 'polish/dashboard/dashboard.html', {'role': role, 'news_list': news_list})
 
 
 #------------------------------------------SZCZEGÓŁY PROFILU, ZMIANA DANYCH-------------------------------------------
@@ -242,7 +242,7 @@ def profile_detail_view(request):
         'profile': profile,
         'profile_type': user.role
     }
-    return render(request, 'profiles/universal_profile_detail.html', context)
+    return render(request, 'polish/profiles/universal_profile_detail.html', context)
 
 
 @login_required
@@ -279,7 +279,7 @@ def profile_edit_view(request):
     else:
         form = form_class(instance=profile)
 
-    return render(request, 'profiles/universal_profile_edit.html', {'form': form})
+    return render(request, 'polish/profiles/universal_profile_edit.html', {'form': form})
 
 
 #------------------------------------------ZADANIA REKRUTERA-----------------------------------------------------------
@@ -290,7 +290,7 @@ class TaskListView(LoginRequiredMixin, ListView):
     Umożliwia paginację oraz filtrowanie zadań na podstawie zapytań przekazywanych w URL.
     """
     model = Task
-    template_name = 'tasks/task_list.html'
+    template_name = 'polish/tasks/task_list.html'
     context_object_name = 'tasks'
     paginate_by = 5
 
@@ -346,7 +346,7 @@ def task_create_view(request):
             return redirect(reverse_lazy('accounts:task_list'))
     else:
         form = TaskForm()
-    return render(request, 'tasks/task_form.html', {'form': form})
+    return render(request, 'polish/tasks/task_form.html', {'form': form})
 
 
 @login_required
@@ -363,7 +363,7 @@ def task_update_view(request, task_id):
             return redirect(reverse_lazy('accounts:task_list'))
     else:
         form = TaskForm(instance=task)
-    return render(request, 'tasks/task_form.html', {'form': form})
+    return render(request, 'polish/tasks/task_form.html', {'form': form})
 
 
 @login_required
@@ -376,7 +376,7 @@ def task_delete_view(request, task_id):
     if request.method == 'POST':
         task.delete()
         return redirect(reverse_lazy('accounts:task_list'))
-    return render(request, 'tasks/task_confirm_delete.html', {'task': task})
+    return render(request, 'polish/tasks/task_confirm_delete.html', {'task': task})
 
 
 @login_required
@@ -385,4 +385,4 @@ def task_detail_view(request, pk):
     Wyświetla szczegółowe informacje o konkretnym zadaniu. Dostępne tylko dla zalogowanych użytkowników i tylko dla zadań, które do nich należą.
     """
     task = get_object_or_404(Task, pk=pk)
-    return render(request, 'tasks/task_detail.html', {'task': task})
+    return render(request, 'polish/tasks/task_detail.html', {'task': task})

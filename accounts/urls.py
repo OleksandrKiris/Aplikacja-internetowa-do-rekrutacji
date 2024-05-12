@@ -4,7 +4,8 @@ from django.urls import path
 from accounts import views
 from accounts.views import register_user, create_profile, login_view, logout_view, dashboard_view, RecruiterListView, \
     ClientListView, TaskListView
-
+from django.conf import settings
+from django.conf.urls.static import static
 app_name = 'accounts'
 
 urlpatterns = [
@@ -22,4 +23,5 @@ urlpatterns = [
     path('recruiters/', RecruiterListView.as_view(), name='recruiters'),
     path('clients/', ClientListView.as_view(), name='client_list'),
     path('tasks/<int:pk>/', views.task_detail_view, name='task_detail'),
+
 ]

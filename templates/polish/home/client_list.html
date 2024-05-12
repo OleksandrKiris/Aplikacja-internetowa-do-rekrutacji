@@ -1,0 +1,58 @@
+{% extends "polish/home/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+    <h2 class="display-4 text-center text-primary fw-bold mb-4">Nasi Klienci</h2>
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+            <ul class="list-group">
+                {% for client in clients %}
+                <li class="list-group-item d-flex align-items-center p-4 mb-4 shadow rounded">
+                    {% if client.photo %}
+                        <img src="{{ client.photo.url }}" class="rounded-circle me-3 border border-primary" alt="{{ client.company_name }}" style="width: 85px; height: 85px; object-fit: cover;">
+                    {% else %}
+                        <img src="{% static 'clients.png' %}" class="rounded-circle me-3 border border-primary" alt="Domyślny profil klienta" style="width: 85px; height: 85px; object-fit: cover;">
+                    {% endif %}
+                    <div>
+                        <h4 class="fw-bold text-primary mb-2">{{ client.company_name }}</h4>
+                        <p class="text-muted">{{ client.bio }}</p>
+                    </div>
+                </li>
+                {% endfor %}
+                {% if clients|length == 0 %}
+                <li class="list-group-item text-center p-4">
+                    <p class="text-muted">Brak klientów do wyświetlenia.</p>
+                </li>
+                {% endif %}
+            </ul>
+            <nav aria-label="Przykład nawigacji stronicowej" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Poprzedni">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="visually-hidden">Poprzedni</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+                            <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Następny">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="visually-hidden">Następny</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}

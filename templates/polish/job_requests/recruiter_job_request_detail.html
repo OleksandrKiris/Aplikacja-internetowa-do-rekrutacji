@@ -1,0 +1,28 @@
+{% extends 'polish/home/base.html' %}
+
+{% block content %}
+<section class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 class="h4 fw-bold mb-0">Szczegóły zapytania</h2>
+        </div>
+        <div class="card-body">
+            <h5 class="mb-3">{{ job_request.title }}</h5>
+            <p class="mb-3">Opis: {{ job_request.description }}</p>
+            <p class="mb-3">Wymagania: {{ job_request.requirements }}</p>
+            <p class="mb-3">Data utworzenia: {{ job_request.created_at }}</p>
+            <p class="mb-3">Status: 
+                {% if job_request.status == 'pending' %}
+                    Oczekujące
+                {% elif job_request.status == 'processing' %}
+                    W trakcie realizacji
+                {% elif job_request.status == 'completed' %}
+                    Zakończone
+                {% endif %}
+            </p>
+            <a href="{% url 'requests:recruiter_job_request_update' job_request.pk %}" class="btn btn-primary btn-sm me-2">Zmień status</a>
+            <a href="{% url 'requests:recruiter_job_request_list' %}" class="btn btn-secondary btn-sm">Powrót do listy</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

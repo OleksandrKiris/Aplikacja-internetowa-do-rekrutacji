@@ -15,7 +15,7 @@ class Job(models.Model):
     requirements = models.TextField()
     salary = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=JobStatus.choices)
+    status = models.CharField(max_length=20, default='open', choices=JobStatus.choices)
 
     def __str__(self):
         return self.title
@@ -42,10 +42,7 @@ class Application(models.Model):
     applicant = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='job_applications')
     cover_letter = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=ApplicationStatus.choices)
-
-    def __str__(self):
-        return f'{self.job.title} - {self.applicant.username}'
+    status = models.CharField(max_length=20, default='submitted', choices=ApplicationStatus.choices)
 
     def is_accepted(self):
         return self.status == self.ApplicationStatus.ACCEPTED

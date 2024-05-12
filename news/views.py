@@ -9,7 +9,7 @@ def news_list_view(request):
     if request.user.is_authenticated:
         role = request.user.role
         news_list = News.objects.filter(role=role).order_by('-date_posted')
-        return render(request, 'dashboard/dashboard.html', {'news_list': news_list, 'role': role})
+        return render(request, 'polish/dashboard/dashboard.html', {'news_list': news_list, 'role': role})
     else:
         return redirect('news:all_news_view')
 
@@ -43,4 +43,4 @@ def all_news_view(request):
             'total_pages': paginator.num_pages
         })
 
-    return render(request, 'news/all_news_list.html', {'page_obj': page_obj, 'paginator': paginator})
+    return render(request, 'polish/news/all_news_list.html', {'page_obj': page_obj, 'paginator': paginator})

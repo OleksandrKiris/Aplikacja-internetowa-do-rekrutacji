@@ -1,0 +1,25 @@
+{% extends 'polish/home/base.html' %}
+
+{% block content %}
+<section class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white text-center">
+                    <h1 class="display-5 fw-bold text-white">Rejestracja</h1> <!-- Ensuring white text -->
+                </div>
+                <div class="card-body bg-light">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success w-100 mt-3">Rejestracja</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <p>Jeśli masz już konto, <a href="{% url 'accounts:login' %}">Zaloguj się</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
