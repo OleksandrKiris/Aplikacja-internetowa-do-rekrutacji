@@ -157,31 +157,37 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <div class="contact-info card p-3">
+                                <div class="contact-info card p-3 d-flex justify-content-center align-items-center" style="height: 100%;">
                                     <h2>{% trans "Informacje kontaktowe" %}</h2>
-                                    <p>Email: <a href="mailto:info@agencja.pracy.pl">info@agencja.pracy.pl</a></p>
-                                    <p>Telefon: <a href="tel:+48123456789">+48 123 456 789</a></p>
+                                    <p>Email: <a href="mailto:oleksandr.kiris@icloud.com">oleksandr.kiris@icloud.com</a></p>
+                                    <p>Telefon: <a href="tel:+4917648743882">+4917648743882</a></p>
                                     <p>{% trans "Adres" %}: ul. Staszica 12c, Wrocław, Polska</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
-                                <div class="social-media card p-3">
+                                <div class="social-media card p-3 d-flex justify-content-center align-items-center" style="height: 100%;">
                                     <h2>{% trans "Śledź nas" %}</h2>
-                                    <a href="#">Facebook</a>
-                                    <a href="#">Instagram</a>
+                                    <a href="https://www.facebook.com/share/Vo578oEXnLoM37yU/?mibextid=K35XfP">
+                                        <img src="{% static 'images/facebook.png' %}" alt="Facebook" style="width: 180px; height: 80px;">
+                                    </a>
+                                    <a href="https://www.instagram.com/oleksandr_kiriss?igsh=MzAwcmJ2MnJhZnBi&utm_source=qr">
+                                        <img src="{% static 'images/instagram.jpeg' %}" alt="Instagram" style="width: 180px; height: 80px;">
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
+
              </main>
         {% endblock %}
         
         <footer class="bg-dark text-white text-center py-3 mt-auto">
             <div class="container">
-                <p>© 2024 Agencja Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone.</p>
+                <p>© 2024 {% trans "Agencja Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone." %}</p>
             </div>
         </footer>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

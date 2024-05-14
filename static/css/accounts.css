@@ -1,147 +1,139 @@
-html, body {
-    height: 100%;
+/* Основные стили для body */
+body {
     margin: 0;
     font-family: 'Arial', sans-serif;
+    color: #333; /* Темно-серый цвет текста для контраста на светлом фоне */
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    color: #ddd;
-}
-
-/* Navbar style with improved visibility */
-header.navbar {
-    background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
-    padding: 10px 20px;
-    display: flex; /* Ensures flexbox layout */
-    justify-content: space-between; /* Distributes space between links */
-    align-items: center; /* Vertically centers items */
-}
-
-.navbar .nav-link {
-    color: #333; /* Darker text for visibility */
+/* Улучшенные стили для навигационного меню */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9); /* Светлый фон с небольшой прозрачностью для легкости */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Слабая тень для лучшей видимости на светлом фоне */
     padding: 10px 15px;
-    min-width: 60px; /* Minimum width, flexible */
-    text-align: center; /* Ensures text is centered */
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.navbar .nav-link:hover {
-    background-color: #f0f0f0; /* Light grey for hover */
-    color: #000;
+.nav-link {
+    color: #0056b3; /* Синий цвет ссылок для соответствия корпоративному стилю Bootstrap */
+    transition: color 0.3s ease-in-out;
 }
 
-/* Logo styling */
+.nav-link:hover, .nav-link:focus {
+    color: #004085; /* Темно-синий при наведении */
+    background-color: #f8f9fa; /* Светлый фон при наведении */
+}
+
+/* Логотип */
 .logo img {
-    width: 100px;
-    height: auto;
+    height: 50px; /* Размер логотипа */
+    width: auto;
 }
 
-/* Footer styling */
+/* Футер с использованием семантических тегов */
 footer {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #f8f9fa; /* Светлый фон для футера */
     color: #333;
     text-align: center;
-    padding: 20px 0;
-}
-
-/* Sidebar styling */
-.sidebar {
+    padding: 10px;
     position: fixed;
-    width: 250px;
-    top: 0;
+    left: 0;
     bottom: 0;
-    background-color: #202020;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    transform: translateX(-100%);
-    z-index: 1030;
-    transition: transform 0.3s ease;
+    width: 100%;
 }
 
-.sidebar.active {
-    transform: translateX(0);
-}
-
-/* Content area styling */
-.main-content {
-    margin-left: 270px;
-    padding-top: 20px;
-}
-
-/* Responsive styles */
+/* Адаптация под мобильные устройства */
 @media (max-width: 576px) {
-    .sidebar {
-        min-width: 100%;
-        margin-bottom: 20px;
-    }
-    .main-content {
-        margin-left: 0;
-        padding-top: 20px;
-    }
-    footer {
-        position: relative;
-    }
     .navbar {
-        flex-wrap: wrap; /* Allows items to wrap in small screens */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-content {
+        padding: 15px;
+        margin-top: 10px;
     }
 }
 
+/* Кнопки в стиле Bootstrap с адаптацией под проект */
 .btn-primary {
-    background-color: #0056b3;
-    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
 }
 
 .btn-secondary {
     background-color: #6c757d;
-    color: white;
+    border-color: #6c757d;
 }
 
 .btn-success {
     background-color: #28a745;
-    color: white;
-}
-
-.btn-warning {
-    background-color: #ffc107;
-    color: black;
+    border-color: #28a745;
 }
 
 .btn-danger {
     background-color: #dc3545;
-    color: white;
+    border-color: #dc3545;
 }
 
-.card {
-    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
 }
 
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-light {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+    color: #333;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+/* Стилизация таблиц согласно Bootstrap */
 .table {
-    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
     border-collapse: collapse;
 }
 
-.table th, .table td {
-    border: 1px solid #dee2e6;
-    padding: 8px;
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
 }
 
-.pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
 }
 
-.pagination li a {
-    padding: 5px 10px;
-    margin: 5px;
-    background-color: #f8f9fa;
-    color: #007bff;
-    text-decoration: none;
+.table tbody + tbody {
+    border-top: 2px solid #dee2e6;
 }
 
-.pagination li.active a {
-    background-color: #007bff;
-    color: white;
+/* Специальные стили для управления переполнением текста */
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.8); /* Белый с небольшой прозрачностью */
+    border: none; /* Убираем стандартную рамку */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем небольшую тень для глубины */
+    margin-bottom: 20px; /* Отступ для разделения карточек */
+    border-radius: 8px; /* Скругляем углы для более мягкого вида */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Усиленная тень при наведении для эффекта интерактивности */
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"POT-Creation-Date: 2024-05-14 17:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: requests/forms.py:11 requests/models.py:18
 msgid "Tytuł"
 msgstr "Название"
@@ -84,16 +85,20 @@ msgid "Zapotrzebowanie na pracę"
 msgstr "Запрос на работу"
 
 #: requests/models.py:38
-msgid "Zapotrzebowania на pracę"
-msgstr "Запросы на работу"
+#, fuzzy
+#| msgid "Zapotrzebowanie na pracę"
+msgid "Zapotrzebowania na pracę"
+msgstr "Запрос на работу"
 
 #: requests/models.py:49
-msgid "Aktualizacja статусу запотшебования на pracę"
-msgstr "Обновление статуса запроса на работу"
+#, fuzzy
+#| msgid "Zapotrzebowanie na pracę"
+msgid "Aktualizacja statusu zapotrzebowania na pracę"
+msgstr "Запрос на работу"
 
 #: requests/models.py:54
-msgid "Nowy статус"
-msgstr "Новый статус"
+msgid "Nowy status"
+msgstr ""
 
 #: requests/models.py:59
 msgid "Zaktualizowane przez"
@@ -108,12 +113,12 @@ msgid "Wiadomość"
 msgstr "Сообщение"
 
 #: requests/models.py:65
-msgid "Aktualizacja статусу запотшебования"
-msgstr "Обновление статуса запроса"
+msgid "Aktualizacja statusu zapotrzebowania"
+msgstr ""
 
 #: requests/models.py:66
-msgid "Aktualizacje статусу запотшебования"
-msgstr "Обновления статусов запроса"
+msgid "Aktualizacje statusów zapotrzebowania"
+msgstr ""
 
 #: requests/models.py:74
 msgid "Użytkownik"
@@ -126,3 +131,18 @@ msgstr "Любимый рекрутер"
 #: requests/models.py:86
 msgid "Ulubieni rekruterzy"
 msgstr "Любимые рекрутеры"
+
+#~ msgid "Zapotrzebowania на pracę"
+#~ msgstr "Запросы на работу"
+
+#~ msgid "Aktualizacja статусу запотшебования на pracę"
+#~ msgstr "Обновление статуса запроса на работу"
+
+#~ msgid "Nowy статус"
+#~ msgstr "Новый статус"
+
+#~ msgid "Aktualizacja статусу запотшебования"
+#~ msgstr "Обновление статуса запроса"
+
+#~ msgid "Aktualizacje статусу запотшебования"
+#~ msgstr "Обновления статусов запроса"

@@ -1,8 +1,10 @@
 {% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
 <section class="container my-5">
-    <h2 class="text-center mb-4">Zaktualizuj status pracy</h2>
+    <h2 class="text-center mb-4">{% trans "Zaktualizuj status pracy" %}</h2>
     <div class="card shadow-sm">
         <div class="card-body">
             <form method="post" class="form">
@@ -11,9 +13,9 @@
                     {{ form.as_p }}
                 </fieldset>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button type="submit" class="btn btn-primary me-md-2">Aktualizuj pracę</button>
-                    <a href="{% url 'jobs:recruiter_job_list' %}" class="btn btn-info">Moje Oferty</a>
-                    <a href="{% url 'jobs:recruiter_applications' %}" class="btn btn-warning">Aplikacje</a>
+                    <button type="submit" class="btn btn-primary me-md-2">{% trans "Aktualizuj pracę" %}</button>
+                    <a href="{% url 'jobs:recruiter_job_list' %}" class="btn btn-info">{% trans "Moje Oferty" %}</a>
+                    <a href="{% url 'jobs:recruiter_applications' %}" class="btn btn-warning">{% trans "Aplikacje" %}</a>
                 </div>
             </form>
         </div>

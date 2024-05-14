@@ -1,8 +1,10 @@
 {% extends 'home/base.html' %}
 
+{% load i18n %}  <!-- Загрузка тега для интернационализации -->
+
 {% block content %}
 <section class="container my-5">
-    <h2 class="text-center mb-4">Moje aplikacje</h2>
+    <h2 class="text-center mb-4">{% trans "Moje aplikacje" %}</h2>
     {% if applications %}
         <div class="row">
             {% for application in applications %}
@@ -11,14 +13,14 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ application.job.title }}</h5>
                             <p class="card-text">
-                                <i class="bi bi-info-circle"></i> <strong>Status:</strong> {{ application.get_status_display }}
+                                <i class="bi bi-info-circle"></i> <strong>{% trans "Status:" %}</strong> {{ application.get_status_display }}
                             </p>
                             <p class="card-text">
-                                <i class="bi bi-calendar-event"></i> <strong>Stworzony:</strong> {{ application.created_at|date:"d M Y H:i" }}
+                                <i class="bi bi-calendar-event"></i> <strong>{% trans "Stworzony:" %}</strong> {{ application.created_at|date:"d M Y H:i" }}
                             </p>
                             {% if application.cover_letter %}
                                 <p class="card-text">
-                                    <i class="bi bi-file-earmark-text"></i> <strong>List motywacyjny:</strong> {{ application.cover_letter }}
+                                    <i class="bi bi-file-earmark-text"></i> <strong>{% trans "List motywacyjny:" %}</strong> {{ application.cover_letter }}
                                 </p>
                             {% endif %}
                         </div>
@@ -28,12 +30,12 @@
         </div>
     {% else %}
         <div class="alert alert-info" role="alert">
-            Nie masz jeszcze żadnych aplikacji.
+            {% trans "Nie masz jeszcze żadnych aplikacji." %}
         </div>
     {% endif %}
     <div class="text-center mt-4">
         <a class="btn btn-primary" href="{% url 'jobs:job_list' %}">
-            <i class="bi bi-arrow-left"></i> Wróć do ofert pracy
+            <i class="bi bi-arrow-left"></i> {% trans "Wróć do ofert pracy" %}
         </a>
     </div>
 </section>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"POT-Creation-Date: 2024-05-14 17:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
 #: news/models.py:6
 msgid "Tytuł"
 msgstr "სათაური"
@@ -45,22 +46,17 @@ msgstr "რეკრუტერი"
 msgid "Rola"
 msgstr "როლი"
 
-#: news/views.py:39
-msgid "news"
-msgstr "ახალი ამბები"
+#~ msgid "news"
+#~ msgstr "ახალი ამბები"
 
-#: news/views.py:40
-msgid "page_number"
-msgstr "გვერდის ნომერი"
+#~ msgid "page_number"
+#~ msgstr "გვერდის ნომერი"
 
-#: news/views.py:41
-msgid "has_next"
-msgstr "აქვს შემდეგი"
+#~ msgid "has_next"
+#~ msgstr "აქვს შემდეგი"
 
-#: news/views.py:42
-msgid "has_previous"
-msgstr "აქვს წინა"
+#~ msgid "has_previous"
+#~ msgstr "აქვს წინა"
 
-#: news/views.py:43
-msgid "total_pages"
-msgstr "სულ გვერდები"
+#~ msgid "total_pages"
+#~ msgstr "სულ გვერდები"

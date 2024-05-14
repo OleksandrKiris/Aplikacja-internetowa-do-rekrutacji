@@ -74,7 +74,7 @@ class FavoriteRecruiter(models.Model):
         verbose_name=_('Użytkownik')
     )
     recruiter = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'accounts.RecruiterProfile',  # используйте 'app_name.ModelName'
         on_delete=models.CASCADE,
         related_name='favorited_by',
         verbose_name=_('Ulubiony rekruter')
@@ -86,4 +86,4 @@ class FavoriteRecruiter(models.Model):
         verbose_name_plural = _('Ulubieni rekruterzy')
 
     def __str__(self):
-        return f"{self.user.email} favorites {self.recruiter}"
+        return f"{self.user.email} favorites {self.recruiter.user.email}"

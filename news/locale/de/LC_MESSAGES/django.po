@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"POT-Creation-Date: 2024-05-14 17:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: news/models.py:6
 msgid "Tytuł"
 msgstr "Titel"
@@ -45,22 +46,17 @@ msgstr "Rekrutierer"
 msgid "Rola"
 msgstr "Rolle"
 
-#: news/views.py:39
-msgid "news"
-msgstr "Nachrichten"
+#~ msgid "news"
+#~ msgstr "Nachrichten"
 
-#: news/views.py:40
-msgid "page_number"
-msgstr "Seitennummer"
+#~ msgid "page_number"
+#~ msgstr "Seitennummer"
 
-#: news/views.py:41
-msgid "has_next"
-msgstr "hat nächste"
+#~ msgid "has_next"
+#~ msgstr "hat nächste"
 
-#: news/views.py:42
-msgid "has_previous"
-msgstr "hat vorherige"
+#~ msgid "has_previous"
+#~ msgstr "hat vorherige"
 
-#: news/views.py:43
-msgid "total_pages"
-msgstr "Gesamtseiten"
+#~ msgid "total_pages"
+#~ msgstr "Gesamtseiten"

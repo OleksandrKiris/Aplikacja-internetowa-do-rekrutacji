@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"POT-Creation-Date: 2024-05-14 17:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,7 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
 #: news/models.py:6
 msgid "Tytuł"
 msgstr "Назва"
@@ -48,22 +49,17 @@ msgstr "Рекрутер"
 msgid "Rola"
 msgstr "Роль"
 
-#: news/views.py:39
-msgid "news"
-msgstr "новини"
+#~ msgid "news"
+#~ msgstr "новини"
 
-#: news/views.py:40
-msgid "page_number"
-msgstr "номер сторінки"
+#~ msgid "page_number"
+#~ msgstr "номер сторінки"
 
-#: news/views.py:41
-msgid "has_next"
-msgstr "є наступна"
+#~ msgid "has_next"
+#~ msgstr "є наступна"
 
-#: news/views.py:42
-msgid "has_previous"
-msgstr "є попередня"
+#~ msgid "has_previous"
+#~ msgstr "є попередня"
 
-#: news/views.py:43
-msgid "total_pages"
-msgstr "всього сторінок"
+#~ msgid "total_pages"
+#~ msgstr "всього сторінок"

@@ -1,8 +1,10 @@
 {% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
 <section class="container my-5">
-    <h2 class="text-center mb-4">Stwórz nową ofertę pracy</h2>
+    <h2 class="text-center mb-4">{% trans "Stwórz nową ofertę pracy" %}</h2>
     <div class="card shadow-sm">
         <div class="card-body">
             <form method="post" class="form">
@@ -12,16 +14,16 @@
                 </fieldset>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                     <button type="submit" class="btn btn-primary me-md-2">
-                        <i class="bi bi-save"></i> Zapisz
+                        <i class="bi bi-save"></i> {% trans "Zapisz" %}
                     </button>
                     <a href="{% url 'jobs:job_list' %}" class="btn btn-secondary">
-                        <i class="bi bi-arrow-left"></i> Wróć do ofert pracy
+                        <i class="bi bi-arrow-left"></i> {% trans "Wróć do ofert pracy" %}
                     </a>
                     <a href="{% url 'jobs:recruiter_job_list' %}" class="btn btn-info">
-                        <i class="bi bi-briefcase"></i> Moje Oferty
+                        <i class="bi bi-briefcase"></i> {% trans "Moje Oferty" %}
                     </a>
                     <a href="{% url 'jobs:recruiter_applications' %}" class="btn btn-warning">
-                        <i class="bi bi-list-ul"></i> Aplikacje
+                        <i class="bi bi-list-ul"></i> {% trans "Aplikacje" %}
                     </a>
                 </div>
             </form>

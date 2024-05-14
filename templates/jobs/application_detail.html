@@ -1,24 +1,25 @@
-{% extends 'polish/home/base.html' %}
+{% extends 'home/base.html' %}
 {% load static %}
+{% load i18n %}  <!-- Загрузка библиотеки для интернационализации -->
 
 {% block content %}
 <section class="container my-5">
-    <h2 class="text-center mb-4">Szczegóły aplikacji</h2>
+    <h2 class="text-center mb-4">{% trans "Szczegóły aplikacji" %}</h2>
     <div class="d-flex flex-wrap justify-content-center gap-2 p-3 bg-light shadow-sm rounded mb-4">
         <a href="{% url 'jobs:recruiter_job_list' %}" class="btn btn-primary btn-sm">
-            <i class="bi bi-briefcase"></i> Moje Oferty Pracy
+            <i class="bi bi-briefcase"></i> {% trans "Moje Oferty Pracy" %}
         </a>
         <a href="{% url 'jobs:recruiter_applications' %}" class="btn btn-secondary btn-sm">
-            <i class="bi bi-list-ul"></i> Aplikacje zarejestrowane
+            <i class="bi bi-list-ul"></i> {% trans "Aplikacje zarejestrowane" %}
         </a>
         <a href="{% url 'jobs:guest_applications' %}" class="btn btn-secondary btn-sm">
-            <i class="bi bi-people"></i> Aplikacje gości
+            <i class="bi bi-people"></i> {% trans "Aplikacje gości" %}
         </a>
         <a href="{% url 'jobs:create_job' %}" class="btn btn-success btn-sm">
-            <i class="bi bi-plus-circle"></i> Dodaj ofertę
+            <i class="bi bi-plus-circle"></i> {% trans "Dodaj ofertę" %}
         </a>
         <a href="{% url 'jobs:job_list' %}" class="btn btn-warning btn-sm">
-            <i class="bi bi-list-task"></i> Wszystkie oferty pracy
+            <i class="bi bi-list-task"></i> {% trans "Wszystkie oferty pracy" %}
         </a>
     </div>
     <div class="card">
@@ -26,34 +27,34 @@
             <h5>{{ application.job.title }}</h5>
         </div>
         <div class="card-body">
-            <p><strong>Aplikant:</strong> {{ application.get_applicant_full_name }}</p>
+            <p><strong>{% trans "Aplikant:" %}</strong> {{ application.get_applicant_full_name }}</p>
             <div>
-            <img src="{% if application.applicant.candidate_profile.photo %}{{ application.applicant.candidate_profile.photo.url }}{% else %}{% static 'images/Icon_1.png' %}{% endif %}" alt="Profile Photo" style="width: 100px; height: 100px;">
+            <img src="{% if application.applicant.candidate_profile.photo %}{{ application.applicant.candidate_profile.photo.url }}{% else %}{% static 'images/Icon_1.png' %}{% endif %}" alt="{% trans "Profile Photo" %}" style="width: 100px; height: 100px;">
             </div>
             {% if application.applicant.candidate_profile %}
-            <p><strong>Numer telefonu:</strong> {{ application.applicant.candidate_profile.phone_number }}</p>
-            <p><strong>Lokalizacja:</strong> {{ application.applicant.candidate_profile.location }}</p>
-            <p><strong>Data urodzenia:</strong> {{ application.applicant.candidate_profile.date_of_birth|date:"d M Y" }}</p>
-            <p><strong>Umiejętności:</strong> {{ application.applicant.candidate_profile.skills }}</p>
-            <p><strong>Biografia:</strong> {{ application.applicant.candidate_profile.bio }}</p>
+            <p><strong>{% trans "Numer telefonu:" %}</strong> {{ application.applicant.candidate_profile.phone_number }}</p>
+            <p><strong>{% trans "Lokalizacja:" %}</strong> {{ application.applicant.candidate_profile.location }}</p>
+            <p><strong>{% trans "Data urodzenia:" %}</strong> {{ application.applicant.candidate_profile.date_of_birth|date:"d M Y" }}</p>
+            <p><strong>{% trans "Umiejętności:" %}</strong> {{ application.applicant.candidate_profile.skills }}</p>
+            <p><strong>{% trans "Biografia:" %}</strong> {{ application.applicant.candidate_profile.bio }}</p>
             {% else %}
-            <p>Dane profilu aplikanta nie są dostępne.</p>
+            <p>{% trans "Dane profilu aplikanta nie są dostępne." %}</p>
             {% endif %}
-            <p><strong>Status:</strong> {{ application.get_status_display }}</p>
-            <p><strong>List motywacyjny:</strong> {{ application.cover_letter }}</p>
-            <p><strong>Data złożenia:</strong> {{ application.created_at }}</p>
+            <p><strong>{% trans "Status:" %}</strong> {{ application.get_status_display }}</p>
+            <p><strong>{% trans "List motywacyjny:" %}</strong> {{ application.cover_letter }}</p>
+            <p><strong>{% trans "Data złożenia:" %}</strong> {{ application.created_at }}</p>
         </div>
         <div class="card-footer">
            <form method="post" action="{% url 'jobs:update_application_status' application.id %}">
                 {% csrf_token %}
-                <label for="status">Status:</label>
+                <label for="status">{% trans "Status:" %}</label>
                 <select name="status" id="status">
                     {% for key, value in application.ApplicationStatus.choices %}
                         <option value="{{ key }}" {% if key == application.status %}selected{% endif %}>{{ value }}</option>
                     {% endfor %}
                 </select>
                 <button type="submit" class="btn btn-primary mt-2">
-                    <i class="bi bi-pencil-square"></i> Zmień status
+                    <i class="bi bi-pencil-square"></i> {% trans "Zmień status" %}
                 </button>
             </form>
         </div>

@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center mb-5 text-primary fw-bold">{% trans "Available Jobs" %}</h1>
+    <h1 class="text-center mb-5 text-primary fw-bold">{% trans "Dostępne oferty pracy" %}</h1>
     <form method="GET" action="{% url 'jobs:public_job_list' %}" class="d-flex justify-content-center mb-4">
         <div class="input-group w-75">
             <input type="text" name="q" class="form-control" id="search-input" placeholder="{% trans 'Search...' %}" aria-label="{% trans 'Search' %}" value="{{ request.GET.q }}">

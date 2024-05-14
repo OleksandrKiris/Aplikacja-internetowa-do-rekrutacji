@@ -7,9 +7,9 @@
     <h2>{{ recruiter.first_name }} {{ recruiter.last_name }}</h2>
     <div class="recruiter-profile">
         {% if recruiter.photo %}
-            <img src="{{ recruiter.photo.url }}" alt="{% trans "Zdjęcie rekrutera" %}" class="img-thumbnail">
+            <img src="{{ recruiter.photo.url }}" alt="{% trans "Zdjęcie rekrutera" %}" class="img-thumbnail" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
         {% else %}
-            <img src="{% static 'images/recruiter.png' %}" alt="{% trans "Domyślny profil" %}" class="img-thumbnail">
+            <img src="{% static 'images/recruiter.png' %}" alt="{% trans "Domyślny profil" %}" class="img-thumbnail"  style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
         {% endif %}
         <p>{{ recruiter.bio }}</p>
         <p>{% trans "Lokalizacja:" %} {{ recruiter.location }}</p>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"POT-Creation-Date: 2024-05-14 17:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,7 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
 #: accounts/forms.py:13 accounts/models.py:45
 msgid "Kandydat"
 msgstr "Кандидат"
@@ -62,23 +63,23 @@ msgstr "Ім'я"
 msgid "Nazwisko"
 msgstr "Прізвище"
 
-#: accounts/forms.py:45 accounts/forms.py:71 accounts.forms.py:96
-#: accounts/models.py:89 accounts/models.py:103 accounts.models.py:119
+#: accounts/forms.py:45 accounts/forms.py:71 accounts/forms.py:96
+#: accounts/models.py:89 accounts/models.py:103 accounts/models.py:119
 msgid "Numer telefonu"
 msgstr "Номер телефону"
 
 #: accounts/forms.py:46 accounts/forms.py:72 accounts/forms.py:97
-#: accounts/models.py:90 accounts/models.py:104 accounts.models.py:120
+#: accounts/models.py:90 accounts/models.py:104 accounts/models.py:120
 msgid "Zdjęcie"
 msgstr "Фотографія"
 
-#: accounts/forms.py:47 accounts/forms.py:73 accounts.forms.py:98
-#: accounts/models.py:91 accounts.models.py:105 accounts.models.py:121
+#: accounts/forms.py:47 accounts/forms.py:73 accounts/forms.py:98
+#: accounts/models.py:91 accounts/models.py:105 accounts/models.py:121
 msgid "Lokalizacja"
 msgstr "Локація"
 
 #: accounts/forms.py:48 accounts/forms.py:74 accounts/forms.py:99
-#: accounts/models.py:92 accounts.models.py:106 accounts.models.py:122
+#: accounts/models.py:92 accounts/models.py:106 accounts/models.py:122
 msgid "Biografia"
 msgstr "Біографія"
 
@@ -98,27 +99,29 @@ msgstr "Введіть ім'я"
 msgid "Wprowadź nazwisko"
 msgstr "Введіть прізвище"
 
-#: accounts/forms.py:56 accounts.forms.py:80 accounts.forms.py:105
+#: accounts/forms.py:56 accounts/forms.py:80 accounts/forms.py:105
 msgid "Wprowadź numer telefonu"
 msgstr "Введіть номер телефону"
 
-#: accounts/forms.py:58 accounts/forms.py:82 accounts.forms.py:107
+#: accounts/forms.py:58 accounts/forms.py:82 accounts/forms.py:107
 msgid "Wprowadź lokalizację"
 msgstr "Введіть локацію"
 
-#: accounts/forms.py:59 accounts/forms.py:83 accounts.forms.py:108
+#: accounts/forms.py:59 accounts/forms.py:83 accounts/forms.py:108
 msgid "Wprowadź biografię"
 msgstr "Введіть біографію"
 
 #: accounts/forms.py:62
-msgid "Wprowadź умiejętności"
+#, fuzzy
+#| msgid "Wprowadź умiejętności"
+msgid "Wprowadź umiejętności"
 msgstr "Введіть навички"
 
 #: accounts/forms.py:75 accounts/models.py:107
 msgid "Nazwa firmy"
 msgstr "Назва компанії"
 
-#: accounts/forms.py:76 accounts.models.py:108
+#: accounts/forms.py:76 accounts/models.py:108
 msgid "Branża"
 msgstr "Галузь"
 

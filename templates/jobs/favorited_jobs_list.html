@@ -1,10 +1,12 @@
 {% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
 <section class="container my-5">
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white text-center">
-            <h2 class="h4 fw-bold mb-0">Favorited Jobs</h2>
+            <h2 class="h4 fw-bold mb-0">{% trans "Ulubione Oferty" %}</h2>
         </div>
     
         <div class="card-body">
@@ -12,9 +14,9 @@
                 <table class="table table-hover table-bordered align-middle">
                     <thead class="table-primary">
                         <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Salary</th>
+                            <th>{% trans "Tytuł" %}</th>
+                            <th>{% trans "Opis" %}</th>
+                            <th>{% trans "Wynagrodzenie" %}</th>
                         </tr>
                     </thead>
                     <tbody id="job-list">
@@ -25,13 +27,13 @@
                             <td>{{ job.salary }} PLN</td>
                         </tr>
                         {% empty %}
-                        <tr><td colspan="3" class="text-center fw-bold">No favorited jobs available.</td></tr>
+                        <tr><td colspan="3" class="text-center fw-bold">{% trans "Brak ulubionych ofert pracy." %}</td></tr>
                         {% endfor %}
                     </tbody>
                 </table>
-            <a href="{% url 'jobs:job_list' %}" class="btn btn-warning btn-sm">
-                <i class="bi bi-list-task"></i> Wszystkie oferty pracy
-            </a>
+                <a href="{% url 'jobs:job_list' %}" class="btn btn-warning btn-sm">
+                    <i class="bi bi-list-task"></i> {% trans "Wszystkie oferty pracy" %}
+                </a>
             </div>
         </div>
     </div>

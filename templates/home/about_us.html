@@ -1,4 +1,5 @@
 {% extends "home/base.html" %}
+{% load static %}
 {% load i18n %}
 
 {% block content %}
@@ -28,25 +29,30 @@
         </div>
     </div>
     <section class="contact-section mt-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-12">
-                    <div class="contact-info card p-3">
-                        <h2>{% trans "Informacje kontaktowe" %}</h2>
-                        <p>Email: <a href="mailto:info@agencja.pracy.pl">info@agencja.pracy.pl</a></p>
-                        <p>Telefon: <a href="tel:+48123456789">+48 123 456 789</a></p>
-                        <p>Adres: ul. Staszica 12c, Wrocław, Polska</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="social-media card p-3">
-                        <h2>{% trans "Śledź nas" %}</h2>
-                        <a href="#">Facebook</a>
-                        <a href="#">Instagram</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-6 col-12">
+                     <div class="contact-info card p-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                         <h2>{% trans "Informacje kontaktowe" %}</h2>
+                         <p>Email: <a href="mailto:oleksandr.kiris@icloud.com">oleksandr.kiris@icloud.com</a></p>
+                         <p>Telefon: <a href="tel:+4917648743882">+4917648743882</a></p>
+                         <p>{% trans "Adres" %}: ul. Staszica 12c, Wrocław, Polska</p>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-12">
+                     <div class="social-media card p-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                         <h2>{% trans "Śledź nas" %}</h2>
+                         <a href="https://www.facebook.com/share/Vo578oEXnLoM37yU/?mibextid=K35XfP">
+                             <img src="{% static 'images/facebook.png' %}" alt="Facebook" style="width: 180px; height: 80px;">
+                         </a>
+                         <a href="https://www.instagram.com/oleksandr_kiriss?igsh=MzAwcmJ2MnJhZnBi&utm_source=qr">
+                             <img src="{% static 'images/instagram.jpeg' %}" alt="Instagram" style="width: 180px; height: 80px;">
+                         </a>
+                     </div>
+                 </div>
+             </div>
+         </div>
     </section>
+
 </div>
 {% endblock %}

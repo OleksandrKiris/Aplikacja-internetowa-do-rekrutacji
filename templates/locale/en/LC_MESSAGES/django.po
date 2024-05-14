@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"POT-Creation-Date: 2024-05-14 17:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: kirismor/settings.py:132
+msgid "Polski"
+msgstr "Polish"
+
+#: kirismor/settings.py:133
+msgid "Ukrainian"
+msgstr "Ukrainian"
+
+#: kirismor/settings.py:134
+msgid "Russian"
+msgstr "Russian"
+
+#: kirismor/settings.py:135
+msgid "English"
+msgstr "English"
+
+#: kirismor/settings.py:136
+msgid "Turkish"
+msgstr "Turkish"
+
+#: kirismor/settings.py:137
+msgid "German"
+msgstr "German"
+
+#: kirismor/settings.py:138
+msgid "Georgian"
+msgstr "Georgian"
+
 #: templates/dashboard/dashboard.html:10 templates/news/news_list.html:8
 msgid "Panel kandydata"
 msgstr "Candidate Panel"
@@ -57,15 +86,17 @@ msgstr "Latest News:"
 msgid "Brak wiadomości do wyświetlenia."
 msgstr "No news to display."
 
-#: templates/home/about_us.html:14
+#: templates/home/about_us.html:15
 msgid "Dla kandydatów"
 msgstr "For Candidates"
 
-#: templates/home/about_us.html:15
-msgid "Agencja Pracy KIRIS M.O.R. specjalizuje się w rekrutacji i zatrudnieniu."
-msgstr "KIRIS M.O.R. Employment Agency specializes in recruitment and employment."
-
 #: templates/home/about_us.html:16
+msgid ""
+"Agencja Pracy KIRIS M.O.R. specjalizuje się w rekrutacji i zatrudnieniu."
+msgstr ""
+"KIRIS M.O.R. Employment Agency specializes in recruitment and employment."
+
+#: templates/home/about_us.html:17
 msgid ""
 "Agencja Pracy KIRIS M.O.R. specjalizuje się w rekrutacji i zatrudnianiu "
 "pracowników z Gruzji, Ukrainy i Mołdawii. Jesteśmy ekspertami w "
@@ -85,16 +116,16 @@ msgstr ""
 "choosing us, you choose a reliable and experienced partner in building your "
 "professional future abroad."
 
-#: templates/home/about_us.html:23
+#: templates/home/about_us.html:24
 msgid "Dla klientów"
 msgstr "For Clients"
 
-#: templates/home/about_us.html:24
+#: templates/home/about_us.html:25
 msgid ""
 "Agencja Pracy KIRIS M.O.R. to renomowany partner partner dla twojej firmy."
 msgstr "KIRIS M.O.R. Employment Agency is a renowned partner for your company."
 
-#: templates/home/about_us.html:25
+#: templates/home/about_us.html:26
 msgid ""
 "Agencja Pracy KIRIS M.O.R. to renomowany partner w zakresie międzynarodowej "
 "rekrutacji pracowników. Specjalizujemy się w dostarczaniu wykwalifikowanych "
@@ -109,91 +140,91 @@ msgstr ""
 "KIRIS M.O.R. Employment Agency is a renowned partner in international "
 "employee recruitment. We specialize in providing qualified candidates from "
 "Georgia, Ukraine, and Moldova, supporting Polish enterprises in efficiently "
-"filling staffing gaps. We provide full support in the selection, legalization, "
-"and adaptation processes, ensuring high quality and compliance with current "
-"legal regulations. Our services are synonymous with reliability and tailored "
-"to the specific needs of each industry. By choosing KIRIS M.O.R. Employment "
-"Agency, you choose to optimize your employment processes and increase the "
-"competitiveness of your business."
+"filling staffing gaps. We provide full support in the selection, "
+"legalization, and adaptation processes, ensuring high quality and compliance "
+"with current legal regulations. Our services are synonymous with reliability "
+"and tailored to the specific needs of each industry. By choosing KIRIS M.O."
+"R. Employment Agency, you choose to optimize your employment processes and "
+"increase the competitiveness of your business."
 
-#: templates/home/about_us.html:35 templates/home/base.html:152
-#: templates/home/base.html:315
+#: templates/home/about_us.html:36 templates/home/base.html:161
 msgid "Informacje kontaktowe"
 msgstr "Contact Information"
 
-#: templates/home/about_us.html:43 templates/home/base.html:160
-#: templates/home/base.html:323
+#: templates/home/about_us.html:39 templates/home/base.html:164
+#: templates/home/contact.html:57 templates/home/guest_feedback_thanks.html:66
+msgid "Adres"
+msgstr "Address"
+
+#: templates/home/about_us.html:44 templates/home/base.html:169
 msgid "Śledź nas"
 msgstr "Follow us"
 
-#: templates/home/base.html:32 templates/home/base.html:195
+#: templates/home/base.html:32
 msgid "Strona główna"
 msgstr "Home"
 
-#: templates/home/base.html:33 templates/home/base.html:112
-#: templates/home/base.html:196 templates/home/base.html:275
+#: templates/home/base.html:33 templates/home/base.html:121
 msgid "Kontakt"
 msgstr "Contact"
 
-#: templates/home/base.html:34 templates/home/base.html:197
+#: templates/home/base.html:34
 msgid "O nas"
 msgstr "About Us"
 
 #: templates/home/base.html:35 templates/home/base.html:49
 #: templates/home/base.html:53 templates/home/base.html:59
-#: templates/home/base.html:198 templates/home/base.html:212
-#: templates/home/base.html:216 templates/home/base.html:222
 msgid "Oferty pracy"
 msgstr "Job Offers"
 
-#: templates/home/base.html:36 templates/home/base.html:199
+#: templates/home/base.html:36
 msgid "Nasi klienci"
 msgstr "Our Clients"
 
-#: templates/home/base.html:37 templates/home/base.html:200
+#: templates/home/base.html:37
 msgid "Nasi rekruterzy"
 msgstr "Our Recruiters"
 
-#: templates/home/base.html:38 templates/home/base.html:201
+#: templates/home/base.html:38
 msgid "Nowości"
 msgstr "News"
 
-#: templates/home/base.html:44 templates/home/base.html:207
+#: templates/home/base.html:44
 msgid "User Menu"
 msgstr "User Menu"
 
 #: templates/home/base.html:48 templates/home/base.html:58
-#: templates/home/base.html:211 templates/home/base.html:221
 msgid "Mój profil"
 msgstr "My Profile"
 
 #: templates/home/base.html:50 templates/home/base.html:63
-#: templates/home/base.html:213 templates/home/base.html:226
+#: templates/jobs/create_job.html:26 templates/jobs/edit_job.html:18
 msgid "Aplikacje"
 msgstr "Applications"
 
-#: templates/home/base.html:52 templates/home/base.html:215
+#: templates/home/base.html:52
 msgid "Profil"
 msgstr "Profile"
 
-#: templates/home/base.html:54 templates/home/base.html:217
+#: templates/home/base.html:54
 msgid "Rekruterzy"
 msgstr "Recruiters"
 
-#: templates/home/base.html:55 templates/home/base.html:218
+#: templates/home/base.html:55
 msgid "Stwórz wniosek"
 msgstr "Create Request"
 
-#: templates/home/base.html:56 templates/home/base.html:219
+#: templates/home/base.html:56
 msgid "Wnioski"
 msgstr "Requests"
 
-#: templates/home/base.html:60 templates/home/base.html:223
+#: templates/home/base.html:60
 msgid "Dodaj ofertę pracy"
 msgstr "Add Job Offer"
 
-#: templates/home/base.html:61 templates/home/base.html:224
+#: templates/home/base.html:61
 #: templates/job_requests/recruiter_job_request_list.html:14
+#: templates/jobs/application_detail.html:10
 #: templates/jobs/recruiter_applications.html:25
 #: templates/jobs/recruiter_job_list.html:8
 #: templates/jobs/recruiter_job_list.html:23
@@ -201,59 +232,59 @@ msgstr "Add Job Offer"
 msgid "Moje Oferty Pracy"
 msgstr "My Job Offers"
 
-#: templates/home/base.html:62 templates/home/base.html:225
+#: templates/home/base.html:62
 msgid "Zarządzaj zadaniami"
 msgstr "Manage Tasks"
 
-#: templates/home/base.html:64 templates/home/base.html:227
+#: templates/home/base.html:64
 msgid "Zapytania pracodawców"
 msgstr "Employer Requests"
 
-#: templates/home/base.html:69 templates/home/base.html:232
+#: templates/home/base.html:69
 #: templates/registration/logout_confirmation.html:7
 msgid "Wyloguj się"
 msgstr "Logout"
 
-#: templates/home/base.html:72 templates/home/base.html:235
-#: templates/registration/login.html:11
+#: templates/home/base.html:72 templates/registration/login.html:11
 msgid "Logowanie"
 msgstr "Login"
 
-#: templates/home/base.html:73 templates/home/base.html:236
-#: templates/registration/register.html:10
+#: templates/home/base.html:73 templates/registration/register.html:10
 #: templates/registration/register.html:16
 msgid "Rejestracja"
 msgstr "Register"
 
-#: templates/home/base.html:89 templates/home/base.html:252
+#: templates/home/base.html:77
+msgid "Language"
+msgstr "Language"
+
+#: templates/home/base.html:98
 msgid "Tytuł stanowiska"
 msgstr "Job Title"
 
-#: templates/home/base.html:90 templates/home/base.html:253
+#: templates/home/base.html:99
 msgid "Opis stanowiska"
 msgstr "Job Description"
 
-#: templates/home/base.html:91 templates/home/base.html:254
+#: templates/home/base.html:100
 msgid "Wymagania"
 msgstr "Requirements"
 
-#: templates/home/base.html:100 templates/home/base.html:263
-#: templates/home/client_list.html:34 templates/home/client_list.html:36
-#: templates/home/recruiters.html:33
+#: templates/home/base.html:109 templates/home/client_list.html:34
+#: templates/home/client_list.html:36 templates/home/recruiters.html:33
 msgid "Poprzedni"
 msgstr "Previous"
 
-#: templates/home/base.html:104 templates/home/base.html:267
-#: templates/home/client_list.html:49 templates/home/client_list.html:51
-#: templates/home/recruiters.html:45
+#: templates/home/base.html:113 templates/home/client_list.html:49
+#: templates/home/client_list.html:51 templates/home/recruiters.html:45
 msgid "Następny"
 msgstr "Next"
 
-#: templates/home/base.html:113 templates/home/base.html:276
+#: templates/home/base.html:122
 msgid "Skontaktuj się z nami"
 msgstr "Contact Us"
 
-#: templates/home/base.html:115 templates/home/base.html:278
+#: templates/home/base.html:124
 msgid ""
 "Jeśli masz pytania lub sugestie, prosimy, nie wahaj się z nami skontaktować. "
 "Skontaktuj się z nami, aby omówić swoje potrzeby i możliwości. Nasz zespół "
@@ -262,17 +293,18 @@ msgid ""
 msgstr ""
 "If you have any questions or suggestions, please do not hesitate to contact "
 "us. Contact us to discuss your needs and opportunities. Our team of experts "
-"is ready to answer all your questions and help you find the best solution for you."
+"is ready to answer all your questions and help you find the best solution "
+"for you."
 
-#: templates/home/base.html:121 templates/home/base.html:284
+#: templates/home/base.html:130
 msgid "Dokumenty"
 msgstr "Documents"
 
-#: templates/home/base.html:122 templates/home/base.html:285
+#: templates/home/base.html:131
 msgid "Przygotowanie dokumentów"
 msgstr "Document Preparation"
 
-#: templates/home/base.html:124 templates/home/base.html:287
+#: templates/home/base.html:133
 msgid ""
 "Przygotujemy wszystkie niezbędne dokumenty. Wspólnie przeanalizujemy "
 "wszystkie detale i odpowiemy na dodatkowe pytania."
@@ -280,15 +312,15 @@ msgstr ""
 "We will prepare all the necessary documents. Together we will analyze all "
 "the details and answer any additional questions."
 
-#: templates/home/base.html:130 templates/home/base.html:293
+#: templates/home/base.html:139
 msgid "Przyjazd"
 msgstr "Arrival"
 
-#: templates/home/base.html:131 templates/home/base.html:294
+#: templates/home/base.html:140
 msgid "Przyjazd i zakwaterowanie"
 msgstr "Arrival and Accommodation"
 
-#: templates/home/base.html:133 templates/home/base.html:296
+#: templates/home/base.html:142
 msgid ""
 "Po finalizacji wszystkich formalności ustalisz datę przyjazdu na projekt. "
 "Nasz koordynator będzie na ciebie czekał po przybyciu, zapewni ci ciepłe "
@@ -298,27 +330,28 @@ msgstr ""
 "project. Our coordinator will be waiting for you upon arrival, give you a "
 "warm welcome, and help you settle in."
 
-#: templates/home/base.html:139 templates/home/base.html:302
+#: templates/home/base.html:148
 msgid "Wsparcie"
 msgstr "Support"
 
-#: templates/home/base.html:140 templates/home/base.html:303
+#: templates/home/base.html:149
 msgid "Wsparcie i kontakt"
 msgstr "Support and Contact"
 
-#: templates/home/base.html:142 templates/home/base.html:305
+#: templates/home/base.html:151
 msgid ""
 "Jesteśmy z Tobą na każdym kroku Twojej kariery. Nasz zespół jest zawsze "
 "dostępny, aby pomóc i odpowiedzieć na wszelkie pytania, zapewniając ciągłe "
 "wsparcie i komunikację."
 msgstr ""
 "We are with you every step of your career. Our team is always available to "
-"help and answer any questions, providing continuous support and communication."
+"help and answer any questions, providing continuous support and "
+"communication."
 
-#: templates/home/base.html:155 templates/home/base.html:318
-#: templates/home/contact.html:54 templates/home/guest_feedback_thanks.html:64
-msgid "Adres"
-msgstr "Address"
+#: templates/home/base.html:187
+#, fuzzy
+msgid "Agencja Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone."
+msgstr "KIRIS M.O.R. Employment Agency. All rights reserved."
 
 #: templates/home/client_list.html:7
 msgid "Nasi Klienci"
@@ -336,50 +369,38 @@ msgstr "No clients to display."
 msgid "Przykład nawigacji stronicowej"
 msgstr "Pagination Example"
 
-#: templates/home/contact.html:13
+#: templates/home/contact.html:13 templates/home/guest_feedback_thanks.html:22
 msgid "Zapraszamy do kontaktu!"
 msgstr "We invite you to contact us!"
 
-#: templates/home/contact.html:20
-msgid "Ivan Ivanov"
-msgstr "Ivan Ivanov"
-
-#: templates/home/contact.html:21 templates/home/guest_feedback_thanks.html:31
-msgid "Rekruter dla rynku ukraińskiego"
-msgstr "Recruiter for the Ukrainian market"
+#: templates/home/contact.html:21 templates/home/guest_feedback_thanks.html:30
+msgid "Główny kierownik/dla wszystkich rynków"
+msgstr "Main Manager/For All Markets"
 
 #: templates/home/contact.html:22 templates/home/contact.html:31
-#: templates/home/guest_feedback_thanks.html:32
-#: templates/home/guest_feedback_thanks.html:41
+#: templates/home/guest_feedback_thanks.html:31
+#: templates/home/guest_feedback_thanks.html:40
 #: templates/profiles/universal_profile_detail.html:28
 msgid "Telefon"
 msgstr "Phone"
 
-#: templates/home/contact.html:29
-msgid "Nino Ninavasil"
-msgstr "Nino Ninavasil"
-
-#: templates/home/contact.html:30 templates/home/guest_feedback_thanks.html:40
+#: templates/home/contact.html:30 templates/home/guest_feedback_thanks.html:39
 msgid "Rekruter dla rynku gruzińskiego"
 msgstr "Recruiter for the Georgian market"
 
-#: templates/home/contact.html:42
+#: templates/home/contact.html:42 templates/home/guest_feedback_thanks.html:51
 msgid "Social Media"
 msgstr "Social Media"
 
-#: templates/home/contact.html:45 templates/home/guest_feedback_thanks.html:55
-msgid "Agencja Pracy KIRIS M.O.R."
-msgstr "KIRIS M.O.R. Employment Agency"
-
-#: templates/home/contact.html:56
+#: templates/home/contact.html:59 templates/home/guest_feedback_thanks.html:68
 msgid "Godziny Otwarcia"
 msgstr "Opening Hours"
 
-#: templates/home/contact.html:57 templates/home/guest_feedback_thanks.html:67
+#: templates/home/contact.html:60 templates/home/guest_feedback_thanks.html:69
 msgid "Poniedziałek - Piątek: 8:00 - 16:00"
 msgstr "Monday - Friday: 8:00 - 16:00"
 
-#: templates/home/contact.html:58 templates/home/guest_feedback_thanks.html:68
+#: templates/home/contact.html:61 templates/home/guest_feedback_thanks.html:70
 msgid "Sobota - Niedziela: Zamknięte"
 msgstr "Saturday - Sunday: Closed"
 
@@ -418,18 +439,6 @@ msgstr ""
 msgid "Zarejestruj się"
 msgstr "Sign Up"
 
-#: templates/home/guest_feedback_thanks.html:23
-msgid "Zachęcamy do kontaktu z nami!"
-msgstr "We encourage you to contact us!"
-
-#: templates/home/guest_feedback_thanks.html:52
-msgid "Media społecznościowe"
-msgstr "Social Media"
-
-#: templates/home/guest_feedback_thanks.html:66
-msgid "Godziny otwarcia"
-msgstr "Opening Hours"
-
 #: templates/home/public_job_detail.html:11
 msgid "Opis stanowiska:"
 msgstr "Job Description:"
@@ -444,6 +453,7 @@ msgstr "Requirements:"
 
 #: templates/home/public_job_detail.html:17
 #: templates/job_requests/recruiter_detail.html:15
+#: templates/jobs/application_detail.html:36
 msgid "Lokalizacja:"
 msgstr "Location:"
 
@@ -456,8 +466,8 @@ msgid "Zostaw opinię"
 msgstr "Leave Feedback"
 
 #: templates/home/public_job_list.html:6
-msgid "Available Jobs"
-msgstr "Available Jobs"
+msgid "Dostępne oferty pracy"
+msgstr "Available job offers"
 
 #: templates/home/public_job_list.html:9
 msgid "Search..."
@@ -540,7 +550,9 @@ msgstr "Creation Date:"
 
 #: templates/job_requests/client_job_request_detail.html:13
 #: templates/job_requests/recruiter_job_request_detail.html:16
-#: templates/jobs/job_detail.html:15
+#: templates/jobs/application_detail.html:43
+#: templates/jobs/application_detail.html:50
+#: templates/jobs/application_list.html:16 templates/jobs/job_detail.html:15
 msgid "Status:"
 msgstr "Status:"
 
@@ -594,6 +606,7 @@ msgstr "Recruiter not selected"
 
 #: templates/job_requests/client_job_request_list.html:26
 #: templates/job_requests/recruiter_list.html:28
+#: templates/jobs/create_application.html:17
 #: templates/jobs/recruiter_applications.html:61
 #: templates/jobs/recruiter_job_list.html:55
 msgid "Szczegóły"
@@ -613,6 +626,7 @@ msgstr "Create Request"
 
 #: templates/job_requests/job_request_form.html:30
 #: templates/job_requests/job_request_status_update.html:28
+#: templates/jobs/create_job.html:17
 msgid "Zapisz"
 msgstr "Save"
 
@@ -634,6 +648,7 @@ msgid "Zdjęcie rekrutera"
 msgstr "Recruiter Photo"
 
 #: templates/job_requests/recruiter_detail.html:16
+#: templates/jobs/application_detail.html:35
 msgid "Numer telefonu:"
 msgstr "Phone Number:"
 
@@ -669,7 +684,8 @@ msgstr "Completed"
 
 #: templates/job_requests/recruiter_job_request_detail.html:25
 #: templates/job_requests/recruiter_job_request_list.html:40
-#: templates/jobs/job_detail.html:27 templates/jobs/recruiter_job_list.html:58
+#: templates/jobs/application_detail.html:57 templates/jobs/job_detail.html:27
+#: templates/jobs/recruiter_job_list.html:58
 #: templates/jobs/update_application_status.html:26
 msgid "Zmień status"
 msgstr "Change Status"
@@ -683,6 +699,7 @@ msgid "Zarządzanie Zapytaniami"
 msgstr "Request Management"
 
 #: templates/job_requests/recruiter_job_request_list.html:17
+#: templates/jobs/application_detail.html:13
 #: templates/jobs/guest_applications.html:9
 #: templates/jobs/guest_feedback_applications.html:9
 #: templates/jobs/guest_feedback_applications_for_job.html:11
@@ -694,6 +711,7 @@ msgid "Aplikacje zarejestrowane"
 msgstr "Registered Applications"
 
 #: templates/job_requests/recruiter_job_request_list.html:20
+#: templates/jobs/application_detail.html:16
 #: templates/jobs/guest_applications.html:10
 #: templates/jobs/guest_feedback_applications.html:10
 #: templates/jobs/guest_feedback_applications_for_job.html:12
@@ -705,6 +723,7 @@ msgid "Aplikacje gości"
 msgstr "Guest Applications"
 
 #: templates/job_requests/recruiter_job_request_list.html:23
+#: templates/jobs/application_detail.html:19
 #: templates/jobs/guest_applications.html:11
 #: templates/jobs/guest_feedback_applications.html:11
 #: templates/jobs/guest_feedback_applications_for_job.html:13
@@ -716,6 +735,8 @@ msgid "Dodaj ofertę"
 msgstr "Add Offer"
 
 #: templates/job_requests/recruiter_job_request_list.html:26
+#: templates/jobs/application_detail.html:22
+#: templates/jobs/favorited_jobs_list.html:35
 #: templates/jobs/guest_applications.html:12
 #: templates/jobs/guest_feedback_applications.html:12
 #: templates/jobs/liked_jobs_list.html:34
@@ -750,22 +771,128 @@ msgstr "Search..."
 msgid "Szukaj"
 msgstr "Search"
 
-
 #: templates/job_requests/recruiter_list.html:38
 #: templates/jobs/recruiter_applications.html:76
-#: templates/news/all_news_list.html:57
+#: templates/news/all_news_list.html:49
 msgid "Poprzednia"
 msgstr "Previous"
 
 #: templates/job_requests/recruiter_list.html:41
 #: templates/jobs/recruiter_applications.html:88
-#: templates/news/all_news_list.html:71
+#: templates/news/all_news_list.html:61
 msgid "Następna"
 msgstr "Next"
 
 #: templates/job_requests/recruiter_list.html:46
 msgid "Nie znaleziono rekrutera o podanych kryteriach."
 msgstr "No recruiter found with the given criteria."
+
+#: templates/jobs/application_detail.html:7
+#: templates/jobs/update_application_status.html:6
+msgid "Szczegóły aplikacji"
+msgstr "Application Details"
+
+#: templates/jobs/application_detail.html:30
+msgid "Aplikant:"
+msgstr "Applicant"
+
+#: templates/jobs/application_detail.html:32
+msgid "Profile Photo"
+msgstr "Profile Photo"
+
+#: templates/jobs/application_detail.html:37
+msgid "Data urodzenia:"
+msgstr "Date of Birth"
+
+#: templates/jobs/application_detail.html:38
+msgid "Umiejętności:"
+msgstr "Skills"
+
+#: templates/jobs/application_detail.html:39
+msgid "Biografia:"
+msgstr "Biography:"
+
+#: templates/jobs/application_detail.html:41
+msgid "Dane profilu aplikanta nie są dostępne."
+msgstr "Applicant profile data is not available."
+
+#: templates/jobs/application_detail.html:44
+#: templates/jobs/application_list.html:23
+msgid "List motywacyjny:"
+msgstr "Cover Letter"
+
+#: templates/jobs/application_detail.html:45
+msgid "Data złożenia:"
+msgstr "Submission Date"
+
+#: templates/jobs/application_list.html:7
+msgid "Moje aplikacje"
+msgstr "My Applications"
+
+#: templates/jobs/application_list.html:19
+msgid "Stworzony:"
+msgstr "Created:"
+
+#: templates/jobs/application_list.html:33
+msgid "Nie masz jeszcze żadnych aplikacji."
+msgstr "You do not have any applications yet."
+
+#: templates/jobs/application_list.html:38 templates/jobs/create_job.html:20
+#: templates/jobs/job_detail.html:20
+msgid "Wróć do ofert pracy"
+msgstr "Back to Job Offers"
+
+#: templates/jobs/create_application.html:7
+msgid "Aplikuj na:"
+msgstr "Apply to "
+
+#: templates/jobs/create_application.html:16 templates/jobs/job_detail.html:34
+msgid "Aplikuj"
+msgstr "Apply"
+
+#: templates/jobs/create_job.html:7
+msgid "Stwórz nową ofertę pracy"
+msgstr "Create a new job offer"
+
+#: templates/jobs/create_job.html:23 templates/jobs/edit_job.html:17
+#: templates/jobs/guest_feedback_applications_for_job.html:10
+#: templates/jobs/job_detail.html:30
+#: templates/jobs/registered_applications_for_job.html:14
+msgid "Moje Oferty"
+msgstr "My Offers"
+
+#: templates/jobs/edit_job.html:7
+msgid "Zaktualizuj status pracy"
+msgstr "Update job status"
+
+#: templates/jobs/edit_job.html:16
+msgid "Aktualizuj pracę"
+msgstr "Update job"
+
+#: templates/jobs/favorited_jobs_list.html:9
+msgid "Ulubione Oferty"
+msgstr "Favorite Job Offers"
+
+#: templates/jobs/favorited_jobs_list.html:17 templates/jobs/job_list.html:29
+#: templates/jobs/liked_jobs_list.html:16
+#: templates/jobs/recruiter_job_list.html:43 templates/tasks/task_list.html:26
+msgid "Tytuł"
+msgstr "Title"
+
+#: templates/jobs/favorited_jobs_list.html:18 templates/jobs/job_list.html:30
+#: templates/jobs/liked_jobs_list.html:17 templates/tasks/task_detail.html:9
+#: templates/tasks/task_list.html:27
+msgid "Opis"
+msgstr "Description"
+
+#: templates/jobs/favorited_jobs_list.html:19 templates/jobs/job_list.html:31
+#: templates/jobs/liked_jobs_list.html:18
+msgid "Wynagrodzenie"
+msgstr "Salary"
+
+#: templates/jobs/favorited_jobs_list.html:30
+msgid "Brak ulubionych ofert pracy."
+msgstr "No favorite job offers available."
 
 #: templates/jobs/guest_applications.html:7
 #: templates/jobs/guest_feedback_applications.html:7
@@ -792,12 +919,6 @@ msgstr "No guest feedback."
 msgid "Lista zarejestrowanych aplikacji dla"
 msgstr "List of registered applications for"
 
-#: templates/jobs/guest_feedback_applications_for_job.html:10
-#: templates/jobs/job_detail.html:30
-#: templates/jobs/registered_applications_for_job.html:14
-msgid "Moje Oferty"
-msgstr "My Offers"
-
 #: templates/jobs/guest_feedback_applications_for_job.html:20
 #: templates/jobs/recruiter_applications.html:46
 #: templates/jobs/registered_applications_for_job.html:34
@@ -811,8 +932,7 @@ msgstr "Applicant"
 #: templates/jobs/registered_applications_for_job.html:35
 #: templates/jobs/update_application_status.html:13
 #: templates/jobs/update_application_status.html:20
-#: templates/tasks/task_detail.html:11
-#: templates/tasks/task_list.html:29
+#: templates/tasks/task_detail.html:11 templates/tasks/task_list.html:29
 msgid "Status"
 msgstr "Status"
 
@@ -842,18 +962,9 @@ msgstr "Application Details"
 msgid "Brak aplikacji do wyświetlenia."
 msgstr "No applications to display."
 
-#: templates/jobs/job_detail.html:20
-msgid "Wróć do ofert pracy"
-msgstr "Back to Job Offers"
-
-#: templates/jobs/job_detail.html:24
-#: templates/jobs/recruiter_job_list.html:61
+#: templates/jobs/job_detail.html:24 templates/jobs/recruiter_job_list.html:61
 msgid "Zarejestrowane aplikacje"
 msgstr "Registered Applications"
-
-#: templates/jobs/job_detail.html:34
-msgid "Aplikuj"
-msgstr "Apply"
 
 #: templates/jobs/job_list.html:9
 msgid "Lista ofert pracy"
@@ -863,33 +974,13 @@ msgstr "Job List"
 msgid "Szukaj ofert pracy..."
 msgstr "Search job offers..."
 
-#: templates/jobs/job_list.html:18
-#: templates/jobs/liked_jobs_list.html:9
+#: templates/jobs/job_list.html:18 templates/jobs/liked_jobs_list.html:9
 msgid "Polubione oferty pracy"
 msgstr "Liked Job Offers"
 
 #: templates/jobs/job_list.html:21
 msgid "Ulubione oferty pracy"
 msgstr "Favorite Job Offers"
-
-#: templates/jobs/job_list.html:29
-#: templates/jobs/liked_jobs_list.html:16
-#: templates/jobs/recruiter_job_list.html:43
-#: templates/tasks/task_list.html:26
-msgid "Tytuł"
-msgstr "Title"
-
-#: templates/jobs/job_list.html:30
-#: templates/jobs/liked_jobs_list.html:17
-#: templates/tasks/task_detail.html:9
-#: templates/tasks/task_list.html:27
-msgid "Opis"
-msgstr "Description"
-
-#: templates/jobs/job_list.html:31
-#: templates/jobs/liked_jobs_list.html:18
-msgid "Wynagrodzenie"
-msgstr "Salary"
 
 #: templates/jobs/job_list.html:43
 msgid "Polubione"
@@ -939,10 +1030,6 @@ msgstr "Guest Applications"
 msgid "Brak ofert pracy do wyświetlenia."
 msgstr "No job offers to display."
 
-#: templates/jobs/update_application_status.html:6
-msgid "Szczegóły aplikacji"
-msgstr "Application Details"
-
 #: templates/jobs/update_application_status.html:14
 msgid "List motywacyjny"
 msgstr "Cover Letter"
@@ -955,15 +1042,15 @@ msgstr "Submission Date"
 msgid "Wszystkie Nowości"
 msgstr "All News"
 
-#: templates/news/all_news_list.html:47
+#: templates/news/all_news_list.html:41
 msgid "Brak nowości dla odświeżenia."
 msgstr "No news to refresh."
 
-#: templates/news/all_news_list.html:56
+#: templates/news/all_news_list.html:48
 msgid "Pierwsza"
 msgstr "First"
 
-#: templates/news/all_news_list.html:72
+#: templates/news/all_news_list.html:62
 msgid "Ostatnia"
 msgstr "Last"
 
@@ -1118,3 +1205,27 @@ msgstr "Add New Task"
 #: templates/tasks/task_list.html:72
 msgid "Brak zadań do wyświetlenia"
 msgstr "No tasks to display"
+
+#~ msgid "Ivan Ivanov"
+#~ msgstr "Ivan Ivanov"
+
+#~ msgid "Rekruter dla rynku ukraińskiego"
+#~ msgstr "Recruiter for the Ukrainian market"
+
+#~ msgid "Nino Ninavasil"
+#~ msgstr "Nino Ninavasil"
+
+#~ msgid "Agencja Pracy KIRIS M.O.R."
+#~ msgstr "KIRIS M.O.R. Employment Agency"
+
+#~ msgid "Zachęcamy do kontaktu z nami!"
+#~ msgstr "We encourage you to contact us!"
+
+#~ msgid "Media społecznościowe"
+#~ msgstr "Social Media"
+
+#~ msgid "Godziny otwarcia"
+#~ msgstr "Opening Hours"
+
+#~ msgid "Available Jobs"
+#~ msgstr "Available Jobs"
