@@ -1,0 +1,33 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{% trans "Stwórz Zapytanie" %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+        </div>
+        <div class="mb-3">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+        </div>
+        <div class="mb-3">
+            {{ form.requirements.label_tag }}
+            {{ form.requirements }}
+        </div>
+        <div class="mb-3">
+            {{ form.status.label_tag }}
+            {{ form.status }}
+        </div>
+        <div class="mb-3">
+            {{ form.recruiter.label_tag }}
+            {{ form.recruiter }}
+        </div>
+        <button type="submit" class="btn btn-primary">{% trans "Zapisz" %}</button>
+    </form>
+</div>
+{% endblock %}

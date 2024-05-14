@@ -1,13 +1,12 @@
 from django.db import models
 from django.conf import settings
-from django.shortcuts import render
-from django.views import View
+from django.utils.translation import gettext_lazy as _
 
 
 class Job(models.Model):
     class JobStatus(models.TextChoices):
-        OPEN = 'open', 'Otwarta'
-        CLOSED = 'closed', 'Zamknięta'
+        OPEN = 'open', _('Otwarta')
+        CLOSED = 'closed', _('Zamknięta')
 
     title = models.CharField(max_length=200)
     recruiter = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='jobs_managed')
@@ -33,10 +32,10 @@ class Job(models.Model):
 
 class Application(models.Model):
     class ApplicationStatus(models.TextChoices):
-        SUBMITTED = 'submitted', 'Złożone'
-        REVIEWED = 'reviewed', 'Przejrzane'
-        ACCEPTED = 'accepted', 'Zaakceptowane'
-        REJECTED = 'rejected', 'Odrzucone'
+        SUBMITTED = 'submitted', _('Złożone')
+        REVIEWED = 'reviewed', _('Przejrzane')
+        ACCEPTED = 'accepted', _('Zaakceptowane')
+        REJECTED = 'rejected', _('Odrzucone')
 
     job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='applications')
     applicant = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='job_applications')
@@ -55,13 +54,12 @@ class Application(models.Model):
         return False
 
     def get_applicant_full_name(self):
-        # Check which role the user has and retrieve the respective profile
         if hasattr(self.applicant, 'candidate_profile'):
             return f'{self.applicant.candidate_profile.first_name} {self.applicant.candidate_profile.last_name}'
         elif hasattr(self.applicant, 'recruiter_profile'):
             return f'{self.applicant.recruiter_profile.first_name} {self.applicant.recruiter_profile.last_name}'
         else:
-            return self.applicant.email  # Fallback if no profile is found
+            return self.applicant.email
 
     def __str__(self):
         return f'{self.job.title} - {self.applicant.email}'

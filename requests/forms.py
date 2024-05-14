@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from .models import JobRequest, JobRequestStatusUpdate
 
 
@@ -6,13 +7,19 @@ class JobRequestForm(forms.ModelForm):
     class Meta:
         model = JobRequest
         fields = ['title', 'description', 'requirements', 'status', 'recruiter']
+        labels = {
+            'title': _('Tytuł'),
+            'description': _('Opis'),
+            'requirements': _('Wymagania'),
+            'status': _('Status'),
+            'recruiter': _('Rekruter')
+        }
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Wprowadź tytuł'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Podaj opis'}),
-            'requirements': forms.Textarea(
-                attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Podaj wymagania'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Wprowadź tytuł')}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': _('Podaj opis')}),
+            'requirements': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': _('Podaj wymagania')}),
             'status': forms.Select(attrs={'class': 'form-select'}),
-            'recruiter': forms.Select(attrs={'class': 'form-select'})
+            'recruiter': forms.Select(attrs={'class': 'form-select'}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -24,26 +31,20 @@ class JobRequestForm(forms.ModelForm):
         cleaned_data = super().clean()
         recruiter = cleaned_data.get('recruiter')
         if self.instance and self.instance.pk and self.instance.recruiter and recruiter != self.instance.recruiter:
-            self.add_error('recruiter', 'Recruiter cannot be changed once assigned.')
+            self.add_error('recruiter', _('Recruiter cannot be changed once assigned.'))
         return cleaned_data
 
 
 class JobRequestStatusUpdateForm(forms.ModelForm):
     new_status = forms.ChoiceField(
         choices=JobRequest.RequestStatus.choices,
-        widget=forms.Select(attrs={
-            'class': 'form-select',
-            'id': 'id_new_status'
-        })
+        widget=forms.Select(attrs={'class': 'form-select', 'id': 'id_new_status'})
     )
     message = forms.CharField(
         required=False,
-        widget=forms.Textarea(attrs={
-            'class': 'form-control',
-            'rows': 4,
-            'placeholder': 'Wprowadź swoją wiadomość...',
-            'id': 'id_message'
-        })
+        widget=forms.Textarea(
+            attrs={'class': 'form-control', 'rows': 4, 'placeholder': _('Wprowadź swoją wiadomość...'),
+                   'id': 'id_message'})
     )
 
     class Meta:

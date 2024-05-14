@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<section class="container my-5">
+    <h2 class="mb-4 text-center">{% trans "Opinie gości" %}</h2>
+    <div class="mb-4 text-center">
+        <a href="{% url 'jobs:recruiter_applications' %}" class="btn btn-secondary">{% trans "Aplikacje zarejestrowane" %}</a>
+        <a href="{% url 'jobs:guest_applications' %}" class="btn btn-secondary">{% trans "Aplikacje gości" %}</a>
+        <a href="{% url 'jobs:create_job' %}" class="btn btn-success">{% trans "Dodaj ofertę" %}</a>
+        <a href="{% url 'jobs:job_list' %}" class="btn btn-warning">{% trans "Wszystkie oferty pracy" %}</a>
+    </div>
+    {% if feedbacks %}
+        <ul class="list-group">
+            {% for feedback in feedbacks %}
+                <li class="list-group-item shadow-sm p-3 mb-3 rounded">
+                    <strong>{% trans "Email:" %}</strong> {{ feedback.email }}<br>
+                    <strong>{% trans "Telefon:" %}</strong> {{ feedback.phone_number }}<br>
+                    <strong>{% trans "Wiadomość:" %}</strong> {{ feedback.message }}<br>
+                    <strong>{% trans "Praca:" %}</strong> {{ feedback.job.title }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            {% trans "Brak opinii gości." %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<section class="container my-5">
+    <h2 class="text-center mb-4">{% trans "Lista zarejestrowanych aplikacji dla" %} "{{ job.title }}"</h2>
+
+    <div class="mb-4 text-center">
+        <a href="{% url 'jobs:recruiter_job_list' %}" class="btn btn-primary">{% trans "Moje Oferty" %}</a>
+        <a href="{% url 'jobs:recruiter_applications' %}" class="btn btn-secondary">{% trans "Aplikacje zarejestrowane" %}</a>
+        <a href="{% url 'jobs:guest_applications' %}" class="btn btn-secondary">{% trans "Aplikacje gości" %}</a>
+        <a href="{% url 'jobs:create_job' %}" class="btn btn-success">{% trans "Dodaj ofertę" %}</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">{% trans "Aplikant" %}</th>
+                    <th scope="col">{% trans "Status" %}</th>
+                    <th scope="col">{% trans "Data" %}</th>
+                    <th scope="col">{% trans "Akcje" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>{{ application.get_applicant_full_name }}</td>
+                    <td>{{ application.get_status_display }}</td>
+                    <td>{{ application.created_at }}</td>
+                    <td>
+                        <a href="{% url 'jobs:application_detail' application.id %}" class="btn btn-info btn-sm">{% trans "Detale aplikacji" %}</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">{% trans "Brak aplikacji do wyświetlenia." %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

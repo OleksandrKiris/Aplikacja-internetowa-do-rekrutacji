@@ -1,0 +1,82 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <h1 class="display-4 text-center fw-bold mb-4 text-primary">{% trans 'Wszystkie Nowości' %}</h1>
+
+    <!-- Kontener dla dynamicznie aktualizowanych wiadomości -->
+    <div class="row justify-content-center" id="news-container">
+        <!-- Wiadomości będą dynamicznie dodawane tutaj -->
+    </div>
+
+    <!-- Dynamiczna paginacja -->
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center" id="pagination-controls">
+            <!-- Elementy paginacji będą dynamicznie dodawane tutaj -->
+        </ul>
+    </nav>
+
+    <script>
+        // Funkcja do wczytywania wiadomości
+        function loadNews(page = 1) {
+            fetch(`/news/all/?format=json&page=${page}`)
+                .then(response => response.json())
+                .then(data => {
+                    const newsContainer = document.getElementById('news-container');
+                    const paginationControls = document.getElementById('pagination-controls');
+
+                    // Aktualizacja kontenera na wiadomości
+                    let newsHtml = '';
+                    if (data.news.length > 0) {
+                        data.news.forEach(news => {
+                            newsHtml += `
+                                <div class="col-lg-8 col-md-10 mb-4">
+                                    <div class="card shadow-lg h-100">
+                                        <div class="card-body">
+                                            <h3 class="card-title text-primary">${news.title}</h3>
+                                            <p class="card-text">${news.content}</p>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <small class="text-muted">${news.date_posted}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        newsHtml = '<div class="col-md-8 text-center"><div class="alert alert-info">{% trans "Brak nowości dla odświeżenia." %}</div></div>';
+                    }
+                    newsContainer.innerHTML = newsHtml;
+
+                    // Aktualizacja elementów sterowania stronami
+                    let paginationHtml = '';
+
+                    // Przyciski dla pierwszej i poprzedniej strony
+                    if (data.page_number > 1) {
+                        paginationHtml += `<li class="page-item"><a class="page-link" href="#" onclick="loadNews(1)">{% trans 'Pierwsza' %}</a></li>`;
+                        paginationHtml += `<li class="page-item"><a class="page-link" href="#" onclick="loadNews(${data.page_number - 1})">{% trans 'Poprzednia' %}</a></li>`;
+                    }
+
+                    // Zakres stron wokół aktualnej
+                    const range = 2;
+                    const startPage = Math.max(1, data.page_number - range);
+                    const endPage = Math.min(data.total_pages, data.page_number + range);
+
+                    for (let i = startPage; i <= endPage; i++) {
+                        paginationHtml += `<li class="page-item ${i === data.page_number ? 'active' : ''}"><a class="page-link" href="#" onclick="loadNews(${i})">${i}</a></li>`;
+                    }
+
+                    // Przyciski dla następnej i ostatniej strony
+                    if (data.page_number < data.total_pages) {
+                        paginationHtml += `<li class="page-item"><a class="page-link" href="#" onclick="loadNews(${data.page_number + 1})">{% trans 'Następna' %}</a></li>`;
+                        paginationHtml += `<li class="page-item"><a class="page-link" href="#" onclick="loadNews(${data.total_pages})">{% trans 'Ostatnia' %}</a></li>`;
+                    }
+
+                    paginationControls.innerHTML = paginationHtml;
+                });
+        }
+
+        // Wczytaj pierwszą stronę przy ładowaniu strony
+        window.onload = () => loadNews();
+    </script>
+{% endblock %}

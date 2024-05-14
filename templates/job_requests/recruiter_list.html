@@ -1,0 +1,54 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h2>{% trans "Wybierz Rekrutera" %}</h2>
+    <form id="search-form" class="mb-3" method="GET">
+        <div class="input-group">
+            <input id="search-input" type="text" name="q" value="{{ search_query }}" class="form-control" placeholder="{% trans "Szukaj..." %}">
+            <button type="submit" class="btn btn-primary">{% trans "Szukaj" %}</button>
+        </div>
+    </form>
+    {% if page_obj %}
+    <div id="recruiter-list" class="row">
+        {% for recruiter in page_obj %}
+        <div class="col-md-4 d-flex align-items-stretch">
+            <div class="card mb-4 {% if recruiter.is_favorite %}bg-info{% endif %}">
+                <div class="card-body text-center d-flex flex-column">
+                    {% if recruiter.photo %}
+                        <img src="{{ recruiter.photo.url }}" alt="{% trans "Zdjęcie rekrutera" %}" class="img-fluid rounded-circle mx-auto" style="width: 100px; height: 100px; object-fit: cover;">
+                    {% else %}
+                        <img src="{% static 'recruiter.png' %}" alt="{% trans "Domyślny profil" %}" class="img-fluid rounded-circle mx-auto" style="width: 100px; height: 100px; object-fit: cover;">
+                    {% endif %}
+                    <h6 class="card-title mt-3">{{ recruiter.first_name }} {{ recruiter.last_name }}</h6>
+                    <p class="card-text">{{ recruiter.bio|truncatechars:100 }}</p>
+                    <div class="mt-auto">
+                        <a href="{% url 'requests:recruiter_detail_view' recruiter.user.pk %}" class="btn btn-info">{% trans "Szczegóły" %}</a>
+                        <a href="{% url 'requests:client_job_request_create' %}?recruiter={{ recruiter.user.pk }}" class="btn btn-primary">{% trans "Zrób Zapytanie" %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination d-flex justify-content-center mt-3">
+        {% if page_obj.has_previous %}
+            <a class="btn btn-secondary" href="?page={{ page_obj.previous_page_number }}&q={{ search_query }}">{% trans "Poprzednia" %}</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <a class="btn btn-secondary" href="?page={{ page_obj.next_page_number }}&q={{ search_query }}">{% trans "Następna" %}</a>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+        {% trans "Nie znaleziono rekrutera o podanych kryteriach." %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/requests.js' %}"></script>
+{% endblock %}

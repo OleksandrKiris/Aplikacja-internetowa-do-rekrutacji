@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+#: requests/forms.py:11 requests/models.py:18
+msgid "Tytuł"
+msgstr "Назва"
+
+#: requests/forms.py:12 requests/models.py:19
+msgid "Opis"
+msgstr "Опис"
+
+#: requests/forms.py:13 requests/models.py:20
+msgid "Wymagania"
+msgstr "Вимоги"
+
+#: requests/forms.py:14 requests/models.py:26
+msgid "Status"
+msgstr "Статус"
+
+#: requests/forms.py:15 requests/models.py:33
+msgid "Rekruter"
+msgstr "Рекрутер"
+
+#: requests/forms.py:18
+msgid "Wprowadź tytuł"
+msgstr "Введіть назву"
+
+#: requests/forms.py:19
+msgid "Podaj opis"
+msgstr "Введіть опис"
+
+#: requests/forms.py:20
+msgid "Podaj wymagania"
+msgstr "Введіть вимоги"
+
+#: requests/forms.py:34
+msgid "Recruiter cannot be changed once assigned."
+msgstr "Рекрутера не можна змінити після призначення."
+
+#: requests/forms.py:46
+msgid "Wprowadź swoją wiadomość..."
+msgstr "Введіть своє повідомлення..."
+
+#: requests/models.py:8
+msgid "Oczekujące"
+msgstr "Очікує"
+
+#: requests/models.py:9
+msgid "W trakcie realizacji"
+msgstr "В процесі виконання"
+
+#: requests/models.py:10
+msgid "Зakończone"
+msgstr "Завершено"
+
+#: requests/models.py:16
+msgid "Pracodawca"
+msgstr "Роботодавець"
+
+#: requests/models.py:21
+msgid "Data utworzenia"
+msgstr "Дата створення"
+
+#: requests/models.py:37
+msgid "Zapotrzebowanie na pracę"
+msgstr "Запит на роботу"
+
+#: requests/models.py:38
+msgid "Zapotrzebowania на pracę"
+msgstr "Запити на роботу"
+
+#: requests/models.py:49
+msgid "Aktualizacja статусу запотшебования на pracę"
+msgstr "Оновлення статусу запиту на роботу"
+
+#: requests/models.py:54
+msgid "Nowy статус"
+msgstr "Новий статус"
+
+#: requests/models.py:59
+msgid "Zaktualizowane przez"
+msgstr "Оновлено"
+
+#: requests/models.py:61
+msgid "Data aktualizacji"
+msgstr "Дата оновлення"
+
+#: requests/models.py:62
+msgid "Wiadomość"
+msgstr "Повідомлення"
+
+#: requests/models.py:65
+msgid "Aktualizacja статусу запотшебования"
+msgstr "Оновлення статусу запиту"
+
+#: requests/models.py:66
+msgid "Aktualizacje статусу запотшебования"
+msgstr "Оновлення статусу запиту"
+
+#: requests/models.py:74
+msgid "Użytkownik"
+msgstr "Користувач"
+
+#: requests/models.py:80 requests/models.py:85
+msgid "Ulubiony rekruter"
+msgstr "Улюблений рекрутер"
+
+#: requests/models.py:86
+msgid "Ulubieni rekruterzy"
+msgstr "Улюблені рекрутери"

@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h2 class="h5">{% trans 'Zadanie' %}: {{ task.title }}</h2>
+            <p><strong>{% trans 'Opis' %}:</strong> {{ task.description }}</p>
+            <p><strong>{% trans 'Priorytet' %}:</strong> {{ task.get_priority_display }}</p>
+            <p><strong>{% trans 'Status' %}:</strong> {{ task.get_status_display }}</p>
+            <p><strong>{% trans 'Termin' %}:</strong> {{ task.due_date|date:"d M Y" }}</p>
+            <a href="{% url 'accounts:task_update' task.pk %}" class="btn btn-warning me-1">{% trans 'Edytuj' %}</a>
+            <a href="{% url 'accounts:task_list' %}" class="btn btn-secondary">{% trans 'Powrót do listy zadań' %}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

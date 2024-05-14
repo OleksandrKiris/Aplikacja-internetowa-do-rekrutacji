@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: requests/forms.py:11 requests/models.py:18
+msgid "Tytuł"
+msgstr "Başlık"
+
+#: requests/forms.py:12 requests/models.py:19
+msgid "Opis"
+msgstr "Açıklama"
+
+#: requests/forms.py:13 requests/models.py:20
+msgid "Wymagania"
+msgstr "Gereksinimler"
+
+#: requests/forms.py:14 requests/models.py:26
+msgid "Status"
+msgstr "Durum"
+
+#: requests/forms.py:15 requests/models.py:33
+msgid "Rekruter"
+msgstr "İşe alım uzmanı"
+
+#: requests/forms.py:18
+msgid "Wprowadź tytuł"
+msgstr "Başlık girin"
+
+#: requests/forms.py:19
+msgid "Podaj opis"
+msgstr "Açıklama girin"
+
+#: requests/forms.py:20
+msgid "Podaj wymagania"
+msgstr "Gereksinimleri girin"
+
+#: requests/forms.py:34
+msgid "Recruiter cannot be changed once assigned."
+msgstr "İşe alım uzmanı atandıktan sonra değiştirilemez."
+
+#: requests/forms.py:46
+msgid "Wprowadź swoją wiadomość..."
+msgstr "Mesajınızı girin..."
+
+#: requests/models.py:8
+msgid "Oczekujące"
+msgstr "Beklemede"
+
+#: requests/models.py:9
+msgid "W trakcie realizacji"
+msgstr "Devam ediyor"
+
+#: requests/models.py:10
+msgid "Zakończone"
+msgstr "Tamamlandı"
+
+#: requests/models.py:16
+msgid "Pracodawca"
+msgstr "İşveren"
+
+#: requests/models.py:21
+msgid "Data utworzenia"
+msgstr "Oluşturulma tarihi"
+
+#: requests/models.py:37
+msgid "Zapotrzebowanie na pracę"
+msgstr "İş talebi"
+
+#: requests/models.py:38
+msgid "Zapotrzebowania na pracę"
+msgstr "İş talepleri"
+
+#: requests/models.py:49
+msgid "Aktualizacja statusu zapotrzebowania na pracę"
+msgstr "İş talebi durumu güncellemesi"
+
+#: requests/models.py:54
+msgid "Nowy status"
+msgstr "Yeni durum"
+
+#: requests/models.py:59
+msgid "Zaktualizowane przez"
+msgstr "Güncelleyen"
+
+#: requests/models.py:61
+msgid "Data aktualizacji"
+msgstr "Güncelleme tarihi"
+
+#: requests/models.py:62
+msgid "Wiadomość"
+msgstr "Mesaj"
+
+#: requests/models.py:65
+msgid "Aktualizacja statusu zapotrzebowania"
+msgstr "Talep durumu güncellemesi"
+
+#: requests/models.py:66
+msgid "Aktualizacje statusów zapotrzebowania"
+msgstr "Talep durumu güncellemeleri"
+
+#: requests/models.py:74
+msgid "Użytkownik"
+msgstr "Kullanıcı"
+
+#: requests/models.py:80 requests/models.py:85
+msgid "Ulubiony rekruter"
+msgstr "Favori işe alım uzmanı"
+
+#: requests/models.py:86
+msgid "Ulubieni rekruterzy"
+msgstr "Favori işe alım uzmanları"

@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: jobs/forms.py:11
+msgid "Tytuł"
+msgstr "Titel"
+
+#: jobs/forms.py:12
+msgid "Opis"
+msgstr "Beschreibung"
+
+#: jobs/forms.py:13
+msgid "Wymagania"
+msgstr "Anforderungen"
+
+#: jobs/forms.py:14
+msgid "Wynagrodzenie"
+msgstr "Gehalt"
+
+#: jobs/forms.py:15
+msgid "Status"
+msgstr "Status"
+
+#: jobs/forms.py:20
+msgid "Wprowadź tytuł"
+msgstr "Titel eingeben"
+
+#: jobs/forms.py:25
+msgid "Wprowadź opis stanowiska"
+msgstr "Stellenbeschreibung eingeben"
+
+#: jobs/forms.py:30
+msgid "Wprowadź wymagania stanowiska"
+msgstr "Stellenanforderungen eingeben"
+
+#: jobs/forms.py:34
+msgid "Wprowadź wynagrodzenie"
+msgstr "Gehalt eingeben"
+
+#: jobs/forms.py:47
+msgid "List Motywacyjny"
+msgstr "Motivationsschreiben"
+
+#: jobs/forms.py:53
+msgid "Wprowadź list motywacyjny"
+msgstr "Motivationsschreiben eingeben"
+
+#: jobs/forms.py:63
+msgid "Email"
+msgstr "E-Mail"
+
+#: jobs/forms.py:64
+msgid "Wiadomość"
+msgstr "Nachricht"
+
+#: jobs/forms.py:65
+msgid "Numer Telefonu (opcjonalnie)"
+msgstr "Telefonnummer (optional)"
+
+#: jobs/forms.py:70
+msgid "Wprowadź email"
+msgstr "E-Mail eingeben"
+
+#: jobs/forms.py:75
+msgid "Wprowadź opinię"
+msgstr "Feedback eingeben"
+
+#: jobs/forms.py:79
+msgid "Wprowadź numer telefonu"
+msgstr "Telefonnummer eingeben"
+
+#: jobs/models.py:8
+msgid "Otwarta"
+msgstr "Offen"
+
+#: jobs/models.py:9
+msgid "Zamknięta"
+msgstr "Geschlossen"
+
+#: jobs/models.py:35
+msgid "Złożone"
+msgstr "Eingereicht"
+
+#: jobs/models.py:36
+msgid "Przejrzane"
+msgstr "Gesehen"
+
+#: jobs/models.py:37
+msgid "Zaakceptowane"
+msgstr "Akzeptiert"
+
+#: jobs/models.py:38
+msgid "Odrzucone"
+msgstr "Abgelehnt"

@@ -1,0 +1,77 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<section class="container my-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 class="h4 fw-bold mb-0">{% trans 'Lista ofert pracy' %}</h2>
+        </div>
+        <div class="card-body">
+            <form id="search-form" method="GET" action="" class="d-flex justify-content-center mb-4">
+                <label for="search-query"></label><input type="text" id="search-query" name="q" class="form-control form-control-lg w-50 border border-primary" placeholder="{% trans 'Szukaj ofert pracy...' %}" value="{{ request.GET.q }}">
+                <button type="submit" id="search-button" class="btn btn-primary btn-lg ms-2">{% trans 'Szukaj' %}</button>
+            </form>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <a href="{% url 'jobs:liked_jobs_list' %}" class="btn btn-primary btn-lg w-100 fw-bold">{% trans 'Polubione oferty pracy' %}</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="{% url 'jobs:favorited_jobs_list' %}" class="btn btn-warning btn-lg w-100 fw-bold">{% trans 'Ulubione oferty pracy' %}</a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered align-middle">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>{% trans 'Tytuł' %}</th>
+                            <th>{% trans 'Opis' %}</th>
+                            <th>{% trans 'Wynagrodzenie' %}</th>
+                            <th>{% trans 'Akcje' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="job-list">
+                        {% for job in jobs %}
+                        <tr>
+                            <td><a href="{% url 'jobs:job_detail' job.pk %}" class="text-decoration-none text-dark fw-bold">{{ job.title }}</a></td>
+                            <td>{{ job.description|truncatewords:15 }}</td>
+                            <td>{{ job.salary }} PLN</td>
+                            <td class="d-flex gap-1">
+                                <a href="{% url 'jobs:like_job' job.pk %}" class="btn btn-primary btn-sm flex-grow-1">
+                                    {% if job.id in liked_jobs %}{% trans 'Polubione' %}{% else %}{% trans 'Polub' %}{% endif %}
+                                </a>
+                                <a href="{% url 'jobs:favorite_job' job.pk %}" class="btn btn-warning btn-sm flex-grow-1">
+                                    {% if job.id in favorited_jobs %}{% trans 'Ulubione' %}{% else %}{% trans 'Dodaj do ulubionych' %}{% endif %}
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="4" class="text-center fw-bold">{% trans 'Brak dostępnych ofert pracy.' %}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{% trans 'Poprzednie' %}</a></li>
+                    {% endif %}
+                    {% for num in page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{% trans 'Następne' %}</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+{% endblock %}

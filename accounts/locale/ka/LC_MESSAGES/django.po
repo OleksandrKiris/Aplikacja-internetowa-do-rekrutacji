@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+#: accounts/forms.py:13 accounts/models.py:45
+msgid "Kandydat"
+msgstr "კანდიდატი"
+
+#: accounts/forms.py:14 accounts/models.py:46
+msgid "Klient"
+msgstr "კლიენტი"
+
+#: accounts/forms.py:26 accounts/forms.py:113
+msgid "Email"
+msgstr "ელ. ფოსტა"
+
+#: accounts/forms.py:27 accounts/forms.py:116
+msgid "Hasło"
+msgstr "პაროლი"
+
+#: accounts/forms.py:28 accounts/forms.py:34
+msgid "Potwierdź hasło"
+msgstr "დაადასტურე პაროლი"
+
+#: accounts/forms.py:29 accounts/models.py:49
+msgid "Rola"
+msgstr "როლი"
+
+#: accounts/forms.py:32 accounts/forms.py:115
+msgid "Wprowadź email"
+msgstr "შეიყვანე ელ. ფოსტა"
+
+#: accounts/forms.py:33 accounts/forms.py:118
+msgid "Wprowadź hasło"
+msgstr "შეიყვანე პაროლი"
+
+#: accounts/forms.py:43 accounts/forms.py:94 accounts/models.py:87
+#: accounts/models.py:117
+msgid "Imię"
+msgstr "სახელი"
+
+#: accounts/forms.py:44 accounts/forms.py:95 accounts/models.py:88
+#: accounts/models.py:118
+msgid "Nazwisko"
+msgstr "გვარი"
+
+#: accounts/forms.py:45 accounts/forms.py:71 accounts/forms.py:96
+#: accounts/models.py:89 accounts/models.py:103 accounts/models.py:119
+msgid "Numer telefonu"
+msgstr "ტელეფონის ნომერი"
+
+#: accounts/forms.py:46 accounts/forms.py:72 accounts/forms.py:97
+#: accounts/models.py:90 accounts/models.py:104 accounts.models.py:120
+msgid "Zdjęcie"
+msgstr "ფოტო"
+
+#: accounts/forms.py:47 accounts/forms.py:73 accounts/forms.py:98
+#: accounts/models.py:91 accounts.models.py:105 accounts.models.py:121
+msgid "Lokalizacja"
+msgstr "მდებარეობა"
+
+#: accounts/forms.py:48 accounts/forms.py:74 accounts/forms.py:99
+#: accounts/models.py:92 accounts/models.py:106 accounts.models.py:122
+msgid "Biografia"
+msgstr "ბიოგრაფია"
+
+#: accounts/forms.py:49 accounts/models.py:93
+msgid "Data urodzenia"
+msgstr "დაბადების თარიღი"
+
+#: accounts/forms.py:50 accounts/models.py:94
+msgid "Umiejętności"
+msgstr "უნარები"
+
+#: accounts/forms.py:53 accounts/forms.py:102
+msgid "Wprowadź imię"
+msgstr "შეიყვანე სახელი"
+
+#: accounts/forms.py:54 accounts/forms.py:103
+msgid "Wprowadź nazwisko"
+msgstr "შეიყვანე გვარი"
+
+#: accounts/forms.py:56 accounts/forms.py:80 accounts.forms.py:105
+msgid "Wprowadź numer telefonu"
+msgstr "შეიყვანე ტელეფონის ნომერი"
+
+#: accounts/forms.py:58 accounts/forms.py:82 accounts.forms.py:107
+msgid "Wprowadź lokalizację"
+msgstr "შეიყვანე მდებარეობა"
+
+#: accounts/forms.py:59 accounts/forms.py:83 accounts.forms.py:108
+msgid "Wprowadź biografię"
+msgstr "შეიყვანე ბიოგრაფია"
+
+#: accounts/forms.py:62
+msgid "Wprowadź umiejętności"
+msgstr "შეიყვანე უნარები"
+
+#: accounts/forms.py:75 accounts/models.py:107
+msgid "Nazwa firmy"
+msgstr "კომპანიის სახელი"
+
+#: accounts/forms.py:76 accounts.models.py:108
+msgid "Branża"
+msgstr "ინდუსტრია"
+
+#: accounts/forms.py:84
+msgid "Wprowadź nazwę firmy"
+msgstr "შეიყვანე კომპანიის სახელი"
+
+#: accounts/forms.py:85
+msgid "Wprowadź branżę"
+msgstr "შეიყვანე ინდუსტრია"
+
+#: accounts/forms.py:126 accounts/models.py:131
+msgid "Tytuł"
+msgstr "სათაური"
+
+#: accounts/forms.py:127 accounts/models.py:132
+msgid "Opis"
+msgstr "აღწერა"
+
+#: accounts/forms.py:128 accounts/models.py:138
+msgid "Priorytet"
+msgstr "პრიორიტეტი"
+
+#: accounts/forms.py:129 accounts/models.py:139
+msgid "Termin wykonania"
+msgstr "დასრულების თარიღი"
+
+#: accounts/forms.py:130 accounts/models.py:145
+msgid "Status"
+msgstr "სტატუსი"
+
+#: accounts/forms.py:133
+msgid "Wprowadź tytuł"
+msgstr "შეიყვანე სათაური"
+
+#: accounts/forms.py:135
+msgid "Wprowadź opis"
+msgstr "შეიყვანე აღწერა"
+
+#: accounts/models.py:12
+msgid "Adres e-mail musi być ustawiony"
+msgstr "ელ.ფოსტის მისამართი უნდა იყოს მითითებული"
+
+#: accounts/models.py:16
+msgid "Nieprawidłowy format adresu e-mail"
+msgstr "ელ.ფოსტის ფორმატი არასწორია"
+
+#: accounts/models.py:24
+#, python-brace-format
+msgid "Nieprawidłowa rola: {role}. Dopuszczalne role to {valid_roles}."
+msgstr "არასწორი როლი: {role}. დასაშვები როლები: {valid_roles}."
+
+#: accounts/models.py:32
+msgid "Superużytkownik musi mieć is_staff=True."
+msgstr "სუპერმომხმარებელს უნდა ჰქონდეს is_staff=True."
+
+#: accounts/models.py:34
+msgid "Superużytkownik musi mieć is_superuser=True."
+msgstr "სუპერმომხმარებელს უნდა ჰქონდეს is_superuser=True."
+
+#: accounts/models.py:47
+msgid "Rekruter"
+msgstr "რეკრუტერი"
+
+#: accounts/models.py:55
+msgid "użytkownik"
+msgstr "მომხმარებელი"
+
+#: accounts/models.py:56
+msgid "użytkownicy"
+msgstr "მომხმარებლები"
+
+#: accounts/models.py:58
+msgid "Może przeglądać pulpit nawigacyjny"
+msgstr "შესაძლებელია მართვის პანელის ნახვა"
+
+#: accounts/models.py:78
+msgid "Podaj poprawny numer telefonu"
+msgstr "შეიყვანეთ სწორი ტელეფონის ნომერი"
+
+#: accounts/models.py:130
+msgid "Utworzone przez"
+msgstr "შექმნილია"
+
+#: accounts/models.py:134
+msgid "Niski"
+msgstr "დაბალი"
+
+#: accounts/models.py:135
+msgid "Średni"
+msgstr "საშუალო"
+
+#: accounts/models.py:136
+msgid "Wysoki"
+msgstr "მაღალი"
+
+#: accounts/models.py:141
+msgid "Otwarte"
+msgstr "გახსნილი"
+
+#: accounts/models.py:142
+msgid "W trakcie realizacji"
+msgstr "შესრულების პროცესშია"
+
+#: accounts/models.py:143
+msgid "Zakończone"
+msgstr "დასრულებული"
+
+#: accounts/models.py:149
+msgid "Tylko rekruterzy mogą tworzyć zadania."
+msgstr "მხოლოდ რეკრუტერებს შეუძლიათ დავალებების შექმნა."

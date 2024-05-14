@@ -1,0 +1,1062 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+#: templates/dashboard/dashboard.html:10 templates/news/news_list.html:8
+msgid "Panel kandydata"
+msgstr "კანდიდატის პანელი"
+
+#: templates/dashboard/dashboard.html:11 templates/news/news_list.html:9
+msgid "Witamy na twoim panelu kandydata!"
+msgstr "მოგესალმებით თქვენს კანდიდატის პანელზე!"
+
+#: templates/dashboard/dashboard.html:13 templates/news/news_list.html:11
+msgid "Panel klienta"
+msgstr "კლიენტის პანელი"
+
+#: templates/dashboard/dashboard.html:14 templates/news/news_list.html:12
+msgid "Witamy na twoim panelu klienta!"
+msgstr "მოგესალმებით თქვენს კლიენტის პანელზე!"
+
+#: templates/dashboard/dashboard.html:16 templates/news/news_list.html:14
+msgid "Panel rekrutera"
+msgstr "რეკრუტერის პანელი"
+
+#: templates/dashboard/dashboard.html:17 templates/news/news_list.html:15
+msgid "Witamy na twoim panelu rekrutera!"
+msgstr "მოგესალმებით თქვენს რეკრუტერის პანელზე!"
+
+#: templates/dashboard/dashboard.html:19 templates/news/news_list.html:17
+msgid "Nieznany panel"
+msgstr "უცნობი პანელი"
+
+#: templates/dashboard/dashboard.html:20 templates/news/news_list.html:18
+msgid "Nie rozpoznano roli!"
+msgstr "როლი არ არის ცნობილი!"
+
+#: templates/dashboard/dashboard.html:25 templates/news/news_list.html:21
+msgid "Najświeższe wiadomości:"
+msgstr "უახლესი ამბები:"
+
+#: templates/dashboard/dashboard.html:34 templates/news/news_list.html:26
+msgid "Brak wiadomości do wyświetlenia."
+msgstr "არ არის გამოსაჩენი ამბები."
+
+#: templates/home/about_us.html:14
+msgid "Dla kandydatów"
+msgstr "კანდიდატებისთვის"
+
+#: templates/home/about_us.html:15
+msgid "Agencja Pracy KIRIS M.O.R. specjalizuje się w rekrutacji i zatrudnieniu."
+msgstr "სამუშაო სააგენტო KIRIS M.O.R. სპეციალიზებულია რეკრუტაციითა და დასაქმებით."
+
+#: templates/home/about_us.html:16
+msgid "Agencja Pracy KIRIS M.O.R. specjalizuje się w rekrutacji i zatrudnianiu pracowników z Gruzji, Ukrainy i Mołdawii. Jesteśmy ekspertami w dostosowywaniu ofert pracy do kwalifikacji i oczekiwań naszych klientów. Naszym celem jest zapewnienie Ci stabilnego zatrudnienia oraz wsparcia w procesie legalizacji pracy i pobytu w Polsce. Oferujemy kompleksowe wsparcie na każdym etapie, od aplikacji po zakwaterowanie i integrację w miejscu pracy. Wybierając nas, wybierasz solidnego i doświadczonego partnera w budowaniu Twojej przyszłości zawodowej za granicą."
+msgstr "სამუშაო სააგენტო KIRIS M.O.R. სპეციალიზებულია რეკრუტაციითა და დასაქმებით საქართველოს, უკრაინისა და მოლდოვის თანამშრომლების. ჩვენ ვართ ექსპერტები სამუშაო შეთავაზებების მორგებაში ჩვენი კლიენტების კვალიფიკაციებსა და მოლოდინებზე. ჩვენი მიზანია უზრუნველვყოთ თქვენი სტაბილური დასაქმება და მხარდაჭერა პოლონეთში სამუშაოს ლეგალიზაციის პროცესში. ჩვენ გთავაზობთ კომპლექსურ მხარდაჭერას ყველა ეტაპზე, აპლიკაციიდან დაწყებული საცხოვრებლამდე და სამუშაო ადგილზე ინტეგრაციამდე. ჩვენთან ერთად არჩევთ მყარ და გამოცდილი პარტნიორს თქვენს საზღვარგარეთ კარიერის მშენებლობაში."
+
+#: templates/home/about_us.html:23
+msgid "Dla klientów"
+msgstr "კლიენტებისთვის"
+
+#: templates/home/about_us.html:24
+msgid "Agencja Pracy KIRIS M.O.R. to renomowany partner partner dla twojej firmy."
+msgstr "სამუშაო სააგენტო KIRIS M.O.R. არის რენომირებული პარტნიორი თქვენი კომპანიისთვის."
+
+#: templates/home/about_us.html:25
+msgid "Agencja Pracy KIRIS M.O.R. to renomowany partner w zakresie międzynarodowej rekrutacji pracowników. Specjalizujemy się w dostarczaniu wykwalifikowanych kandydatów z Gruzji, Ukrainy i Mołdawii, wspierając polskie przedsiębiorstwa w efektywnym wypełnianiu luki kadrowej. Zapewniamy pełne wsparcie w procesie selekcji, legalizacji oraz adaptacji pracowników, gwarantując wysoką jakość i zgodność z obowiązującymi przepisami prawa. Nasze usługi są synonimem niezawodności i dostosowania do specyficznych potrzeb każdej branży. Wybierając Agencję Pracy KIRIS M.O.R., decydujesz się na optymalizację procesów zatrudnienia oraz zwiększenie konkurencyjności Twojego biznesu."
+msgstr "სამუშაო სააგენტო KIRIS M.O.R. არის რენომირებული პარტნიორი საერთაშორისო რეკრუტაციის სფეროში. ჩვენ სპეციალიზებული ვართ საქართველოს, უკრაინისა და მოლდოვის კვალიფიციური კანდიდატების მიწოდებაში, პოლონურ საწარმოებს ეხმარებით კადრების დეფიციტის ეფექტურად შევსებაში. ჩვენ ვუზრუნველყოფთ სრულ მხარდაჭერას შერჩევის, ლეგალიზაციის და თანამშრომლების ადაპტაციის პროცესში, ვაგარანტირებთ მაღალ ხარისხს და კანონმდებლობასთან შესაბამისობას. ჩვენი მომსახურება სანდოობისა და თითოეული ინდუსტრიის სპეციფიკური მოთხოვნების შესაბამისობის სინონიმია. სამუშაო სააგენტო KIRIS M.O.R.-ის არჩევით, თქვენ ირჩევთ დასაქმების პროცესების ოპტიმიზაციასა და თქვენი ბიზნესის კონკურენტუნარიანობის გაზრდას."
+
+#: templates/home/about_us.html:35 templates/home/base.html:152
+#: templates/home/base.html:315
+msgid "Informacje kontaktowe"
+msgstr "საკონტაქტო ინფორმაცია"
+
+#: templates/home/about_us.html:43 templates/home/base.html:160
+#: templates/home/base.html:323
+msgid "Śledź nas"
+msgstr "მოგვყევი"
+
+#: templates/home/base.html:32 templates/home/base.html:195
+msgid "Strona główna"
+msgstr "მთავარი გვერდი"
+
+#: templates/home/base.html:33 templates/home/base.html:112
+#: templates/home/base.html:196 templates/home/base.html:275
+msgid "Kontakt"
+msgstr "კონტაქტი"
+
+#: templates/home/base.html:34 templates/home/base.html:197
+msgid "O nas"
+msgstr "ჩვენს შესახებ"
+
+#: templates/home/base.html:35 templates/home/base.html:49
+#: templates/home/base.html:53 templates/home/base.html:59
+#: templates/home/base.html:198 templates/home/base.html:212
+#: templates/home/base.html:216 templates/home/base.html:222
+msgid "Oferty pracy"
+msgstr "სამუშაო შეთავაზებები"
+
+#: templates/home/base.html:36 templates/home/base.html:199
+msgid "Nasi klienci"
+msgstr "ჩვენი კლიენტები"
+
+#: templates/home/base.html:37 templates/home/base.html:200
+msgid "Nasi rekruterzy"
+msgstr "ჩვენი რეკრუტერები"
+
+#: templates/home/base.html:38 templates/home/base.html:201
+msgid "Nowości"
+msgstr "სიახლეები"
+
+#: templates/home/base.html:44 templates/home/base.html:207
+msgid "User Menu"
+msgstr "მომხმარებლის მენიუ"
+
+#: templates/home/base.html:48 templates/home/base.html:58
+#: templates/home/base.html:211 templates/home/base.html:221
+msgid "Mój profil"
+msgstr "ჩემი პროფილი"
+
+#: templates/home/base.html:50 templates/home/base.html:63
+#: templates/home/base.html:213 templates/home/base.html:226
+msgid "Aplikacje"
+msgstr "განაცხადები"
+
+#: templates/home/base.html:52 templates/home/base.html:215
+msgid "Profil"
+msgstr "პროფილი"
+
+#: templates/home/base.html:54 templates/home/base.html:217
+msgid "Rekruterzy"
+msgstr "რეკრუტერები"
+
+#: templates/home/base.html:55 templates/home/base.html:218
+msgid "Stwórz wniosek"
+msgstr "შექმენი მოთხოვნა"
+
+#: templates/home/base.html:56 templates/home/base.html:219
+msgid "Wnioski"
+msgstr "მოთხოვნები"
+
+#: templates/home/base.html:60 templates/home/base.html:223
+msgid "Dodaj ofertę pracy"
+msgstr "დაამატე სამუშაო შეთავაზება"
+
+#: templates/home/base.html:61 templates/home/base.html:224
+#: templates/job_requests/recruiter_job_request_list.html:14
+#: templates/jobs/recruiter_applications.html:25
+#: templates/jobs/recruiter_job_list.html:8
+#: templates/jobs/recruiter_job_list.html:23
+#: templates/jobs/update_application_status.html:37
+msgid "Moje Oferty Pracy"
+msgstr "ჩემი სამუშაო შეთავაზებები"
+
+#: templates/home/base.html:62 templates/home/base.html:225
+msgid "Zarządzaj zadaniami"
+msgstr "მართე დავალებები"
+
+#: templates/home/base.html:64 templates/home/base.html:227
+msgid "Zapytania pracodawców"
+msgstr "დამსაქმებლის მოთხოვნები"
+
+#: templates/home/base.html:69 templates/home/base.html:232
+#: templates/registration/logout_confirmation.html:7
+msgid "Wyloguj się"
+msgstr "გამოსვლა"
+
+#: templates/home/base.html:72 templates/home/base.html:235
+#: templates/registration/login.html:11
+msgid "Logowanie"
+msgstr "ავტორიზაცია"
+
+#: templates/home/base.html:73 templates/home/base.html:236
+#: templates/registration/register.html:10
+#: templates/registration/register.html:16
+msgid "Rejestracja"
+msgstr "რეგისტრაცია"
+
+#: templates/home/base.html:89 templates/home/base.html:252
+msgid "Tytuł stanowiska"
+msgstr "პოზიციის სათაური"
+
+#: templates/home/base.html:90 templates/home/base.html:253
+msgid "Opis stanowiska"
+msgstr "პოზიციის აღწერა"
+
+#: templates/home/base.html:91 templates/home/base.html:254
+msgid "Wymagania"
+msgstr "მოთხოვნები"
+
+#: templates/home/base.html:100 templates/home/base.html:263
+#: templates/home/client_list.html:34 templates/home/client_list.html:36
+#: templates/home/recruiters.html:33
+msgid "Poprzedni"
+msgstr "წინა"
+
+#: templates/home/base.html:104 templates/home/base.html:267
+#: templates/home/client_list.html:49 templates/home/client_list.html:51
+#: templates/home/recruiters.html:45
+msgid "Następny"
+msgstr "შემდეგი"
+
+#: templates/home/base.html:113 templates/home/base.html:276
+msgid "Skontaktuj się z nami"
+msgstr "დაგვიკავშირდით"
+
+#: templates/home/base.html:115 templates/home/base.html:278
+msgid "Jeśli masz pytania lub sugestie, prosimy, nie wahaj się z nami skontaktować. Skontaktuj się z nami, aby omówić swoje potrzeby i możliwości. Nasz zespół specjalistów jest gotowy, aby odpowiedzieć na wszystkie pytania i pomóc znaleźć najlepsze rozwiązanie dla Ciebie."
+msgstr "თუ თქვენ გაქვთ კითხვები ან წინადადებები, გთხოვთ, ნუ დააყოვნებთ ჩვენთან დაკავშირებას. დაგვიკავშირდით, რათა განვიხილოთ თქვენი საჭიროებები და შესაძლებლობები. ჩვენი სპეციალისტების გუნდი მზად არის უპასუხოს ყველა კითხვას და დაგეხმაროთ საუკეთესო გადაწყვეტილების მოძებნაში."
+
+#: templates/home/base.html:121 templates/home/base.html:284
+msgid "Dokumenty"
+msgstr "დოკუმენტები"
+
+#: templates/home/base.html:122 templates/home/base.html:285
+msgid "Przygotowanie dokumentów"
+msgstr "დოკუმენტების მომზადება"
+
+#: templates/home/base.html:124 templates/home/base.html:287
+msgid "Przygotujemy wszystkie niezbędne dokumenty. Wspólnie przeanalizujemy wszystkie detale i odpowiemy na dodatkowe pytania."
+msgstr "ჩვენ მოვამზადებთ ყველა საჭირო დოკუმენტს. ჩვენთან ერთად გავაანალიზებთ ყველა დეტალს და ვუპასუხებთ დამატებით კითხვებს."
+
+#: templates/home/base.html:130 templates/home/base.html:293
+msgid "Przyjazd"
+msgstr "ჩამოსვლა"
+
+#: templates/home/base.html:131 templates/home/base.html:294
+msgid "Przyjazd i zakwaterowanie"
+msgstr "ჩამოსვლა და განთავსება"
+
+#: templates/home/base.html:133 templates/home/base.html:296
+msgid "Po finalizacji wszystkich formalności ustalisz datę przyjazdu na projekt. Nasz koordynator będzie na ciebie czekał po przybyciu, zapewni ci ciepłe powitanie i pomoże w zakwaterowaniu."
+msgstr "ყველა ფორმალობის დასრულების შემდეგ თქვენ დაადგენთ პროექტზე ჩამოსვლის თარიღს. ჩვენი კოორდინატორი დაგელოდებათ ჩამოსვლისას, მოგესალმებათ თბილად და დაგეხმარებათ განთავსებაში."
+
+#: templates/home/base.html:139 templates/home/base.html:302
+msgid "Wsparcie"
+msgstr "მხარდაჭერა"
+
+#: templates/home/base.html:140 templates/home/base.html:303
+msgid "Wsparcie i kontakt"
+msgstr "მხარდაჭერა და კონტაქტი"
+
+#: templates/home/base.html:142 templates/home/base.html:305
+msgid "Jesteśmy z Tobą na każdym kroku Twojej kariery. Nasz zespół jest zawsze dostępny, aby pomóc i odpowiedzieć na wszelkie pytania, zapewniając ciągłe wsparcie i komunikację."
+msgstr "ჩვენ ვართ თქვენთან თქვენი კარიერის ყველა ნაბიჯზე. ჩვენი გუნდი ყოველთვის ხელმისაწვდომია, რათა დაგეხმაროთ და უპასუხოთ ყველა კითხვას, უზრუნველყოფს მუდმივ მხარდაჭერასა და კომუნიკაციას."
+
+#: templates/home/base.html:155 templates/home/base.html:318
+#: templates/home/contact.html:54 templates/home/guest_feedback_thanks.html:64
+msgid "Adres"
+msgstr "მისამართი"
+
+#: templates/home/client_list.html:7
+msgid "Nasi Klienci"
+msgstr "ჩვენი კლიენტები"
+
+#: templates/home/client_list.html:16
+msgid "Domyślny profil klienta"
+msgstr "კლიენტის ნაგულისხმევი პროფილი"
+
+#: templates/home/client_list.html:26
+msgid "Brak klientów do wyświetlenia."
+msgstr "კლიენტები არ არის გამოსაჩენი."
+
+#: templates/home/client_list.html:30
+msgid "Przykład nawigacji stronicowej"
+msgstr "გვერდების ნავიგაციის მაგალითი"
+
+#: templates/home/contact.html:13
+msgid "Zapraszamy do kontaktu!"
+msgstr "დაგვიკავშირდით!"
+
+#: templates/home/contact.html:20
+msgid "Ivan Ivanov"
+msgstr "ივან ივანოვი"
+
+#: templates/home/contact.html:21 templates/home/guest_feedback_thanks.html:31
+msgid "Rekruter dla rynku ukraińskiego"
+msgstr "უკრაინის ბაზრის რეკრუტერი"
+
+#: templates/home/contact.html:22 templates/home/contact.html:31
+#: templates/home/guest_feedback_thanks.html:32
+#: templates/home/guest_feedback_thanks.html:41
+#: templates/profiles/universal_profile_detail.html:28
+msgid "Telefon"
+msgstr "ტელეფონი"
+
+#: templates/home/contact.html:29
+msgid "Nino Ninavasil"
+msgstr "ნინო ნინავასილი"
+
+#: templates/home/contact.html:30 templates/home/guest_feedback_thanks.html:40
+msgid "Rekruter dla rynku gruzińskiego"
+msgstr "საქართველოს ბაზრის რეკრუტერი"
+
+#: templates/home/contact.html:42
+msgid "Social Media"
+msgstr "სოციალური მედია"
+
+#: templates/home/contact.html:45 templates/home/guest_feedback_thanks.html:55
+msgid "Agencja Pracy KIRIS M.O.R."
+msgstr "სამუშაო სააგენტო KIRIS M.O.R."
+
+#: templates/home/contact.html:56
+msgid "Godziny Otwarcia"
+msgstr "გახსნის საათები"
+
+#: templates/home/contact.html:57 templates/home/guest_feedback_thanks.html:67
+msgid "Poniedziałek - Piątek: 8:00 - 16:00"
+msgstr "ორშაბათი - პარასკევი: 8:00 - 16:00"
+
+#: templates/home/contact.html:58 templates/home/guest_feedback_thanks.html:68
+msgid "Sobota - Niedziela: Zamknięte"
+msgstr "შაბათი - კვირა: დახურულია"
+
+#: templates/home/guest_feedback.html:7
+msgid "Zostaw opinię o"
+msgstr "დატოვე შეფასება"
+
+#: templates/home/guest_feedback.html:32
+msgid "Wyślij"
+msgstr "გაგზავნა"
+
+#: templates/home/guest_feedback.html:33
+#: templates/home/public_job_detail.html:28
+msgid "Powrót"
+msgstr "დაბრუნება"
+
+#: templates/home/guest_feedback_thanks.html:11
+msgid "Dziękujemy za opinię!"
+msgstr "გმადლობთ შეფასებისთვის!"
+
+#: templates/home/guest_feedback_thanks.html:12
+msgid "Twoja opinia została pomyślnie wysłana."
+msgstr "თქვენი შეფასება წარმატებით გაიგზავნა."
+
+#: templates/home/guest_feedback_thanks.html:13
+msgid "Dołącz do naszej strony już dziś, aby uzyskać dostęp do większej liczby ofert pracy i możliwości. Jeśli masz problemy z rejestracją, nasi rekruterzy zawsze są gotowi pomóc."
+msgstr "შემოუერთდით ჩვენს გვერდს დღესვე, რათა მიიღოთ მეტი სამუშაო შეთავაზება და შესაძლებლობა. თუ გაქვთ რეგისტრაციასთან დაკავშირებული პრობლემები, ჩვენი რეკრუტერები ყოველთვის მზად არიან დაგეხმაროთ."
+
+#: templates/home/guest_feedback_thanks.html:13
+#: templates/registration/login.html:21
+msgid "Zarejestruj się"
+msgstr "დარეგისტრირდი"
+
+#: templates/home/guest_feedback_thanks.html:23
+msgid "Zachęcamy do kontaktu z nami!"
+msgstr "გთხოვთ დაგვიკავშირდეთ!"
+
+#: templates/home/guest_feedback_thanks.html:52
+msgid "Media społecznościowe"
+msgstr "სოციალური მედია"
+
+#: templates/home/guest_feedback_thanks.html:66
+msgid "Godziny otwarcia"
+msgstr "გახსნის საათები"
+
+#: templates/home/public_job_detail.html:11
+msgid "Opis stanowiska:"
+msgstr "პოზიციის აღწერა:"
+
+#: templates/home/public_job_detail.html:15
+#: templates/job_requests/client_job_request_detail.html:11
+#: templates/job_requests/recruiter_job_request_detail.html:14
+#: templates/job_requests/recruiter_job_request_list.html:35
+#: templates/jobs/job_detail.html:13
+msgid "Wymagania:"
+msgstr "მოთხოვნები:"
+
+#: templates/home/public_job_detail.html:17
+#: templates/job_requests/recruiter_detail.html:15
+msgid "Lokalizacja:"
+msgstr "ადგილმდებარეობა:"
+
+#: templates/home/public_job_detail.html:19 templates/jobs/job_detail.html:14
+msgid "Wynagrodzenie:"
+msgstr "ანაზღაურება:"
+
+#: templates/home/public_job_detail.html:25
+msgid "Zostaw opinię"
+msgstr "დატოვე შეფასება"
+
+#: templates/home/public_job_list.html:6
+msgid "Available Jobs"
+msgstr "ხელმისაწვდომი სამუშაოები"
+
+#: templates/home/public_job_list.html:9
+msgid "Search..."
+msgstr "ძიება..."
+
+#: templates/home/public_job_list.html:9 templates/home/public_job_list.html:10
+msgid "Search"
+msgstr "ძიება"
+
+#: templates/home/public_job_list.html:20
+msgid "View Details"
+msgstr "დეტალების ნახვა"
+
+#: templates/home/public_job_list.html:23
+msgid "No jobs found."
+msgstr "სამუშაოები არ მოიძებნა."
+
+#: templates/home/public_job_list.html:30
+#: templates/home/public_job_list.html:32 templates/tasks/task_list.html:55
+msgid "Previous"
+msgstr "წინა"
+
+#: templates/home/public_job_list.html:45
+#: templates/home/public_job_list.html:47 templates/tasks/task_list.html:67
+msgid "Next"
+msgstr "შემდეგი"
+
+#: templates/home/recruiters.html:7
+msgid "Nasi Rekruterzy"
+msgstr "ჩვენი რეკრუტერები"
+
+#: templates/home/recruiters.html:16
+#: templates/job_requests/recruiter_detail.html:12
+#: templates/job_requests/recruiter_list.html:23
+msgid "Domyślny profil"
+msgstr "ნაგულისხმევი პროფილი"
+
+#: templates/home/recruiters.html:25
+msgid "Brak rekruterów do wyświetlenia."
+msgstr "რეკრუტერები არ არის გამოსაჩენი."
+
+#: templates/job_requests/client_job_request_confirm_delete.html:7
+msgid "Potwierdź usunięcie zapytania"
+msgstr "დადასტურეთ მოთხოვნის წაშლა"
+
+#: templates/job_requests/client_job_request_confirm_delete.html:8
+msgid "Czy na pewno chcesz usunąć zapytanie"
+msgstr "დარწმუნებული ხართ, რომ გსურთ მოთხოვნის წაშლა?"
+
+#: templates/job_requests/client_job_request_confirm_delete.html:11
+#: templates/job_requests/client_job_request_list.html:29
+#: templates/tasks/task_confirm_delete.html:13
+#: templates/tasks/task_list.html:46
+msgid "Usuń"
+msgstr "წაშლა"
+
+#: templates/job_requests/client_job_request_confirm_delete.html:12
+#: templates/registration/logout_confirmation.html:14
+#: templates/tasks/task_confirm_delete.html:14
+msgid "Anuluj"
+msgstr "გაუქმება"
+
+#: templates/job_requests/client_job_request_detail.html:7
+#: templates/job_requests/recruiter_job_request_detail.html:9
+msgid "Szczegóły zapytania"
+msgstr "მოთხოვნის დეტალები"
+
+#: templates/job_requests/client_job_request_detail.html:10
+#: templates/job_requests/recruiter_job_request_detail.html:13
+#: templates/job_requests/recruiter_job_request_list.html:34
+msgid "Opis:"
+msgstr "აღწერა:"
+
+#: templates/job_requests/client_job_request_detail.html:12
+#: templates/job_requests/recruiter_job_request_detail.html:15
+#: templates/job_requests/recruiter_job_request_list.html:36
+#: templates/jobs/job_detail.html:16
+msgid "Data utworzenia:"
+msgstr "შექმნის თარიღი:"
+
+#: templates/job_requests/client_job_request_detail.html:13
+#: templates/job_requests/recruiter_job_request_detail.html:16
+#: templates/jobs/job_detail.html:15
+msgid "Status:"
+msgstr "სტატუსი:"
+
+#: templates/job_requests/client_job_request_detail.html:16
+msgid "Odpowiedzi na zapytanie:"
+msgstr "მოთხოვნის პასუხები:"
+
+#: templates/job_requests/client_job_request_detail.html:21
+msgid "Nowy status:"
+msgstr "ახალი სტატუსი:"
+
+
+#: templates/job_requests/client_job_request_detail.html:22
+msgid "Zaktualizowano:"
+msgstr "განახლებულია:"
+
+#: templates/job_requests/client_job_request_detail.html:23
+msgid "Zaktualizowane przez użytkownika:"
+msgstr "განახლებულია მომხმარებლის მიერ:"
+
+#: templates/job_requests/client_job_request_detail.html:25
+#: templates/jobs/guest_applications.html:20
+#: templates/jobs/guest_feedback_applications.html:20
+msgid "Wiadomość:"
+msgstr "მესიჯი:"
+
+#: templates/job_requests/client_job_request_detail.html:31
+msgid "Nie ma jeszcze odpowiedzi na to zapytanie."
+msgstr "ამ მოთხოვნაზე ჯერ არ არის პასუხი."
+
+#: templates/job_requests/client_job_request_detail.html:35
+msgid "Wróć do moich wniosków"
+msgstr "დაუბრუნდი ჩემს მოთხოვნებს"
+
+#: templates/job_requests/client_job_request_list.html:7
+msgid "Moje Zapytania"
+msgstr "ჩემი მოთხოვნები"
+
+#: templates/job_requests/client_job_request_list.html:16
+msgid "Rekruter:"
+msgstr "რეკრუტერი:"
+
+#: templates/job_requests/client_job_request_list.html:17
+#: templates/jobs/guest_applications.html:18
+#: templates/jobs/guest_feedback_applications.html:18
+msgid "Email:"
+msgstr "ელფოსტა:"
+
+#: templates/job_requests/client_job_request_list.html:19
+msgid "Rekruter nie jest wybrany"
+msgstr "რეკრუტერი არ არის არჩეული"
+
+#: templates/job_requests/client_job_request_list.html:26
+#: templates/job_requests/recruiter_list.html:28
+#: templates/jobs/recruiter_applications.html:61
+#: templates/jobs/recruiter_job_list.html:55
+msgid "Szczegóły"
+msgstr "დეტალები"
+
+#: templates/job_requests/client_job_request_list.html:35
+msgid "Brak zapytań."
+msgstr "მოთხოვნები არ არის."
+
+#: templates/job_requests/client_job_request_list.html:39
+msgid "Utwórz nowe zapytanie"
+msgstr "შექმენი ახალი მოთხოვნა"
+
+#: templates/job_requests/job_request_form.html:7
+msgid "Stwórz Zapytanie"
+msgstr "შექმენი მოთხოვნა"
+
+#: templates/job_requests/job_request_form.html:30
+#: templates/job_requests/job_request_status_update.html:28
+msgid "Zapisz"
+msgstr "შენახვა"
+
+#: templates/job_requests/job_request_status_update.html:7
+msgid "Zmień status zapytania"
+msgstr "შეცვალე მოთხოვნის სტატუსი"
+
+#: templates/job_requests/job_request_status_update.html:11
+msgid "Nowy status"
+msgstr "ახალი სტატუსი"
+
+#: templates/job_requests/job_request_status_update.html:20
+msgid "Wiadomość"
+msgstr "მესიჯი"
+
+#: templates/job_requests/recruiter_detail.html:10
+#: templates/job_requests/recruiter_list.html:21
+msgid "Zdjęcie rekrutera"
+msgstr "რეკრუტერის სურათი"
+
+#: templates/job_requests/recruiter_detail.html:16
+msgid "Numer telefonu:"
+msgstr "ტელეფონის ნომერი:"
+
+#: templates/job_requests/recruiter_detail.html:18
+msgid "W ulubionych"
+msgstr "რჩეულებში"
+
+#: templates/job_requests/recruiter_detail.html:20
+#: templates/jobs/job_list.html:46
+msgid "Dodaj do ulubionych"
+msgstr "დამატება რჩეულებში"
+
+#: templates/job_requests/recruiter_detail.html:22
+msgid "Wróć do listy"
+msgstr "დაბრუნება სიაში"
+
+#: templates/job_requests/recruiter_detail.html:23
+#: templates/job_requests/recruiter_list.html:29
+msgid "Zrób Zapytanie"
+msgstr "შექმენი მოთხოვნა"
+
+#: templates/job_requests/recruiter_job_request_detail.html:18
+msgid "Oczekujące"
+msgstr "მოლოდინში"
+
+#: templates/job_requests/recruiter_job_request_detail.html:20
+msgid "W trakcie realizacji"
+msgstr "შესრულების პროცესში"
+
+#: templates/job_requests/recruiter_job_request_detail.html:22
+msgid "Zakończone"
+msgstr "დასრულებული"
+
+#: templates/job_requests/recruiter_job_request_detail.html:25
+#: templates/job_requests/recruiter_job_request_list.html:40
+#: templates/jobs/job_detail.html:27
+#: templates/jobs/recruiter_job_list.html:58
+#: templates/jobs/update_application_status.html:26
+msgid "Zmień status"
+msgstr "სტატუსის შეცვლა"
+
+#: templates/job_requests/recruiter_job_request_detail.html:26
+msgid "Powrót do listy"
+msgstr "დაბრუნება სიაში"
+
+#: templates/job_requests/recruiter_job_request_list.html:9
+msgid "Zarządzanie Zapytaniami"
+msgstr "მოთხოვნების მართვა"
+
+#: templates/job_requests/recruiter_job_request_list.html:17
+#: templates/jobs/guest_applications.html:9
+#: templates/jobs/guest_feedback_applications.html:9
+#: templates/jobs/guest_feedback_applications_for_job.html:11
+#: templates/jobs/recruiter_applications.html:28
+#: templates/jobs/recruiter_job_list.html:26
+#: templates/jobs/registered_applications_for_job.html:17
+#: templates/jobs/update_application_status.html:33
+msgid "Aplikacje zarejestrowane"
+msgstr "დარეგისტრირებული აპლიკაციები"
+
+#: templates/job_requests/recruiter_job_request_list.html:20
+#: templates/jobs/guest_applications.html:10
+#: templates/jobs/guest_feedback_applications.html:10
+#: templates/jobs/guest_feedback_applications_for_job.html:12
+#: templates/jobs/recruiter_applications.html:31
+#: templates/jobs/recruiter_job_list.html:29
+#: templates/jobs/registered_applications_for_job.html:20
+#: templates/jobs/update_application_status.html:34
+msgid "Aplikacje gości"
+msgstr "სტუმრის აპლიკაციები"
+
+#: templates/job_requests/recruiter_job_request_list.html:23
+#: templates/jobs/guest_applications.html:11
+#: templates/jobs/guest_feedback_applications.html:11
+#: templates/jobs/guest_feedback_applications_for_job.html:13
+#: templates/jobs/recruiter_applications.html:34
+#: templates/jobs/recruiter_job_list.html:32
+#: templates/jobs/registered_applications_for_job.html:23
+#: templates/jobs/update_application_status.html:35
+msgid "Dodaj ofertę"
+msgstr "დაამატე შეთავაზება"
+
+#: templates/job_requests/recruiter_job_request_list.html:26
+#: templates/jobs/guest_applications.html:12
+#: templates/jobs/guest_feedback_applications.html:12
+#: templates/jobs/liked_jobs_list.html:34
+#: templates/jobs/recruiter_applications.html:37
+#: templates/jobs/recruiter_job_list.html:35
+#: templates/jobs/registered_applications_for_job.html:26
+#: templates/jobs/update_application_status.html:36
+msgid "Wszystkie oferty pracy"
+msgstr "ყველა სამუშაო შეთავაზება"
+
+#: templates/job_requests/recruiter_job_request_list.html:41
+msgid "Detali zapytania"
+msgstr "მოთხოვნის დეტალები"
+
+#: templates/job_requests/recruiter_job_request_list.html:45
+msgid "Brak zapytań do obsługi."
+msgstr "მოთხოვნები არ არის დასამუშავებლად."
+
+#: templates/job_requests/recruiter_list.html:7
+msgid "Wybierz Rekrutera"
+msgstr "აირჩიე რეკრუტერი"
+
+#: templates/job_requests/recruiter_list.html:10
+#: templates/jobs/recruiter_job_list.html:13
+msgid "Szukaj..."
+msgstr "ძიება..."
+
+#: templates/job_requests/recruiter_list.html:11
+#: templates/jobs/job_list.html:14
+#: templates/jobs/recruiter_applications.html:18
+#: templates/jobs/recruiter_job_list.html:16
+#: templates/tasks/task_list.html:16
+msgid "Szukaj"
+msgstr "ძიება"
+
+#: templates/job_requests/recruiter_list.html:38
+#: templates/jobs/recruiter_applications.html:76
+#: templates/news/all_news_list.html:57
+msgid "Poprzednia"
+msgstr "წინა"
+
+#: templates/job_requests/recruiter_list.html:41
+#: templates/jobs/recruiter_applications.html:88
+#: templates/news/all_news_list.html:71
+msgid "Następna"
+msgstr "შემდეგი"
+
+#: templates/job_requests/recruiter_list.html:46
+msgid "Nie znaleziono rekrutera o podanych kryteriach."
+msgstr "რეკრუტერი მოცემული კრიტერიუმებით ვერ მოიძებნა."
+
+#: templates/jobs/guest_applications.html:7
+#: templates/jobs/guest_feedback_applications.html:7
+msgid "Opinie gości"
+msgstr "სტუმრის შეფასებები"
+
+#: templates/jobs/guest_applications.html:19
+#: templates/jobs/guest_feedback_applications.html:19
+msgid "Telefon:"
+msgstr "ტელეფონი:"
+
+#: templates/jobs/guest_applications.html:21
+#: templates/jobs/guest_feedback_applications.html:21
+msgid "Praca:"
+msgstr "სამუშაო:"
+
+#: templates/jobs/guest_applications.html:27
+#: templates/jobs/guest_feedback_applications.html:27
+msgid "Brak opinii gości."
+msgstr "სტუმრის შეფასებები არ არის."
+
+#: templates/jobs/guest_feedback_applications_for_job.html:7
+#: templates/jobs/registered_applications_for_job.html:9
+msgid "Lista zarejestrowanych aplikacji dla"
+msgstr "დარეგისტრირებული აპლიკაციების სია"
+
+#: templates/jobs/guest_feedback_applications_for_job.html:10
+#: templates/jobs/job_detail.html:30
+#: templates/jobs/registered_applications_for_job.html:14
+msgid "Moje Oferty"
+msgstr "ჩემი შეთავაზებები"
+
+#: templates/jobs/guest_feedback_applications_for_job.html:20
+#: templates/jobs/recruiter_applications.html:46
+#: templates/jobs/registered_applications_for_job.html:34
+#: templates/jobs/update_application_status.html:12
+msgid "Aplikant"
+msgstr "აპლიკანტი"
+#: templates/jobs/guest_feedback_applications_for_job.html:21
+#: templates/jobs/recruiter_applications.html:47
+#: templates/jobs/recruiter_job_list.html:44
+#: templates/jobs/registered_applications_for_job.html:35
+#: templates/jobs/update_application_status.html:13
+#: templates/jobs/update_application_status.html:20
+#: templates/tasks/task_detail.html:11
+#: templates/tasks/task_list.html:29
+msgid "Status"
+msgstr "სტატუსი"
+
+#: templates/jobs/guest_feedback_applications_for_job.html:22
+#: templates/jobs/recruiter_applications.html:48
+#: templates/jobs/registered_applications_for_job.html:36
+msgid "Data"
+msgstr "თარიღი"
+
+#: templates/jobs/guest_feedback_applications_for_job.html:23
+#: templates/jobs/job_list.html:32
+#: templates/jobs/recruiter_applications.html:49
+#: templates/jobs/recruiter_job_list.html:45
+#: templates/jobs/registered_applications_for_job.html:37
+#: templates/tasks/task_list.html:31
+msgid "Akcje"
+msgstr "მოქმედებები"
+
+#: templates/jobs/guest_feedback_applications_for_job.html:33
+#: templates/jobs/registered_applications_for_job.html:48
+msgid "Detale aplikacji"
+msgstr "აპლიკაციის დეტალები"
+
+#: templates/jobs/guest_feedback_applications_for_job.html:38
+#: templates/jobs/recruiter_applications.html:67
+#: templates/jobs/registered_applications_for_job.html:54
+msgid "Brak aplikacji do wyświetlenia."
+msgstr "აპლიკაციები არ არის გამოსაჩენი."
+
+#: templates/jobs/job_detail.html:20
+msgid "Wróć do ofert pracy"
+msgstr "დაბრუნდი სამუშაო შეთავაზებებზე"
+
+#: templates/jobs/job_detail.html:24
+#: templates/jobs/recruiter_job_list.html:61
+msgid "Zarejestrowane aplikacje"
+msgstr "დარეგისტრირებული აპლიკაციები"
+
+#: templates/jobs/job_detail.html:34
+msgid "Aplikuj"
+msgstr "აპლიკაცია"
+
+#: templates/jobs/job_list.html:9
+msgid "Lista ofert pracy"
+msgstr "სამუშაო შეთავაზებების სია"
+
+#: templates/jobs/job_list.html:13
+msgid "Szukaj ofert pracy..."
+msgstr "სამუშაო შეთავაზებების ძიება..."
+
+#: templates/jobs/job_list.html:18
+#: templates/jobs/liked_jobs_list.html:9
+msgid "Polubione oferty pracy"
+msgstr "საყვარელი სამუშაო შეთავაზებები"
+
+#: templates/jobs/job_list.html:21
+msgid "Ulubione oferty pracy"
+msgstr "რჩეული სამუშაო შეთავაზებები"
+
+#: templates/jobs/job_list.html:29
+#: templates/jobs/liked_jobs_list.html:16
+#: templates/jobs/recruiter_job_list.html:43
+#: templates/tasks/task_list.html:26
+msgid "Tytuł"
+msgstr "სათაური"
+
+#: templates/jobs/job_list.html:30
+#: templates/jobs/liked_jobs_list.html:17
+#: templates/tasks/task_detail.html:9
+#: templates/tasks/task_list.html:27
+msgid "Opis"
+msgstr "აღწერა"
+
+#: templates/jobs/job_list.html:31
+#: templates/jobs/liked_jobs_list.html:18
+msgid "Wynagrodzenie"
+msgstr "ანაზღაურება"
+
+#: templates/jobs/job_list.html:43
+msgid "Polubione"
+msgstr "რჩეული"
+
+#: templates/jobs/job_list.html:43
+msgid "Polub"
+msgstr "მოწონება"
+
+#: templates/jobs/job_list.html:46
+msgid "Ulubione"
+msgstr "რჩეული"
+
+#: templates/jobs/job_list.html:51
+msgid "Brak dostępnych ofert pracy."
+msgstr "სამუშაო შეთავაზებები არ არის."
+
+#: templates/jobs/job_list.html:60
+msgid "Poprzednie"
+msgstr "წინა"
+
+#: templates/jobs/job_list.html:70
+msgid "Następne"
+msgstr "შემდეგი"
+
+#: templates/jobs/liked_jobs_list.html:29
+msgid "Brak dostępnych polubionych ofert pracy."
+msgstr "საყვარელი სამუშაო შეთავაზებები არ არის."
+
+#: templates/jobs/recruiter_applications.html:9
+msgid "Lista aplikacji na Twoje oferty pracy"
+msgstr "შენი სამუშაო შეთავაზებების აპლიკაციების სია"
+
+#: templates/jobs/recruiter_applications.html:15
+msgid "Szukaj w aplikacjach..."
+msgstr "აპლიკაციების ძიება..."
+
+#: templates/jobs/recruiter_applications.html:45
+msgid "Stanowisko"
+msgstr "პოზიცია"
+
+#: templates/jobs/recruiter_job_list.html:64
+msgid "Goście aplikacje"
+msgstr "სტუმრის აპლიკაციები"
+
+#: templates/jobs/recruiter_job_list.html:70
+msgid "Brak ofert pracy do wyświetlenia."
+msgstr "სამუშაო შეთავაზებები არ არის გამოსაჩენი."
+
+#: templates/jobs/update_application_status.html:6
+msgid "Szczegóły aplikacji"
+msgstr "აპლიკაციის დეტალები"
+
+#: templates/jobs/update_application_status.html:14
+msgid "List motywacyjny"
+msgstr "სამოტივაციო წერილი"
+
+#: templates/jobs/update_application_status.html:15
+msgid "Data złożenia"
+msgstr "წარდგენის თარიღი"
+
+#: templates/news/all_news_list.html:5
+msgid "Wszystkie Nowości"
+msgstr "ყველა ახალი ამბავი"
+
+#: templates/news/all_news_list.html:47
+msgid "Brak nowości dla odświeżenia."
+msgstr "განახლებული ახალი ამბები არ არის."
+
+#: templates/news/all_news_list.html:56
+msgid "Pierwsza"
+msgstr "პირველი"
+
+#: templates/news/all_news_list.html:72
+msgid "Ostatnia"
+msgstr "ბოლო"
+
+#: templates/profiles/universal_profile_detail.html:11
+msgid "Szczegóły profilu kandydata"
+msgstr "კანდიდატის პროფილის დეტალები"
+
+#: templates/profiles/universal_profile_detail.html:13
+msgid "Szczegóły profilu klienta"
+msgstr "კლიენტის პროფილის დეტალები"
+
+#: templates/profiles/universal_profile_detail.html:15
+msgid "Szczegóły profilu rekrutera"
+msgstr "რეკრუტერის პროფილის დეტალები"
+
+#: templates/profiles/universal_profile_detail.html:22
+msgid "Zdjęcie profilowe"
+msgstr "პროფილის სურათი"
+
+#: templates/profiles/universal_profile_detail.html:24
+msgid "Domyślne zdjęcie profilowe"
+msgstr "ნაგულისხმევი პროფილის სურათი"
+
+#: templates/profiles/universal_profile_detail.html:27
+msgid "Email"
+msgstr "ელ. ფოსტა"
+
+#: templates/profiles/universal_profile_detail.html:29
+msgid "Lokalizacja"
+msgstr "მდებარეობა"
+
+#: templates/profiles/universal_profile_detail.html:30
+msgid "Bio"
+msgstr "ბიოგრაფია"
+
+#: templates/profiles/universal_profile_detail.html:33
+#: templates/profiles/universal_profile_detail.html:41
+msgid "Imię"
+msgstr "სახელი"
+
+#: templates/profiles/universal_profile_detail.html:34
+#: templates/profiles/universal_profile_detail.html:42
+msgid "Nazwisko"
+msgstr "გვარი"
+
+#: templates/profiles/universal_profile_detail.html:35
+msgid "Umiejętności"
+msgstr "უნარები"
+
+#: templates/profiles/universal_profile_detail.html:36
+msgid "Data urodzenia"
+msgstr "დაბადების თარიღი"
+#: templates/profiles/universal_profile_detail.html:38
+msgid "Nazwa firmy"
+msgstr "კომპანიის სახელი"
+
+#: templates/profiles/universal_profile_detail.html:39
+msgid "Branża"
+msgstr "მრეწველობა"
+
+#: templates/profiles/universal_profile_detail.html:46
+#: templates/profiles/universal_profile_edit.html:9
+msgid "Edytuj profil"
+msgstr "პროფილის რედაქტირება"
+
+#: templates/profiles/universal_profile_edit.html:16
+#: templates/tasks/task_form.html:15
+msgid "Zapisz zmiany"
+msgstr "ცვლილებების შენახვა"
+
+#: templates/registration/create_profile.html:9
+msgid "Utwórz profil"
+msgstr "პროფილის შექმნა"
+
+#: templates/registration/create_profile.html:16
+msgid "Zapisz profil"
+msgstr "პროფილის შენახვა"
+
+#: templates/registration/login.html:17
+msgid "Login"
+msgstr "შესვლა"
+
+#: templates/registration/login.html:21
+msgid "Jeśli nie masz konta, "
+msgstr "თუ არ გაქვთ ანგარიში, "
+
+#: templates/registration/logout_confirmation.html:8
+msgid "Czy na pewno chcesz się wylogować?"
+msgstr "დარწმუნებული ხართ, რომ გსურთ გამოსვლა?"
+
+#: templates/registration/logout_confirmation.html:12
+msgid "Tak, wyloguj się"
+msgstr "დიახ, გამოსვლა"
+
+#: templates/registration/register.html:20
+msgid "Jeśli masz już konto,"
+msgstr "თუ უკვე გაქვთ ანგარიში,"
+
+#: templates/registration/register.html:20
+msgid "Zaloguj się"
+msgstr "შესვლა"
+
+#: templates/tasks/task_confirm_delete.html:8
+msgid "Czy na pewno chcesz usunąć to zadanie?"
+msgstr "დარწმუნებული ხართ, რომ გსურთ ამ დავალების წაშლა?"
+
+#: templates/tasks/task_detail.html:8
+msgid "Zadanie"
+msgstr "დავალება"
+
+#: templates/tasks/task_detail.html:10
+#: templates/tasks/task_list.html:28
+msgid "Priorytet"
+msgstr "პრიორიტეტი"
+
+#: templates/tasks/task_detail.html:12
+#: templates/tasks/task_list.html:30
+msgid "Termin"
+msgstr "ვადა"
+
+#: templates/tasks/task_detail.html:13
+#: templates/tasks/task_list.html:45
+msgid "Edytuj"
+msgstr "რედაქტირება"
+
+#: templates/tasks/task_detail.html:14
+msgid "Powrót do listy zadań"
+msgstr "დავალებების სიაში დაბრუნება"
+
+#: templates/tasks/task_form.html:8
+msgid "Edytuj zadanie"
+msgstr "დავალების რედაქტირება"
+
+#: templates/tasks/task_form.html:8
+#: templates/tasks/task_form.html:15
+msgid "Dodaj zadanie"
+msgstr "დავალების დამატება"
+
+#: templates/tasks/task_form.html:16
+msgid "Wróć do listy zadań"
+msgstr "დავალებების სიაში დაბრუნება"
+
+#: templates/tasks/task_list.html:8
+msgid "Lista Zadań"
+msgstr "დავალებების სია"
+
+#: templates/tasks/task_list.html:14
+msgid "Wyszukaj zadania..."
+msgstr "დავალებების ძიება..."
+
+#: templates/tasks/task_list.html:18
+msgid "Dodaj nowe zadanie"
+msgstr "ახალი დავალების დამატება"
+
+#: templates/tasks/task_list.html:72
+msgid "Brak zadań do wyświetlenia"
+msgstr "დავალებები არ არის გამოსაჩენი"

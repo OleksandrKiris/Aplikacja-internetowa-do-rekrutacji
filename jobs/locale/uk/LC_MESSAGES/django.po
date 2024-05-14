@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+#: jobs/forms.py:11
+msgid "Tytuł"
+msgstr "Назва"
+
+#: jobs/forms.py:12
+msgid "Opis"
+msgstr "Опис"
+
+#: jobs/forms.py:13
+msgid "Wymagania"
+msgstr "Вимоги"
+
+#: jobs/forms.py:14
+msgid "Wynagrodzenie"
+msgstr "Зарплата"
+
+#: jobs/forms.py:15
+msgid "Status"
+msgstr "Статус"
+
+#: jobs/forms.py:20
+msgid "Wprowadź tytuł"
+msgstr "Введіть назву"
+
+#: jobs/forms.py:25
+msgid "Wprowadź opis stanowiska"
+msgstr "Введіть опис посади"
+
+#: jobs/forms.py:30
+msgid "Wprowadź wymagania stanowiska"
+msgstr "Введіть вимоги до посади"
+
+#: jobs/forms.py:34
+msgid "Wprowadź wynagrodzenie"
+msgstr "Введіть зарплату"
+
+#: jobs/forms.py:47
+msgid "List Motywacyjny"
+msgstr "Мотиваційний лист"
+
+#: jobs/forms.py:53
+msgid "Wprowadź list motywacyjny"
+msgstr "Введіть мотиваційний лист"
+
+#: jobs/forms.py:63
+msgid "Email"
+msgstr "Електронна пошта"
+
+#: jobs/forms.py:64
+msgid "Wiadomość"
+msgstr "Повідомлення"
+
+#: jobs/forms.py:65
+msgid "Numer Telefonu (opcjonalnie)"
+msgstr "Номер телефону (необов'язково)"
+
+#: jobs/forms.py:70
+msgid "Wprowadź email"
+msgstr "Введіть електронну пошту"
+
+#: jobs/forms.py:75
+msgid "Wprowadź opinię"
+msgstr "Введіть відгук"
+
+#: jobs/forms.py:79
+msgid "Wprowadź numer telefonu"
+msgstr "Введіть номер телефону"
+
+#: jobs/models.py:8
+msgid "Otwarta"
+msgstr "Відкрита"
+
+#: jobs/models.py:9
+msgid "Zamknięta"
+msgstr "Закрита"
+
+#: jobs/models.py:35
+msgid "Złożone"
+msgstr "Подано"
+
+#: jobs/models.py:36
+msgid "Przejrzane"
+msgstr "Переглянуто"
+
+#: jobs/models.py:37
+msgid "Zaakceptowane"
+msgstr "Прийнято"
+
+#: jobs/models.py:38
+msgid "Odrzucone"
+msgstr "Відхилено"

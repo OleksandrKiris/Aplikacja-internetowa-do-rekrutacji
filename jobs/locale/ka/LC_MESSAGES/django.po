@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+#: jobs/forms.py:11
+msgid "Tytuł"
+msgstr "სათაური"
+
+#: jobs/forms.py:12
+msgid "Opis"
+msgstr "აღწერა"
+
+#: jobs/forms.py:13
+msgid "Wymagania"
+msgstr "მოთხოვნები"
+
+#: jobs/forms.py:14
+msgid "Wynagrodzenie"
+msgstr "ანაზღაურება"
+
+#: jobs/forms.py:15
+msgid "Status"
+msgstr "სტატუსი"
+
+#: jobs/forms.py:20
+msgid "Wprowadź tytuł"
+msgstr "შეიყვანე სათაური"
+
+#: jobs/forms.py:25
+msgid "Wprowadź opis stanowiska"
+msgstr "შეიყვანე სამუშაოს აღწერა"
+
+#: jobs/forms.py:30
+msgid "Wprowadź wymagania stanowiska"
+msgstr "შეიყვანე სამუშაოს მოთხოვნები"
+
+#: jobs/forms.py:34
+msgid "Wprowadź wynagrodzenie"
+msgstr "შეიყვანე ანაზღაურება"
+
+#: jobs/forms.py:47
+msgid "List Motywacyjny"
+msgstr "მოტივაციის წერილი"
+
+#: jobs/forms.py:53
+msgid "Wprowadź list motywacyjny"
+msgstr "შეიყვანე მოტივაციის წერილი"
+
+#: jobs/forms.py:63
+msgid "Email"
+msgstr "ელ. ფოსტა"
+
+#: jobs/forms.py:64
+msgid "Wiadomość"
+msgstr "მესიჯი"
+
+#: jobs/forms.py:65
+msgid "Numer Telefonu (opcjonalnie)"
+msgstr "ტელეფონის ნომერი (არასავალდებულო)"
+
+#: jobs/forms.py:70
+msgid "Wprowadź email"
+msgstr "შეიყვანე ელ. ფოსტა"
+
+#: jobs/forms.py:75
+msgid "Wprowadź opinię"
+msgstr "შეიყვანე მოსაზრება"
+
+#: jobs/forms.py:79
+msgid "Wprowadź numer telefonu"
+msgstr "შეიყვანე ტელეფონის ნომერი"
+
+#: jobs/models.py:8
+msgid "Otwarta"
+msgstr "გახსნილი"
+
+#: jobs/models.py:9
+msgid "Zamknięta"
+msgstr "დახურული"
+
+#: jobs/models.py:35
+msgid "Złożone"
+msgstr "დამატებულია"
+
+#: jobs/models.py:36
+msgid "Przejrzane"
+msgstr "დათვალიერებული"
+
+#: jobs/models.py:37
+msgid "Zaakceptowane"
+msgstr "დადასტურებული"
+
+#: jobs/models.py:38
+msgid "Odrzucone"
+msgstr "უარყოფილი"

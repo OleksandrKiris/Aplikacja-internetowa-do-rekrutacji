@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ recruiter.first_name }} {{ recruiter.last_name }}</h2>
+    <div class="recruiter-profile">
+        {% if recruiter.photo %}
+            <img src="{{ recruiter.photo.url }}" alt="{% trans "Zdjęcie rekrutera" %}" class="img-thumbnail">
+        {% else %}
+            <img src="{% static 'images/recruiter.png' %}" alt="{% trans "Domyślny profil" %}" class="img-thumbnail">
+        {% endif %}
+        <p>{{ recruiter.bio }}</p>
+        <p>{% trans "Lokalizacja:" %} {{ recruiter.location }}</p>
+        <p>{% trans "Numer telefonu:" %} {{ recruiter.phone_number }}</p>
+        {% if is_favorite %}
+            <button class="btn btn-info" disabled>{% trans "W ulubionych" %}</button>
+        {% else %}
+            <a href="{% url 'requests:add_to_favorites' recruiter.pk %}" class="btn btn-primary">{% trans "Dodaj do ulubionych" %}</a>
+        {% endif %}
+        <a href="{{ return_url }}" class="btn btn-secondary">{% trans "Wróć do listy" %}</a>
+        <a href="{% url 'requests:client_job_request_create' %}?recruiter={{ recruiter.pk }}" class="btn btn-success">{% trans "Zrób Zapytanie" %}</a>
+    </div>
+</div>
+{% endblock %}

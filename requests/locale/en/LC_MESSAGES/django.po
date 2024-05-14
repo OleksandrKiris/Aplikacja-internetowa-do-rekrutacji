@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: requests/forms.py:11 requests/models.py:18
+msgid "Tytuł"
+msgstr "Title"
+
+#: requests/forms.py:12 requests/models.py:19
+msgid "Opis"
+msgstr "Description"
+
+#: requests/forms.py:13 requests/models.py:20
+msgid "Wymagania"
+msgstr "Requirements"
+
+#: requests/forms.py:14 requests/models.py:26
+msgid "Status"
+msgstr "Status"
+
+#: requests/forms.py:15 requests/models.py:33
+msgid "Rekruter"
+msgstr "Recruiter"
+
+#: requests/forms.py:18
+msgid "Wprowadź tytuł"
+msgstr "Enter title"
+
+#: requests/forms.py:19
+msgid "Podaj opis"
+msgstr "Provide description"
+
+#: requests/forms.py:20
+msgid "Podaj wymagania"
+msgstr "Provide requirements"
+
+#: requests/forms.py:34
+msgid "Recruiter cannot be changed once assigned."
+msgstr "Recruiter cannot be changed once assigned."
+
+#: requests/forms.py:46
+msgid "Wprowadź swoją wiadomość..."
+msgstr "Enter your message..."
+
+#: requests/models.py:8
+msgid "Oczekujące"
+msgstr "Pending"
+
+#: requests/models.py:9
+msgid "W trakcie realizacji"
+msgstr "In progress"
+
+#: requests/models.py:10
+msgid "Zakończone"
+msgstr "Completed"
+
+#: requests/models.py:16
+msgid "Pracodawca"
+msgstr "Employer"
+
+#: requests/models.py:21
+msgid "Data utworzenia"
+msgstr "Creation date"
+
+#: requests/models.py:37
+msgid "Zapotrzebowanie na pracę"
+msgstr "Job request"
+
+#: requests/models.py:38
+msgid "Zapotrzebowania na pracę"
+msgstr "Job requests"
+
+#: requests/models.py:49
+msgid "Aktualizacja statusu zapotrzebowania na pracę"
+msgstr "Job request status update"
+
+#: requests/models.py:54
+msgid "Nowy status"
+msgstr "New status"
+
+#: requests/models.py:59
+msgid "Zaktualizowane przez"
+msgstr "Updated by"
+
+#: requests/models.py:61
+msgid "Data aktualizacji"
+msgstr "Update date"
+
+#: requests/models.py:62
+msgid "Wiadomość"
+msgstr "Message"
+
+#: requests/models.py:65
+msgid "Aktualizacja statusu zapotrzebowania"
+msgstr "Request status update"
+
+#: requests/models.py:66
+msgid "Aktualizacje statusów zapotrzebowania"
+msgstr "Request status updates"
+
+#: requests/models.py:74
+msgid "Użytkownik"
+msgstr "User"
+
+#: requests/models.py:80 requests/models.py:85
+msgid "Ulubiony rekruter"
+msgstr "Favorite recruiter"
+
+#: requests/models.py:86
+msgid "Ulubieni rekruterzy"
+msgstr "Favorite recruiters"

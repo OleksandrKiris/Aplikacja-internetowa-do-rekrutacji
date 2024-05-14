@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: news/models.py:6
+msgid "Tytuł"
+msgstr "Titel"
+
+#: news/models.py:7
+msgid "Zawartość"
+msgstr "Inhalt"
+
+#: news/models.py:8
+msgid "Data dodania"
+msgstr "Hinzugefügt am"
+
+#: news/models.py:10
+msgid "Kandydat"
+msgstr "Kandidat"
+
+#: news/models.py:11
+msgid "Klient"
+msgstr "Kunde"
+
+#: news/models.py:12
+msgid "Rekruter"
+msgstr "Rekrutierer"
+
+#: news/models.py:13
+msgid "Rola"
+msgstr "Rolle"
+
+#: news/views.py:39
+msgid "news"
+msgstr "Nachrichten"
+
+#: news/views.py:40
+msgid "page_number"
+msgstr "Seitennummer"
+
+#: news/views.py:41
+msgid "has_next"
+msgstr "hat nächste"
+
+#: news/views.py:42
+msgid "has_previous"
+msgstr "hat vorherige"
+
+#: news/views.py:43
+msgid "total_pages"
+msgstr "Gesamtseiten"

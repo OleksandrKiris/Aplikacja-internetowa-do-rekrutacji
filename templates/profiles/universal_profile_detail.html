@@ -1,0 +1,50 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<section class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h2>
+                {% if profile_type == 'candidate' %}
+                    {% trans 'Szczegóły profilu kandydata' %}
+                {% elif profile_type == 'client' %}
+                    {% trans 'Szczegóły profilu klienta' %}
+                {% elif profile_type == 'recruiter' %}
+                    {% trans 'Szczegóły profilu rekrutera' %}
+                {% endif %}
+            </h2>
+        </div>
+        <div class="card-body">
+            <!-- Ulepszone wyświetlanie zdjęcia profilowego -->
+            {% if profile.photo %}
+                <img src="{{ profile.photo.url }}" alt="{% trans 'Zdjęcie profilowe' %}" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+            {% else %}
+                <img src="{% static 'profile.jpg' %}" alt="{% trans 'Domyślne zdjęcie profilowe' %}" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+            {% endif %}
+            
+            <p><strong>{% trans 'Email' %}:</strong> {{ profile.user.email }}</p>
+            <p><strong>{% trans 'Telefon' %}:</strong> {{ profile.phone_number }}</p>
+            <p><strong>{% trans 'Lokalizacja' %}:</strong> {{ profile.location }}</p>
+            <p><strong>{% trans 'Bio' %}:</strong> {{ profile.bio }}</p>
+
+            {% if profile_type == 'candidate' %}
+                <p><strong>{% trans 'Imię' %}:</strong> {{ profile.first_name }}</p>
+                <p><strong>{% trans 'Nazwisko' %}:</strong> {{ profile.last_name }}</p>
+                <p><strong>{% trans 'Umiejętności' %}:</strong> {{ profile.skills }}</p>
+                <p><strong>{% trans 'Data urodzenia' %}:</strong> {{ profile.date_of_birth }}</p>
+            {% elif profile_type == 'client' %}
+                <p><strong>{% trans 'Nazwa firmy' %}:</strong> {{ profile.company_name }}</p>
+                <p><strong>{% trans 'Branża' %}:</strong> {{ profile.industry }}</p>
+            {% elif profile_type == 'recruiter' %}
+                <p><strong>{% trans 'Imię' %}:</strong> {{ profile.first_name }}</p>
+                <p><strong>{% trans 'Nazwisko' %}:</strong> {{ profile.last_name }}</p>
+            {% endif %}
+        </div>
+        <div class="card-footer text-end">
+            <a href="{% url 'accounts:profile_edit' %}" class="btn btn-primary">{% trans 'Edytuj profil' %}</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

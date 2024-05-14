@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+#: requests/forms.py:11 requests/models.py:18
+msgid "Tytuł"
+msgstr "სათაური"
+
+#: requests/forms.py:12 requests/models.py:19
+msgid "Opis"
+msgstr "აღწერა"
+
+#: requests/forms.py:13 requests/models.py:20
+msgid "Wymagania"
+msgstr "მოთხოვნები"
+
+#: requests/forms.py:14 requests/models.py:26
+msgid "Status"
+msgstr "სტატუსი"
+
+#: requests/forms.py:15 requests/models.py:33
+msgid "Rekruter"
+msgstr "რეკრუტერი"
+
+#: requests/forms.py:18
+msgid "Wprowadź tytuł"
+msgstr "შეიყვანეთ სათაური"
+
+#: requests/forms.py:19
+msgid "Podaj opis"
+msgstr "მიუთითეთ აღწერა"
+
+#: requests/forms.py:20
+msgid "Podaj wymagania"
+msgstr "მიუთითეთ მოთხოვნები"
+
+#: requests/forms.py:34
+msgid "Recruiter cannot be changed once assigned."
+msgstr "რეკრუტერის შეცვლა მინიჭების შემდეგ შეუძლებელია."
+
+#: requests/forms.py:46
+msgid "Wprowadź swoją wiadomość..."
+msgstr "შეიყვანეთ თქვენი შეტყობინება..."
+
+#: requests/models.py:8
+msgid "Oczekujące"
+msgstr "მომლოდინე"
+
+#: requests/models.py:9
+msgid "W trakcie realizacji"
+msgstr "შესრულების პროცესშია"
+
+#: requests/models.py:10
+msgid "Zakończone"
+msgstr "დასრულებული"
+
+#: requests/models.py:16
+msgid "Pracodawca"
+msgstr "დამსაქმებელი"
+
+#: requests/models.py:21
+msgid "Data utworzenia"
+msgstr "შექმნის თარიღი"
+
+#: requests/models.py:37
+msgid "Zapotrzebowanie na pracę"
+msgstr "სამუშაოს მოთხოვნა"
+
+#: requests/models.py:38
+msgid "Zapotrzebowania na pracę"
+msgstr "სამუშაოს მოთხოვნები"
+
+#: requests/models.py:49
+msgid "Aktualizacja statusu zapotrzebowania na pracę"
+msgstr "სამუშაოს მოთხოვნის სტატუსის განახლება"
+
+#: requests/models.py:54
+msgid "Nowy status"
+msgstr "ახალი სტატუსი"
+
+#: requests/models.py:59
+msgid "Zaktualizowane przez"
+msgstr "განახლებულია"
+
+#: requests/models.py:61
+msgid "Data aktualizacji"
+msgstr "განახლების თარიღი"
+
+#: requests/models.py:62
+msgid "Wiadomość"
+msgstr "შეტყობინება"
+
+#: requests/models.py:65
+msgid "Aktualizacja statusu zapotrzebowania"
+msgstr "მოთხოვნის სტატუსის განახლება"
+
+#: requests/models.py:66
+msgid "Aktualizacje statusów zapotrzebowania"
+msgstr "მოთხოვნების სტატუსების განახლებები"
+
+#: requests/models.py:74
+msgid "Użytkownik"
+msgstr "მომხმარებელი"
+
+#: requests/models.py:80 requests/models.py:85
+msgid "Ulubiony rekruter"
+msgstr "რჩეული რეკრუტერი"
+
+#: requests/models.py:86
+msgid "Ulubieni rekruterzy"
+msgstr "რჩეული რეკრუტერები"

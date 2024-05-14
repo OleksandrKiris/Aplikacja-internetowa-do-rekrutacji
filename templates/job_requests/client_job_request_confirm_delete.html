@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{% trans "Potwierdź usunięcie zapytania" %}</h2>
+    <p>{% trans "Czy na pewno chcesz usunąć zapytanie" %} "{{ object.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">{% trans "Usuń" %}</button>
+        <a href="{% url 'requests:client_job_request_list' %}" class="btn btn-secondary">{% trans "Anuluj" %}</a>
+    </form>
+</div>
+{% endblock %}
