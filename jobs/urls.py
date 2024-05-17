@@ -1,9 +1,23 @@
 from django.urls import path
-
 from jobs import views
 from jobs.views import PublicJobListView, JobListView, LikedJobsListView, FavoritedJobsListView
 
+"""
+Importuje moduł path z django.urls, który jest używany do definiowania tras URL w aplikacji Django.
+
+Importuje moduł views z aplikacji jobs, który zawiera funkcje i klasy widoków używane w tej aplikacji.
+
+Importuje klasy widoków z aplikacji jobs:
+- PublicJobListView: Widok publicznej listy ofert pracy.
+- JobListView: Widok listy ofert pracy dla zalogowanych użytkowników.
+- LikedJobsListView: Widok listy polubionych ofert pracy.
+- FavoritedJobsListView: Widok listy ulubionych ofert pracy.
+"""
+
 app_name = 'jobs'
+"""
+Ustawia przestrzeń nazw dla tej aplikacji, umożliwiając odwoływanie się do jej tras URL w sposób jednoznaczny.
+"""
 
 urlpatterns = [
     path('jobs/', JobListView.as_view(), name='job_list'),
@@ -31,5 +45,9 @@ urlpatterns = [
     path('favorite/<int:job_id>/', views.favorite_job, name='favorite_job'),
     path('liked/', LikedJobsListView.as_view(), name='liked_jobs_list'),
     path('favorited/', FavoritedJobsListView.as_view(), name='favorited_jobs_list'),
-
+    path('guest/feedback/<int:job_id>/', views.guest_feedback_view, name='guest_feedback'),
+    path('guest/feedback/verify/<str:token>/', views.verify_feedback_view, name='guest_feedback_verify'),
+    path('guest/feedback/verified/', views.guest_feedback_verified_view, name='guest_feedback_verified'),
+    path('guest/feedback/thanks/', views.guest_feedback_thanks_view, name='guest_feedback_thanks'),
+    path('guest/feedback/confirmation/', views.guest_feedback_confirmation_view, name='guest_feedback_confirmation'),
 ]

@@ -1,0 +1,16 @@
+{% extends "home/base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-6">
+            <div class="card bg-light text-dark">
+                <div class="card-body text-center">
+                    <h1 class="display-4 mb-4">{% trans "Proszę zweryfikować swój email!" %}</h1>
+                    <p class="lead mb-4">{% trans "Wysłaliśmy link weryfikacyjny na Twój adres email. Proszę sprawdzić skrzynkę odbiorczą i kliknąć link, aby zweryfikować adres email." %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,13 +1,35 @@
-from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.core.validators import validate_email, MinLengthValidator, RegexValidator
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+import hashlib
+import time
 
 
 class MyUserManager(BaseUserManager):
+    """
+    Menedżer użytkowników dla niestandardowego modelu użytkownika.
+
+    Zapewnia metody tworzenia użytkowników i superużytkowników z adresem e-mail jako unikalnym identyfikatorem.
+    """
+
     def create_user(self, email, password=None, **extra_fields):
+        """
+        Tworzy i zapisuje użytkownika z podanym adresem e-mail i hasłem.
+
+        Args:
+            email (str): Adres e-mail użytkownika.
+            password (str, opcjonalnie): Hasło użytkownika.
+            extra_fields (dict): Dodatkowe pola do ustawienia na użytkowniku.
+
+        Returns:
+            User: Utworzony użytkownik.
+
+        Raises:
+            ValueError: Jeśli adres e-mail jest nieprawidłowy lub nie jest ustawiony.
+        """
         if not email:
             raise ValueError(_('Adres e-mail musi być ustawiony'))
         try:
@@ -17,30 +39,55 @@ class MyUserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
-        role = extra_fields.get('role')
-        if role:
-            valid_roles = [choice[0] for choice in self.model.ROLE_CHOICES]
-            if role not in valid_roles:
-                raise ValueError(_(f"Nieprawidłowa rola: {role}. Dopuszczalne role to {valid_roles}."))
+        user.is_active = extra_fields.get('is_active', False)
         user.save(using=self._db)
         return user
 
     def create_superuser(self, email, password=None, **extra_fields):
+        # Tworzy i zapisuje superużytkownika z podanym adresem e-mail i hasłem.
+
+        # Args:
+        #  email (str): Adres e-mail superużytkownika.
+        # password (str, opcjonalnie): Hasło superużytkownika.
+        #  extra_fields (dict): Dodatkowe pola do ustawienia na superużytkowniku.
+
+        # Returns:
+        # User: Utworzony superużytkownik.
+
+        # Raises:
+        #     ValueError: Jeśli is_staff lub is_superuser nie są ustawione na True.
+
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-        if not extra_fields.get('is_staff'):
+        extra_fields.setdefault('is_active', True)
+        if not extra_fields['is_staff']:
             raise ValueError(_('Superużytkownik musi mieć is_staff=True.'))
-        if not extra_fields.get('is_superuser'):
+        if not extra_fields['is_superuser']:
             raise ValueError(_('Superużytkownik musi mieć is_superuser=True.'))
         return self.create_user(email, password, **extra_fields)
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
+    """
+    Niestandardowy model użytkownika używający adresu e-mail jako unikalnego identyfikatora zamiast nazwy użytkownika.
+
+    Attributes:
+        email (str): Adres e-mail użytkownika.
+        is_active (bool): Czy konto użytkownika jest aktywne.
+        last_login (datetime): Data ostatniego logowania użytkownika.
+        is_staff (bool): Czy użytkownik jest członkiem personelu.
+        is_superuser (bool): Czy użytkownik jest superużytkownikiem.
+        is_verified (bool): Czy adres e-mail użytkownika został zweryfikowany.
+        verification_token (str): Token weryfikacyjny adresu e-mail użytkownika.
+        role (str): Rola użytkownika (kandydat, klient, rekruter).
+    """
     email = models.EmailField(verbose_name='adres e-mail', max_length=255, unique=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     last_login = models.DateTimeField(null=True, blank=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    is_verified = models.BooleanField(default=False)
+    verification_token = models.CharField(max_length=64, blank=True, null=True)
     ROLE_CHOICES = (
         ('candidate', _('Kandydat')),
         ('client', _('Klient')),
@@ -62,15 +109,44 @@ class User(AbstractBaseUser):
         return self.email
 
     def get_full_name(self):
+        """
+        Zwraca pełne imię i nazwisko użytkownika w zależności od jego roli.
+
+        Returns:
+            str: Pełne imię i nazwisko lub nazwa firmy użytkownika.
+        """
         if self.role == 'candidate' and hasattr(self, 'candidate_profile'):
             profile = self.candidate_profile
+            return f"{profile.first_name} {profile.last_name}"
         elif self.role == 'client' and hasattr(self, 'client_profile'):
             profile = self.client_profile
+            return profile.company_name
         elif self.role == 'recruiter' and hasattr(self, 'recruiter_profile'):
             profile = self.recruiter_profile
+            return f"{profile.first_name} {profile.last_name}"
         else:
             return self.email
-        return f"{profile.first_name} {profile.last_name}"
+
+    def generate_verification_token(self):
+        """
+        Generuje token weryfikacyjny dla adresu e-mail użytkownika.
+
+        Returns:
+            str: Wygenerowany token.
+        """
+        timestamp = int(time.time())
+        token_string = f"{self.email}{timestamp}"
+        return hashlib.sha256(token_string.encode('utf-8')).hexdigest()
+
+    def change_password(self, new_password):
+        """
+        Zmienia hasło użytkownika.
+
+        Args:
+            new_password (str): Nowe hasło użytkownika.
+        """
+        self.set_password(new_password)
+        self.save()
 
 
 phone_validator = RegexValidator(
@@ -82,6 +158,20 @@ min_length_validator_2 = MinLengthValidator(2)
 
 
 class CandidateProfile(models.Model):
+    """
+    Profil kandydata zawierający dodatkowe informacje o kandydacie.
+
+    Attributes:
+        user (User): Użytkownik powiązany z tym profilem.
+        first_name (str): Imię kandydata.
+        last_name (str): Nazwisko kandydata.
+        phone_number (str): Numer telefonu kandydata.
+        photo (ImageField): Zdjęcie kandydata.
+        location (str): Lokalizacja kandydata.
+        bio (str): Biografia kandydata.
+        date_of_birth (date): Data urodzenia kandydata.
+        skills (str): Umiejętności kandydata.
+    """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True,
                                 related_name='candidate_profile')
     first_name = models.CharField(max_length=100, verbose_name=_("Imię"), validators=[min_length_validator_2])
@@ -98,6 +188,18 @@ class CandidateProfile(models.Model):
 
 
 class ClientProfile(models.Model):
+    """
+    Profil klienta (pracodawcy) zawierający dodatkowe informacje o kliencie.
+
+    Attributes:
+        user (User): Użytkownik powiązany z tym profilem.
+        phone_number (str): Numer telefonu klienta.
+        photo (ImageField): Zdjęcie klienta.
+        location (str): Lokalizacja klienta.
+        bio (str): Biografia klienta.
+        company_name (str): Nazwa firmy klienta.
+        industry (str): Branża firmy klienta.
+    """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True,
                                 related_name='client_profile')
     phone_number = models.CharField(max_length=15, verbose_name=_("Numer telefonu"), validators=[phone_validator])
@@ -112,6 +214,18 @@ class ClientProfile(models.Model):
 
 
 class RecruiterProfile(models.Model):
+    """
+    Profil rekrutera zawierający dodatkowe informacje o rekruterze.
+
+    Attributes:
+        user (User): Użytkownik powiązany z tym profilem.
+        first_name (str): Imię rekrutera.
+        last_name (str): Nazwisko rekrutera.
+        phone_number (str): Numer telefonu rekrutera.
+        photo (ImageField): Zdjęcie rekrutera.
+        location (str): Lokalizacja rekrutera.
+        bio (str): Biografia rekrutera.
+    """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True,
                                 related_name='recruiter_profile')
     first_name = models.CharField(max_length=100, verbose_name=_("Imię"), validators=[min_length_validator_2])
@@ -126,6 +240,17 @@ class RecruiterProfile(models.Model):
 
 
 class Task(models.Model):
+    """
+    Zadanie tworzone przez rekrutera.
+
+    Attributes:
+        created_by (User): Użytkownik, który utworzył zadanie.
+        title (str): Tytuł zadania.
+        description (str): Opis zadania.
+        priority (str): Priorytet zadania (niski, średni, wysoki).
+        due_date (date): Termin wykonania zadania.
+        status (str): Status zadania (otwarte, w trakcie realizacji, zakończone).
+    """
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='created_tasks', on_delete=models.CASCADE,
                                    verbose_name=_('Utworzone przez'))
     title = models.CharField(max_length=200, verbose_name=_('Tytuł'))
@@ -145,11 +270,25 @@ class Task(models.Model):
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='open', verbose_name=_('Status'))
 
     def save(self, *args, **kwargs):
+        """
+        Zapisuje zadanie do bazy danych.
+
+        Raises:
+            ValidationError: Jeśli użytkownik nie jest rekruterem lub priorytet jest nieprawidłowy.
+        """
         if not hasattr(self.created_by, 'recruiter_profile'):
             raise ValidationError(_("Tylko rekruterzy mogą tworzyć zadania."))
+        if self.priority not in ['low', 'medium', 'high']:
+            raise ValidationError(_("Invalid priority value"))
         super().save(*args, **kwargs)
 
     def change_status(self, new_status):
+        """
+        Zmienia status zadania i zapisuje zmiany w bazie danych.
+
+        Args:
+            new_status (str): Nowy status zadania.
+        """
         self.status = new_status
         self.save()
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"POT-Creation-Date: 2024-05-16 13:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,94 +17,113 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: jobs/forms.py:11
+
+#: forms.py:11
 msgid "Tytuł"
 msgstr "Title"
 
-#: jobs/forms.py:12
+#: forms.py:12
 msgid "Opis"
 msgstr "Description"
 
-#: jobs/forms.py:13
+#: forms.py:13
 msgid "Wymagania"
 msgstr "Requirements"
 
-#: jobs/forms.py:14
+#: forms.py:14
 msgid "Wynagrodzenie"
 msgstr "Salary"
 
-#: jobs/forms.py:15
+#: forms.py:15
 msgid "Status"
 msgstr "Status"
 
-#: jobs/forms.py:20
+#: forms.py:20
 msgid "Wprowadź tytuł"
 msgstr "Enter title"
 
-#: jobs/forms.py:25
+#: forms.py:25
 msgid "Wprowadź opis stanowiska"
 msgstr "Enter job description"
 
-#: jobs/forms.py:30
+#: forms.py:30
 msgid "Wprowadź wymagania stanowiska"
 msgstr "Enter job requirements"
 
-#: jobs/forms.py:34
+#: forms.py:34
 msgid "Wprowadź wynagrodzenie"
 msgstr "Enter salary"
 
-#: jobs/forms.py:47
+#: forms.py:47
 msgid "List Motywacyjny"
 msgstr "Cover Letter"
 
-#: jobs/forms.py:53
+#: forms.py:53
 msgid "Wprowadź list motywacyjny"
 msgstr "Enter cover letter"
 
-#: jobs/forms.py:63
+#: forms.py:63
 msgid "Email"
 msgstr "Email"
 
-#: jobs/forms.py:64
+#: forms.py:64
 msgid "Wiadomość"
 msgstr "Message"
 
-#: jobs/forms.py:65
+#: forms.py:65
 msgid "Numer Telefonu (opcjonalnie)"
 msgstr "Phone Number (optional)"
 
-#: jobs/forms.py:70
+#: forms.py:70
 msgid "Wprowadź email"
 msgstr "Enter email"
 
-#: jobs/forms.py:75
+#: forms.py:75
 msgid "Wprowadź opinię"
 msgstr "Enter feedback"
 
-#: jobs/forms.py:79
+#: forms.py:79
 msgid "Wprowadź numer telefonu"
 msgstr "Enter phone number"
 
-#: jobs/models.py:8
+#: models.py:11
 msgid "Otwarta"
 msgstr "Open"
 
-#: jobs/models.py:9
+#: models.py:12
 msgid "Zamknięta"
 msgstr "Closed"
 
-#: jobs/models.py:35
+#: models.py:38
 msgid "Złożone"
 msgstr "Submitted"
 
-#: jobs/models.py:36
+#: models.py:39
 msgid "Przejrzane"
 msgstr "Reviewed"
 
-#: jobs/models.py:37
+#: models.py:40
 msgid "Zaakceptowane"
 msgstr "Accepted"
 
-#: jobs/models.py:38
+#: models.py:41
 msgid "Odrzucone"
 msgstr "Rejected"
+
+#: utils.py:13
+msgid "Zweryfikuj swój feedback"
+msgstr "Zweryfikuj swoją opinię"
+
+#: utils.py:14
+#, python-brace-format
+msgid "Kliknij link, aby zweryfikować swój feedback: {verification_link}"
+msgstr "Kliknij link, aby zweryfikować swoją opinię: {verification_link}"
+
+#: views.py:226
+msgid "Zarejestrowani klienci i rekruterzy nie mogą zostawić opinii."
+msgstr "Zarejestrowani klienci i rekruterzy nie mogą zostawić opinii."
+
+#: views.py:251
+msgid "Proszę poprawić błędy w formularzu."
+msgstr "Proszę poprawić błędy w formularzu."
+

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 19:46+0200\n"
+"POT-Creation-Date: 2024-05-16 13:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,94 +17,113 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-#: jobs/forms.py:11
+
+#: forms.py:11
 msgid "Tytuł"
 msgstr "სათაური"
 
-#: jobs/forms.py:12
+#: forms.py:12
 msgid "Opis"
 msgstr "აღწერა"
 
-#: jobs/forms.py:13
+#: forms.py:13
 msgid "Wymagania"
 msgstr "მოთხოვნები"
 
-#: jobs/forms.py:14
+#: forms.py:14
 msgid "Wynagrodzenie"
 msgstr "ანაზღაურება"
 
-#: jobs/forms.py:15
+#: forms.py:15
 msgid "Status"
 msgstr "სტატუსი"
 
-#: jobs/forms.py:20
+#: forms.py:20
 msgid "Wprowadź tytuł"
 msgstr "შეიყვანე სათაური"
 
-#: jobs/forms.py:25
+#: forms.py:25
 msgid "Wprowadź opis stanowiska"
 msgstr "შეიყვანე სამუშაოს აღწერა"
 
-#: jobs/forms.py:30
+#: forms.py:30
 msgid "Wprowadź wymagania stanowiska"
 msgstr "შეიყვანე სამუშაოს მოთხოვნები"
 
-#: jobs/forms.py:34
+#: forms.py:34
 msgid "Wprowadź wynagrodzenie"
 msgstr "შეიყვანე ანაზღაურება"
 
-#: jobs/forms.py:47
+#: forms.py:47
 msgid "List Motywacyjny"
 msgstr "მოტივაციის წერილი"
 
-#: jobs/forms.py:53
+#: forms.py:53
 msgid "Wprowadź list motywacyjny"
 msgstr "შეიყვანე მოტივაციის წერილი"
 
-#: jobs/forms.py:63
+#: forms.py:63
 msgid "Email"
 msgstr "ელ. ფოსტა"
 
-#: jobs/forms.py:64
+#: forms.py:64
 msgid "Wiadomość"
 msgstr "მესიჯი"
 
-#: jobs/forms.py:65
+#: forms.py:65
 msgid "Numer Telefonu (opcjonalnie)"
 msgstr "ტელეფონის ნომერი (არასავალდებულო)"
 
-#: jobs/forms.py:70
+#: forms.py:70
 msgid "Wprowadź email"
 msgstr "შეიყვანე ელ. ფოსტა"
 
-#: jobs/forms.py:75
+#: forms.py:75
 msgid "Wprowadź opinię"
 msgstr "შეიყვანე მოსაზრება"
 
-#: jobs/forms.py:79
+#: forms.py:79
 msgid "Wprowadź numer telefonu"
 msgstr "შეიყვანე ტელეფონის ნომერი"
 
-#: jobs/models.py:8
+#: models.py:11
 msgid "Otwarta"
 msgstr "გახსნილი"
 
-#: jobs/models.py:9
+#: models.py:12
 msgid "Zamknięta"
 msgstr "დახურული"
 
-#: jobs/models.py:35
+#: models.py:38
 msgid "Złożone"
 msgstr "დამატებულია"
 
-#: jobs/models.py:36
+#: models.py:39
 msgid "Przejrzane"
 msgstr "დათვალიერებული"
 
-#: jobs/models.py:37
+#: models.py:40
 msgid "Zaakceptowane"
 msgstr "დადასტურებული"
 
-#: jobs/models.py:38
+#: models.py:41
 msgid "Odrzucone"
 msgstr "უარყოფილი"
+
+#: utils.py:13
+msgid "Zweryfikuj swój feedback"
+msgstr "დაადასტურეთ თქვენი გამოხმაურება"
+
+#: utils.py:14
+#, python-brace-format
+msgid "Kliknij link, aby zweryfikować swój feedback: {verification_link}"
+msgstr "დააჭირეთ ბმულს, რათა დაადასტუროთ თქვენი გამოხმაურება: {verification_link}"
+
+#: views.py:226
+msgid "Zarejestrowani klienci i rekruterzy nie mogą zostawić opinii."
+msgstr "დარეგისტრირებული მომხმარებლები და რეკრუტერები ვერ დატოვებენ გამოხმაურებას."
+
+#: views.py:251
+msgid "Proszę poprawić błędy w formularzu."
+msgstr "გთხოვთ, შეცვალოთ ფორმაში არსებული შეცდომები."
+

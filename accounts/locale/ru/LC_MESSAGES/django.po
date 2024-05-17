@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 17:16+0200\n"
+"POT-Creation-Date: 2024-05-16 13:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,224 +20,222 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: accounts/forms.py:13 accounts/models.py:45
+#: forms.py:13 models.py:45
 msgid "Kandydat"
 msgstr "Кандидат"
 
-#: accounts/forms.py:14 accounts/models.py:46
+#: forms.py:14 models.py:46
 msgid "Klient"
 msgstr "Клиент"
 
-#: accounts/forms.py:26 accounts/forms.py:113
+#: forms.py:26 forms.py:113
 msgid "Email"
 msgstr "Электронная почта"
 
-#: accounts/forms.py:27 accounts/forms.py:116
+#: forms.py:27 forms.py:116
 msgid "Hasło"
 msgstr "Пароль"
 
-#: accounts/forms.py:28 accounts/forms.py:34
+#: forms.py:28 forms.py:34
 msgid "Potwierdź hasło"
 msgstr "Подтвердите пароль"
 
-#: accounts/forms.py:29 accounts/models.py:49
+#: forms.py:29 models.py:49
 msgid "Rola"
 msgstr "Роль"
 
-#: accounts/forms.py:32 accounts/forms.py:115
+#: forms.py:32 forms.py:115
 msgid "Wprowadź email"
 msgstr "Введите электронную почту"
 
-#: accounts/forms.py:33 accounts/forms.py:118
+#: forms.py:33 forms.py:118
 msgid "Wprowadź hasło"
 msgstr "Введите пароль"
 
-#: accounts/forms.py:43 accounts/forms.py:94 accounts/models.py:87
-#: accounts/models.py:117
+#: forms.py:43 forms.py:94 models.py:92 models.py:122
 msgid "Imię"
 msgstr "Имя"
 
-#: accounts/forms.py:44 accounts/forms.py:95 accounts/models.py:88
-#: accounts/models.py:118
+#: forms.py:44 forms.py:95 models.py:93 models.py:123
 msgid "Nazwisko"
 msgstr "Фамилия"
 
-#: accounts/forms.py:45 accounts/forms.py:71 accounts/forms.py:96
-#: accounts/models.py:89 accounts/models.py:103 accounts/models.py:119
+#: forms.py:45 forms.py:71 forms.py:96 models.py:94 models.py:108 models.py:124
 msgid "Numer telefonu"
 msgstr "Номер телефона"
 
-#: accounts/forms.py:46 accounts/forms.py:72 accounts/forms.py:97
-#: accounts/models.py:90 accounts/models.py:104 accounts/models.py:120
+#: forms.py:46 forms.py:72 forms.py:97 models.py:95 models.py:109 models.py:125
 msgid "Zdjęcie"
 msgstr "Фотография"
 
-#: accounts/forms.py:47 accounts/forms.py:73 accounts/forms.py:98
-#: accounts/models.py:91 accounts/models.py:105 accounts/models.py:121
+#: forms.py:47 forms.py:73 forms.py:98 models.py:96 models.py:110 models.py:126
 msgid "Lokalizacja"
 msgstr "Местоположение"
 
-#: accounts/forms.py:48 accounts/forms.py:74 accounts/forms.py:99
-#: accounts/models.py:92 accounts/models.py:106 accounts/models.py:122
+#: forms.py:48 forms.py:74 forms.py:99 models.py:97 models.py:111 models.py:127
 msgid "Biografia"
 msgstr "Биография"
 
-#: accounts/forms.py:49 accounts/models.py:93
+#: forms.py:49 models.py:98
 msgid "Data urodzenia"
 msgstr "Дата рождения"
 
-#: accounts/forms.py:50 accounts/models.py:94
+#: forms.py:50 models.py:99
 msgid "Umiejętności"
 msgstr "Навыки"
 
-#: accounts/forms.py:53 accounts/forms.py:102
+#: forms.py:53 forms.py:102
 msgid "Wprowadź imię"
 msgstr "Введите имя"
 
-#: accounts/forms.py:54 accounts/forms.py:103
+#: forms.py:54 forms.py:103
 msgid "Wprowadź nazwisko"
 msgstr "Введите фамилию"
 
-#: accounts/forms.py:56 accounts/forms.py:80 accounts/forms.py:105
+#: forms.py:56 forms.py:80 forms.py:105
 msgid "Wprowadź numer telefonu"
 msgstr "Введите номер телефона"
 
-#: accounts/forms.py:58 accounts/forms.py:82 accounts/forms.py:107
+#: forms.py:58 forms.py:82 forms.py:107
 msgid "Wprowadź lokalizację"
 msgstr "Введите местоположение"
 
-#: accounts/forms.py:59 accounts/forms.py:83 accounts/forms.py:108
-#, fuzzy
-#| msgid "Wprowadź imię"
+#: forms.py:59 forms.py:83 forms.py:108
 msgid "Wprowadź biografię"
-msgstr "Введите имя"
+msgstr "Введите биографию"
 
-#: accounts/forms.py:62
-#, fuzzy
-#| msgid "Wprowadź imię"
+#: forms.py:62
 msgid "Wprowadź umiejętności"
-msgstr "Введите имя"
+msgstr "Введите навыки"
 
-#: accounts/forms.py:75 accounts/models.py:107
+
+#: forms.py:75 models.py:112
 msgid "Nazwa firmy"
 msgstr "Название компании"
 
-#: accounts/forms.py:76 accounts/models.py:108
+#: forms.py:76 models.py:113
 msgid "Branża"
 msgstr "Отрасль"
 
-#: accounts/forms.py:84
+#: forms.py:84
 msgid "Wprowadź nazwę firmy"
 msgstr "Введите название компании"
 
-#: accounts/forms.py:85
-#, fuzzy
-#| msgid "Wprowadź imię"
+#: forms.py:85
 msgid "Wprowadź branżę"
-msgstr "Введите имя"
+msgstr "Введите отрасль"
 
-#: accounts/forms.py:126 accounts/models.py:131
+
+#: forms.py:126 models.py:136
 msgid "Tytuł"
 msgstr "Название"
 
-#: accounts/forms.py:127 accounts/models.py:132
+#: forms.py:127 models.py:137
 msgid "Opis"
 msgstr "Описание"
 
-#: accounts/forms.py:128 accounts/models.py:138
+#: forms.py:128 models.py:143
 msgid "Priorytet"
 msgstr "Приоритет"
 
-#: accounts/forms.py:129 accounts/models.py:139
+#: forms.py:129 models.py:144
 msgid "Termin wykonania"
 msgstr "Срок выполнения"
 
-#: accounts/forms.py:130 accounts/models.py:145
+#: forms.py:130 models.py:150
 msgid "Status"
 msgstr "Статус"
 
-#: accounts/forms.py:133
+#: forms.py:133
 msgid "Wprowadź tytuł"
 msgstr "Введите название"
 
-#: accounts/forms.py:135
-#, fuzzy
-#| msgid "Wprowadź email"
+#: forms.py:135
 msgid "Wprowadź opis"
-msgstr "Введите электронную почту"
+msgstr "Введите описание"
 
-#: accounts/models.py:12
+
+#: models.py:14
 msgid "Adres e-mail musi być ustawiony"
 msgstr "Адрес электронной почты должен быть установлен"
 
-#: accounts/models.py:16
+#: models.py:18
 msgid "Nieprawidłowy format adresu e-mail"
 msgstr "Неправильный формат адреса электронной почты"
 
-#: accounts/models.py:24
-#, python-brace-format
-msgid "Nieprawidłowa rola: {role}. Dopuszczalne role to {valid_roles}."
-msgstr "Неправильная роль: {role}. Допустимые роли: {valid_roles}."
-
-#: accounts/models.py:32
+#: models.py:31
 msgid "Superużytkownik musi mieć is_staff=True."
 msgstr "Суперпользователь должен иметь is_staff=True."
 
-#: accounts/models.py:34
+#: models.py:33
 msgid "Superużytkownik musi mieć is_superuser=True."
 msgstr "Суперпользователь должен иметь is_superuser=True."
 
-#: accounts/models.py:47
+#: models.py:47
 msgid "Rekruter"
 msgstr "Рекрутер"
 
-#: accounts/models.py:55
+#: models.py:55
 msgid "użytkownik"
 msgstr "пользователь"
 
-#: accounts/models.py:56
+#: models.py:56
 msgid "użytkownicy"
 msgstr "пользователи"
 
-#: accounts/models.py:58
+#: models.py:58
 msgid "Może przeglądać pulpit nawigacyjny"
 msgstr "Может просматривать панель управления"
 
-#: accounts/models.py:78
+#: models.py:83
 msgid "Podaj poprawny numer telefonu"
 msgstr "Введите правильный номер телефона"
 
-#: accounts/models.py:130
+#: models.py:135
 msgid "Utworzone przez"
 msgstr "Создано"
 
-#: accounts/models.py:134
+#: models.py:139
 msgid "Niski"
 msgstr "Низкий"
 
-#: accounts/models.py:135
+#: models.py:140
 msgid "Średni"
 msgstr "Средний"
 
-#: accounts/models.py:136
+#: models.py:141
 msgid "Wysoki"
 msgstr "Высокий"
 
-#: accounts/models.py:141
+#: models.py:146
 msgid "Otwarte"
 msgstr "Открыто"
 
-#: accounts/models.py:142
+#: models.py:147
 msgid "W trakcie realizacji"
 msgstr "В процессе"
 
-#: accounts/models.py:143
+#: models.py:148
 msgid "Zakończone"
 msgstr "Завершено"
 
-#: accounts/models.py:149
+#: models.py:154
 msgid "Tylko rekruterzy mogą tworzyć zadania."
 msgstr "Только рекрутеры могут создавать задания."
+
+#: utils.py:12
+msgid "Zweryfikuj swój email"
+msgstr "Подтвердите свой email"
+
+#: utils.py:13
+#, python-brace-format
+msgid "Kliknij link, aby zweryfikować swój email: {verification_link}"
+msgstr "Нажмите на ссылку, чтобы подтвердить свой email: {verification_link}"
+
+
+#, python-brace-format
+#~ msgid "Nieprawidłowa rola: {role}. Dopuszczalne role to {valid_roles}."
+#~ msgstr "Неправильная роль: {role}. Допустимые роли: {valid_roles}."
 
 #~ msgid "Wprowadź биографию"
 #~ msgstr "Введите биографию"

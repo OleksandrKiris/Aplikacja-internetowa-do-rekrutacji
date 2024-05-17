@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 17:16+0200\n"
+"POT-Creation-Date: 2024-05-16 13:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,84 +18,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: kirismor/settings.py:132
-msgid "Polski"
-msgstr "Lehçe"
-
-#: kirismor/settings.py:133
-msgid "Ukrainian"
-msgstr "Ukraynaca"
-
-#: kirismor/settings.py:134
-msgid "Russian"
-msgstr "Rusça"
-
-#: kirismor/settings.py:135
-msgid "English"
-msgstr "İngilizce"
-
-#: kirismor/settings.py:136
-msgid "Turkish"
-msgstr "Türkçe"
-
-#: kirismor/settings.py:137
-msgid "German"
-msgstr "Almanca"
-
-#: kirismor/settings.py:138
-msgid "Georgian"
-msgstr "Gürcüce"
-
-#: templates/dashboard/dashboard.html:10 templates/news/news_list.html:8
+#: dashboard/dashboard.html:10 news/news_list.html:8
 msgid "Panel kandydata"
 msgstr "Aday Paneli"
 
-#: templates/dashboard/dashboard.html:11 templates/news/news_list.html:9
+#: dashboard/dashboard.html:11 news/news_list.html:9
 msgid "Witamy na twoim panelu kandydata!"
 msgstr "Aday panelinize hoş geldiniz!"
 
-#: templates/dashboard/dashboard.html:13 templates/news/news_list.html:11
+#: dashboard/dashboard.html:13 news/news_list.html:11
 msgid "Panel klienta"
 msgstr "Müşteri Paneli"
 
-#: templates/dashboard/dashboard.html:14 templates/news/news_list.html:12
+#: dashboard/dashboard.html:14 news/news_list.html:12
 msgid "Witamy na twoim panelu klienta!"
 msgstr "Müşteri panelinize hoş geldiniz!"
 
-#: templates/dashboard/dashboard.html:16 templates/news/news_list.html:14
+#: dashboard/dashboard.html:16 news/news_list.html:14
 msgid "Panel rekrutera"
 msgstr "İşe Alım Paneli"
 
-#: templates/dashboard/dashboard.html:17 templates/news/news_list.html:15
+#: dashboard/dashboard.html:17 news/news_list.html:15
 msgid "Witamy na twoim panelu rekrutera!"
 msgstr "İşe alım panelinize hoş geldiniz!"
 
-#: templates/dashboard/dashboard.html:19 templates/news/news_list.html:17
+#: dashboard/dashboard.html:19 news/news_list.html:17
 msgid "Nieznany panel"
 msgstr "Bilinmeyen Panel"
 
-#: templates/dashboard/dashboard.html:20 templates/news/news_list.html:18
+#: dashboard/dashboard.html:20 news/news_list.html:18
 msgid "Nie rozpoznano roli!"
 msgstr "Rol tanınmadı!"
 
-#: templates/dashboard/dashboard.html:25 templates/news/news_list.html:21
+#: dashboard/dashboard.html:25 news/news_list.html:21
 msgid "Najświeższe wiadomości:"
 msgstr "En Son Haberler:"
 
-#: templates/dashboard/dashboard.html:34 templates/news/news_list.html:26
+#: dashboard/dashboard.html:34 news/news_list.html:26
 msgid "Brak wiadomości do wyświetlenia."
 msgstr "Gösterilecek haber yok."
 
-#: templates/home/about_us.html:15
+#: home/about_us.html:15
 msgid "Dla kandydatów"
 msgstr "Adaylar İçin"
 
-#: templates/home/about_us.html:16
+#: home/about_us.html:16
 msgid ""
 "Agencja Pracy KIRIS M.O.R. specjalizuje się w rekrutacji i zatrudnieniu."
 msgstr "KIRIS M.O.R. İş Ajansı işe alım ve istihdamda uzmanlaşmıştır."
 
-#: templates/home/about_us.html:17
+#: home/about_us.html:17
 msgid ""
 "Agencja Pracy KIRIS M.O.R. specjalizuje się w rekrutacji i zatrudnianiu "
 "pracowników z Gruzji, Ukrainy i Mołdawii. Jesteśmy ekspertami w "
@@ -115,16 +87,16 @@ msgstr ""
 "geleceğinizi inşa ederken güvenilir ve deneyimli bir partner seçmiş "
 "olursunuz."
 
-#: templates/home/about_us.html:24
+#: home/about_us.html:24
 msgid "Dla klientów"
 msgstr "Müşteriler İçin"
 
-#: templates/home/about_us.html:25
+#: home/about_us.html:25
 msgid ""
 "Agencja Pracy KIRIS M.O.R. to renomowany partner partner dla twojej firmy."
 msgstr "KIRIS M.O.R. İş Ajansı, şirketiniz için tanınmış bir ortaktır."
 
-#: templates/home/about_us.html:26
+#: home/about_us.html:26
 msgid ""
 "Agencja Pracy KIRIS M.O.R. to renomowany partner w zakresie międzynarodowej "
 "rekrutacji pracowników. Specjalizujemy się w dostarczaniu wykwalifikowanych "
@@ -146,144 +118,139 @@ msgstr ""
 "İş Ajansını seçerek, istihdam süreçlerinin optimizasyonunu ve işletmenizin "
 "rekabet gücünü artırmayı tercih etmiş olursunuz."
 
-#: templates/home/about_us.html:36 templates/home/base.html:161
+#: home/about_us.html:36 home/base.html:161
 msgid "Informacje kontaktowe"
 msgstr "İletişim Bilgileri"
 
-#: templates/home/about_us.html:39 templates/home/base.html:164
-#: templates/home/contact.html:57 templates/home/guest_feedback_thanks.html:66
+#: home/about_us.html:39 home/base.html:164 home/contact.html:57
+#: home/guest_feedback_thanks.html:66
 msgid "Adres"
 msgstr "Adres"
 
-#: templates/home/about_us.html:44 templates/home/base.html:169
+#: home/about_us.html:44 home/base.html:169
 msgid "Śledź nas"
 msgstr "Bizi Takip Edin"
 
-#: templates/home/base.html:32
+#: home/base.html:32
 msgid "Strona główna"
 msgstr "Ana Sayfa"
 
-#: templates/home/base.html:33 templates/home/base.html:121
+#: home/base.html:33 home/base.html:121
 msgid "Kontakt"
 msgstr "İletişim"
 
-#: templates/home/base.html:34
+#: home/base.html:34
 msgid "O nas"
 msgstr "Hakkımızda"
 
-#: templates/home/base.html:35 templates/home/base.html:49
-#: templates/home/base.html:53 templates/home/base.html:59
+#: home/base.html:35 home/base.html:49 home/base.html:53 home/base.html:59
 msgid "Oferty pracy"
 msgstr "İş teklifleri"
 
-#: templates/home/base.html:36
+#: home/base.html:36
 msgid "Nasi klienci"
 msgstr "Müşterilerimiz"
 
-#: templates/home/base.html:37
+#: home/base.html:37
 msgid "Nasi rekruterzy"
 msgstr "İşe Alım Uzmanlarımız"
 
-#: templates/home/base.html:38
+#: home/base.html:38
 msgid "Nowości"
 msgstr "Haberler"
 
-#: templates/home/base.html:44
+#: home/base.html:44
 msgid "User Menu"
 msgstr "Kullanıcı Menüsü"
 
-#: templates/home/base.html:48 templates/home/base.html:58
+#: home/base.html:48 home/base.html:58
 msgid "Mój profil"
 msgstr "Profilim"
 
-#: templates/home/base.html:50 templates/home/base.html:63
-#: templates/jobs/create_job.html:26 templates/jobs/edit_job.html:18
+#: home/base.html:50 home/base.html:63 jobs/create_job.html:26
+#: jobs/edit_job.html:18
 msgid "Aplikacje"
 msgstr "Başvurular"
 
-#: templates/home/base.html:52
+#: home/base.html:52
 msgid "Profil"
 msgstr "Profil"
 
-#: templates/home/base.html:54
+#: home/base.html:54
 msgid "Rekruterzy"
 msgstr "İşe Alım Uzmanları"
 
-#: templates/home/base.html:55
+#: home/base.html:55
 msgid "Stwórz wniosek"
 msgstr "Başvuru Oluştur"
 
-#: templates/home/base.html:56
+#: home/base.html:56
 msgid "Wnioski"
 msgstr "Başvurular"
 
-#: templates/home/base.html:60
+#: home/base.html:60
 msgid "Dodaj ofertę pracy"
 msgstr "İş Teklifi Ekle"
 
-#: templates/home/base.html:61
-#: templates/job_requests/recruiter_job_request_list.html:14
-#: templates/jobs/application_detail.html:10
-#: templates/jobs/recruiter_applications.html:25
-#: templates/jobs/recruiter_job_list.html:8
-#: templates/jobs/recruiter_job_list.html:23
-#: templates/jobs/update_application_status.html:37
+#: home/base.html:61 job_requests/recruiter_job_request_list.html:14
+#: jobs/application_detail.html:10 jobs/recruiter_applications.html:25
+#: jobs/recruiter_job_list.html:8 jobs/recruiter_job_list.html:23
+#: jobs/update_application_status.html:37
 msgid "Moje Oferty Pracy"
 msgstr "İş Tekliflerim"
 
-#: templates/home/base.html:62
+#: home/base.html:62
 msgid "Zarządzaj zadaniami"
 msgstr "Görevleri Yönet"
 
-#: templates/home/base.html:64
+#: home/base.html:64
 msgid "Zapytania pracodawców"
 msgstr "İşveren Sorguları"
 
-#: templates/home/base.html:69
-#: templates/registration/logout_confirmation.html:7
+#: home/base.html:69 registration/logout_confirmation.html:7
 msgid "Wyloguj się"
 msgstr "Çıkış Yap"
 
-#: templates/home/base.html:72 templates/registration/login.html:11
+#: home/base.html:72 registration/login.html:11
 msgid "Logowanie"
 msgstr "Giriş Yap"
 
-#: templates/home/base.html:73 templates/registration/register.html:10
-#: templates/registration/register.html:16
+#: home/base.html:73 registration/register.html:10
+#: registration/register.html:16
 msgid "Rejestracja"
 msgstr "Kayıt Ol"
 
-#: templates/home/base.html:77
+#: home/base.html:77
 msgid "Language"
 msgstr "Dil"
 
-#: templates/home/base.html:98
+#: home/base.html:98
 msgid "Tytuł stanowiska"
 msgstr "Pozisyon Başlığı"
 
-#: templates/home/base.html:99
+#: home/base.html:99
 msgid "Opis stanowiska"
 msgstr "Pozisyon Açıklaması"
 
-#: templates/home/base.html:100
+#: home/base.html:100
 msgid "Wymagania"
 msgstr "Gereksinimler"
 
-#: templates/home/base.html:109 templates/home/client_list.html:34
-#: templates/home/client_list.html:36 templates/home/recruiters.html:33
+#: home/base.html:109 home/client_list.html:34 home/client_list.html:36
+#: home/recruiters.html:33
 msgid "Poprzedni"
 msgstr "Önceki"
 
-#: templates/home/base.html:113 templates/home/client_list.html:49
-#: templates/home/client_list.html:51 templates/home/recruiters.html:45
+#: home/base.html:113 home/client_list.html:49 home/client_list.html:51
+#: home/recruiters.html:45
 msgid "Następny"
 msgstr "Sonraki"
 
-#: templates/home/base.html:122
+#: home/base.html:122
 msgid "Skontaktuj się z nami"
 msgstr "Bizimle İletişime Geçin"
 
-#: templates/home/base.html:124
+#: home/base.html:124
 msgid ""
 "Jeśli masz pytania lub sugestie, prosimy, nie wahaj się z nami skontaktować. "
 "Skontaktuj się z nami, aby omówić swoje potrzeby i możliwości. Nasz zespół "
@@ -295,15 +262,15 @@ msgstr ""
 "iletişime geçin. Uzman ekibimiz, tüm sorularınıza cevap vermeye ve sizin "
 "için en iyi çözümü bulmanıza yardımcı olmaya hazırdır."
 
-#: templates/home/base.html:130
+#: home/base.html:130
 msgid "Dokumenty"
 msgstr "Belgeler"
 
-#: templates/home/base.html:131
+#: home/base.html:131
 msgid "Przygotowanie dokumentów"
 msgstr "Belgelerin Hazırlanması"
 
-#: templates/home/base.html:133
+#: home/base.html:133
 msgid ""
 "Przygotujemy wszystkie niezbędne dokumenty. Wspólnie przeanalizujemy "
 "wszystkie detale i odpowiemy na dodatkowe pytania."
@@ -311,15 +278,15 @@ msgstr ""
 "Tüm gerekli belgeleri hazırlayacağız. Birlikte tüm detayları analiz edeceğiz "
 "ve ek sorulara yanıt vereceğiz."
 
-#: templates/home/base.html:139
+#: home/base.html:139
 msgid "Przyjazd"
 msgstr "Varış"
 
-#: templates/home/base.html:140
+#: home/base.html:140
 msgid "Przyjazd i zakwaterowanie"
 msgstr "Varış ve Konaklama"
 
-#: templates/home/base.html:142
+#: home/base.html:142
 msgid ""
 "Po finalizacji wszystkich formalności ustalisz datę przyjazdu na projekt. "
 "Nasz koordynator będzie na ciebie czekał po przybyciu, zapewni ci ciepłe "
@@ -329,15 +296,15 @@ msgstr ""
 "belirleyeceksiniz. Koordinatörümüz varışınızda sizi karşılayacak, sıcak bir "
 "karşılama sağlayacak ve konaklamanıza yardımcı olacaktır."
 
-#: templates/home/base.html:148
+#: home/base.html:148
 msgid "Wsparcie"
 msgstr "Destek"
 
-#: templates/home/base.html:149
+#: home/base.html:149
 msgid "Wsparcie i kontakt"
 msgstr "Destek ve İletişim"
 
-#: templates/home/base.html:151
+#: home/base.html:151
 msgid ""
 "Jesteśmy z Tobą na każdym kroku Twojej kariery. Nasz zespół jest zawsze "
 "dostępny, aby pomóc i odpowiedzieć na wszelkie pytania, zapewniając ciągłe "
@@ -347,84 +314,95 @@ msgstr ""
 "olmak ve tüm sorularınıza cevap vermek için hazırdır, sürekli destek ve "
 "iletişim sağlar."
 
-#: templates/home/base.html:187
+#: home/base.html:187
 msgid "Agencja Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone."
 msgstr "KIRIS M.O.R. İş Ajansı. Tüm hakları saklıdır."
 
-
-#: templates/home/client_list.html:7
+#: home/client_list.html:7
 msgid "Nasi Klienci"
 msgstr "Müşterilerimiz"
 
-#: templates/home/client_list.html:16
+#: home/client_list.html:16
 msgid "Domyślny profil klienta"
 msgstr "Varsayılan Müşteri Profili"
 
-#: templates/home/client_list.html:26
+#: home/client_list.html:26
 msgid "Brak klientów do wyświetlenia."
 msgstr "Gösterilecek müşteri yok."
 
-#: templates/home/client_list.html:30
+#: home/client_list.html:30
 msgid "Przykład nawigacji stronicowej"
 msgstr "Sayfalama Navigasyon Örneği"
 
-#: templates/home/contact.html:13 templates/home/guest_feedback_thanks.html:22
+#: home/contact.html:13 home/guest_feedback_thanks.html:22
 msgid "Zapraszamy do kontaktu!"
 msgstr "Bizimle İletişime Geçin!"
 
-#: templates/home/contact.html:21 templates/home/guest_feedback_thanks.html:30
+#: home/contact.html:21 home/guest_feedback_thanks.html:30
 msgid "Główny kierownik/dla wszystkich rynków"
 msgstr "Tüm pazarlar için genel müdür"
 
-#: templates/home/contact.html:22 templates/home/contact.html:31
-#: templates/home/guest_feedback_thanks.html:31
-#: templates/home/guest_feedback_thanks.html:40
-#: templates/profiles/universal_profile_detail.html:28
+#: home/contact.html:22 home/contact.html:31 home/guest_feedback_thanks.html:31
+#: home/guest_feedback_thanks.html:40 profiles/universal_profile_detail.html:28
 msgid "Telefon"
 msgstr "Telefon"
 
-#: templates/home/contact.html:30 templates/home/guest_feedback_thanks.html:39
+#: home/contact.html:30 home/guest_feedback_thanks.html:39
 msgid "Rekruter dla rynku gruzińskiego"
 msgstr "Gürcistan Pazarı İçin İşe Alım Uzmanı"
 
-#: templates/home/contact.html:42 templates/home/guest_feedback_thanks.html:51
+#: home/contact.html:42 home/guest_feedback_thanks.html:51
 msgid "Social Media"
 msgstr "Sosyal Medya"
 
-#: templates/home/contact.html:59 templates/home/guest_feedback_thanks.html:68
+#: home/contact.html:59 home/guest_feedback_thanks.html:68
 msgid "Godziny Otwarcia"
 msgstr "Çalışma Saatleri"
 
-#: templates/home/contact.html:60 templates/home/guest_feedback_thanks.html:69
+#: home/contact.html:60 home/guest_feedback_thanks.html:69
 msgid "Poniedziałek - Piątek: 8:00 - 16:00"
 msgstr "Pazartesi - Cuma: 8:00 - 16:00"
 
-#: templates/home/contact.html:61 templates/home/guest_feedback_thanks.html:70
+#: home/contact.html:61 home/guest_feedback_thanks.html:70
 msgid "Sobota - Niedziela: Zamknięte"
 msgstr "Cumartesi - Pazar: Kapalı"
 
-#: templates/home/guest_feedback.html:7
+#: home/guest_feedback.html:7
 msgid "Zostaw opinię o"
 msgstr "Hakkında Geri Bildirim Bırak"
 
-#: templates/home/guest_feedback.html:32
+#: home/guest_feedback.html:32
 msgid "Wyślij"
 msgstr "Gönder"
 
-#: templates/home/guest_feedback.html:33
-#: templates/home/public_job_detail.html:28
+#: home/guest_feedback.html:33 home/public_job_detail.html:28
 msgid "Powrót"
 msgstr "Geri"
 
-#: templates/home/guest_feedback_thanks.html:11
+#: home/guest_feedback_confirmation.html:9
+#: registration/registration_complete.html:9
+msgid "Proszę zweryfikować swój email!"
+msgstr "Lütfen e-postanızı doğrulayın!"
+
+#: home/guest_feedback_confirmation.html:10
+#: registration/registration_complete.html:10
+msgid ""
+"Wysłaliśmy link weryfikacyjny na Twój adres email. Proszę sprawdzić skrzynkę "
+"odbiorczą i kliknąć link, aby zweryfikować adres email."
+msgstr ""
+"Doğrulama bağlantısını e-posta adresinize gönderdik. Lütfen gelen kutunuzu kontrol edin "
+"ve e-posta adresinizi doğrulamak için bağlantıya tıklayın."
+
+
+#: home/guest_feedback_thanks.html:11
 msgid "Dziękujemy za opinię!"
 msgstr "Geri bildiriminiz için teşekkür ederiz!"
 
-#: templates/home/guest_feedback_thanks.html:12
+#: home/guest_feedback_thanks.html:12
 msgid "Twoja opinia została pomyślnie wysłana."
 msgstr "Geri bildiriminiz başarıyla gönderildi."
 
-#: templates/home/guest_feedback_thanks.html:13
+#: home/guest_feedback_thanks.html:13
 msgid ""
 "Dołącz do naszej strony już dziś, aby uzyskać dostęp do większej liczby "
 "ofert pracy i możliwości. Jeśli masz problemy z rejestracją, nasi rekruterzy "
@@ -434,783 +412,780 @@ msgstr ""
 "olurken sorun yaşarsanız, işe alım uzmanlarımız her zaman size yardımcı "
 "olmaya hazırdır."
 
-#: templates/home/guest_feedback_thanks.html:13
-#: templates/registration/login.html:21
+#: home/guest_feedback_thanks.html:13 registration/login.html:21
 msgid "Zarejestruj się"
 msgstr "Kayıt Ol"
 
-#: templates/home/public_job_detail.html:11
+#: home/guest_feedback_verified.html:9
+msgid "Twoja opinia została potwierdzona!"
+msgstr "Geri bildiriminiz onaylandı!"
+
+#: home/guest_feedback_verified.html:10
+msgid "Dziękujemy za potwierdzenie swojej opinii."
+msgstr "Geri bildiriminizi onayladığınız için teşekkür ederiz."
+
+#: home/guest_feedback_verified.html:11
+msgid "Przeglądaj oferty pracy"
+msgstr "İş tekliflerini gözden geçirin"
+
+
+#: home/public_job_detail.html:11
 msgid "Opis stanowiska:"
 msgstr "Pozisyon Açıklaması:"
 
-#: templates/home/public_job_detail.html:15
-#: templates/job_requests/client_job_request_detail.html:11
-#: templates/job_requests/recruiter_job_request_detail.html:14
-#: templates/job_requests/recruiter_job_request_list.html:35
-#: templates/jobs/job_detail.html:13
+#: home/public_job_detail.html:15
+#: job_requests/client_job_request_detail.html:11
+#: job_requests/recruiter_job_request_detail.html:14
+#: job_requests/recruiter_job_request_list.html:35 jobs/job_detail.html:13
 msgid "Wymagania:"
 msgstr "Gereksinimler:"
 
-#: templates/home/public_job_detail.html:17
-#: templates/job_requests/recruiter_detail.html:15
-#: templates/jobs/application_detail.html:36
+#: home/public_job_detail.html:17 job_requests/recruiter_detail.html:15
+#: jobs/application_detail.html:36
 msgid "Lokalizacja:"
 msgstr "Konum:"
 
-#: templates/home/public_job_detail.html:19 templates/jobs/job_detail.html:14
+#: home/public_job_detail.html:19 jobs/job_detail.html:14
 msgid "Wynagrodzenie:"
 msgstr "Maaş:"
 
-#: templates/home/public_job_detail.html:25
+#: home/public_job_detail.html:25
 msgid "Zostaw opinię"
 msgstr "Geri bildirim bırak"
 
-#: templates/home/public_job_list.html:6
+#: home/public_job_list.html:6
 msgid "Dostępne oferty pracy"
 msgstr "Mevcut iş teklifleri"
 
-
-#: templates/home/public_job_list.html:9
+#: home/public_job_list.html:9
 msgid "Search..."
 msgstr "Ara..."
 
-#: templates/home/public_job_list.html:9 templates/home/public_job_list.html:10
+#: home/public_job_list.html:9 home/public_job_list.html:10
 msgid "Search"
 msgstr "Ara"
 
-#: templates/home/public_job_list.html:20
+#: home/public_job_list.html:20
 msgid "View Details"
 msgstr "Detayları Görüntüle"
 
-#: templates/home/public_job_list.html:23
+#: home/public_job_list.html:23
 msgid "No jobs found."
 msgstr "İş bulunamadı."
 
-#: templates/home/public_job_list.html:30
-#: templates/home/public_job_list.html:32 templates/tasks/task_list.html:55
+#: home/public_job_list.html:30 home/public_job_list.html:32
+#: tasks/task_list.html:55
 msgid "Previous"
 msgstr "Önceki"
 
-#: templates/home/public_job_list.html:45
-#: templates/home/public_job_list.html:47 templates/tasks/task_list.html:67
+#: home/public_job_list.html:45 home/public_job_list.html:47
+#: tasks/task_list.html:67
 msgid "Next"
 msgstr "Sonraki"
 
-#: templates/home/recruiters.html:7
+#: home/recruiters.html:7
 msgid "Nasi Rekruterzy"
 msgstr "İşe Alım Uzmanlarımız"
 
-#: templates/home/recruiters.html:16
-#: templates/job_requests/recruiter_detail.html:12
-#: templates/job_requests/recruiter_list.html:23
+#: home/recruiters.html:16 job_requests/recruiter_detail.html:12
+#: job_requests/recruiter_list.html:23
 msgid "Domyślny profil"
 msgstr "Varsayılan Profil"
 
-#: templates/home/recruiters.html:25
+#: home/recruiters.html:25
 msgid "Brak rekruterów do wyświetlenia."
 msgstr "Görüntülenecek işe alım uzmanı yok."
 
-#: templates/job_requests/client_job_request_confirm_delete.html:7
+#: job_requests/client_job_request_confirm_delete.html:7
 msgid "Potwierdź usunięcie zapytania"
 msgstr "Sorguyu silmeyi onaylayın"
 
-#: templates/job_requests/client_job_request_confirm_delete.html:8
+#: job_requests/client_job_request_confirm_delete.html:8
 msgid "Czy na pewno chcesz usunąć zapytanie"
 msgstr "Bu sorguyu silmek istediğinizden emin misiniz?"
 
-#: templates/job_requests/client_job_request_confirm_delete.html:11
-#: templates/job_requests/client_job_request_list.html:29
-#: templates/tasks/task_confirm_delete.html:13
-#: templates/tasks/task_list.html:46
+#: job_requests/client_job_request_confirm_delete.html:11
+#: job_requests/client_job_request_list.html:29
+#: tasks/task_confirm_delete.html:13 tasks/task_list.html:46
 msgid "Usuń"
 msgstr "Sil"
 
-#: templates/job_requests/client_job_request_confirm_delete.html:12
-#: templates/registration/logout_confirmation.html:14
-#: templates/tasks/task_confirm_delete.html:14
+#: job_requests/client_job_request_confirm_delete.html:12
+#: registration/logout_confirmation.html:14 tasks/task_confirm_delete.html:14
 msgid "Anuluj"
 msgstr "İptal"
 
-#: templates/job_requests/client_job_request_detail.html:7
-#: templates/job_requests/recruiter_job_request_detail.html:9
+#: job_requests/client_job_request_detail.html:7
+#: job_requests/recruiter_job_request_detail.html:9
 msgid "Szczegóły zapytania"
 msgstr "Sorgu Detayları"
 
-#: templates/job_requests/client_job_request_detail.html:10
-#: templates/job_requests/recruiter_job_request_detail.html:13
-#: templates/job_requests/recruiter_job_request_list.html:34
+#: job_requests/client_job_request_detail.html:10
+#: job_requests/recruiter_job_request_detail.html:13
+#: job_requests/recruiter_job_request_list.html:34
 msgid "Opis:"
 msgstr "Açıklama:"
 
-#: templates/job_requests/client_job_request_detail.html:12
-#: templates/job_requests/recruiter_job_request_detail.html:15
-#: templates/job_requests/recruiter_job_request_list.html:36
-#: templates/jobs/job_detail.html:16
+#: job_requests/client_job_request_detail.html:12
+#: job_requests/recruiter_job_request_detail.html:15
+#: job_requests/recruiter_job_request_list.html:36 jobs/job_detail.html:16
 msgid "Data utworzenia:"
 msgstr "Oluşturma Tarihi:"
 
-#: templates/job_requests/client_job_request_detail.html:13
-#: templates/job_requests/recruiter_job_request_detail.html:16
-#: templates/jobs/application_detail.html:43
-#: templates/jobs/application_detail.html:50
-#: templates/jobs/application_list.html:16 templates/jobs/job_detail.html:15
+#: job_requests/client_job_request_detail.html:13
+#: job_requests/recruiter_job_request_detail.html:16
+#: jobs/application_detail.html:43 jobs/application_detail.html:50
+#: jobs/application_list.html:16 jobs/job_detail.html:15
 msgid "Status:"
 msgstr "Durum:"
 
-#: templates/job_requests/client_job_request_detail.html:16
+#: job_requests/client_job_request_detail.html:16
 msgid "Odpowiedzi na zapytanie:"
 msgstr "Sorguya Yanıtlar:"
 
-#: templates/job_requests/client_job_request_detail.html:21
+#: job_requests/client_job_request_detail.html:21
 msgid "Nowy status:"
 msgstr "Yeni durum:"
 
-#: templates/job_requests/client_job_request_detail.html:22
+#: job_requests/client_job_request_detail.html:22
 msgid "Zaktualizowano:"
 msgstr "Güncellendi:"
 
-#: templates/job_requests/client_job_request_detail.html:23
+#: job_requests/client_job_request_detail.html:23
 msgid "Zaktualizowane przez użytkownika:"
 msgstr "Kullanıcı tarafından güncellendi:"
 
-#: templates/job_requests/client_job_request_detail.html:25
-#: templates/jobs/guest_applications.html:20
-#: templates/jobs/guest_feedback_applications.html:20
+#: job_requests/client_job_request_detail.html:25
+#: jobs/guest_applications.html:20 jobs/guest_feedback_applications.html:20
 msgid "Wiadomość:"
 msgstr "Mesaj:"
 
-#: templates/job_requests/client_job_request_detail.html:31
+#: job_requests/client_job_request_detail.html:31
 msgid "Nie ma jeszcze odpowiedzi na to zapytanie."
 msgstr "Bu sorguya henüz yanıt yok."
 
-#: templates/job_requests/client_job_request_detail.html:35
+#: job_requests/client_job_request_detail.html:35
 msgid "Wróć do moich wniosków"
 msgstr "Başvurularıma geri dön"
 
-#: templates/job_requests/client_job_request_list.html:7
+#: job_requests/client_job_request_list.html:7
 msgid "Moje Zapytania"
 msgstr "Sorgularım"
 
-#: templates/job_requests/client_job_request_list.html:16
+#: job_requests/client_job_request_list.html:16
 msgid "Rekruter:"
 msgstr "İşe Alım Uzmanı:"
 
-#: templates/job_requests/client_job_request_list.html:17
-#: templates/jobs/guest_applications.html:18
-#: templates/jobs/guest_feedback_applications.html:18
+#: job_requests/client_job_request_list.html:17 jobs/guest_applications.html:18
+#: jobs/guest_feedback_applications.html:18
 msgid "Email:"
 msgstr "Email:"
 
-#: templates/job_requests/client_job_request_list.html:19
+#: job_requests/client_job_request_list.html:19
 msgid "Rekruter nie jest wybrany"
 msgstr "İşe alım uzmanı seçilmedi"
 
-#: templates/job_requests/client_job_request_list.html:26
-#: templates/job_requests/recruiter_list.html:28
-#: templates/jobs/create_application.html:17
-#: templates/jobs/recruiter_applications.html:61
-#: templates/jobs/recruiter_job_list.html:55
+#: job_requests/client_job_request_list.html:26
+#: job_requests/recruiter_list.html:28 jobs/create_application.html:17
+#: jobs/recruiter_applications.html:61 jobs/recruiter_job_list.html:55
 msgid "Szczegóły"
 msgstr "Detaylar"
 
-#: templates/job_requests/client_job_request_list.html:35
+#: job_requests/client_job_request_list.html:35
 msgid "Brak zapytań."
 msgstr "Sorgu yok."
 
-#: templates/job_requests/client_job_request_list.html:39
+#: job_requests/client_job_request_list.html:39
 msgid "Utwórz nowe zapytanie"
 msgstr "Yeni sorgu oluştur"
 
-#: templates/job_requests/job_request_form.html:7
+#: job_requests/job_request_form.html:7
 msgid "Stwórz Zapytanie"
 msgstr "Sorgu Oluştur"
 
-#: templates/job_requests/job_request_form.html:30
-#: templates/job_requests/job_request_status_update.html:28
-#: templates/jobs/create_job.html:17
+#: job_requests/job_request_form.html:30
+#: job_requests/job_request_status_update.html:28 jobs/create_job.html:17
 msgid "Zapisz"
 msgstr "Kaydet"
 
-#: templates/job_requests/job_request_status_update.html:7
+#: job_requests/job_request_status_update.html:7
 msgid "Zmień status zapytania"
 msgstr "Sorgu durumunu değiştir"
 
-#: templates/job_requests/job_request_status_update.html:11
+#: job_requests/job_request_status_update.html:11
 msgid "Nowy status"
 msgstr "Yeni durum"
 
-#: templates/job_requests/job_request_status_update.html:20
+#: job_requests/job_request_status_update.html:20
 msgid "Wiadomość"
 msgstr "Mesaj"
 
-#: templates/job_requests/recruiter_detail.html:10
-#: templates/job_requests/recruiter_list.html:21
+#: job_requests/recruiter_detail.html:10 job_requests/recruiter_list.html:21
 msgid "Zdjęcie rekrutera"
 msgstr "İşe alım uzmanı fotoğrafı"
 
-#: templates/job_requests/recruiter_detail.html:16
-#: templates/jobs/application_detail.html:35
+#: job_requests/recruiter_detail.html:16 jobs/application_detail.html:35
 msgid "Numer telefonu:"
 msgstr "Telefon numarası:"
 
-#: templates/job_requests/recruiter_detail.html:18
+#: job_requests/recruiter_detail.html:18
 msgid "W ulubionych"
 msgstr "Favorilerde"
 
-#: templates/job_requests/recruiter_detail.html:20
-#: templates/jobs/job_list.html:46
+#: job_requests/recruiter_detail.html:20 jobs/job_list.html:46
 msgid "Dodaj do ulubionych"
 msgstr "Favorilere ekle"
 
-#: templates/job_requests/recruiter_detail.html:22
+#: job_requests/recruiter_detail.html:22
 msgid "Wróć do listy"
 msgstr "Listeye dön"
 
-#: templates/job_requests/recruiter_detail.html:23
-#: templates/job_requests/recruiter_list.html:29
+#: job_requests/recruiter_detail.html:23 job_requests/recruiter_list.html:29
 msgid "Zrób Zapytanie"
 msgstr "Sorgu Oluştur"
 
-#: templates/job_requests/recruiter_job_request_detail.html:18
+#: job_requests/recruiter_job_request_detail.html:18
 msgid "Oczekujące"
 msgstr "Beklemede"
 
-#: templates/job_requests/recruiter_job_request_detail.html:20
+#: job_requests/recruiter_job_request_detail.html:20
 msgid "W trakcie realizacji"
 msgstr "İşlemde"
 
-#: templates/job_requests/recruiter_job_request_detail.html:22
+#: job_requests/recruiter_job_request_detail.html:22
 msgid "Zakończone"
 msgstr "Tamamlandı"
 
-#: templates/job_requests/recruiter_job_request_detail.html:25
-#: templates/job_requests/recruiter_job_request_list.html:40
-#: templates/jobs/application_detail.html:57 templates/jobs/job_detail.html:27
-#: templates/jobs/recruiter_job_list.html:58
-#: templates/jobs/update_application_status.html:26
+#: job_requests/recruiter_job_request_detail.html:25
+#: job_requests/recruiter_job_request_list.html:40
+#: jobs/application_detail.html:57 jobs/job_detail.html:27
+#: jobs/recruiter_job_list.html:58 jobs/update_application_status.html:26
 msgid "Zmień status"
 msgstr "Durumu değiştir"
 
-#: templates/job_requests/recruiter_job_request_detail.html:26
+#: job_requests/recruiter_job_request_detail.html:26
 msgid "Powrót do listy"
 msgstr "Listeye geri dön"
 
-#: templates/job_requests/recruiter_job_request_list.html:9
+#: job_requests/recruiter_job_request_list.html:9
 msgid "Zarządzanie Zapytaniami"
 msgstr "Sorgu Yönetimi"
 
-#: templates/job_requests/recruiter_job_request_list.html:17
-#: templates/jobs/application_detail.html:13
-#: templates/jobs/guest_applications.html:9
-#: templates/jobs/guest_feedback_applications.html:9
-#: templates/jobs/guest_feedback_applications_for_job.html:11
-#: templates/jobs/recruiter_applications.html:28
-#: templates/jobs/recruiter_job_list.html:26
-#: templates/jobs/registered_applications_for_job.html:17
-#: templates/jobs/update_application_status.html:33
+#: job_requests/recruiter_job_request_list.html:17
+#: jobs/application_detail.html:13 jobs/guest_applications.html:9
+#: jobs/guest_feedback_applications.html:9
+#: jobs/guest_feedback_applications_for_job.html:11
+#: jobs/recruiter_applications.html:28 jobs/recruiter_job_list.html:26
+#: jobs/registered_applications_for_job.html:17
+#: jobs/update_application_status.html:33
 msgid "Aplikacje zarejestrowane"
 msgstr "Kayıtlı Başvurular"
 
-#: templates/job_requests/recruiter_job_request_list.html:20
-#: templates/jobs/application_detail.html:16
-#: templates/jobs/guest_applications.html:10
-#: templates/jobs/guest_feedback_applications.html:10
-#: templates/jobs/guest_feedback_applications_for_job.html:12
-#: templates/jobs/recruiter_applications.html:31
-#: templates/jobs/recruiter_job_list.html:29
-#: templates/jobs/registered_applications_for_job.html:20
-#: templates/jobs/update_application_status.html:34
+#: job_requests/recruiter_job_request_list.html:20
+#: jobs/application_detail.html:16 jobs/guest_applications.html:10
+#: jobs/guest_feedback_applications.html:10
+#: jobs/guest_feedback_applications_for_job.html:12
+#: jobs/recruiter_applications.html:31 jobs/recruiter_job_list.html:29
+#: jobs/registered_applications_for_job.html:20
+#: jobs/update_application_status.html:34
 msgid "Aplikacje gości"
 msgstr "Misafir Başvuruları"
 
-#: templates/job_requests/recruiter_job_request_list.html:23
-#: templates/jobs/application_detail.html:19
-#: templates/jobs/guest_applications.html:11
-#: templates/jobs/guest_feedback_applications.html:11
-#: templates/jobs/guest_feedback_applications_for_job.html:13
-#: templates/jobs/recruiter_applications.html:34
-#: templates/jobs/recruiter_job_list.html:32
-#: templates/jobs/registered_applications_for_job.html:23
-#: templates/jobs/update_application_status.html:35
+#: job_requests/recruiter_job_request_list.html:23
+#: jobs/application_detail.html:19 jobs/guest_applications.html:11
+#: jobs/guest_feedback_applications.html:11
+#: jobs/guest_feedback_applications_for_job.html:13
+#: jobs/recruiter_applications.html:34 jobs/recruiter_job_list.html:32
+#: jobs/registered_applications_for_job.html:23
+#: jobs/update_application_status.html:35
 msgid "Dodaj ofertę"
 msgstr "Teklif Ekle"
 
-#: templates/job_requests/recruiter_job_request_list.html:26
-#: templates/jobs/application_detail.html:22
-#: templates/jobs/favorited_jobs_list.html:35
-#: templates/jobs/guest_applications.html:12
-#: templates/jobs/guest_feedback_applications.html:12
-#: templates/jobs/liked_jobs_list.html:34
-#: templates/jobs/recruiter_applications.html:37
-#: templates/jobs/recruiter_job_list.html:35
-#: templates/jobs/registered_applications_for_job.html:26
-#: templates/jobs/update_application_status.html:36
+#: job_requests/recruiter_job_request_list.html:26
+#: jobs/application_detail.html:22 jobs/favorited_jobs_list.html:35
+#: jobs/guest_applications.html:12 jobs/guest_feedback_applications.html:12
+#: jobs/liked_jobs_list.html:34 jobs/recruiter_applications.html:37
+#: jobs/recruiter_job_list.html:35 jobs/registered_applications_for_job.html:26
+#: jobs/update_application_status.html:36
 msgid "Wszystkie oferty pracy"
 msgstr "Tüm İş Teklifleri"
 
-#: templates/job_requests/recruiter_job_request_list.html:41
+#: job_requests/recruiter_job_request_list.html:41
 msgid "Detali zapytania"
 msgstr "Sorgu Detayları"
 
-#: templates/job_requests/recruiter_job_request_list.html:45
+#: job_requests/recruiter_job_request_list.html:45
 msgid "Brak zapytań do obsługi."
 msgstr "İşlenecek sorgu yok."
 
-#: templates/job_requests/recruiter_list.html:7
+#: job_requests/recruiter_list.html:7
 msgid "Wybierz Rekrutera"
 msgstr "İşe Alım Uzmanını Seç"
 
-#: templates/job_requests/recruiter_list.html:10
-#: templates/jobs/recruiter_job_list.html:13
+#: job_requests/recruiter_list.html:10 jobs/recruiter_job_list.html:13
 msgid "Szukaj..."
 msgstr "Ara..."
 
-#: templates/job_requests/recruiter_list.html:11
-#: templates/jobs/job_list.html:14
-#: templates/jobs/recruiter_applications.html:18
-#: templates/jobs/recruiter_job_list.html:16 templates/tasks/task_list.html:16
+#: job_requests/recruiter_list.html:11 jobs/job_list.html:14
+#: jobs/recruiter_applications.html:18 jobs/recruiter_job_list.html:16
+#: tasks/task_list.html:16
 msgid "Szukaj"
 msgstr "Ara"
 
-#: templates/job_requests/recruiter_list.html:38
-#: templates/jobs/recruiter_applications.html:76
-#: templates/news/all_news_list.html:49
+#: job_requests/recruiter_list.html:38 jobs/recruiter_applications.html:76
+#: news/all_news_list.html:49
 msgid "Poprzednia"
 msgstr "Önceki"
 
-#: templates/job_requests/recruiter_list.html:41
-#: templates/jobs/recruiter_applications.html:88
-#: templates/news/all_news_list.html:61
+#: job_requests/recruiter_list.html:41 jobs/recruiter_applications.html:88
+#: news/all_news_list.html:61
 msgid "Następna"
 msgstr "Sonraki"
 
-#: templates/job_requests/recruiter_list.html:46
+#: job_requests/recruiter_list.html:46
 msgid "Nie znaleziono rekrutera o podanych kryteriach."
 msgstr "Belirtilen kriterlere sahip işe alım uzmanı bulunamadı."
 
-#: templates/jobs/application_detail.html:7
-#: templates/jobs/update_application_status.html:6
+#: jobs/application_detail.html:7 jobs/update_application_status.html:6
 msgid "Szczegóły aplikacji"
 msgstr "Başvuru detayları"
 
-#: templates/jobs/application_detail.html:30
+#: jobs/application_detail.html:30
 msgid "Aplikant:"
 msgstr "Başvuran:"
 
-#: templates/jobs/application_detail.html:32
+#: jobs/application_detail.html:32
 msgid "Profile Photo"
 msgstr "Profil Fotoğrafı"
 
-#: templates/jobs/application_detail.html:37
+#: jobs/application_detail.html:37
 msgid "Data urodzenia:"
 msgstr "Doğum tarihi:"
 
-#: templates/jobs/application_detail.html:38
+#: jobs/application_detail.html:38
 msgid "Umiejętności:"
 msgstr "Yetenekler:"
 
-
-#: templates/jobs/application_detail.html:39
+#: jobs/application_detail.html:39
 msgid "Biografia:"
 msgstr "Biyografi:"
 
-#: templates/jobs/application_detail.html:41
+#: jobs/application_detail.html:41
 msgid "Dane profilu aplikanta nie są dostępne."
 msgstr "Başvuranın profil verileri mevcut değil."
 
-#: templates/jobs/application_detail.html:44
-#: templates/jobs/application_list.html:23
+#: jobs/application_detail.html:44 jobs/application_list.html:23
 msgid "List motywacyjny:"
 msgstr "Motivasyon mektubu:"
 
-#: templates/jobs/application_detail.html:45
+#: jobs/application_detail.html:45
 msgid "Data złożenia:"
 msgstr "Gönderim tarihi:"
 
-#: templates/jobs/application_list.html:7
+#: jobs/application_list.html:7
 msgid "Moje aplikacje"
 msgstr "Başvurularım"
 
-
-#: templates/jobs/application_list.html:19
+#: jobs/application_list.html:19
 msgid "Stworzony:"
 msgstr "Oluşturuldu:"
 
-#: templates/jobs/application_list.html:33
+#: jobs/application_list.html:33
 msgid "Nie masz jeszcze żadnych aplikacji."
 msgstr "Henüz başvurunuz yok."
 
-#: templates/jobs/application_list.html:38 templates/jobs/create_job.html:20
-#: templates/jobs/job_detail.html:20
+#: jobs/application_list.html:38 jobs/create_job.html:20
+#: jobs/job_detail.html:20
 msgid "Wróć do ofert pracy"
 msgstr "İş tekliflerine dön"
 
-#: templates/jobs/create_application.html:7
+#: jobs/create_application.html:7
 msgid "Aplikuj na:"
 msgstr "Başvur:"
 
-#: templates/jobs/create_application.html:16 templates/jobs/job_detail.html:34
+#: jobs/create_application.html:16 jobs/job_detail.html:34
 msgid "Aplikuj"
 msgstr "Başvur"
 
-#: templates/jobs/create_job.html:7
+#: jobs/create_job.html:7
 msgid "Stwórz nową ofertę pracy"
 msgstr "Yeni bir iş teklifi oluştur"
 
-
-#: templates/jobs/create_job.html:23 templates/jobs/edit_job.html:17
-#: templates/jobs/guest_feedback_applications_for_job.html:10
-#: templates/jobs/job_detail.html:30
-#: templates/jobs/registered_applications_for_job.html:14
+#: jobs/create_job.html:23 jobs/edit_job.html:17
+#: jobs/guest_feedback_applications_for_job.html:10 jobs/job_detail.html:30
+#: jobs/registered_applications_for_job.html:14
 msgid "Moje Oferty"
 msgstr "Tekliflerim"
 
-#: templates/jobs/edit_job.html:7
+#: jobs/edit_job.html:7
 msgid "Zaktualizuj status pracy"
 msgstr "İş durumunu güncelle"
 
-#: templates/jobs/edit_job.html:16
+#: jobs/edit_job.html:16
 msgid "Aktualizuj pracę"
 msgstr "İşi güncelle"
 
-#: templates/jobs/favorited_jobs_list.html:9
+#: jobs/favorited_jobs_list.html:9
 msgid "Ulubione Oferty"
 msgstr "Favori teklifler"
 
-
-#: templates/jobs/favorited_jobs_list.html:17 templates/jobs/job_list.html:29
-#: templates/jobs/liked_jobs_list.html:16
-#: templates/jobs/recruiter_job_list.html:43 templates/tasks/task_list.html:26
+#: jobs/favorited_jobs_list.html:17 jobs/job_list.html:29
+#: jobs/liked_jobs_list.html:16 jobs/recruiter_job_list.html:43
+#: tasks/task_list.html:26
 msgid "Tytuł"
 msgstr "Başlık"
 
-#: templates/jobs/favorited_jobs_list.html:18 templates/jobs/job_list.html:30
-#: templates/jobs/liked_jobs_list.html:17 templates/tasks/task_detail.html:9
-#: templates/tasks/task_list.html:27
+#: jobs/favorited_jobs_list.html:18 jobs/job_list.html:30
+#: jobs/liked_jobs_list.html:17 tasks/task_detail.html:9
+#: tasks/task_list.html:27
 msgid "Opis"
 msgstr "Açıklama"
 
-#: templates/jobs/favorited_jobs_list.html:19 templates/jobs/job_list.html:31
-#: templates/jobs/liked_jobs_list.html:18
+#: jobs/favorited_jobs_list.html:19 jobs/job_list.html:31
+#: jobs/liked_jobs_list.html:18
 msgid "Wynagrodzenie"
 msgstr "Maaş"
 
-#: templates/jobs/favorited_jobs_list.html:30
+#: jobs/favorited_jobs_list.html:30
 msgid "Brak ulubionych ofert pracy."
 msgstr "Favori iş teklifi yok."
 
-
-#: templates/jobs/guest_applications.html:7
-#: templates/jobs/guest_feedback_applications.html:7
+#: jobs/guest_applications.html:7 jobs/guest_feedback_applications.html:7
 msgid "Opinie gości"
 msgstr "Misafir Geri Bildirimleri"
 
-#: templates/jobs/guest_applications.html:19
-#: templates/jobs/guest_feedback_applications.html:19
+#: jobs/guest_applications.html:19 jobs/guest_feedback_applications.html:19
 msgid "Telefon:"
 msgstr "Telefon:"
 
-#: templates/jobs/guest_applications.html:21
-#: templates/jobs/guest_feedback_applications.html:21
+#: jobs/guest_applications.html:21 jobs/guest_feedback_applications.html:21
 msgid "Praca:"
 msgstr "İş:"
 
-#: templates/jobs/guest_applications.html:27
-#: templates/jobs/guest_feedback_applications.html:27
+#: jobs/guest_applications.html:27 jobs/guest_feedback_applications.html:27
 msgid "Brak opinii gości."
 msgstr "Misafir geri bildirimi yok."
 
-#: templates/jobs/guest_feedback_applications_for_job.html:7
-#: templates/jobs/registered_applications_for_job.html:9
+#: jobs/guest_feedback_applications_for_job.html:7
+#: jobs/registered_applications_for_job.html:9
 msgid "Lista zarejestrowanych aplikacji dla"
 msgstr "İçin kayıtlı başvuru listesi"
 
-#: templates/jobs/guest_feedback_applications_for_job.html:20
-#: templates/jobs/recruiter_applications.html:46
-#: templates/jobs/registered_applications_for_job.html:34
-#: templates/jobs/update_application_status.html:12
+#: jobs/guest_feedback_applications_for_job.html:20
+#: jobs/recruiter_applications.html:46
+#: jobs/registered_applications_for_job.html:34
+#: jobs/update_application_status.html:12
 msgid "Aplikant"
 msgstr "Başvuran"
 
-#: templates/jobs/guest_feedback_applications_for_job.html:21
-#: templates/jobs/recruiter_applications.html:47
-#: templates/jobs/recruiter_job_list.html:44
-#: templates/jobs/registered_applications_for_job.html:35
-#: templates/jobs/update_application_status.html:13
-#: templates/jobs/update_application_status.html:20
-#: templates/tasks/task_detail.html:11 templates/tasks/task_list.html:29
+#: jobs/guest_feedback_applications_for_job.html:21
+#: jobs/recruiter_applications.html:47 jobs/recruiter_job_list.html:44
+#: jobs/registered_applications_for_job.html:35
+#: jobs/update_application_status.html:13
+#: jobs/update_application_status.html:20 tasks/task_detail.html:11
+#: tasks/task_list.html:29
 msgid "Status"
 msgstr "Durum"
 
-#: templates/jobs/guest_feedback_applications_for_job.html:22
-#: templates/jobs/recruiter_applications.html:48
-#: templates/jobs/registered_applications_for_job.html:36
+#: jobs/guest_feedback_applications_for_job.html:22
+#: jobs/recruiter_applications.html:48
+#: jobs/registered_applications_for_job.html:36
 msgid "Data"
 msgstr "Tarih"
 
-#: templates/jobs/guest_feedback_applications_for_job.html:23
-#: templates/jobs/job_list.html:32
-#: templates/jobs/recruiter_applications.html:49
-#: templates/jobs/recruiter_job_list.html:45
-#: templates/jobs/registered_applications_for_job.html:37
-#: templates/tasks/task_list.html:31
+#: jobs/guest_feedback_applications_for_job.html:23 jobs/job_list.html:32
+#: jobs/recruiter_applications.html:49 jobs/recruiter_job_list.html:45
+#: jobs/registered_applications_for_job.html:37 tasks/task_list.html:31
 msgid "Akcje"
 msgstr "Eylemler"
 
-#: templates/jobs/guest_feedback_applications_for_job.html:33
-#: templates/jobs/registered_applications_for_job.html:48
+#: jobs/guest_feedback_applications_for_job.html:33
+#: jobs/registered_applications_for_job.html:48
 msgid "Detale aplikacji"
 msgstr "Başvuru Detayları"
 
-#: templates/jobs/guest_feedback_applications_for_job.html:38
-#: templates/jobs/recruiter_applications.html:67
-#: templates/jobs/registered_applications_for_job.html:54
+#: jobs/guest_feedback_applications_for_job.html:38
+#: jobs/recruiter_applications.html:67
+#: jobs/registered_applications_for_job.html:54
 msgid "Brak aplikacji do wyświetlenia."
 msgstr "Görüntülenecek başvuru yok."
 
-#: templates/jobs/job_detail.html:24 templates/jobs/recruiter_job_list.html:61
+#: jobs/job_detail.html:24 jobs/recruiter_job_list.html:61
 msgid "Zarejestrowane aplikacje"
 msgstr "Kayıtlı başvurular"
 
-#: templates/jobs/job_list.html:9
+#: jobs/job_list.html:9
 msgid "Lista ofert pracy"
 msgstr "İş teklifleri listesi"
 
-#: templates/jobs/job_list.html:13
+#: jobs/job_list.html:13
 msgid "Szukaj ofert pracy..."
 msgstr "İş teklifleri ara..."
 
-#: templates/jobs/job_list.html:18 templates/jobs/liked_jobs_list.html:9
+#: jobs/job_list.html:18 jobs/liked_jobs_list.html:9
 msgid "Polubione oferty pracy"
 msgstr "Beğenilen iş teklifleri"
 
-#: templates/jobs/job_list.html:21
+#: jobs/job_list.html:21
 msgid "Ulubione oferty pracy"
 msgstr "Favori iş teklifleri"
 
-#: templates/jobs/job_list.html:43
+#: jobs/job_list.html:43
 msgid "Polubione"
 msgstr "Beğenilen"
 
-#: templates/jobs/job_list.html:43
+#: jobs/job_list.html:43
 msgid "Polub"
 msgstr "Beğen"
 
-#: templates/jobs/job_list.html:46
+#: jobs/job_list.html:46
 msgid "Ulubione"
 msgstr "Favoriler"
 
-#: templates/jobs/job_list.html:51
+#: jobs/job_list.html:51
 msgid "Brak dostępnych ofert pracy."
 msgstr "Mevcut iş teklifi yok."
 
-#: templates/jobs/job_list.html:60
+#: jobs/job_list.html:60
 msgid "Poprzednie"
 msgstr "Önceki"
 
-#: templates/jobs/job_list.html:70
+#: jobs/job_list.html:70
 msgid "Następne"
 msgstr "Sonraki"
 
-#: templates/jobs/liked_jobs_list.html:29
+#: jobs/liked_jobs_list.html:29
 msgid "Brak dostępnych polubionych ofert pracy."
 msgstr "Beğenilen mevcut iş teklifi yok."
 
-#: templates/jobs/recruiter_applications.html:9
+#: jobs/recruiter_applications.html:9
 msgid "Lista aplikacji na Twoje oferty pracy"
 msgstr "İş tekliflerinize yapılan başvuruların listesi"
 
-#: templates/jobs/recruiter_applications.html:15
+#: jobs/recruiter_applications.html:15
 msgid "Szukaj w aplikacjach..."
 msgstr "Başvurularda ara..."
 
-#: templates/jobs/recruiter_applications.html:45
+#: jobs/recruiter_applications.html:45
 msgid "Stanowisko"
 msgstr "Pozisyon"
 
-#: templates/jobs/recruiter_job_list.html:64
+#: jobs/recruiter_job_list.html:64
 msgid "Goście aplikacje"
 msgstr "Misafir başvuruları"
 
-#: templates/jobs/recruiter_job_list.html:70
+#: jobs/recruiter_job_list.html:70
 msgid "Brak ofert pracy do wyświetlenia."
 msgstr "Görüntülenecek iş teklifi yok."
 
-#: templates/jobs/update_application_status.html:14
+#: jobs/update_application_status.html:14
 msgid "List motywacyjny"
 msgstr "Motivasyon mektubu"
 
-#: templates/jobs/update_application_status.html:15
+#: jobs/update_application_status.html:15
 msgid "Data złożenia"
 msgstr "Gönderim tarihi"
 
-#: templates/news/all_news_list.html:5
+#: news/all_news_list.html:5
 msgid "Wszystkie Nowości"
 msgstr "Tüm Haberler"
 
-#: templates/news/all_news_list.html:41
+#: news/all_news_list.html:41
 msgid "Brak nowości dla odświeżenia."
 msgstr "Yenilemek için haber yok."
 
-#: templates/news/all_news_list.html:48
+#: news/all_news_list.html:48
 msgid "Pierwsza"
 msgstr "İlk"
 
-#: templates/news/all_news_list.html:62
+#: news/all_news_list.html:62
 msgid "Ostatnia"
 msgstr "Son"
 
-#: templates/profiles/universal_profile_detail.html:11
+#: profiles/universal_profile_detail.html:11
 msgid "Szczegóły profilu kandydata"
 msgstr "Aday profili detayları"
 
-#: templates/profiles/universal_profile_detail.html:13
+#: profiles/universal_profile_detail.html:13
 msgid "Szczegóły profilu klienta"
 msgstr "Müşteri profili detayları"
 
-#: templates/profiles/universal_profile_detail.html:15
+#: profiles/universal_profile_detail.html:15
 msgid "Szczegóły profilu rekrutera"
 msgstr "İşe alım uzmanı profili detayları"
 
-#: templates/profiles/universal_profile_detail.html:22
+#: profiles/universal_profile_detail.html:22
 msgid "Zdjęcie profilowe"
 msgstr "Profil fotoğrafı"
 
-#: templates/profiles/universal_profile_detail.html:24
+#: profiles/universal_profile_detail.html:24
 msgid "Domyślne zdjęcie profilowe"
 msgstr "Varsayılan profil fotoğrafı"
 
-#: templates/profiles/universal_profile_detail.html:27
+#: profiles/universal_profile_detail.html:27
 msgid "Email"
 msgstr "E-posta"
 
-#: templates/profiles/universal_profile_detail.html:29
+#: profiles/universal_profile_detail.html:29
 msgid "Lokalizacja"
 msgstr "Konum"
 
-#: templates/profiles/universal_profile_detail.html:30
+#: profiles/universal_profile_detail.html:30
 msgid "Bio"
 msgstr "Biyografi"
 
-#: templates/profiles/universal_profile_detail.html:33
-#: templates/profiles/universal_profile_detail.html:41
+#: profiles/universal_profile_detail.html:33
+#: profiles/universal_profile_detail.html:41
 msgid "Imię"
 msgstr "Ad"
 
-#: templates/profiles/universal_profile_detail.html:34
-#: templates/profiles/universal_profile_detail.html:42
+#: profiles/universal_profile_detail.html:34
+#: profiles/universal_profile_detail.html:42
 msgid "Nazwisko"
 msgstr "Soyad"
 
-#: templates/profiles/universal_profile_detail.html:35
+#: profiles/universal_profile_detail.html:35
 msgid "Umiejętności"
 msgstr "Yetenekler"
 
-#: templates/profiles/universal_profile_detail.html:36
+#: profiles/universal_profile_detail.html:36
 msgid "Data urodzenia"
 msgstr "Doğum tarihi"
 
-#: templates/profiles/universal_profile_detail.html:38
+#: profiles/universal_profile_detail.html:38
 msgid "Nazwa firmy"
 msgstr "Şirket Adı"
 
-#: templates/profiles/universal_profile_detail.html:39
+#: profiles/universal_profile_detail.html:39
 msgid "Branża"
 msgstr "Sektör"
 
-#: templates/profiles/universal_profile_detail.html:46
-#: templates/profiles/universal_profile_edit.html:9
+#: profiles/universal_profile_detail.html:46
+#: profiles/universal_profile_edit.html:9
 msgid "Edytuj profil"
 msgstr "Profili Düzenle"
 
-#: templates/profiles/universal_profile_edit.html:16
-#: templates/tasks/task_form.html:15
+#: profiles/universal_profile_edit.html:16 tasks/task_form.html:15
 msgid "Zapisz zmiany"
 msgstr "Değişiklikleri Kaydet"
 
-#: templates/registration/create_profile.html:9
+#: registration/create_profile.html:9
 msgid "Utwórz profil"
 msgstr "Profil Oluştur"
 
-#: templates/registration/create_profile.html:16
+#: registration/create_profile.html:16
 msgid "Zapisz profil"
 msgstr "Profili Kaydet"
 
-#: templates/registration/login.html:17
+#: registration/login.html:17
 msgid "Login"
 msgstr "Giriş"
 
-#: templates/registration/login.html:21
+#: registration/login.html:21
 msgid "Jeśli nie masz konta, "
 msgstr "Hesabınız yoksa, "
 
-#: templates/registration/logout_confirmation.html:8
+#: registration/logout_confirmation.html:8
 msgid "Czy na pewno chcesz się wylogować?"
 msgstr "Çıkış yapmak istediğinizden emin misiniz?"
 
-#: templates/registration/logout_confirmation.html:12
+#: registration/logout_confirmation.html:12
 msgid "Tak, wyloguj się"
 msgstr "Evet, çıkış yap"
 
-#: templates/registration/register.html:20
+#: registration/register.html:20
 msgid "Jeśli masz już konto,"
 msgstr "Zaten bir hesabınız varsa,"
 
-#: templates/registration/register.html:20
+#: registration/register.html:20
 msgid "Zaloguj się"
 msgstr "Giriş yap"
 
-#: templates/tasks/task_confirm_delete.html:8
+#: registration/verified.html:9
+msgid "Dziękujemy za weryfikację!"
+msgstr "Doğrulama için teşekkür ederiz!"
+
+
+#: registration/verified.html:10
+msgid ""
+"Twój adres email został zweryfikowany. Teraz możesz się zalogować i "
+"korzystać z naszego serwisu."
+msgstr ""
+"E-posta adresiniz doğrulandı. Artık giriş yapabilir ve hizmetimizi kullanabilirsiniz."
+
+
+#: tasks/task_confirm_delete.html:8
 msgid "Czy na pewno chcesz usunąć to zadanie?"
 msgstr "Bu görevi silmek istediğinizden emin misiniz?"
 
-#: templates/tasks/task_detail.html:8
+#: tasks/task_detail.html:8
 msgid "Zadanie"
 msgstr "Görev"
 
-#: templates/tasks/task_detail.html:10 templates/tasks/task_list.html:28
+#: tasks/task_detail.html:10 tasks/task_list.html:28
 msgid "Priorytet"
 msgstr "Öncelik"
 
-#: templates/tasks/task_detail.html:12 templates/tasks/task_list.html:30
+#: tasks/task_detail.html:12 tasks/task_list.html:30
 msgid "Termin"
 msgstr "Son Tarih"
 
-#: templates/tasks/task_detail.html:13 templates/tasks/task_list.html:45
+#: tasks/task_detail.html:13 tasks/task_list.html:45
 msgid "Edytuj"
 msgstr "Düzenle"
 
-#: templates/tasks/task_detail.html:14
+#: tasks/task_detail.html:14
 msgid "Powrót do listy zadań"
 msgstr "Görev listesine geri dön"
 
-#: templates/tasks/task_form.html:8
+#: tasks/task_form.html:8
 msgid "Edytuj zadanie"
 msgstr "Görevi Düzenle"
 
-#: templates/tasks/task_form.html:8 templates/tasks/task_form.html:15
+#: tasks/task_form.html:8 tasks/task_form.html:15
 msgid "Dodaj zadanie"
 msgstr "Görev Ekle"
 
-#: templates/tasks/task_form.html:16
+#: tasks/task_form.html:16
 msgid "Wróć do listy zadań"
 msgstr "Görev listesine dön"
 
-#: templates/tasks/task_list.html:8
+#: tasks/task_list.html:8
 msgid "Lista Zadań"
 msgstr "Görev Listesi"
 
-#: templates/tasks/task_list.html:14
+#: tasks/task_list.html:14
 msgid "Wyszukaj zadania..."
 msgstr "Görevleri ara..."
 
-#: templates/tasks/task_list.html:18
+#: tasks/task_list.html:18
 msgid "Dodaj nowe zadanie"
 msgstr "Yeni görev ekle"
 
-#: templates/tasks/task_list.html:72
+#: tasks/task_list.html:72
 msgid "Brak zadań do wyświetlenia"
 msgstr "Görüntülenecek görev yok"
+
+#~ msgid "Polski"
+#~ msgstr "Lehçe"
+
+#~ msgid "Ukrainian"
+#~ msgstr "Ukraynaca"
+
+#~ msgid "Russian"
+#~ msgstr "Rusça"
+
+#~ msgid "English"
+#~ msgstr "İngilizce"
+
+#~ msgid "Turkish"
+#~ msgstr "Türkçe"
+
+#~ msgid "German"
+#~ msgstr "Almanca"
+
+#~ msgid "Georgian"
+#~ msgstr "Gürcüce"
 
 #~ msgid "Ivan Ivanov"
 #~ msgstr "Ivan Ivanov"

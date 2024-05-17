@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 17:16+0200\n"
+"POT-Creation-Date: 2024-05-16 13:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,31 +20,31 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: news/models.py:6
+#: models.py:6 tests/test_models.py:56
 msgid "Tytuł"
 msgstr "Название"
 
-#: news/models.py:7
+#: models.py:7 tests/test_models.py:57
 msgid "Zawartość"
 msgstr "Содержание"
 
-#: news/models.py:8
+#: models.py:8 tests/test_models.py:58
 msgid "Data dodania"
 msgstr "Дата добавления"
 
-#: news/models.py:10
+#: models.py:10
 msgid "Kandydat"
 msgstr "Кандидат"
 
-#: news/models.py:11
+#: models.py:11
 msgid "Klient"
 msgstr "Клиент"
 
-#: news/models.py:12
+#: models.py:12
 msgid "Rekruter"
 msgstr "Рекрутер"
 
-#: news/models.py:13
+#: models.py:13 tests/test_models.py:59
 msgid "Rola"
 msgstr "Роль"
 

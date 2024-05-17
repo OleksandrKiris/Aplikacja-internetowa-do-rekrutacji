@@ -1,157 +1,183 @@
-import json
 import pytest
-from django.contrib.auth.hashers import make_password
 from django.urls import reverse
-from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
-from accounts.models import RecruiterProfile, ClientProfile, CandidateProfile, Task
-from jobs.models import Job
+from accounts.models import Task, CandidateProfile, RecruiterProfile
 
 User = get_user_model()
 
 
-class ViewTests(TestCase):
-    def setUp(self):
-        self.client = Client()
-        recruiter = User.objects.create_user(email='recruiter@example.com', password='pass123')
-        # Create jobs with a linked recruiter
-        self.open_job1 = Job.objects.create(title="Software Developer", status=Job.JobStatus.OPEN, recruiter=recruiter)
-        self.open_job2 = Job.objects.create(title="Product Manager", status=Job.JobStatus.OPEN, recruiter=recruiter)
-        self.closed_job = Job.objects.create(title="Test Engineer", status=Job.JobStatus.CLOSED, recruiter=recruiter)
-
-    def test_home_view(self):
-        """
-        Test the home view to ensure it only displays open jobs.
-        """
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home/base.html')
-        jobs_in_context = response.context['jobs']
-        self.assertIn(self.open_job1, jobs_in_context)
-        self.assertIn(self.open_job2, jobs_in_context)
-        self.assertNotIn(self.closed_job, jobs_in_context)
-
-    def test_about_view(self):
-        """
-        Test the about view to ensure the about page loads properly.
-        """
-        response = self.client.get(reverse('about'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home/about_us.html')
-
-    def test_contact_view(self):
-        """
-        Test the contact view to ensure the contact page loads properly.
-        """
-        response = self.client.get(reverse('contact'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home/contact.html')
+@pytest.fixture
+def create_test_user(db):
+    user = User.objects.create_user(email='testuser@example.com', password='strongpassword123', role='candidate')
+    user.is_active = True
+    user.save()
+    return user
 
 
 @pytest.fixture
-def job(db):
-    recruiter = User.objects.create_user(email='jobrecruiter@example.com', password='pass123')
-    return Job.objects.create(title="Open Job", status=Job.JobStatus.OPEN, recruiter=recruiter)
+def create_recruiter_user(db):
+    user = User.objects.create_user(email='recruiter@example.com', password='strongpassword123', role='recruiter')
+    user.is_active = True
+    user.save()
+    RecruiterProfile.objects.create(
+        user=user,
+        first_name='Recruiter',
+        last_name='User',
+        phone_number='+1234567890',
+        location='Test Location',
+        bio='Test bio'
+    )
+    return user
 
 
 @pytest.mark.django_db
-def test_home_view_context(client, job):
-    """
-    Function-based test for the home view context, specifically focusing on the correct retrieval of open jobs.
-    """
-    response = client.get(reverse('home'))
+def test_register_user_view(client):
+    url = reverse('accounts:register')
+    response = client.get(url)
     assert response.status_code == 200
-    assert job in response.context['jobs']
+    assert 'registration/register.html' in [t.name for t in response.templates]
 
-
-class RecruiterListViewTests(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        # Создаем тестовых пользователей и профили рекрутеров
-        for i in range(10):
-            user = User.objects.create_user(email=f'user{i}@example.com', password='password')
-            RecruiterProfile.objects.create(user=user, first_name=f'John{i}', last_name=f'Doe{i}')
-
-    def test_recruiter_list_view_pagination(self):
-        response = self.client.get(reverse('accounts:recruiters'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home/recruiters.html')
-        # Проверка количества рекрутеров на странице
-        self.assertEqual(len(response.context['page_obj']), 5)
-
-    def test_recruiter_list_ajax_request(self):
-        response = self.client.get(reverse('accounts:recruiters'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
-        self.assertEqual(response.status_code, 200)
-        response_json = json.loads(response.content)
-        # Проверяем, что получен JSON и содержит нужные ключи
-        self.assertIn('recruiters', response_json)
-        self.assertIn('pagination', response_json)
-
-
-class ClientListViewTests(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        # Создаем тестовых пользователей и профили клиентов
-        for i in range(10):
-            user = User.objects.create_user(email=f'client{i}@example.com', password='password')
-            ClientProfile.objects.create(user=user, company_name=f'Company{i}')
-
-    def test_client_list_view_pagination(self):
-        response = self.client.get(reverse('accounts:client_list'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home/client_list.html')
-        # Проверка количества клиентов на странице
-        self.assertEqual(len(response.context['page_obj']), 5)
-
-    def test_client_list_ajax_request(self):
-        response = self.client.get(reverse('accounts:client_list'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
-        self.assertEqual(response.status_code, 200)
-        response_json = json.loads(response.content)
-        # Проверяем, что получен JSON и содержит нужные ключи
-        self.assertIn('clients', response_json)
-        self.assertIn('pagination', response_json)
-
-
-@pytest.fixture
-def user(db):
-    User = get_user_model()
-    # Убедитесь, что используете правильные поля и параметры при создании пользователя
-    return User.objects.create_user(email='user@example.com', password='password', role='candidate')
-
-
-@pytest.fixture
-def client():
-    return Client()
-
-
-@pytest.mark.django_db
-def test_login_view(client, user):
-    url = reverse('accounts:login')
-    # Используйте ключ 'username', если это ожидает форма
-    response = client.post(url, {
-        'username': 'user@example.com',
-        'password': 'password'
-    })
-
-    if response.status_code != 302:
-        print("Form errors:", response.context['form'].errors)
-        print("Response content:", response.content.decode('utf-8'))
-
-    assert response.status_code == 302, f"Expected redirect after login, got {response.status_code}"
-
-
-@pytest.mark.django_db
-def test_logout_view(client, user):
-    client.login(username='user@example.com', password='password')
-    url = reverse('accounts:logout')
-    response = client.post(url)
+    user_data = {
+        'email': 'testuser@example.com',
+        'password1': 'strongpassword123',
+        'password2': 'strongpassword123',
+        'role': 'candidate'
+    }
+    response = client.post(url, data=user_data)
     assert response.status_code == 302
-    assert response.url == reverse('home')
+    assert response.url == reverse('accounts:create_profile')
+    user = User.objects.get(email='testuser@example.com')
+    assert user is not None
+    assert not user.is_active  # User should not be active until email verification
 
 
 @pytest.mark.django_db
-def test_dashboard_view_authenticated(client, user):
-    client.login(username='user@example.com', password='password')
+def test_register_user_view_invalid_data(client):
+    url = reverse('accounts:register')
+    user_data = {
+        'email': 'testuser@example',  # Invalid email
+        'password1': 'password123',
+        'password2': 'password123',
+        'role': 'candidate'
+    }
+    response = client.post(url, data=user_data)
+    assert response.status_code == 200
+    assert 'registration/register.html' in [t.name for t in response.templates]
+    assert User.objects.filter(email='testuser@example').count() == 0  # User should not be created
+
+
+@pytest.mark.django_db
+def test_create_profile_view(client):
+    register_url = reverse('accounts:register')
+    user_data = {
+        'email': 'testuser@example.com',
+        'password1': 'strongpassword123',
+        'password2': 'strongpassword123',
+        'role': 'candidate'
+    }
+    client.post(register_url, data=user_data)
+    user = User.objects.get(email='testuser@example.com')
+    client.session['user_id'] = user.id
+    client.session.save()
+
+    url = reverse('accounts:create_profile')
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'registration/create_profile.html' in [t.name for t in response.templates]
+
+    profile_data = {
+        'first_name': 'Test',
+        'last_name': 'User',
+        'phone_number': '+1234567890',
+        'location': 'Test Location',
+        'bio': 'Test bio',
+        'date_of_birth': '1990-01-01',
+        'skills': 'Testing'
+    }
+    response = client.post(url, data=profile_data)
+    assert response.status_code == 302
+    assert response.url == reverse('accounts:registration_complete')
+    assert CandidateProfile.objects.filter(user=user).exists()
+
+
+@pytest.mark.django_db
+def test_create_profile_view_invalid_data(client):
+    register_url = reverse('accounts:register')
+    user_data = {
+        'email': 'testuser@example.com',
+        'password1': 'strongpassword123',
+        'password2': 'strongpassword123',
+        'role': 'candidate'
+    }
+    client.post(register_url, data=user_data)
+    user = User.objects.get(email='testuser@example.com')
+    client.session['user_id'] = user.id
+    client.session.save()
+
+    url = reverse('accounts:create_profile')
+    profile_data = {
+        'first_name': '',  # Missing required field
+        'last_name': 'User',
+        'phone_number': '+1234567890',
+        'location': 'Test Location',
+        'bio': 'Test bio',
+        'date_of_birth': '1990-01-01',
+        'skills': 'Testing'
+    }
+    response = client.post(url, data=profile_data)
+    assert response.status_code == 200
+    assert 'registration/create_profile.html' in [t.name for t in response.templates]
+    assert CandidateProfile.objects.filter(user=user).count() == 0  # Profile should not be created
+
+
+@pytest.mark.django_db
+def test_verify_email_view(client, create_test_user):
+    create_test_user.verification_token = create_test_user.generate_verification_token()
+    create_test_user.save()
+
+    url = reverse('accounts:verify_email', kwargs={'token': create_test_user.verification_token})
+    response = client.get(url)
+    assert response.status_code == 302
+    assert response.url == reverse('accounts:verified')
+    create_test_user.refresh_from_db()
+    assert create_test_user.is_verified
+    assert create_test_user.verification_token is None
+    assert create_test_user.is_active
+
+
+@pytest.mark.django_db
+def test_login_view(client, create_test_user):
+    url = reverse('accounts:login')
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'registration/login.html' in [t.name for t in response.templates]
+
+    login_data = {
+        'username': 'testuser@example.com',
+        'password': 'strongpassword123'
+    }
+    response = client.post(url, data=login_data)
+    assert response.status_code == 302
+    assert response.url == reverse('accounts:dashboard')
+    assert '_auth_user_id' in client.session
+
+
+@pytest.mark.django_db
+def test_login_view_invalid_credentials(client):
+    url = reverse('accounts:login')
+    login_data = {
+        'username': 'testuser@example.com',
+        'password': 'wrongpassword'
+    }
+    response = client.post(url, data=login_data)
+    assert response.status_code == 200
+    assert 'registration/login.html' in [t.name for t in response.templates]
+    assert 'error' in response.context  # Check for error message in context
+
+
+@pytest.mark.django_db
+def test_dashboard_view(client, create_test_user):
+    client.force_login(create_test_user)
     url = reverse('accounts:dashboard')
     response = client.get(url)
     assert response.status_code == 200
@@ -159,94 +185,299 @@ def test_dashboard_view_authenticated(client, user):
 
 
 @pytest.mark.django_db
-def test_create_profile(client, user):
-    client.login(username='user@example.com', password='password')
-    url = reverse('accounts:create_profile')
+def test_dashboard_view_not_logged_in(client):
+    url = reverse('accounts:dashboard')
     response = client.get(url)
-    assert response.status_code == 200  # Проверяем, что форма доступна после аутентификации
-
-
-@pytest.fixture
-def user(db):
-    User = get_user_model()
-    return User.objects.create_user(email='user@example.com', password='password', role='candidate')
-
-
-@pytest.fixture
-def client_authenticated(client, user):
-    client.login(email='user@example.com', password='password')
-    return client
-
-
-@pytest.fixture
-def profile(db, user):
-    return CandidateProfile.objects.create(user=user, first_name="John", last_name="Doe")
+    assert response.status_code == 302  # Redirect to login
+    assert response.url.startswith(reverse('accounts:login'))
 
 
 @pytest.mark.django_db
-def test_profile_edit_view_access_and_edit(client_authenticated, profile):
+def test_profile_detail_view(client, create_test_user):
+    profile = CandidateProfile.objects.create(
+        user=create_test_user,
+        first_name='Test',
+        last_name='User',
+        phone_number='+1234567890',
+        location='Test Location',
+        bio='Test bio',
+        date_of_birth='1990-01-01',
+        skills='Testing'
+    )
+    client.force_login(create_test_user)
+    url = reverse('accounts:profile_detail')
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'profiles/universal_profile_detail.html' in [t.name for t in response.templates]
+    assert response.context['profile'] == profile
+
+
+@pytest.mark.django_db
+def test_profile_detail_view_not_logged_in(client):
+    url = reverse('accounts:profile_detail')
+    response = client.get(url)
+    assert response.status_code == 302  # Redirect to login
+    assert response.url.startswith(reverse('accounts:login'))
+
+
+@pytest.mark.django_db
+def test_profile_edit_view(client, create_test_user):
+    profile = CandidateProfile.objects.create(
+        user=create_test_user,
+        first_name='Test',
+        last_name='User',
+        phone_number='+1234567890',
+        location='Test Location',
+        bio='Test bio',
+        date_of_birth='1990-01-01',
+        skills='Testing'
+    )
+    client.force_login(create_test_user)
     url = reverse('accounts:profile_edit')
-    response = client_authenticated.get(url)
-    assert response.status_code == 200, "Should be accessible for logged-in users"
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'profiles/universal_profile_edit.html' in [t.name for t in response.templates]
 
-    # Убедитесь, что передаете все необходимые поля, которые ожидает ваша форма
-    form_data = {
-        'first_name': 'New',
-        'last_name': 'Name',
-        'phone_number': '1234567890',
-        'photo': '',  # Указываем пустую строку, если поле необязательно
-        'location': 'Some location',  # Предоставляем значение для обязательного поля
-        'bio': 'Some bio',  # Предоставляем значение для обязательного поля
-        'date_of_birth': '1990-01-01',  # Добавляем дату рождения, если это обязательное поле
-        'skills': 'Skill1, Skill2'  # Предоставляем некоторые навыки, если это обязательное поле
+    updated_profile_data = {
+        'first_name': 'Updated',
+        'last_name': 'User',
+        'phone_number': '+1234567890',
+        'location': 'Updated Location',
+        'bio': 'Updated bio',
+        'date_of_birth': '1990-01-01',
+        'skills': 'Updated skills'
     }
-    response_post = client_authenticated.post(url, form_data)
-    if response_post.status_code != 302:
-        print("Form errors:", response_post.context['form'].errors)  # Вывод ошибок формы для диагностики
-
-    assert response_post.status_code == 302, "Should redirect after form submission"
-    assert response_post.url == reverse('accounts:dashboard'), "Should redirect to dashboard"
-
-
-@pytest.fixture
-def recruiter_client(db):
-    # Создаем пользователя с ролью 'recruiter'
-    user = User.objects.create_user(email='recruiter@example.com', password='password', role='recruiter')
-    client = Client()
-    client.login(email='recruiter@example.com', password='password')
-    return client
+    response = client.post(url, data=updated_profile_data)
+    assert response.status_code == 302
+    assert response.url == reverse('accounts:dashboard')
+    profile.refresh_from_db()
+    assert profile.first_name == 'Updated'
+    assert profile.location == 'Updated Location'
 
 
 @pytest.mark.django_db
-def test_task_list_view(recruiter_client):
-    url = reverse('accounts:task_list')
-    response = recruiter_client.get(url)
+def test_profile_edit_view_invalid_data(client, create_test_user):
+    profile = CandidateProfile.objects.create(
+        user=create_test_user,
+        first_name='Test',
+        last_name='User',
+        phone_number='+1234567890',
+        location='Test Location',
+        bio='Test bio',
+        date_of_birth='1990-01-01',
+        skills='Testing'
+    )
+    client.force_login(create_test_user)
+    url = reverse('accounts:profile_edit')
+    updated_profile_data = {
+        'first_name': '',  # Invalid data
+        'last_name': 'User',
+        'phone_number': '+1234567890',
+        'location': 'Updated Location',
+        'bio': 'Updated bio',
+        'date_of_birth': '1990-01-01',
+        'skills': 'Updated skills'
+    }
+    response = client.post(url, data=updated_profile_data)
     assert response.status_code == 200
-    assert 'tasks/task_list.html' in [t.name for t in response.templates]
+    assert 'profiles/universal_profile_edit.html' in [t.name for t in response.templates]
+    profile.refresh_from_db()
+    assert profile.first_name == 'Test'  # Ensure the profile was not updated
 
 
 @pytest.mark.django_db
-def test_task_create_view(recruiter_client):
+def test_task_create_view(client, create_recruiter_user):
+    client.force_login(create_recruiter_user)
     url = reverse('accounts:task_create')
-    response = recruiter_client.get(url)
+    response = client.get(url)
     assert response.status_code == 200
     assert 'tasks/task_form.html' in [t.name for t in response.templates]
 
+    task_data = {
+        'title': 'Test Task',
+        'description': 'Test Description',
+        'priority': 'medium',
+        'due_date': '2024-12-31',
+        'status': 'open'
+    }
+    response = client.post(url, data=task_data)
+    assert response.status_code == 302
+    assert response.url == reverse('accounts:task_list')
+    task = Task.objects.get(title='Test Task')
+    assert task is not None
+    assert task.created_by == create_recruiter_user
+
 
 @pytest.mark.django_db
-def test_task_update_view(recruiter_client):
-    # Допустим, task_id уже создана в другом месте или используется fixture для создания задачи
-    task_id = 1  # Заглушка для примера
-    url = reverse('accounts:task_update', args=[task_id])
-    response = recruiter_client.get(url)
+def test_task_create_view_invalid_data(client, create_recruiter_user):
+    client.force_login(create_recruiter_user)
+    url = reverse('accounts:task_create')
+    task_data = {
+        'title': '',  # Invalid data
+        'description': 'Test Description',
+        'priority': 'medium',
+        'due_date': '2024-12-31',
+        'status': 'open'
+    }
+    response = client.post(url, data=task_data)
+    assert response.status_code == 200
+    assert 'tasks/task_form.html' in [t.name for t in response.templates]
+    assert Task.objects.filter(title='').count() == 0  # Task should not be created
+
+
+@pytest.mark.django_db
+def test_task_update_view(client, create_recruiter_user):
+    client.force_login(create_recruiter_user)
+    task = Task.objects.create(
+        title='Old Task',
+        description='Old Description',
+        priority='low',
+        due_date='2024-12-31',
+        status='open',
+        created_by=create_recruiter_user
+    )
+    url = reverse('accounts:task_update', kwargs={'task_id': task.id})
+    response = client.get(url)
     assert response.status_code == 200
     assert 'tasks/task_form.html' in [t.name for t in response.templates]
 
+    updated_task_data = {
+        'title': 'Updated Task',
+        'description': 'Updated Description',
+        'priority': 'high',
+        'due_date': '2024-12-31',
+        'status': 'in_progress'
+    }
+    response = client.post(url, data=updated_task_data)
+    assert response.status_code == 302
+    assert response.url == reverse('accounts:task_list')
+    task.refresh_from_db()
+    assert task.title == 'Updated Task'
+    assert task.description == 'Updated Description'
+    assert task.priority == 'high'
+    assert task.status == 'in_progress'
+
 
 @pytest.mark.django_db
-def test_task_delete_view(recruiter_client):
-    # Аналогично, предполагаем, что task_id известен
-    task_id = 1  # Заглушка для примера
-    url = reverse('accounts::task_delete', args=[task_id])
-    response = recruiter_client.post(url)
-    assert response.status_code == 302  # После удаления должно произойти перенаправление
+def test_task_update_view_invalid_data(client, create_recruiter_user):
+    client.force_login(create_recruiter_user)
+    task = Task.objects.create(
+        title='Old Task',
+        description='Old Description',
+        priority='low',
+        due_date='2024-12-31',
+        status='open',
+        created_by=create_recruiter_user
+    )
+    url = reverse('accounts:task_update', kwargs={'task_id': task.id})
+    updated_task_data = {
+        'title': '',  # Invalid data
+        'description': 'Updated Description',
+        'priority': 'high',
+        'due_date': '2024-12-31',
+        'status': 'in_progress'
+    }
+    response = client.post(url, data=updated_task_data)
+    assert response.status_code == 200
+    assert 'tasks/task_form.html' in [t.name for t in response.templates]
+    task.refresh_from_db()
+    assert task.title == 'Old Task'  # Ensure the task was not updated
+
+
+@pytest.mark.django_db
+def test_task_delete_view(client, create_recruiter_user):
+    client.force_login(create_recruiter_user)
+    task = Task.objects.create(
+        title='Task to Delete',
+        description='Task Description',
+        priority='medium',
+        due_date='2024-12-31',
+        status='open',
+        created_by=create_recruiter_user
+    )
+    url = reverse('accounts:task_delete', kwargs={'task_id': task.id})
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'tasks/task_confirm_delete.html' in [t.name for t in response.templates]
+
+    response = client.post(url)
+    assert response.status_code == 302
+    assert response.url == reverse('accounts:task_list')
+    with pytest.raises(Task.DoesNotExist):
+        task.refresh_from_db()
+
+
+@pytest.mark.django_db
+def test_task_detail_view(client, create_recruiter_user):
+    client.force_login(create_recruiter_user)
+    task = Task.objects.create(
+        title='Task Detail',
+        description='Task Description',
+        priority='medium',
+        due_date='2024-12-31',
+        status='open',
+        created_by=create_recruiter_user
+    )
+    url = reverse('accounts:task_detail', kwargs={'pk': task.id})
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'tasks/task_detail.html' in [t.name for t in response.templates]
+    assert response.context['task'] == task
+
+
+@pytest.mark.django_db
+def test_task_detail_view_not_logged_in(client):
+    recruiter = User.objects.create_user(email='recruiter@example.com', password='strongpassword123', role='recruiter')
+    RecruiterProfile.objects.create(
+        user=recruiter,
+        first_name='Recruiter',
+        last_name='User',
+        phone_number='+1234567890',
+        location='Test Location',
+        bio='Test bio'
+    )
+    task = Task.objects.create(
+        title='Task Detail',
+        description='Task Description',
+        priority='medium',
+        due_date='2024-12-31',
+        status='open',
+        created_by=recruiter
+    )
+    url = reverse('accounts:task_detail', kwargs={'pk': task.id})
+    response = client.get(url)
+    assert response.status_code == 302  # Redirect to login
+    assert response.url.startswith(reverse('accounts:login'))
+
+
+@pytest.mark.django_db
+def test_change_password_view(client, create_test_user):
+    client.force_login(create_test_user)
+    url = reverse('accounts:change_password')
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'registration/change_password.html' in [t.name for t in response.templates]
+
+    password_data = {
+        'new_password': 'newstrongpassword123',
+        'new_password_confirm': 'newstrongpassword123'
+    }
+    response = client.post(url, data=password_data)
+    assert response.status_code == 302
+    assert response.url == reverse('accounts:profile_detail')
+    create_test_user.refresh_from_db()
+    assert create_test_user.check_password('newstrongpassword123')
+
+
+@pytest.mark.django_db
+def test_change_password_view_invalid_data(client, create_test_user):
+    client.force_login(create_test_user)
+    url = reverse('accounts:change_password')
+    password_data = {
+        'new_password': 'newstrongpassword123',
+        'new_password_confirm': 'differentpassword'  # Invalid confirmation
+    }
+    response = client.post(url, data=password_data)
+    assert response.status_code == 200
+    assert 'registration/change_password.html' in [t.name for t in response.templates]
+    assert not create_test_user.check_password('newstrongpassword123')  # Password should not be changed

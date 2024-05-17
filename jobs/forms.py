@@ -2,8 +2,25 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 from .models import Job, Application, GuestFeedback
 
+"""
+Importy:
+- from django import forms: Importuje moduł formularzy Django, który umożliwia tworzenie i zarządzanie formularzami.
+- from django.utils.translation import gettext_lazy as _: Importuje funkcję tłumaczenia, która umożliwia międzynarodowe tłumaczenie tekstów.
+- from .models import Job, Application, GuestFeedback: Importuje modele, które będą używane w formularzach.
+"""
+
 
 class JobForm(forms.ModelForm):
+    """
+    Formularz do tworzenia i edycji obiektów Job.
+
+    Meta klasa:
+        model (Job): Model, który formularz reprezentuje.
+        fields (list): Lista pól modelu, które będą uwzględnione w formularzu.
+        labels (dict): Słownik mapujący nazwy pól na etykiety do wyświetlenia w formularzu.
+        widgets (dict): Słownik określający widgety formularza dla poszczególnych pól.
+    """
+
     class Meta:
         model = Job
         fields = ['title', 'description', 'requirements', 'salary', 'status']
@@ -40,6 +57,16 @@ class JobForm(forms.ModelForm):
 
 
 class ApplicationForm(forms.ModelForm):
+    """
+    Formularz do tworzenia i edycji obiektów Application.
+
+    Meta klasa:
+        model (Application): Model, który formularz reprezentuje.
+        fields (list): Lista pól modelu, które będą uwzględnione w formularzu.
+        labels (dict): Słownik mapujący nazwy pól na etykiety do wyświetlenia w formularzu.
+        widgets (dict): Słownik określający widgety formularza dla poszczególnych pól.
+    """
+
     class Meta:
         model = Application
         fields = ['cover_letter']
@@ -56,6 +83,16 @@ class ApplicationForm(forms.ModelForm):
 
 
 class GuestFeedbackForm(forms.ModelForm):
+    """
+    Formularz do tworzenia i edycji obiektów GuestFeedback.
+
+    Meta klasa:
+        model (GuestFeedback): Model, który formularz reprezentuje.
+        fields (list): Lista pól modelu, które będą uwzględnione w formularzu.
+        labels (dict): Słownik mapujący nazwy pól na etykiety do wyświetlenia w formularzu.
+        widgets (dict): Słownik określający widgety formularza dla poszczególnych pól.
+    """
+
     class Meta:
         model = GuestFeedback
         fields = ['email', 'message', 'phone_number']

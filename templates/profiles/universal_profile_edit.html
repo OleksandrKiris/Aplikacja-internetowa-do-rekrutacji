@@ -5,15 +5,18 @@
 {% block content %}
 <section class="container mt-5">
     <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header bg-primary text-white text-center">
             <h2>{% trans 'Edytuj profil' %}</h2>
         </div>
         <div class="card-body">
             <form method="post" enctype="multipart/form-data" novalidate>
                 {% csrf_token %}
                 {{ form.as_p }}
-                <div class="text-end">
+                <div class="d-flex justify-content-between mt-3">
                     <button type="submit" class="btn btn-success">{% trans 'Zapisz zmiany' %}</button>
+                    <div>
+                        <a href="{% url 'accounts:profile_detail' %}" class="btn btn-secondary">{% trans 'Wróć do profilu' %}</a>
+                    </div>
                 </div>
             </form>
         </div>

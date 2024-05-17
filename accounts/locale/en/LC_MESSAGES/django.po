@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 17:16+0200\n"
+"POT-Creation-Date: 2024-05-16 13:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,213 +18,216 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/forms.py:13 accounts/models.py:45
+#: forms.py:13 models.py:45
 msgid "Kandydat"
 msgstr "Candidate"
 
-#: accounts/forms.py:14 accounts/models.py:46
+#: forms.py:14 models.py:46
 msgid "Klient"
 msgstr "Client"
 
-#: accounts/forms.py:26 accounts/forms.py:113
+#: forms.py:26 forms.py:113
 msgid "Email"
 msgstr "Email"
 
-#: accounts/forms.py:27 accounts/forms.py:116
+#: forms.py:27 forms.py:116
 msgid "Hasło"
 msgstr "Password"
 
-#: accounts/forms.py:28 accounts/forms.py:34
+#: forms.py:28 forms.py:34
 msgid "Potwierdź hasło"
 msgstr "Confirm password"
 
-#: accounts/forms.py:29 accounts/models.py:49
+#: forms.py:29 models.py:49
 msgid "Rola"
 msgstr "Role"
 
-#: accounts/forms.py:32 accounts/forms.py:115
+#: forms.py:32 forms.py:115
 msgid "Wprowadź email"
 msgstr "Enter email"
 
-#: accounts/forms.py:33 accounts/forms.py:118
+#: forms.py:33 forms.py:118
 msgid "Wprowadź hasło"
 msgstr "Enter password"
 
-#: accounts/forms.py:43 accounts/forms.py:94 accounts/models.py:87
-#: accounts/models.py:117
+#: forms.py:43 forms.py:94 models.py:92 models.py:122
 msgid "Imię"
 msgstr "First name"
 
-#: accounts/forms.py:44 accounts/forms.py:95 accounts/models.py:88
-#: accounts/models.py:118
+#: forms.py:44 forms.py:95 models.py:93 models.py:123
 msgid "Nazwisko"
 msgstr "Last name"
 
-#: accounts/forms.py:45 accounts/forms.py:71 accounts/forms.py:96
-#: accounts/models.py:89 accounts/models.py:103 accounts/models.py:119
+#: forms.py:45 forms.py:71 forms.py:96 models.py:94 models.py:108 models.py:124
 msgid "Numer telefonu"
 msgstr "Phone number"
 
-#: accounts/forms.py:46 accounts/forms.py:72 accounts/forms.py:97
-#: accounts/models.py:90 accounts/models.py:104 accounts/models.py:120
+#: forms.py:46 forms.py:72 forms.py:97 models.py:95 models.py:109 models.py:125
 msgid "Zdjęcie"
 msgstr "Photo"
 
-#: accounts/forms.py:47 accounts/forms.py:73 accounts/forms.py:98
-#: accounts/models.py:91 accounts/models.py:105 accounts/models.py:121
+#: forms.py:47 forms.py:73 forms.py:98 models.py:96 models.py:110 models.py:126
 msgid "Lokalizacja"
 msgstr "Location"
 
-#: accounts/forms.py:48 accounts/forms.py:74 accounts/forms.py:99
-#: accounts/models.py:92 accounts/models.py:106 accounts/models.py:122
+#: forms.py:48 forms.py:74 forms.py:99 models.py:97 models.py:111 models.py:127
 msgid "Biografia"
 msgstr "Biography"
 
-#: accounts/forms.py:49 accounts/models.py:93
+#: forms.py:49 models.py:98
 msgid "Data urodzenia"
 msgstr "Date of birth"
 
-#: accounts/forms.py:50 accounts/models.py:94
+#: forms.py:50 models.py:99
 msgid "Umiejętności"
 msgstr "Skills"
 
-#: accounts/forms.py:53 accounts/forms.py:102
+#: forms.py:53 forms.py:102
 msgid "Wprowadź imię"
 msgstr "Enter first name"
 
-#: accounts/forms.py:54 accounts/forms.py:103
+#: forms.py:54 forms.py:103
 msgid "Wprowadź nazwisko"
 msgstr "Enter last name"
 
-#: accounts/forms.py:56 accounts/forms.py:80 accounts/forms.py:105
+#: forms.py:56 forms.py:80 forms.py:105
 msgid "Wprowadź numer telefonu"
 msgstr "Enter phone number"
 
-#: accounts/forms.py:58 accounts/forms.py:82 accounts/forms.py:107
+#: forms.py:58 forms.py:82 forms.py:107
 msgid "Wprowadź lokalizację"
 msgstr "Enter location"
 
-#: accounts/forms.py:59 accounts/forms.py:83 accounts/forms.py:108
+#: forms.py:59 forms.py:83 forms.py:108
 msgid "Wprowadź biografię"
 msgstr "Enter biography"
 
-#: accounts/forms.py:62
+#: forms.py:62
 msgid "Wprowadź umiejętności"
 msgstr "Enter skills"
 
-#: accounts/forms.py:75 accounts/models.py:107
+#: forms.py:75 models.py:112
 msgid "Nazwa firmy"
 msgstr "Company name"
 
-#: accounts/forms.py:76 accounts/models.py:108
+#: forms.py:76 models.py:113
 msgid "Branża"
 msgstr "Industry"
 
-#: accounts/forms.py:84
+#: forms.py:84
 msgid "Wprowadź nazwę firmy"
 msgstr "Enter company name"
 
-#: accounts/forms.py:85
+#: forms.py:85
 msgid "Wprowadź branżę"
 msgstr "Enter industry"
 
-#: accounts/forms.py:126 accounts/models.py:131
+#: forms.py:126 models.py:136
 msgid "Tytuł"
 msgstr "Title"
 
-#: accounts/forms.py:127 accounts/models.py:132
+#: forms.py:127 models.py:137
 msgid "Opis"
 msgstr "Description"
 
-#: accounts/forms.py:128 accounts/models.py:138
+#: forms.py:128 models.py:143
 msgid "Priorytet"
 msgstr "Priority"
 
-#: accounts/forms.py:129 accounts/models.py:139
+#: forms.py:129 models.py:144
 msgid "Termin wykonania"
 msgstr "Due date"
 
-#: accounts/forms.py:130 accounts/models.py:145
+#: forms.py:130 models.py:150
 msgid "Status"
 msgstr "Status"
 
-#: accounts/forms.py:133
+#: forms.py:133
 msgid "Wprowadź tytuł"
 msgstr "Enter title"
 
-#: accounts/forms.py:135
+#: forms.py:135
 msgid "Wprowadź opis"
 msgstr "Enter description"
 
-#: accounts/models.py:12
+#: models.py:14
 msgid "Adres e-mail musi być ustawiony"
 msgstr "Email address must be set"
 
-#: accounts/models.py:16
+#: models.py:18
 msgid "Nieprawidłowy format adresu e-mail"
 msgstr "Invalid email address format"
 
-#: accounts/models.py:24
-#, python-brace-format
-msgid "Nieprawidłowa rola: {role}. Dopuszczalne role to {valid_roles}."
-msgstr "Invalid role: {role}. Valid roles are {valid_roles}."
-
-#: accounts/models.py:32
+#: models.py:31
 msgid "Superużytkownik musi mieć is_staff=True."
 msgstr "Superuser must have is_staff=True."
 
-#: accounts/models.py:34
+#: models.py:33
 msgid "Superużytkownik musi mieć is_superuser=True."
 msgstr "Superuser must have is_superuser=True."
 
-#: accounts/models.py:47
+#: models.py:47
 msgid "Rekruter"
 msgstr "Recruiter"
 
-#: accounts/models.py:55
+#: models.py:55
 msgid "użytkownik"
 msgstr "user"
 
-#: accounts/models.py:56
+#: models.py:56
 msgid "użytkownicy"
 msgstr "users"
 
-#: accounts/models.py:58
+#: models.py:58
 msgid "Może przeglądać pulpit nawigacyjny"
 msgstr "Can view dashboard"
 
-#: accounts/models.py:78
+#: models.py:83
 msgid "Podaj poprawny numer telefonu"
 msgstr "Enter a valid phone number"
 
-#: accounts/models.py:130
+#: models.py:135
 msgid "Utworzone przez"
 msgstr "Created by"
 
-#: accounts/models.py:134
+#: models.py:139
 msgid "Niski"
 msgstr "Low"
 
-#: accounts/models.py:135
+#: models.py:140
 msgid "Średni"
 msgstr "Medium"
 
-#: accounts/models.py:136
+#: models.py:141
 msgid "Wysoki"
 msgstr "High"
 
-#: accounts/models.py:141
+#: models.py:146
 msgid "Otwarte"
 msgstr "Open"
 
-#: accounts/models.py:142
+#: models.py:147
 msgid "W trakcie realizacji"
 msgstr "In progress"
 
-#: accounts/models.py:143
+#: models.py:148
 msgid "Zakończone"
 msgstr "Completed"
 
-#: accounts/models.py:149
+#: models.py:154
 msgid "Tylko rekruterzy mogą tworzyć zadania."
 msgstr "Only recruiters can create tasks."
+
+#: utils.py:12
+msgid "Zweryfikuj swój email"
+msgstr "Verify your email"
+
+#: utils.py:13
+#, python-brace-format
+msgid "Kliknij link, aby zweryfikować swój email: {verification_link}"
+msgstr "Click the link to verify your email: {verification_link}"
+
+
+#, python-brace-format
+#~ msgid "Nieprawidłowa rola: {role}. Dopuszczalne role to {valid_roles}."
+#~ msgstr "Invalid role: {role}. Valid roles are {valid_roles}."

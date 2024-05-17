@@ -1,0 +1,17 @@
+{% extends "home/base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-6">
+            <div class="card bg-light text-dark">
+                <div class="card-body text-center">
+                    <h1 class="display-4 mb-4">{% trans "Twoja opinia została potwierdzona!" %}</h1>
+                    <p class="lead mb-4">{% trans "Dziękujemy za potwierdzenie swojej opinii." %}</p>
+                    <a href="{% url 'jobs:public_job_list' %}" class="btn btn-primary">{% trans "Przeglądaj oferty pracy" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
