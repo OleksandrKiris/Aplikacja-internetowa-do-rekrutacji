@@ -6,9 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <title>KIRIS M.O.R.</title>
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <!-- Ustawienia widoku dla responsywności -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Główne style CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>
         html, body {
@@ -19,16 +23,20 @@
 </head>
 <body>
     <div class="d-flex flex-column min-vh-100">
+        <!-- Nagłówek strony -->
         <header class="bg-dark text-white sticky-top" style="z-index: 1030;">
             <nav class="navbar navbar-expand-lg navbar-dark container">
+                <!-- Logo i link do strony głównej -->
                 <a class="navbar-brand" href="{% url 'home' %}">
                     <img src="{% static 'images/logo.png' %}" alt="Logo KIRIS M.O.R." class="rounded-circle" style="height: 50px;">
                 </a>
+                <!-- Przycisk menu dla widoków mobilnych -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
+                        <!-- Linki nawigacyjne -->
                         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">{% trans "Strona główna" %}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">{% trans "Kontakt" %}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">{% trans "O nas" %}</a></li>
@@ -40,21 +48,25 @@
                     <ul class="navbar-nav">
                         {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
+                            <!-- Menu użytkownika -->
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                 {% trans "User Menu" %}
                             </button>
                             <ul class="dropdown-menu">
                                 {% if request.session.role == 'candidate' %}
+                                <!-- Linki dla kandydatów -->
                                 <li><a class="dropdown-item" href="{% url 'accounts:profile_detail' %}">{% trans "Mój profil" %}</a></li>
                                 <li><a class="dropdown-item" href="{% url 'jobs:job_list' %}">{% trans "Oferty pracy" %}</a></li>
                                 <li><a class="dropdown-item" href="{% url 'jobs:application_list' %}">{% trans "Aplikacje" %}</a></li>
                                 {% elif request.session.role == 'client' %}
+                                <!-- Linki dla klientów -->
                                 <li><a class="dropdown-item" href="{% url 'accounts:profile_detail' %}">{% trans "Profil" %}</a></li>
                                 <li><a class="dropdown-item" href="{% url 'jobs:job_list' %}">{% trans "Oferty pracy" %}</a></li>
                                 <li><a class="dropdown-item" href="{% url 'requests:recruiter_list' %}">{% trans "Rekruterzy" %}</a></li>
                                 <li><a class="dropdown-item" href="{% url 'requests:client_job_request_create' %}">{% trans "Stwórz wniosek" %}</a></li>
                                 <li><a class="dropdown-item" href="{% url 'requests:client_job_request_list' %}">{% trans "Wnioski" %}</a></li>
                                 {% elif request.session.role == 'recruiter' %}
+                                <!-- Linki dla rekruterów -->
                                 <li><a class="dropdown-item" href="{% url 'accounts:profile_detail' %}">{% trans "Mój profil" %}</a></li>
                                 <li><a class="dropdown-item" href="{% url 'jobs:job_list' %}">{% trans "Oferty pracy" %}</a></li>
                                 <li><a class="dropdown-item" href="{% url 'jobs:create_job' %}">{% trans "Dodaj ofertę pracy" %}</a></li>
@@ -66,18 +78,22 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <!-- Link do wylogowania -->
                             <a href="{% url 'accounts:logout' %}" class="btn btn-link nav-link">{% trans "Wyloguj się" %}</a>
                         </li>
                         {% else %}
+                        <!-- Linki do logowania i rejestracji -->
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">{% trans "Logowanie" %}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register' %}">{% trans "Rejestracja" %}</a></li>
                         {% endif %}
                         <li class="nav-item dropdown">
+                            <!-- Menu języków -->
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                 {% trans "Language" %}
                             </button>
                             <ul class="dropdown-menu">
                                 {% for lang_code, lang_name in LANGUAGES %}
+                                <!-- Lista języków -->
                                 <li><a class="dropdown-item" href="{% url 'set_language' lang_code %}">{{ lang_name }}</a></li>
                                 {% endfor %}
                             </ul>
@@ -86,11 +102,14 @@
                 </div>
             </nav>
         </header>
+        <!-- Główna zawartość strony -->
        {% block content %}
-             <main class="container flex-fill mt-3">    
+             <main class="container flex-fill mt-3">
+                <!-- Karuzela ofert pracy -->
                 <div id="jobCarousel" class="carousel slide main-slider" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         {% for job in jobs %}
+                            <!-- Element karuzeli -->
                             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                                 <div class="container">
                                     <div class="row">
@@ -104,16 +123,18 @@
                             </div>
                         {% endfor %}
                     </div>
+                    <!-- Przyciski nawigacji karuzeli -->
                     <button class="carousel-control-prev btn btn-light" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">{% trans "Poprzedni" %}</span>
                     </button>
-                    <button class= "carousel-control-next btn btn-light" type="button" data-bs-target="#jobCarousel" data-bs-slide="next">
-                        <span class= "carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class= "visually-hidden">{% trans "Następny" %}</span>
+                    <button class="carousel-control-next btn btn-light" type="button" data-bs-target="#jobCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">{% trans "Następny" %}</span>
                     </button>
                 </div>
 
+                <!-- Sekcja "Jak pracujemy" -->
                 <section class="how-we-work row gx-5">
                     <div class="col-md-6 mb-4">
                         <div class="work-step card shadow-sm p-4 h-100">
@@ -153,6 +174,7 @@
                     </div>
                 </section>
                 
+                <!-- Sekcja kontaktowa -->
                 <section class="contact-section mt-4">
                     <div class="container">
                         <div class="row">
@@ -178,18 +200,17 @@
                         </div>
                     </div>
                 </section>
-
              </main>
         {% endblock %}
         
+        <!-- Stopka -->
         <footer class="bg-dark text-white text-center py-3 mt-auto">
             <div class="container">
                 <p>© 2024 {% trans "Agencja Pracy KIRIS M.O.R. Wszelkie prawa zastrzeżone." %}</p>
             </div>
         </footer>
-
     </div>
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

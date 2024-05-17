@@ -1,30 +1,32 @@
-// JavaScript for AJAX pagination and search functionality
+// JavaScript do funkcjonalności AJAX paginacji i wyszukiwania
 $(document).ready(function() {
-    // Function to handle AJAX search
+    // Funkcja do obsługi wyszukiwania AJAX
     $('#search-form').on('submit', function(event) {
-        event.preventDefault();
-        const searchQuery = $('#search-input').val();
+        event.preventDefault(); // Zapobieganie domyślnemu zachowaniu formularza
+        const searchQuery = $('#search-input').val(); // Pobranie wartości wyszukiwania
         $.ajax({
-            type: 'GET',
-            url: $(this).attr('action'),
+            type: 'GET', // Typ żądania
+            url: $(this).attr('action'), // URL z atrybutu "action" formularza
             data: {
-                'q': searchQuery
+                'q': searchQuery // Dane wyszukiwania
             },
             success: function(response) {
+                // Aktualizacja listy rekruterów i paginacji na podstawie odpowiedzi serwera
                 $('#recruiter-list').html(response.recruiters);
                 $('.pagination').html(response.pagination);
             }
         });
     });
 
-    // Function to handle AJAX pagination
+    // Funkcja do obsługi paginacji AJAX
     $(document).on('click', '.pagination-link', function(event) {
-        event.preventDefault();
-        const pageUrl = $(this).attr('href');
+        event.preventDefault(); // Zapobieganie domyślnemu zachowaniu linka
+        const pageUrl = $(this).attr('href'); // Pobranie URL z atrybutu "href" linka
         $.ajax({
-            type: 'GET',
-            url: pageUrl,
+            type: 'GET', // Typ żądania
+            url: pageUrl, // URL do paginacji
             success: function(response) {
+                // Aktualizacja listy rekruterów i paginacji na podstawie odpowiedzi serwera
                 $('#recruiter-list').html(response.recruiters);
                 $('.pagination').html(response.pagination);
             }
