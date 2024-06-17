@@ -1,0 +1,31 @@
+# Python
+*.pyc                # Ignorowanie wszystkich skompilowanych plików Python
+__pycache__/         # Ignorowanie katalogu cache'a Pythona
+
+# Virtual Environment
+venv/                # Ignorowanie wirtualnego środowiska Pythona
+
+
+# Configuration files
+.ENV                 # Ignorowanie pliku konfiguracyjnego .env
+
+# Ignore all logs
+logs/                # Ignorowanie wszystkich plików dziennika (logów)
+*.log                # Ignorowanie wszystkich plików dziennika (logów)
+
+# Ignore SQLite database files
+*.sqlite3            # Ignorowanie plików baz danych SQLite
+
+# Ignore macOS specific files
+.DS_Store            # Ignorowanie plików specyficznych dla macOS
+
+# Ignore PyCharm files
+.idea/               # Ignorowanie katalogu projektu PyCharm
+*.iml                # Ignorowanie plików .iml związanych z projektem PyCharm
+*.ipynb_checkpoints/ # Ignorowanie katalogów z punktami kontrolnymi Jupyter Notebook
+
+# Ignore Visual Studio Code files
+.vscode/             # Ignorowanie katalogu projektu Visual Studio Code
+
+# Ignore Jupyter Notebook files
+.ipynb_checkpoints/  # Ignorowanie katalogów z punktami kontrolnymi Jupyter Notebook
