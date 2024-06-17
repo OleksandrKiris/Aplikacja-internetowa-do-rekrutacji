@@ -45,7 +45,7 @@ python3 -m venv venv
 source venv/bin/activate # Na Windows: venv\Scripts\activate
 
 
-### Instalacja zależności
+### Instalacja zależności.
 
 pip install -r requirements.txt
 
