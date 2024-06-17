@@ -2,7 +2,7 @@
 *.pyc                # Ignorowanie wszystkich skompilowanych plików Python
 __pycache__/         # Ignorowanie katalogu cache'a Pythona
 
-# Virtual Environment
+# Virtual Environment.
 venv/                # Ignorowanie wirtualnego środowiska Pythona
 
 
