@@ -21,11 +21,15 @@ KIRIS M.O.R. to zaawansowany system zarządzania rekrutacją, legalizacją i log
 ### Aplikacja Communications
 * **Komunikacja wewnętrzna:** System umożliwia wymianę wiadomości między użytkownikami.
 
-## Technologie
+
+**Technologie:**
+
 * **Backend:** Django
-* **Frontend:** React (opcjonalnie)
+* **Frontend:** HTML, CSS, Bootstrap, JavaScript
 * **Baza danych:** PostgreSQL
-* **Deployment:** Docker
+* **Email:** Mailtrap do weryfikacji i aktywacji kont
+* **CRUD:** Implementacja operacji tworzenia, odczytu, edytowania i usuwania danych
+
 
 ## Instalacja i uruchomienie
 
